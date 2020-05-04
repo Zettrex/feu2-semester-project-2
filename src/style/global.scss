@@ -1,0 +1,388 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.root {
+  position: relative;
+}
+
+.page {
+  padding: 30px 15px;
+  min-height: 100vh;
+  background: linear-gradient(to right, $secondaryColor, $secondaryColor+10%, $secondaryColor);
+}
+
+//Start of elements
+
+//Start of Navigation
+.nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  background: linear-gradient(to bottom, $primaryColor+15%, $primaryColor, $primaryColor);
+  box-shadow: 0 5px 15px black;
+  &--mobile {
+    @extend .nav;
+    box-shadow: none;
+  }
+  &__right{
+    margin-left: auto;
+    padding: 10px;
+    text-align: right;
+  }
+  &__menuToggle {
+    @extend .nav__link;
+    display: block;
+    border: none;
+  }
+  &__links {
+    display: none;
+    &--mobile {
+      position: absolute;
+      top: 56px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      display: block;
+      background-color: $primaryColor;
+    }
+  }
+  &__link {
+    @extend .link;
+    display: block;
+    padding: 10px 15px;
+    color: black;
+    &--mobile {
+      @extend .nav__link;
+      margin: 10px 0;
+    }
+  }
+}
+
+//End of Navigation
+
+
+//Start of Footer
+.footer {
+  background-color: #141414;
+  &__link {
+    @extend .nav__link;
+    margin: 10px 0;
+    padding: 10px 0;
+    color: white;
+    text-decoration: none;
+  }
+  &__elem {
+    @extend .footer__link;
+  }
+}
+
+//End of Footer
+
+//Start of Form
+.form {
+  color: white;
+  &__group {
+    padding: 10px;
+    position: relative;
+    &--compact {
+      @extend .form__group;
+      display: inline-block;
+      &:nth-child(odd) {
+        padding-right: 0;
+      }
+      &:nth-child(even) {
+        padding-left: 0;
+      }
+    }
+  }
+  //Start of label
+  &__label {
+    color: white;
+    &--compact {
+      @extend .form__label;
+      display: inline-block;
+      position: absolute;
+      font-size: 12px;
+      left: 20px;
+      top: 50%;
+      transform: translate(0, -50%);
+      color: $thirdColor;
+    }
+    &--textarea {
+      top: 30px;
+    }
+    &--left {
+      @extend .form__label--compact;
+    }
+    &--right {
+      @extend .form__label--compact;
+      left: 12px;
+    }
+  }
+  //End of Label
+  //Start of Items
+  &__item {
+    padding: 7px;
+    border-radius: 6px;
+    border: 3px solid $thirdColor;
+    display: block;
+    &:focus {
+      border-color: $primaryColor;
+    }
+    &--compact {
+      @extend .form__item;
+      width: unset;
+      padding-left: 65px;
+    }
+  }
+  //Start of Input
+  &__input {
+    @extend .form__item;
+    &--compact {
+      @extend .form__item--compact;
+      @extend .form__input;
+    }
+  }
+  //End of Input
+  //Start of Textarea
+  &__textarea {
+    @extend .form__item;
+    &--compact {
+      @extend .form__item--compact;
+      @extend .form__textarea;
+      padding: 35px 10px 10px;
+      resize: vertical;
+      height: 150px;
+    }
+  }
+  //End of Textarea
+  //Start of Date
+  &__date {
+    @extend .form__item;
+    &--compact {
+      @extend .form__item--compact;
+      @extend .form__date;
+      font-size: 14px;
+    }
+    &--left {
+      @extend .form__date--compact;
+      border-radius: 6px 0 0 6px;
+    }
+    &--right {
+      @extend .form__date--compact;
+      border-radius: 0 6px 6px 0;
+    }
+  }
+  //End of Date
+  //Start of Select
+  &__select {
+    @extend .form__item;
+    &--compact {
+      @extend .form__item--compact;
+      @extend .form__select;
+    }
+  }
+  //End of Select
+  //Start of Selectors (checkbox & radiobutton)
+  //Start of Selector Button
+  &__selectorButton {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    &:focus, &:hover {
+      &+[class^="form__"][class$="Design"] {
+        color: $primaryColor;
+      }
+    }
+  }
+  &__selectorDesign {
+    display: inline-block;
+    font-size: 20px;
+    transform: translate(0,2px);
+  }
+  //End of Selector Button
+
+  //start of RadioButton
+  &__radio {
+    @extend .form__item;
+    position: relative;
+    border: none;
+  }
+  &__radioButton {
+    @extend .form__selectorButton;
+  }
+  &__radioDesign {
+    @extend .form__selectorDesign;
+  }
+  &__radioLabel {
+    @extend .form__label;
+    display: inline-block;
+    padding: 10px;
+  }
+  //End of RadioButton
+  //Start of Checkbox
+  &__checkbox {
+    @extend .form__radio;
+  }
+  &__checkboxButton {
+    @extend .form__selectorButton;
+  }
+  &__checkboxDesign {
+    @extend .form__selectorDesign;
+  }
+  &__checkboxLabel {
+    @extend .form__radioLabel;
+  }
+  //End of Checkbox
+  //End of Selectors (checkbox & radiobutton)
+
+  //Start of Range
+  &__multiRange {
+    position: relative;
+    width: 390px;
+  }
+  &__rangeControls {
+    position: relative;
+    width: 390px;
+    padding: 25px 0;
+  }
+  &__rangeInput {
+    @extend .form__item;
+    display: inline-block;
+    font-size: 13px;
+    padding: 3px 0 3px 5px;
+    width: 65px;
+    &--min {
+      @extend .form__rangeInput;
+      order: 1;
+    }
+    &--max {
+      @extend .form__rangeInput;
+      order: 3;
+    }
+  }
+  &__rangeLabel {
+    margin: 0 auto;
+    order: 2;
+    text-align: center;
+  }
+  //Start of Nouislider
+  .noUi-target {
+    position: relative;
+    height: 14px;
+    border-radius: 5px;
+    background-color: white;
+  }
+  .noUi-base {
+  }
+  .noUi-connect {
+    height: 14px;
+    background-color: $thirdColor;
+    position: absolute;
+    top: 0;
+  }
+  .noUi-origin {
+    position: absolute;
+    top: 0;
+  }
+  .noUi-handle {
+    border-radius: 5px;
+    width: 24px;
+    height: 24px;
+    background-color: gray;
+    transform: translate(0, -25%);
+    &-upper {
+      transform: translate(-100%, -25%);
+    }
+  }
+  //End of Nouislider
+  //End of Range
+}
+//End of Form
+
+//Start of General Items
+//Start of Button
+.btn {
+  padding: 10px 15px;
+  border-radius: 7px;
+  margin: 10px;
+  &--primary {
+    @extend .btn;
+    background-color: $primaryColor;
+  }
+}
+//End of Button
+//Start of Link
+.link {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+//end of Link
+//End of elements
+
+
+@media only screen {
+  @media (min-width: $mobile) {
+    //Start of Nav
+    .nav {
+      &__links {
+        display: block;
+      }
+      &__link {
+        &:first-child {
+          padding-left: 15px;
+        }
+        &:last-child {
+          padding-right: 15px;
+        }
+        display: inline-block;
+      }
+      &__menuToggle {
+        display: none;
+      }
+    }
+    //End of Nav
+    //Start of Footer
+    .footer__link {
+      &:first-child {
+        padding-left: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+  @media (min-width: $tablet) {
+    //Start of Nav
+    .nav {
+      padding: 0 135px;
+      &__link {
+      }
+    }
+    //End of Nav
+    //Start of Page
+    .page {
+      padding: 30px 150px;
+    }
+    //End of Page
+    //Start of Footer
+    .footer {
+      padding: 50px 150px;
+      &__links {
+        order: 1;
+      }
+      &__display {
+        order: 2;
+      }
+      &__contact {
+        order: 3;
+        text-align: right;
+      }
+    }
+    //End of Footer
+  }
+}

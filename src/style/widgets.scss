@@ -1,0 +1,57 @@
+//headings sizes
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-size: 12px + 6px * (6 - $i);
+  }
+}
+
+/*=======================[Grid]=======================*/
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  ::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  flex-shrink: 1;
+  align-items: stretch;
+  min-height: 1px;
+}
+[class*="col-"]{
+  @extend .column;
+  margin: 0;
+  padding: $spacingPrimary;
+}
+
+@mixin makeGrid ($cols-in-grid: 12, $prefix: "col-") {
+  @for $i from 1 through $cols-in-grid {
+    .#{$prefix}#{$i} {
+      flex-basis: $i / $cols-in-grid * 100% !important;
+    }
+  }
+}
+@media only screen {
+  /*for all*/
+  @include makeGrid($prefix:"col-");
+  @media (min-width: 0) and (max-width: $mobile) {
+    /*for mobile*/
+    @include makeGrid($prefix:"col-m-");
+  }
+  @media (min-width: $mobile) and (max-width: $tablet) {
+    /*for tablet*/
+    @include makeGrid($prefix:"col-t-");
+  }
+  @media (min-width: $tablet) and (max-width: $desktop) {
+    /*for desktop*/
+    @include makeGrid($prefix:"col-d-");
+  }
+}
