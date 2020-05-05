@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
 
-export default function (props) {
+export default function () {
     const [showMenu, setShowMenu] = useState(false);
     if (showMenu) {
         return (

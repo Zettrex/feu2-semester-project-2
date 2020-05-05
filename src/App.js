@@ -11,6 +11,7 @@ import Contact from "./components/Contact";
 import Login from "./components/Login";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import Styleguide from "./components/Styleguide";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/establishment" component={() => <Establishments/>}/>
             <Route path="/contact" component={() => <Contact/>}/>
             <Route path="/login" component={() => <Login/>}/>
+            <Route path="/styleguide" component={() => <Styleguide/>}/>
         </Switch>
         <Footer/>
     </Router>

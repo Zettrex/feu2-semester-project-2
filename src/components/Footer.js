@@ -22,7 +22,7 @@ export default function (props) {
                 </a>
             </div>
             <div className="footer__display col-12 col-d-4">
-
+                <Link to="/styleguide">StyleGuide</Link>
             </div>
         </footer>
     )
