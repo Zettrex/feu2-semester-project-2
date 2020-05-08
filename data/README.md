@@ -16,7 +16,7 @@ If you run into any problems, please let your tutor know.
 
 #### Repository
 
-The provided HTML files are a way to test sending data to the server endpoints, but you can't send data to the server in a React or Vue project that way. Examples of posting data in the frontend frameworks will be provided.
+The provided HTML files are a way to test sending data to the server endpoints, but you can't send data to the server in a React or Vue project that way. You will need to send data to the server endpoints using `POST` requests from forms using a libaray like React Hook Form.
 
 -   the contact form should send data to http://localhost/hotel-api/contact-success.php
 -   the enquiry form should send data to http://localhost/hotel-api/enquiry-success.php

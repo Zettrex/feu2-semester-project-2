@@ -1,0 +1,88 @@
+.home-hero {
+  @extend .hero;
+  background-image: url("../media/images/HeroImage.jpg");
+}
+
+//Start of OrderBox
+.orderBox {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  max-width: 700px;
+  margin: auto;
+  background-color: $thirdColor;
+  box-shadow: 0 5px 10px black;
+  //Start of Types
+  &__type {
+    position: relative;
+    background-color: $secondaryColor+25%;
+    box-shadow: 0 1px 4px black;
+    z-index: 1;
+    &--active {
+      @extend .orderBox__type;
+      background-color: $secondaryColor;
+      box-shadow: 0 2px 5px black;
+      z-index: 5;
+    }
+  }
+  &__hotel {
+    z-index: 3;
+  }
+  &__bnb {
+    z-index: 2;
+  }
+  &__cabin {
+    z-index: 1;
+  }
+  &__typeButton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  &__typeDesign {
+    text-align: center;
+  }
+  //End of Types
+  //Start of Filter
+  &__filter {
+    padding: 5px;
+  }
+  //start of Place
+  &__search {
+    padding: 0;
+  }
+  &__placeInput {
+    padding-left: 39px;
+  }
+
+  //End of Place
+  //start of People (Adults & Children)
+  &__people {
+    flex-direction: row;
+    padding: 0;
+  }
+  //End of People (Adults & Children)
+  //Start of Date
+  &__date {
+    flex-direction: row;
+  }
+  //End of Date
+  //Start of Submit
+  &__action {
+    margin-left: auto;
+  }
+  //End of Submit
+}
+//End of OrderBox
+
+@media only screen {
+  @media (min-width: $tablet) {
+    .orderBox {
+      &__filter {
+        padding: 20px 30px;
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+.filterArea {
+  margin: 0 auto;
+  max-width: 1200px;
+  color: white;
+  &__group {
+    @extend .form__group;
+    padding: 0;
+    &--compact {
+      @extend .filterArea__group;
+      padding: 0;
+    }
+  }
+  &__date {
+    flex-direction: row;
+    padding: 0 10px;
+  }
+  &__people{
+    flex-direction: row;
+  }
+  &__children {
+    margin-left: auto;
+  }
+  &__matches {
+    margin-top: auto;
+    text-align: center;
+    font-size: 25px;
+  }
+  &__buttons {
+    margin: auto;
+  }
+  &__placeInput {
+    padding-left: 40px;
+  }
+}
+
+//Start of Establishment item
+.est-list {
+  padding-top: 60px;
+}
+.est {
+  background-color: $white;
+  color: $black;
+  height: 200px;
+  box-shadow: 0 3px 6px black;
+  &__showcase {
+
+  }
+  &__image {
+    @extend .bgImage;
+    height: 100%;
+    width: 100%;
+  }
+  //Start of establishment Info
+  &__content {
+    margin: 10px 0;
+  }
+  //End of establishment Info
+  &__action {
+    padding: 40px 15px;
+    background-color: $thirdColor;
+    color: white;
+  }
+}
+//End of Establishment item

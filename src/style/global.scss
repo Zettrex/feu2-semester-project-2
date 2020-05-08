@@ -4,12 +4,25 @@
 
 .root {
   position: relative;
+  font-size: 12px;
 }
 
 .page {
   padding: 30px 15px;
   min-height: 100vh;
   background: linear-gradient(to right, $secondaryColor, $secondaryColor+10%, $secondaryColor);
+}
+.bgImage {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero {
+  margin: -30px -15px 30px;
+  height: 75vh;
+  position: relative;
+  @extend .bgImage;
 }
 
 //Start of elements
@@ -19,9 +32,9 @@
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 5;
+  z-index: 10;
   background: linear-gradient(to bottom, $primaryColor+15%, $primaryColor, $primaryColor);
-  box-shadow: 0 5px 15px black;
+  box-shadow: 0 2px 6px black;
   &--mobile {
     @extend .nav;
     box-shadow: none;
@@ -46,6 +59,7 @@
       text-align: center;
       display: block;
       background-color: $primaryColor;
+      box-shadow: 0 5px 3px black;
     }
   }
   &__link {
@@ -83,7 +97,12 @@
 //Start of Form
 .form {
   color: white;
+  &__section {
+    padding: 0;
+    margin: 10px 0;
+  }
   &__group {
+    margin: auto 0;
     padding: 10px;
     position: relative;
     &--compact {
@@ -104,13 +123,15 @@
       @extend .form__label;
       display: inline-block;
       position: absolute;
-      font-size: 12px;
-      left: 20px;
+      font-size: 10px;
+      left: 10px;
       top: 50%;
       transform: translate(0, -50%);
       color: $thirdColor;
+      pointer-events: none;
     }
     &--textarea {
+      @extend .form__label--compact;
       top: 30px;
     }
     &--left {
@@ -118,23 +139,33 @@
     }
     &--right {
       @extend .form__label--compact;
-      left: 12px;
     }
   }
   //End of Label
   //Start of Items
   &__item {
-    padding: 7px;
+    height: 30px;
+    margin: auto 0;
+    padding: 6px;
     border-radius: 6px;
-    border: 3px solid $thirdColor;
     display: block;
+    width: 100%;
+    border: 2px solid $thirdColor;
+    font-size: 12px;
     &:focus {
       border-color: $primaryColor;
     }
     &--compact {
       @extend .form__item;
-      width: unset;
       padding-left: 65px;
+    }
+    &--selector {
+      @extend .form__item--compact;
+      background: url("../media/images/chevron-down.png") no-repeat right white;
+      background-size: 16px;
+      &:focus {
+        background: url("../media/images/chevron-up.png") no-repeat right white;
+      }
     }
   }
   //Start of Input
@@ -159,19 +190,29 @@
   }
   //End of Textarea
   //Start of Date
+  &__dateLabel {
+    @extend .form__label--compact;
+    &--left {
+      @extend .form__dateLabel;
+    }
+    &--right {
+      @extend .form__dateLabel;
+    }
+  }
   &__date {
     @extend .form__item;
     &--compact {
       @extend .form__item--compact;
       @extend .form__date;
-      font-size: 14px;
     }
     &--left {
       @extend .form__date--compact;
+      padding-left: 40px;
       border-radius: 6px 0 0 6px;
     }
     &--right {
       @extend .form__date--compact;
+      padding-left: 25px;
       border-radius: 0 6px 6px 0;
     }
   }
@@ -179,10 +220,14 @@
   //Start of Select
   &__select {
     @extend .form__item;
+
     &--compact {
       @extend .form__item--compact;
       @extend .form__select;
     }
+  }
+  &__option {
+    text-align: right;
   }
   //End of Select
   //Start of Selectors (checkbox & radiobutton)
@@ -237,23 +282,25 @@
   }
   //End of Checkbox
   //End of Selectors (checkbox & radiobutton)
-
-  //Start of Range
+}
+//End of Form
+//Start of Range
+.form {
   &__multiRange {
     position: relative;
-    width: 390px;
   }
   &__rangeControls {
     position: relative;
-    width: 390px;
-    padding: 25px 0;
+    padding: 0 0 10px;
   }
   &__rangeInput {
     @extend .form__item;
     display: inline-block;
-    font-size: 13px;
     padding: 3px 0 3px 5px;
     width: 65px;
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: none;
     &--min {
       @extend .form__rangeInput;
       order: 1;
@@ -268,57 +315,63 @@
     order: 2;
     text-align: center;
   }
-  //Start of Nouislider
-  .noUi-target {
-    position: relative;
-    height: 14px;
-    border-radius: 5px;
-    background-color: white;
-  }
-  .noUi-base {
-  }
-  .noUi-connect {
-    height: 14px;
-    background-color: $thirdColor;
-    position: absolute;
-    top: 0;
-  }
-  .noUi-origin {
-    position: absolute;
-    top: 0;
-  }
-  .noUi-handle {
-    border-radius: 5px;
-    width: 24px;
-    height: 24px;
-    background-color: gray;
-    transform: translate(0, -25%);
-    &-upper {
-      transform: translate(-100%, -25%);
-    }
-  }
-  //End of Nouislider
-  //End of Range
 }
-//End of Form
+//Start of Nouislider
+.noUi-target {
+  position: relative;
+  height: 14px;
+  border-radius: 5px;
+  background-color: white;
+}
+.noUi-base {
+}
+.noUi-connect {
+  height: 14px;
+  background-color: $thirdColor;
+  position: absolute;
+  top: 0;
+}
+.noUi-origin {
+  position: absolute;
+  top: 0;
+}
+.noUi-handle {
+  border-radius: 5px;
+  width: 24px;
+  height: 24px;
+  background-color: $primaryColor;
+  transform: translate(0, -25%);
+  &-upper {
+    transform: translate(-100%, -25%);
+  }
+}
+//End of Nouislider
+//End of Range
+
 
 //Start of General Items
 //Start of Button
 .btn {
-  padding: 10px 15px;
+  padding: 10px 12px;
   border-radius: 7px;
-  margin: 10px;
+  border: none;
   &--primary {
     @extend .btn;
     background-color: $primaryColor;
+    color: black;
   }
 }
 //End of Button
 //Start of Link
 .link {
+  color: black;
   text-decoration: none;
   &:hover {
     text-decoration: underline;
+  }
+  &--white {
+    @extend .link;
+    color: white;
   }
 }
 //end of Link
@@ -329,6 +382,7 @@
   @media (min-width: $mobile) {
     //Start of Nav
     .nav {
+      padding: 0 35px;
       &__links {
         display: block;
       }
@@ -346,6 +400,11 @@
       }
     }
     //End of Nav
+    //Start of Page
+    .page {
+      padding: 50px;
+    }
+    //End of Page
     //Start of Footer
     .footer__link {
       &:first-child {
@@ -359,16 +418,21 @@
   @media (min-width: $tablet) {
     //Start of Nav
     .nav {
-      padding: 0 135px;
+      padding: 0 85px;
       &__link {
       }
     }
     //End of Nav
     //Start of Page
     .page {
-      padding: 30px 150px;
+      padding: 30px 100px;
     }
     //End of Page
+    //Start of Hero
+    .hero {
+      margin: -30px -150px 0;
+    }
+    //End of Hero
     //Start of Footer
     .footer {
       padding: 50px 150px;

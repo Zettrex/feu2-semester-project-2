@@ -6,18 +6,6 @@
 }
 
 /*=======================[Grid]=======================*/
-.row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  ::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-}
-
 .column {
   display: flex;
   flex-direction: column;
@@ -30,6 +18,17 @@
   @extend .column;
   margin: 0;
   padding: $spacingPrimary;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  ::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
 }
 
 @mixin makeGrid ($cols-in-grid: 12, $prefix: "col-") {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "./style/style.scss";
 import {
     BrowserRouter as Router,
@@ -14,19 +14,26 @@ import Footer from "./components/Footer";
 import Styleguide from "./components/Styleguide";
 
 function App() {
-  return (
-    <Router className="App">
-      <Navigation/>
-        <Switch>
-            <Route path="/" exact component={() => <Home/>}/>
-            <Route path="/establishment" component={() => <Establishments/>}/>
-            <Route path="/contact" component={() => <Contact/>}/>
-            <Route path="/login" component={() => <Login/>}/>
-            <Route path="/styleguide" component={() => <Styleguide/>}/>
-        </Switch>
-        <Footer/>
-    </Router>
-  );
+    const [data, setData] = useState({});
+    useEffect(() => {
+        fetch("http://localhost:8888/get-establishments.php")
+            .then(response => response.json())
+            .then(setData)
+    }, []);
+    console.log(data);
+    return (
+        <Router className="App">
+            <Navigation/>
+            <Switch>
+                <Route path="/" exact component={() => <Home/>}/>
+                <Route path="/establishments" component={() => <Establishments/>}/>
+                <Route path="/contact" component={() => <Contact/>}/>
+                <Route path="/login" component={() => <Login/>}/>
+                <Route path="/styleguide" component={() => <Styleguide/>}/>
+            </Switch>
+            <Footer/>
+        </Router>
+    );
 }
 
 export default App;

@@ -21,6 +21,7 @@ time, mark, audio, video {
     font-size: 100%;
     font-family: inherit;
     vertical-align: baseline;
+    text-decoration: none;
 }
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -47,4 +48,7 @@ button {
     outline: none;
     background: none;
     border: 1px solid black;
+}
+img {
+    max-width: 100%;
 }

@@ -1,10 +1,12 @@
 <?php
-header('Access-Control-Allow-Origin: *'); 
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
 //Creates a class called Message
 class Message
 {
     public $clientName;
     public $email;
+    public $subject;
     public $message;
 }
 
@@ -12,6 +14,7 @@ class Message
 $newMessage = new Message();
 $newMessage->clientName = $_POST["clientName"];
 $newMessage->email = $_POST["email"];
+$newMessage->subject = $_POST["subject"];
 $newMessage->message = $_POST["message"];
 
 //Adds object to array
