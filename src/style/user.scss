@@ -1,0 +1,83 @@
+.admin {
+  &__inbox {
+    margin-bottom: 50px;
+  }
+  &__section {
+
+  }
+  &__list {
+    min-height: 400px;
+    height: 70vh;
+    overflow: auto;
+  }
+}
+
+.admin-item {
+  background-color: $thirdColor;
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 7px;
+  &__section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  &__left {
+    @extend .admin-item__section;
+  }
+  &__right {
+    @extend .admin-item__section;
+    margin-left: auto;
+  }
+  //Start of information
+  &__item {
+    padding: 5px 10px;
+  }
+  &__img {
+    @extend .bgImage;
+    width: 26px;
+    height: 26px;
+  }
+  &__name {
+    @extend .admin-item__item;
+  }
+  &__info {
+    @extend .admin-item__item;
+  }
+  &__date {
+    @extend .admin-item__item;
+  }
+  &__btn {
+    @extend .admin-item__item;
+  }
+  //End of Information
+}
+
+//Start of Establishments
+.admin {
+  &__establishments {
+    &Heading {
+      padding-left: 10px;
+    }
+  }
+}
+//End of Establishments
+
+@media only screen {
+  @media (max-width: $mobile) {
+    .admin {
+      &__establishments {
+        &List {
+          margin-top: 40px;
+        }
+      }
+    }
+  }
+  @media (max-width: 920px) {
+    .admin {
+      &__enquiries, &__messages {
+        flex-basis: 100% !important;
+      }
+    }
+  }
+}

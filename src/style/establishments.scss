@@ -4,15 +4,19 @@
   color: white;
   &__group {
     @extend .form__group;
-    padding: 0;
+    padding: 4px 10px;
     &--compact {
       @extend .filterArea__group;
-      padding: 0;
     }
+  }
+  &__section {
+    padding: 0;
   }
   &__date {
     flex-direction: row;
-    padding: 0 10px;
+  }
+  &__dateLabel--right {
+    left: 10px;
   }
   &__people{
     flex-direction: row;
@@ -23,7 +27,7 @@
   &__matches {
     margin-top: auto;
     text-align: center;
-    font-size: 25px;
+    font-size: 24px;
   }
   &__buttons {
     margin: auto;
@@ -33,15 +37,25 @@
   }
 }
 
+//Start of Page Content
+
+.est__wrapper {
+  padding-top: 50px;
+}
+
 //Start of Establishment item
 .est-list {
-  padding-top: 60px;
+
 }
 .est {
-  background-color: $white;
-  color: $black;
-  height: 200px;
-  box-shadow: 0 3px 6px black;
+  &__item {
+    background-color: $white;
+    color: $black;
+    min-height: 200px;
+    box-shadow: 0 3px 6px black;
+    position: relative;
+    margin-bottom: 20px;
+  }
   &__showcase {
 
   }
@@ -55,10 +69,20 @@
     margin: 10px 0;
   }
   //End of establishment Info
+  //Start of Establishment Action
   &__action {
     padding: 40px 15px;
     background-color: $thirdColor;
     color: white;
+    text-align: center;
   }
+  &__price {
+    font-size: 26px;
+    margin-bottom: auto;
+  }
+  &__readMore {
+    padding: 10px;
+  }
+  //End of Establishment Action
 }
 //End of Establishment item

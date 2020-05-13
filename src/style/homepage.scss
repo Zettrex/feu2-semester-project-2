@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .home-hero {
   @extend .hero;
   background-image: url("../media/images/HeroImage.jpg");
@@ -10,13 +12,14 @@
   top: 50%;
   left: 50%;
   max-width: 700px;
+  min-width: 340px;
   margin: auto;
   background-color: $thirdColor;
   box-shadow: 0 5px 10px black;
   //Start of Types
   &__type {
     position: relative;
-    background-color: $secondaryColor+25%;
+    background-color: rgba($secondaryColor, 300%);
     box-shadow: 0 1px 4px black;
     z-index: 1;
     &--active {
@@ -60,15 +63,9 @@
   //End of Place
   //start of People (Adults & Children)
   &__people {
-    flex-direction: row;
     padding: 0;
   }
   //End of People (Adults & Children)
-  //Start of Date
-  &__date {
-    flex-direction: row;
-  }
-  //End of Date
   //Start of Submit
   &__action {
     margin-left: auto;
@@ -78,6 +75,12 @@
 //End of OrderBox
 
 @media only screen {
+  @media (max-width: 345px) {
+    .orderBox {
+      min-width: unset;
+      width: 90%;
+    }
+  }
   @media (min-width: $tablet) {
     .orderBox {
       &__filter {

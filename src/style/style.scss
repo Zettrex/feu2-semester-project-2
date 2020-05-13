@@ -1,3 +1,5 @@
+@use "sass:color";
+//Imports
 @import "zero";
 @import "variables";
 @import "widgets";
@@ -5,4 +7,5 @@
 @import "homepage";
 @import "establishments";
 @import "contact";
-@import "admin";
+@import "checkout";
+@import "user";

@@ -1,7 +1,11 @@
 //headings sizes
 @for $i from 1 through 6 {
-  h#{$i} {
+  .h#{$i} {
     font-size: 12px + 6px * (6 - $i);
+    &--black {
+      @extend .h#{$i};
+      color: black;
+    }
   }
 }
 
@@ -41,16 +45,19 @@
 @media only screen {
   /*for all*/
   @include makeGrid($prefix:"col-");
+
+  /*for mobile*/
   @media (min-width: 0) and (max-width: $mobile) {
-    /*for mobile*/
     @include makeGrid($prefix:"col-m-");
   }
+
+  /*for tablet*/
   @media (min-width: $mobile) and (max-width: $tablet) {
-    /*for tablet*/
     @include makeGrid($prefix:"col-t-");
   }
+
+  /*for desktop*/
   @media (min-width: $tablet) and (max-width: $desktop) {
-    /*for desktop*/
     @include makeGrid($prefix:"col-d-");
   }
 }

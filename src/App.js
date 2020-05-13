@@ -8,32 +8,51 @@ import {
 import Home from "./components/Home";
 import Establishments from "./components/Establishments";
 import Contact from "./components/Contact";
-import Login from "./components/Login";
+import User from "./components/User";
+import Checkout from "./components/Checkout";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Styleguide from "./components/Styleguide";
 
 function App() {
-    const [data, setData] = useState({});
+    const [establishments, setEstablishments] = useState();
+    const [messages, setMessages] = useState();
+    const [enquiries, setEnquiries] = useState();
+
     useEffect(() => {
+        fetch("http://localhost:8888/get-enquiries.php")
+            .then(response => response.json())
+            .then(setEnquiries);
+        fetch("http://localhost:8888/get-contacts.php")
+            .then(response => response.json())
+            .then(setMessages);
         fetch("http://localhost:8888/get-establishments.php")
             .then(response => response.json())
-            .then(setData)
+            .then(setEstablishments)
     }, []);
-    console.log(data);
-    return (
-        <Router className="App">
-            <Navigation/>
-            <Switch>
-                <Route path="/" exact component={() => <Home/>}/>
-                <Route path="/establishments" component={() => <Establishments/>}/>
-                <Route path="/contact" component={() => <Contact/>}/>
-                <Route path="/login" component={() => <Login/>}/>
-                <Route path="/styleguide" component={() => <Styleguide/>}/>
-            </Switch>
-            <Footer/>
-        </Router>
-    );
+
+    if (establishments && enquiries && messages) {
+        return (
+            <Router className="App">
+                <Navigation/>
+                <Switch>
+                    <Route path="/" exact component={() => <Home/>}/>
+                    <Route path="/establishments" component={() => <Establishments establishments={establishments}/>}/>
+                    <Route path="/contact" component={() => <Contact/>}/>
+                    <Route path="/user" component={() => <User messages={messages} enquiries={enquiries} establishments={establishments}/>}/>
+                    <Route path="/styleguide" component={() => <Styleguide/>}/>
+                    <Route path="/checkout" component={() => <Checkout/>}/>
+                </Switch>
+                <Footer/>
+            </Router>
+        );
+    } else {
+        return (
+            <div>
+
+            </div>
+        )
+    }
 }
 
 export default App;

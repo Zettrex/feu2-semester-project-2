@@ -27,8 +27,8 @@ export default function () {
                                     <input className="orderBox__placeInput form__input--compact" type="text" placeholder="Name or area"/>
                                 </div>
                             </div>
-                            <div className="orderBox__people col-d-6 col-12">
-                                <div className="orderBox__adults form__group col-12">
+                            <div className="orderBox__people col-d-6 col-12 row">
+                                <div className="orderBox__adults form__group col-6 col-m-12">
                                     <label className="orderBox__adultsLabel form__label--compact" htmlFor="adults">Adults</label>
                                     <select className="orderBox__adultsInput form__select--compact" name="adults">
                                         <option className="form__option" value="1">1</option>
@@ -43,7 +43,7 @@ export default function () {
                                         <option className="form__option" value="10">10</option>
                                     </select>
                                 </div>
-                                <div className="orderBox__children form__group col-12">
+                                <div className="orderBox__children form__group col-6 col-m-12">
                                     <label className="orderBox__childrenLabel form__label--compact" htmlFor="children">Children</label>
                                     <select className="orderBox__childrenInput form__select--compact" name="children">
                                         <option className="form__option" value="1">1</option>
@@ -61,14 +61,14 @@ export default function () {
                             </div>
                         </div>
                         <div className="form__section row">
-                            <div className="orderBox__date form__section col-d-6 col-12">
-                                <div className="form__group--compact col-6">
+                            <div className="orderBox__date form__section col-12 col-d-9 row">
+                                <div className="form__date--left form__group col-6">
                                     <label className="orderBox__dateLabel--left form__label--left" htmlFor="date1">From</label>
-                                    <input className="orderBox__dateInput--left form__date--left" type="date" name="date1"/>
+                                    <input className="orderBox__dateInput--left form__dateInput--left" type="date" name="date1"/>
                                 </div>
-                                <div className="form__group--compact col-6">
+                                <div className="form__date--right form__group col-6">
                                     <label className="orderBox__dateLabel--right form__label--right" htmlFor="date2">To</label>
-                                    <input className="orderBox__dateInput--right form__date--right" type="date" name="date2"/>
+                                    <input className="orderBox__dateInput--right form__dateInput--right" type="date" name="date2"/>
                                 </div>
                             </div>
                             <div className="orderBox__action form__section">

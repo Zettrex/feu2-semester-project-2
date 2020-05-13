@@ -1,6 +1,11 @@
 *, *::before, *::after {
   box-sizing: border-box;
 }
+.clearfix::after {
+  content: '';
+  clear: both;
+  display: table;
+}
 
 .root {
   position: relative;
@@ -10,7 +15,11 @@
 .page {
   padding: 30px 15px;
   min-height: 100vh;
-  background: linear-gradient(to right, $secondaryColor, $secondaryColor+10%, $secondaryColor);
+  background: linear-gradient(to right, #051033, #141f42, #051033);
+  color: white;
+  &__topBar {
+    z-index: 4;
+  }
 }
 .bgImage {
   background-position: center;
@@ -33,7 +42,7 @@
   top: 0;
   left: 0;
   z-index: 10;
-  background: linear-gradient(to bottom, $primaryColor+15%, $primaryColor, $primaryColor);
+  background: linear-gradient(to bottom, #FFC67F, $primaryColor, $primaryColor);
   box-shadow: 0 2px 6px black;
   &--mobile {
     @extend .nav;
@@ -105,26 +114,15 @@
     margin: auto 0;
     padding: 10px;
     position: relative;
-    &--compact {
-      @extend .form__group;
-      display: inline-block;
-      &:nth-child(odd) {
-        padding-right: 0;
-      }
-      &:nth-child(even) {
-        padding-left: 0;
-      }
-    }
   }
   //Start of label
   &__label {
     color: white;
     &--compact {
       @extend .form__label;
-      display: inline-block;
       position: absolute;
       font-size: 10px;
-      left: 10px;
+      left: 20px;
       top: 50%;
       transform: translate(0, -50%);
       color: $thirdColor;
@@ -139,6 +137,7 @@
     }
     &--right {
       @extend .form__label--compact;
+      left: 10px;
     }
   }
   //End of Label
@@ -201,17 +200,19 @@
   }
   &__date {
     @extend .form__item;
-    &--compact {
-      @extend .form__item--compact;
-      @extend .form__date;
-    }
     &--left {
-      @extend .form__date--compact;
+      padding-right: 0;
+    }
+    &--right {
+      padding-left: 0;
+    }
+    &Input--left {
+      @extend .form__date;
       padding-left: 40px;
       border-radius: 6px 0 0 6px;
     }
-    &--right {
-      @extend .form__date--compact;
+    &Input--right {
+      @extend .form__date;
       padding-left: 25px;
       border-radius: 0 6px 6px 0;
     }
@@ -219,6 +220,7 @@
   //End of Date
   //Start of Select
   &__select {
+    font-size: 10px;
     @extend .form__item;
 
     &--compact {
@@ -282,8 +284,12 @@
   }
   //End of Checkbox
   //End of Selectors (checkbox & radiobutton)
+  //Start of Action
+  &__action {
+    text-align: right;
+  }
+  //End of Action
 }
-//End of Form
 //Start of Range
 .form {
   &__multiRange {
@@ -348,6 +354,7 @@
 //End of Nouislider
 //End of Range
 
+//End of Form
 
 //Start of General Items
 //Start of Button
@@ -379,6 +386,27 @@
 
 
 @media only screen {
+  //for Mobile
+  @media (max-width: 345px) {
+    .form {
+      &__label {
+        &--right {
+          left: 20px;
+        }
+      }
+      &__date {
+        &--left, &--right {
+          padding: 10px;
+          flex-basis: 100% !important;
+        }
+        &Input--left, &Input--right {
+          padding-left: 40px;
+          border-radius: 6px;
+        }
+      }
+    }
+  }
+
   @media (min-width: $mobile) {
     //Start of Nav
     .nav {
@@ -404,9 +432,13 @@
     .page {
       padding: 50px;
     }
+    .hero {
+      margin: -50px;
+    }
     //End of Page
     //Start of Footer
     .footer__link {
+      color: white;
       &:first-child {
         padding-left: 0;
       }
@@ -430,7 +462,7 @@
     //End of Page
     //Start of Hero
     .hero {
-      margin: -30px -150px 0;
+      margin: -30px -100px 0;
     }
     //End of Hero
     //Start of Footer

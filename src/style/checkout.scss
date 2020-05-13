@@ -1,0 +1,34 @@
+.checkout {
+  &__continue {
+    color: white;
+  }
+  &__selectOption {
+    margin: 0;
+  }
+  &__login {
+    max-width: 300px;
+    min-width: 250px;
+    margin-left: auto;
+  }
+  &__orderSummary {
+    background-color: $thirdColor;
+    padding: 20px;
+    max-width: 400px;
+    margin-left: auto;
+    color: white;
+  }
+}
+
+@media only screen {
+  @media (min-width: $mobile) {
+    .checkout {
+      &__main {
+        order: 1;
+      }
+      &__aside {
+        order: 2;
+      }
+    }
+
+  }
+}
