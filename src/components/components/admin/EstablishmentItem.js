@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ({establishment}) {
+export default function ({establishment, openF}) {
     return (
         <div className="establishment admin-item admin-item__section">
             <div className="admin-item__left">
@@ -11,7 +11,7 @@ export default function ({establishment}) {
             </div>
             <div className="admin-item__right admin-item__section">
                 <span className="establishment__area admin-item__info">area</span>
-                <button className="btn--primary admin-item__btn">Edit</button>
+                <button className="btn--primary admin-item__btn" onClick={() => openF("open", "establishment", establishment)}>Edit</button>
             </div>
         </div>
     )

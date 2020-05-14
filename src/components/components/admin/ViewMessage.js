@@ -2,39 +2,32 @@ import React from "react";
 
 export default function ({data}) {
     return (
-        <div className="message-prompt prompt">
+        <div className="view-message">
             <h2 className="h1 prompt__heading">Message</h2>
-            <span className="message-prompt__caseID">{data.caseID}</span>
+            <span className="view-message__caseID">{data.caseID}</span>
             <div className="row">
-                <div className="message-prompt__content prompt__section col-m-12 col-t-7 col-d-9">
-                    <div className="message-prompt__contact">
+                <div className="view-message__content prompt__section col-4 col-m-12">
+                    <div className="view-message__contact">
                         <h2 className="h3">Contact Information</h2>
-                        <div className="message-prompt__name">
+                        <div className="view-message__name">
                             <span>Name: </span>
-                            <span>{data.contact.name}</span>
+                            <span>{data.clientName}</span>
                         </div>
-                        <div className="message-prompt__registered">
+                        <div className="view-message__registered">
                             <span>Registered user: </span>
-                            <span>{data.contact.registered ? ("Yes"): ("No")}</span>
+                            <span>{data.clientRegistered ? ("Yes") : ("No")}</span>
                         </div>
-                        {data.contact.registered && (
-                            <div className="message-prompt__id">
+                        {data.clientRegistered && (
+                            <div className="view-message__id">
                                 <span>User ID: </span>
-                                <span>{data.contact.id}</span>
+                                <span>{data.clientID}</span>
                             </div>
                         )}
-                        <div className="message-prompt__email">
-                            <span>Email: </span>
-                            <span>{data.contact.email}</span>
-                        </div>
-                    </div>
-                    <div className="message-prompt__message">
-                        <h2 className="h2 message-prompt__subject">{data.subject}</h2>
-                        <div className="message-prompt__content">{data.message}</div>
                     </div>
                 </div>
-                <div className="message-prompt__history">
-                    <h3 className="h3 message-prompt__historyHeading">History</h3>
+                <div className="view-message__message col-8 col-m-12">
+                    <h3 className="h2 view-message__subject">{data.subject}</h3>
+                    <div className="view-message__content">{data.message}</div>
                 </div>
             </div>
 

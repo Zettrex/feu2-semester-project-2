@@ -1,1 +1,26 @@
-[{"clientName":"Susan Lispinsky","email":"susanl@gmail.com","subject":"establishment","message":"I'd like to add my establishment to the website please."},{"clientName":"Marie Debussey","email":"mariedub@outlook.com","subject":"order","message":"Hello. I'd like to cancel a booking. Can you assist me?"},{"clientName":"Vegard Andersen","email":"vegard@gmail.com","subject":"complaint","message":"Hello. I didn't enjoy the last place I stayed at and would like to make a complaint."}]
+[
+  {
+    "clientName": "Susan Lispinsky",
+    "clientRegistered": true,
+    "clientID": "3fds-eAsf-23Ss",
+    "clientEmail": "susanl@gmail.com",
+    "subject": "establishment",
+    "message": "I'd like to add my establishment to the website please."
+  },
+  {
+    "clientName": "Marie Debussey",
+    "clientRegistered": false,
+    "clientID": null,
+    "clientEmail": "mariedub@outlook.com",
+    "subject": "order",
+    "message": "Hello. I'd like to cancel a booking. Can you assist me?"
+  },
+  {
+    "clientName": "Vegard Andersen",
+    "clientRegistered": true,
+    "clientID": "DvX4-j99A-aewq",
+    "email": "vegard@gmail.com",
+    "subject": "complaint",
+    "message": "Hello. I didn't enjoy the last place I stayed at and would like to make a complaint."
+  }
+]

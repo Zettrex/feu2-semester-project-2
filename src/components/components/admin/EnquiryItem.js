@@ -1,9 +1,6 @@
 import React from "react";
 
-export default function ({enquiry}) {
-    function _viewEnquiry() {
-
-    }
+export default function ({enquiry, openF}) {
     return (
         <div className="enquiry admin-item admin-item__section">
             <div className="enquiry__establishment admin-item__left">
@@ -14,7 +11,7 @@ export default function ({enquiry}) {
             </div>
             <div className="admin-item__right admin-item__section">
                 <div className="enquiry__date admin-item__date">{enquiry.checkin}</div>
-                <button className="enquiry__view btn--primary admin-item__btn" onClick={() => _viewEnquiry}>View</button>
+                <button className="enquiry__view btn--primary admin-item__btn" onClick={() => openF("open", "enquiry", enquiry)}>View</button>
             </div>
         </div>
     )

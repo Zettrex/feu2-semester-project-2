@@ -32,6 +32,7 @@ function App() {
     }, []);
 
     if (establishments && enquiries && messages) {
+        console.log("app: ", enquiries);
         return (
             <Router className="App">
                 <Navigation/>

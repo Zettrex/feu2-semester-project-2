@@ -63,6 +63,38 @@
 }
 //End of Establishments
 
+//start of view-window
+.view-window {
+  z-index: 5;
+  padding: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  background-color: $thirdColor;
+  color: white;
+  &__topBar {
+    text-align: right;
+  }
+  &__actions {
+    text-align: right;
+  }
+}
+
+.view-est {
+  &__showcase {
+    max-width: 100px;
+    margin-left: 10px;
+  }
+  &__action {
+    &:first-child {
+      margin-left: auto;
+    }
+  }
+}
+//End of view-window
+
 @media only screen {
   @media (max-width: $mobile) {
     .admin {
