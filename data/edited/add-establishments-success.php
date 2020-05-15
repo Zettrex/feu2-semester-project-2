@@ -1,6 +1,7 @@
 <?php
-header('Access-Control-Allow-Origin: *');
-header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *'); 
+
+
 //Creates a class called Contact
 class Establishment
 {
@@ -13,7 +14,7 @@ class Establishment
     public $googleLat;
     public $googleLong;
     public $description;
-    public $selfCatering;
+    public $facilities = array();
     public $id;
 }
 
@@ -27,7 +28,7 @@ $newEstablishment->maxGuests = $_POST["maxGuests"];
 $newEstablishment->googleLat = $_POST["googleLat"];
 $newEstablishment->googleLong = $_POST["googleLong"];
 $newEstablishment->description = $_POST["description"];
-$newEstablishment->selfCatering = $_POST["selfCatering"];
+$newEstablishment->facilities = $_POST["facilities"];
 $newEstablishment->id = $_POST["id"];
 
 //Adds object to array

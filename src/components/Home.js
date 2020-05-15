@@ -1,4 +1,5 @@
 import React from "react";
+import Select from "./components/inputs/Select";
 
 export default function () {
     return (
@@ -29,8 +30,7 @@ export default function () {
                             </div>
                             <div className="orderBox__people col-d-6 col-12 row">
                                 <div className="orderBox__adults form__group col-6 col-m-12">
-                                    <label className="orderBox__adultsLabel form__label--compact" htmlFor="adults">Adults</label>
-                                    <select className="orderBox__adultsInput form__select--compact" name="adults">
+                                    <Select className="orderBox__adultsInput" name="adults" label="Adults" >
                                         <option className="form__option" value="1">1</option>
                                         <option className="form__option" value="2">2</option>
                                         <option className="form__option" value="3">3</option>
@@ -41,11 +41,10 @@ export default function () {
                                         <option className="form__option" value="8">8</option>
                                         <option className="form__option" value="9">9</option>
                                         <option className="form__option" value="10">10</option>
-                                    </select>
+                                    </Select>
                                 </div>
                                 <div className="orderBox__children form__group col-6 col-m-12">
-                                    <label className="orderBox__childrenLabel form__label--compact" htmlFor="children">Children</label>
-                                    <select className="orderBox__childrenInput form__select--compact" name="children">
+                                    <Select className="orderBox__childrenInput" label="Children" name="children">
                                         <option className="form__option" value="1">1</option>
                                         <option className="form__option" value="2">2</option>
                                         <option className="form__option" value="3">3</option>
@@ -56,12 +55,12 @@ export default function () {
                                         <option className="form__option" value="8">8</option>
                                         <option className="form__option" value="9">9</option>
                                         <option className="form__option" value="10">10</option>
-                                    </select>
+                                    </Select>
                                 </div>
                             </div>
                         </div>
                         <div className="form__section row">
-                            <div className="orderBox__date form__section col-12 col-d-9 row">
+                            <div className="orderBox__date form__section col-12 row">
                                 <div className="form__date--left form__group col-6">
                                     <label className="orderBox__dateLabel--left form__label--left" htmlFor="date1">From</label>
                                     <input className="orderBox__dateInput--left form__dateInput--left" type="date" name="date1"/>

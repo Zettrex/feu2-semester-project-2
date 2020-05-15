@@ -27,3 +27,9 @@ yarn-error.log*
 .idea/modules.xml
 .idea/vcs.xml
 assignment/
+
+.idea/inspectionProfiles/Project_Default.xml
+
+.idea/watcherTasks.xml
+
+.idea/
