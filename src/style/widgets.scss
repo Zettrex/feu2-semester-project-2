@@ -2,6 +2,7 @@
 @for $i from 1 through 6 {
   .h#{$i} {
     font-size: 12px + 6px * (6 - $i);
+    margin: 0.4em 0;
     &--black {
       @extend .h#{$i};
       color: black;

@@ -59,6 +59,16 @@ export default function ({enquiries, messages, establishments}) {
                         blurBackground: true
                     });
                     break;
+                default:
+                    setView({
+                        ...view,
+                        viewWindow: false,
+                        blurBackground: false,
+                        enquiry: false,
+                        message: false,
+                        establishment: false
+                    });
+                    break;
             }
         }
         console.log("handle", view);
@@ -122,7 +132,7 @@ export default function ({enquiries, messages, establishments}) {
                     </div>
                     {view.enquiry && (<ViewEnquiry data={view.viewData} closeF={handleWindow}/>)}
                     {view.message && (<ViewMessage data={view.viewData} closeF={handleWindow}/>)}
-                    {view.establishment && (<ViewEstablishment est={view.viewData} closeF={handleWindow}/>)}
+                    {view.establishment && (<ViewEstablishment data={view.viewData} closeF={handleWindow}/>)}
                 </div>
             )}
         </div>

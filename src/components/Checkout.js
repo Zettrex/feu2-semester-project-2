@@ -184,7 +184,7 @@ export default function () {
                                 {errors.email && <p className="form__error">{errors.email.message}</p>}
                             </div>
                             <div className="checkout__method form__group">
-                                <label className="checkout__methodLabel form__label--compact" htmlFor="paymentMethod">Payment method</label>
+                                <label className="checkout__methodLabel form__label--compact" htmlFor="paymentMethod">Payment</label>
                                 <select className="checkout__methodInput form__select--compact" name="paymentMethod">
                                     <option className="form__option" value="1">Visa</option>
                                     <option className="form__option" value="1">Mastercard</option>

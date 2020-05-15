@@ -60,7 +60,7 @@ export default function () {
     return (
         <div className="page contact row">
             <main className="contact__form col-6 col-m-12">
-                <h1 className="h1--white contact__heading">Contact Us</h1>
+                <h1 className="h1 contact__heading">Contact Us</h1>
                 <form className="form" onSubmit={handleSubmit(_sendForm)}>
                     <div className="form__section row">
                         <div className="contact__firstName form__group col-6 col-m-12">
