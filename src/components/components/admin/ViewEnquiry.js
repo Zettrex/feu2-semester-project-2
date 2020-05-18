@@ -8,26 +8,26 @@ export default function ({data, closeF}) {
                 <div className="view-enquiry__content">
                     <div className="view-enquiry__client">
                         <h2 className="h3">Client Information</h2>
-                        <div className="view-enquiry__name section">
+                        <div className="view-enquiry__name group">
                             <span>Name: </span>
                             <span>{data.clientName}</span>
                         </div>
-                        <div className="view-enquiry__registered section">
+                        <div className="view-enquiry__registered section group">
                             <span>Registered user: </span>
                             <span>{data.clientRegistered ? ("Yes"): ("No")}</span>
                         </div>
                         {data.clientRegistered && (
-                            <div className="view-enquiry__id">
+                            <div className="view-enquiry__id group">
                                 <span>User ID: </span>
                                 <span>{data.clientID}</span>
                             </div>
                         )}
-                        <div className="view-enquiry__email">
+                        <div className="view-enquiry__email group">
                             <span>Email: </span>
                             <span>{data.clientEmail}</span>
                         </div>
                     </div>
-                    <div className="view-enquiry__information s">
+                    <div className="view-enquiry__information">
                         <div className="view-enquiry__orderInfo section">
                             <div className="view-enquiry__orderID group">
                                 <span>Order: </span>
@@ -87,7 +87,7 @@ export default function ({data, closeF}) {
                             </div>
                             <div className="view-enquiry__price group">
                                 <span>Price: </span>
-                                <span>{data.price}</span>
+                                <span>{data.price} $</span>
                             </div>
                         </div>
                     </div>

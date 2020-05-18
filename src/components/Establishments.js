@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Nouislider from "react-nouislider";
 import Map from "./components/Map";
 import EstablishmentItem from "./components/EstablishmentItem";
+import Select from "./components/inputs/Select";
 
 export default function ({establishments}) {
     console.log(establishments);
@@ -23,6 +24,7 @@ export default function ({establishments}) {
             });
         }
     }
+    //updating the max value on price range, and making sure u cant place max below minimum price
     function handleMax(targetValue) {
         if (targetValue > range.min) {
             setRange({
@@ -62,8 +64,7 @@ export default function ({establishments}) {
                         <div className="filterArea__section row">
                             <div className="filterArea__people filterArea__section col-m-12 col-6">
                                 <div className="filterArea__adults filterArea__group column">
-                                    <label className="filterArea__adultsLabel form__label--compact" htmlFor="adults">Adults</label>
-                                    <select className="filterArea__adultsInput form__select--compact" name="adults">
+                                    <Select className="filterArea__adultsInput" name="adults" label="Adults">
                                         <option className="form__option" value="1">1</option>
                                         <option className="form__option" value="2">2</option>
                                         <option className="form__option" value="3">3</option>
@@ -74,11 +75,10 @@ export default function ({establishments}) {
                                         <option className="form__option" value="8">8</option>
                                         <option className="form__option" value="9">9</option>
                                         <option className="form__option" value="10">10</option>
-                                    </select>
+                                    </Select>
                                 </div>
                                 <div className="filterArea__children filterArea__group column">
-                                    <label className="filterArea__childrenLabel form__label--compact" htmlFor="children">Children</label>
-                                    <select className="filterArea__childrenInput form__select--compact" name="children">
+                                    <Select className="filterArea__childrenInput" name="children" label="Children">
                                         <option className="form__option" value="1">1</option>
                                         <option className="form__option" value="2">2</option>
                                         <option className="form__option" value="3">3</option>
@@ -89,7 +89,7 @@ export default function ({establishments}) {
                                         <option className="form__option" value="8">8</option>
                                         <option className="form__option" value="9">9</option>
                                         <option className="form__option" value="10">10</option>
-                                    </select>
+                                    </Select>
                                 </div>
                             </div>
                             <div className="form__Price filterArea__section col-m-12 col-6">

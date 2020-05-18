@@ -11,14 +11,14 @@ body {
 }
 .root {
   position: relative;
-  font-size: 12px;
+  font-size: $defaultFontSize;
 }
 
 .page {
   padding: 30px 16px;
   height: 100%;
   min-height: 100vh;
-  background: linear-gradient(to right, #051033, #141f42, #051033);
+  background: linear-gradient(to right, $secondaryColor, rgba($secondaryColor, 0.9), $secondaryColor);
   color: white;
   &__topBar {
     z-index: 4;
@@ -178,27 +178,7 @@ body {
 
 
 @media only screen {
-  //for Mobile
-  @media (max-width: 750px) {
-    .form {
-      &__label {
-        &--right {
-          left: 20px;
-        }
-      }
-      &__date {
-        &--left, &--right {
-          padding: 10px;
-          flex-basis: 100% !important;
-        }
-        &Input--left, &Input--right {
-          padding-left: 40px;
-          border-radius: $borderRadius;
-        }
-      }
-    }
-  }
-
+  //for tablet
   @media (min-width: $mobile) {
     //Start of Nav
     .nav {
@@ -239,6 +219,7 @@ body {
       }
     }
   }
+  //for desktop
   @media (min-width: $tablet) {
     //Start of Nav
     .nav {

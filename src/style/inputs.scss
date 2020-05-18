@@ -290,3 +290,26 @@
   }
 }
 //End of Action
+
+@media only screen {
+  //for Mobile
+  @media (max-width: 750px) {
+    .form {
+      &__label {
+        &--right {
+          left: 20px;
+        }
+      }
+      &__date {
+        &--left, &--right {
+          padding: 10px;
+          flex-basis: 100% !important;
+        }
+        &Input--left, &Input--right {
+          padding-left: 40px;
+          border-radius: $borderRadius;
+        }
+      }
+    }
+  }
+}

@@ -21,7 +21,7 @@ export default function () {
             return fetch("http://localhost:8888/contact-success.php", {
                 method: 'POST',
                 headers: {'Content-Type':'application/x-www-form-urlencoded'},
-                body: `clientName=${encodeURIComponent(`${data.firstName} ${data.lastName}`)}&email=${encodeURIComponent(data.email)}&&subject=${encodeURIComponent(data.subject)}&message=${encodeURIComponent(data.message)}`
+                body: `clientName=${encodeURIComponent(`${data.firstName} ${data.lastName}`)}&email=${encodeURIComponent(data.email)}&subject=${encodeURIComponent(data.subject)}&message=${encodeURIComponent(data.message)}`
             })
         } else {
             setDuplicateMessage(true);
