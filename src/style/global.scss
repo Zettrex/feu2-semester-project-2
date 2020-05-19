@@ -168,12 +168,64 @@ body {
   }
 }
 //end of Link
+//start of sections & groups
 .section {
   margin: 20px 0;
 }
 .group {
   margin: 4px 0;
 }
+//end of sections & groups
+
+//start of search Results
+
+.searchResults {
+  position: absolute;
+  top: 80%;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  background-color: $white;
+  padding: 2px;
+  max-height: 350px;
+  overflow: auto;
+  border-radius: $borderRadius;
+  border: 3px solid $white;
+}
+.resultItem {
+  background-color: $thirdColor;
+  border-radius: $borderRadius;
+  padding: 6px;
+  margin: 4px 0;
+  justify-content: left;
+  cursor: pointer;
+  border: 2px solid rgba(0,0,0,0);
+  &:hover {
+    opacity: 0.95;
+  }
+  &:focus {
+    border: 2px solid $primaryColor;
+  }
+  &__img {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+  }
+  &__info {
+    width: 160px;
+    margin-left: 6px;
+    display: inline-block;
+  }
+  &__name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+
+}
+
+//End of search results
 //End of elements
 
 

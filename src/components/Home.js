@@ -7,33 +7,57 @@ import * as yup from "yup";
 export default function ({establishments}) {
     const [data, setData] = useState({
         oEstablishments: establishments,
-        fEstablishments: establishments
+        fEstablishments: establishments,
+        sEstablishment: {}
     });
-    const [search, setSearch] = useState(false);
+    const [search, setSearch] = useState({
+        focus: false,
+        input: ""
+    });
+
+    function _handleSearchInput(event) {
+        setSearch({
+            ...search,
+            input: event.target.value
+        })
+    }
 
     function _filterEstablishments(values) {
         console.log(values);
         const original = data.oEstablishments;
-        let filtered = original.filter(item => new RegExp(values.search, "gi").test(item.establishmentName));
+        let filtered = original.filter(item => new RegExp(values.search, "i").test(item.establishmentName));
         console.log(filtered);
         setData({
             ...data,
             fEstablishments: filtered
         })
     }
-    function _goToCheckout(data) {
-        console.log("checked out")
+    function selectEstablishment(target, item) {
+        setData({
+            ...data,
+            sEstablishment: item
+        })
+        setSearch({
+            focus: false,
+            input: item.establishmentName
+        })
     }
-    const {register, handleSubmit, getValues} = useForm({
+    function _goToCheckout(values) {
+        console.log("we get here?!")
+        const chart = {
+            ...values,
+            establishment: data.sEstablishment
+        }
+        localStorage.setItem("chart", JSON.stringify(chart))
+        console.log(chart)
+    }
+    const {register, handleSubmit, getValues, errors} = useForm({
         validationSchema : yup.object().shape({
             type: yup
                 .string()
-                .matches(/hotel | bnb | cabin/)
-                .required()
-            ,
+                .matches(/(hotel|bnb|cabin|^$)/),
             search: yup
-                .string()
-                .required(),
+                .string(),
             adults: yup
                 .string()
                 .matches(/\d/)
@@ -44,11 +68,10 @@ export default function ({establishments}) {
                 .required(),
             date1: yup
                 .date()
-                .max(yup.ref("date2"), ({max}) => `Date needs to be before ${new Date(max).toLocaleString()}`)/*https://stackoverflow.com/a/57161582*/
                 .required(),
             date2: yup
                 .date()
-                .min(yup.ref("date1"), ({min}) => `Date needs to be later then ${new Date(min).toLocaleString()}`)/*https://stackoverflow.com/a/57161582*/
+                .min(yup.ref("date1"), ({min}) => `Date needs to be later then ${new Date(min).toLocaleDateString()}`)/*https://stackoverflow.com/a/57161582*/
                 .required()
         })
     });
@@ -59,46 +82,55 @@ export default function ({establishments}) {
                     const values = getValues();
                     _filterEstablishments(values)
                 }} onSubmit={handleSubmit(_goToCheckout)}>
-                    <div className="orderBox__types row">
-                        <label className="orderBox__hotel orderBox__type--active col-4">
-                            <input className="orderBox__hotelButton orderBox__typeButton" type="radio" value="hotel" name="type" ref={register}/>
-                            <span className="orderBox__hotelDesign orderBox__typeDesign">Hotel</span>
-                        </label>
-                        <label className="orderBox__bnb orderBox__type col-4">
-                            <input className="orderBox__bnbButton orderBox__typeButton" type="radio" value="bnb" name="type" ref={register}/>
-                            <span className="orderBox__bnbDesign orderBox__typeDesign">B&B</span>
-                        </label>
-                        <label className="orderBox__cabin orderBox__type col-4">
-                            <input className="orderBox__cabinButton orderBox__typeButton" type="radio" value="cabin" name="type" ref={register} onFocus={setSearch}/>
-                            <span className="orderBox__cabinDesign orderBox__typeDesign">Cabin</span>
-                        </label>
-                    </div>
                     <div className="orderBox__filter">
                         <div className="form__section row">
                             <div className="orderBox__search col-d-6 col-12">
                                 <div className="orderBox__place form__group">
                                     <label className="orderBox__placeLabel form__label--compact" htmlFor="est-search">Place</label>
-                                    <input className="orderBox__placeInput form__input--compact" type="text" placeholder="Name or area" name="search" ref={register} onFocus={() => setSearch(true)} onBlur={() => setSearch(false)}/>
-                                    {search && (
-                                        <div className="searchResults">
+                                    <input className="orderBox__placeInput form__input--compact" type="text" placeholder="Name or area" name="search" ref={register}
+                                           onInput={() => setSearch({...search, focus: true})}
+                                           onClick={() => setSearch({...search, focus: true})}
+                                           onFocus={() => setSearch({...search, focus: true})}
+                                           value={search.input} onChange={_handleSearchInput}
+                                    />
+                                    {search.focus && (
+                                        <ul className="searchResults">
                                             {data.fEstablishments.map(est => {
                                                 return (
-                                                    <div className="resultItem">
-                                                        <div className="resultItem__img"/>
-                                                         <div className="resultItem__name">
-                                                             {est.establishmentName}
-                                                         </div>
-                                                        <div className="resultItem__info">
-                                                            <span className="resultItem__type">
-                                                            </span>
-                                                            <span className="resultItem__price">
-                                                                Price: {est.price}
-                                                            </span>
-                                                        </div>
-                                                    </div>
+                                                    <li className="searchResults__item" key={est.id}>
+                                                        <label className="resultItem row"
+                                                            onClick={(item) => {
+                                                                selectEstablishment(item.target, est)
+                                                            }}
+                                                            onKeyDown={(event => {
+                                                               console.log(event.target)
+                                                                if (event.key === "Enter") {
+                                                                    selectEstablishment(event.target, est)
+                                                                }
+                                                            })}
+                                                        >
+                                                            <input className="form__checkboxButton" type="checkbox" name="establishment"
+                                                                onFocus={() => setSearch({...search, focus: true})}
+                                                                onBlur={() => setSearch({...search, focus: false})}
+                                                            />
+                                                            <div className="form__checkboxDesign">
+                                                                <div className="resultItem__img bgImage" style={{
+                                                                    backgroundImage: `url(${est.imageUrl})`
+                                                                }}/>
+                                                                <div className="resultItem__info">
+                                                                    <div className="resultItem__name">
+                                                                        {est.establishmentName}
+                                                                    </div>
+                                                                    <span className="resultItem__price">
+                                                                        Price: {est.price}$
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </label>
+                                                    </li>
                                                 )
                                             })}
-                                        </div>
+                                        </ul>
                                     )}
                                 </div>
                             </div>
@@ -157,7 +189,12 @@ export default function ({establishments}) {
                     </div>
                 </form>
                 <div className="greet">
-
+                    {errors.search && (<p>search: {errors.search.message}</p>)}
+                    {errors.adults && (<p>search: {errors.adults.message}</p>)}
+                    {errors.children && (<p>search: {errors.children.message}</p>)}
+                    {errors.date1 && (<p>search: {errors.date1.message}</p>)}
+                    {errors.date2 && (<p>search: {errors.date2.message}</p>)}
+                    {errors.type && (<p>search: {errors.type.message}</p>)}
                 </div>
             </div>
         </div>

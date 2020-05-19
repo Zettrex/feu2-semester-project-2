@@ -6,6 +6,7 @@ export default function () {
     const [contact, setContact] = useState({});
     const [valid, setValid] = useState(false);
     const [duplicateMessage, setDuplicateMessage] = useState(false);
+
     function _sendForm(data) {
         console.log(data);
         console.log(JSON.stringify(contact) === JSON.stringify(data));
