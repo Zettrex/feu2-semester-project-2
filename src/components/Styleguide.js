@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import RadioButton from "./components/selectors/RadioButton";
-import Checkbox from "./components/selectors/Checkbox";
+import RadioButton from "./components/inputs/selectors/RadioButton";
+import Checkbox from "./components/inputs/selectors/Checkbox";
 import Nouislider from "react-nouislider";
 
 export default function (props) {

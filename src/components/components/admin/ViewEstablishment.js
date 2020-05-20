@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Checkbox from "../selectors/Checkbox";
+import Checkbox from "../inputs/selectors/Checkbox";
 
 export default function ({data, closeF}) {
     const [est, setEst] = useState(data);

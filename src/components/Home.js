@@ -25,7 +25,7 @@ export default function ({establishments}) {
     function _filterEstablishments(values) {
         console.log(values);
         const original = data.oEstablishments;
-        let filtered = original.filter(item => new RegExp(values.search, "i").test(item.establishmentName));
+        let filtered = original.filter(item => new RegExp(`^${values.search}`, "gi").test(item.establishmentName));
         console.log(filtered);
         setData({
             ...data,
@@ -77,6 +77,7 @@ export default function ({establishments}) {
     });
     return (
         <div className="page">
+            {console.log("Search-focus: ",search.focus)}
             <div className="home-hero">
                 <form className="orderBox form" onChange={() => {
                     const values = getValues();
@@ -110,8 +111,8 @@ export default function ({establishments}) {
                                                             })}
                                                         >
                                                             <input className="form__checkboxButton" type="checkbox" name="establishment"
-                                                                onFocus={() => setSearch({...search, focus: true})}
-                                                                onBlur={() => setSearch({...search, focus: false})}
+                                                                /*onFocus={() => setSearch({...search, focus: true})}
+                                                                onBlur={() => setSearch({...search, focus: false})}*/
                                                             />
                                                             <div className="form__checkboxDesign">
                                                                 <div className="resultItem__img bgImage" style={{
