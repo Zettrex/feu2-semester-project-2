@@ -77,7 +77,6 @@ export default function ({establishments}) {
     });
     return (
         <div className="page">
-            {console.log("Search-focus: ",search.focus)}
             <div className="home-hero">
                 <form className="orderBox form" onChange={() => {
                     const values = getValues();

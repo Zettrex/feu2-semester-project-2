@@ -1,8 +1,17 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import PaymentForm from "./components/Checkout/PaymentForm";
 import UserTypeForm from "./components/Checkout/UserTypeForm";
 
 export default function () {
+    const [user, setUser] = useState();
+    useEffect(() => {
+        setUser(JSON.parse(localStorage.getItem("user")));
+    },[])
+    function loginUser(userInfo) {
+        localStorage.setItem("user", JSON.stringify(userInfo));
+        setUser(userInfo);
+    }
+
     if (localStorage.getItem("order")) {
         const order = JSON.parse(localStorage.getItem("order"));
         console.log(order);
@@ -45,8 +54,8 @@ export default function () {
                         </div>
                     </aside>
                     <main className="checkout__main col-8 col-m-12 row">
-                        <UserTypeForm/>
-                        <PaymentForm/>
+                        <UserTypeForm user={user} loginF={loginUser}/>
+                        <PaymentForm user={user}/>
                     </main>
                 </div>
             </div>

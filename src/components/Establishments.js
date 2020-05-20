@@ -5,7 +5,11 @@ import EstablishmentItem from "./components/EstablishmentItem";
 import Select from "./components/inputs/Select";
 
 export default function ({establishments}) {
-    console.log(establishments);
+    const [data, setData] = useState({
+        oEstablishments: establishments,
+        fEstablishments: establishments,
+        sEstablishment: null
+    })
     const [range, setRange] = useState({
         min: 1,
         max: 350
@@ -124,10 +128,7 @@ export default function ({establishments}) {
                     </div>
                     <div className="filterArea__action filterArea__section col-d-2">
                         <div className="filterArea__matches">
-                            Found 9<br/>Matches
-                        </div>
-                        <div className="filterArea__group filterArea__buttons">
-                            <button type="submit" className="filterArea__submit btn--primary">Find place</button>
+                            Found {data.fEstablishments.length}<br/>Matches
                         </div>
                     </div>
                 </form>
@@ -137,7 +138,7 @@ export default function ({establishments}) {
                     <Map/>
                 </aside>
                 <main className="est-list col-12 col-d-7">
-                    {establishments.length > 0 ? establishments.map((est) => <EstablishmentItem item={est}/>): null}
+                    {data.fEstablishments.length > 0 ? data.fEstablishments.map((est) => <EstablishmentItem key={est.id} item={est}/>): null}
                 </main>
             </div>
         </div>

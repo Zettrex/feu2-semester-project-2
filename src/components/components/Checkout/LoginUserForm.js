@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import * as yup from "yup";
 
-export default function () {
+export default function ({user, loginF}) {
     const [invalidUser, setInvalidUser] = useState(false);
     const { register, handleSubmit, errors } = useForm({
         validationSchema: yup.object().shape({
@@ -17,10 +17,12 @@ export default function () {
         })
     });
     function _validateLogin(userInfo) {
-        localStorage.setItem("user", JSON.stringify(userInfo))
-    }
+        loginF(userInfo);
 
-    if (localStorage.getItem("user")) {
+        //for later if i decide to have a user database
+        setInvalidUser(false);
+    }
+    if (!user) {
         return (
             <form className="checkout__login col-6" onSubmit={handleSubmit(_validateLogin)}>
                 <div className="checkout__userNameWrapper">
@@ -42,12 +44,6 @@ export default function () {
             </form>
         )
     } else {
-        return (
-            <div className="checkout__login">
-                <div className="checkout__loginInfo">
-                    <span>Logged in as: </span>
-                </div>
-            </div>
-        )
+        return null
     }
 }
