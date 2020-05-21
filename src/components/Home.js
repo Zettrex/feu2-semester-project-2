@@ -1,76 +1,60 @@
-import React from "react";
+import React, {useState} from "react";
+import { useForm } from  "react-hook-form";
+import * as yup from "yup";
+import DateFromTo from "./components/filters/DateFromTo";
+import SearchBox from "./components/filters/SearchBox";
+import People from "./components/filters/People";
+import {_goToCheckout, _filterEstablishments} from "../functions/handleEstablishmentForm";
 
-export default function () {
+
+export default function ({establishments}) {
+    const [data, setData] = useState({
+        oEstablishments: establishments,
+        fEstablishments: establishments,
+        sEstablishment: {}
+    });
+
+    function _updateData(values) {
+        setData(values);
+    }
+    const {register, handleSubmit, getValues, errors} = useForm(/*{
+        validationSchema : yup.object().shape({
+            type: yup
+                .string()
+                .matches(/(hotel|bnb|cabin|^$)/),
+            search: yup
+                .string(),
+            adults: yup
+                .string()
+                .matches(/\d+/)
+                .required(),
+            children: yup
+                .string()
+                .matches(/\d+/)
+                .required(),
+            date1: yup
+                .date()
+                .required(),
+            date2: yup
+                .date()
+                .min(yup.ref("date1"), ({min}) => `Date needs to be later then ${new Date(min).toLocaleDateString()}`)/!*https://stackoverflow.com/a/57161582*!/
+                .required()
+        })
+    }*/);
     return (
         <div className="page">
             <div className="home-hero">
-                <form className="orderBox form">
-                    <div className="orderBox__types row">
-                        <label className="orderBox__hotel orderBox__type--active col-4">
-                            <input className="orderBox__hotelButton orderBox__typeButton" type="radio" value="hotel"/>
-                            <span className="orderBox__hotelDesign orderBox__typeDesign">Hotel</span>
-                        </label>
-                        <label className="orderBox__bnb orderBox__type col-4">
-                            <input className="orderBox__bnbButton orderBox__typeButton" type="radio" value="bnb"/>
-                            <span className="orderBox__bnbDesign orderBox__typeDesign">B&B</span>
-                        </label>
-                        <label className="orderBox__cabin orderBox__type col-4">
-                            <input className="orderBox__cabinButton orderBox__typeButton" type="radio" value="hotel"/>
-                            <span className="orderBox__cabinDesign orderBox__typeDesign">Cabin</span>
-                        </label>
-                    </div>
+                <form className="orderBox form" onChange={() => {
+                    const values = getValues();
+                    _filterEstablishments(data, _updateData, values)
+                }} onSubmit={handleSubmit(values => _goToCheckout(data, values))}>
                     <div className="orderBox__filter">
                         <div className="form__section row">
-                            <div className="orderBox__search col-d-6 col-12">
-                                <div className="orderBox__place form__group">
-                                    <label className="orderBox__placeLabel form__label--compact" htmlFor="est-search">Place</label>
-                                    <input className="orderBox__placeInput form__input--compact" type="text" placeholder="Name or area"/>
-                                </div>
-                            </div>
-                            <div className="orderBox__people col-d-6 col-12 row">
-                                <div className="orderBox__adults form__group col-6 col-m-12">
-                                    <label className="orderBox__adultsLabel form__label--compact" htmlFor="adults">Adults</label>
-                                    <select className="orderBox__adultsInput form__select--compact" name="adults">
-                                        <option className="form__option" value="1">1</option>
-                                        <option className="form__option" value="2">2</option>
-                                        <option className="form__option" value="3">3</option>
-                                        <option className="form__option" value="4">4</option>
-                                        <option className="form__option" value="5">5</option>
-                                        <option className="form__option" value="6">6</option>
-                                        <option className="form__option" value="7">7</option>
-                                        <option className="form__option" value="8">8</option>
-                                        <option className="form__option" value="9">9</option>
-                                        <option className="form__option" value="10">10</option>
-                                    </select>
-                                </div>
-                                <div className="orderBox__children form__group col-6 col-m-12">
-                                    <label className="orderBox__childrenLabel form__label--compact" htmlFor="children">Children</label>
-                                    <select className="orderBox__childrenInput form__select--compact" name="children">
-                                        <option className="form__option" value="1">1</option>
-                                        <option className="form__option" value="2">2</option>
-                                        <option className="form__option" value="3">3</option>
-                                        <option className="form__option" value="4">4</option>
-                                        <option className="form__option" value="5">5</option>
-                                        <option className="form__option" value="6">6</option>
-                                        <option className="form__option" value="7">7</option>
-                                        <option className="form__option" value="8">8</option>
-                                        <option className="form__option" value="9">9</option>
-                                        <option className="form__option" value="10">10</option>
-                                    </select>
-                                </div>
-                            </div>
+                            <SearchBox className="orderBox" sectionCol="col-d-6 col-12" data={data} updateData={_updateData} Ref={register} results={true}/>
+                            <People className="orderBox" sectionCol="col-d-6 col-12" groupCol="col-6 col-m-12" Ref={register} children={true} adults={true}/>
                         </div>
                         <div className="form__section row">
-                            <div className="orderBox__date form__section col-12 col-d-9 row">
-                                <div className="form__date--left form__group col-6">
-                                    <label className="orderBox__dateLabel--left form__label--left" htmlFor="date1">From</label>
-                                    <input className="orderBox__dateInput--left form__dateInput--left" type="date" name="date1"/>
-                                </div>
-                                <div className="form__date--right form__group col-6">
-                                    <label className="orderBox__dateLabel--right form__label--right" htmlFor="date2">To</label>
-                                    <input className="orderBox__dateInput--right form__dateInput--right" type="date" name="date2"/>
-                                </div>
-                            </div>
+                            <DateFromTo className="orderBox" groupCol="col-6" sectionCol="col-12" Ref={register}/>
                             <div className="orderBox__action form__section">
                                 <div className="form__group">
                                     <button type="submit" className="orderBox__submit btn--primary">Find place</button>
@@ -80,7 +64,12 @@ export default function () {
                     </div>
                 </form>
                 <div className="greet">
-
+                    {errors.search && (<p>search: {errors.search.message}</p>)}
+                    {errors.adults && (<p>search: {errors.adults.message}</p>)}
+                    {errors.children && (<p>search: {errors.children.message}</p>)}
+                    {errors.date1 && (<p>search: {errors.date1.message}</p>)}
+                    {errors.date2 && (<p>search: {errors.date2.message}</p>)}
+                    {errors.type && (<p>search: {errors.type.message}</p>)}
                 </div>
             </div>
         </div>

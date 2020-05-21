@@ -37,7 +37,7 @@ function App() {
             <Router className="App">
                 <Navigation/>
                 <Switch>
-                    <Route path="/" exact component={() => <Home establishments={establishments}/>}/>
+                    <Route path="/" exact component={() => <Home/>}/>
                     <Route path="/establishments" component={() => <Establishments establishments={establishments}/>}/>
                     <Route path="/contact" component={() => <Contact/>}/>
                     <Route path="/user" component={() => <User messages={messages} enquiries={enquiries} establishments={establishments}/>}/>

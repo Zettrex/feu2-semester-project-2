@@ -23,6 +23,11 @@ time, mark, audio, video {
     vertical-align: baseline;
     text-decoration: none;
 }
+input, select, a, li, button {
+    &:focus {
+        outline: none;
+    }
+}
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;

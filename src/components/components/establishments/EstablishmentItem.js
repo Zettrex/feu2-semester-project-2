@@ -1,7 +1,18 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-export default function ({item}) {
+export default function ({item, filters}) {
+    function _checkout() {
+        console.log(filters);
+        const chart = {
+            ...item,
+            adults: filters.adults,
+            children: filters.children,
+            date1: filters.date1,
+            date2: filters.date2
+        };
+        localStorage.setItem("order", JSON.stringify(chart));
+    }
     return (
         <div className="est__item row">
             <div className="est__showcase col-3 col-m-4">
@@ -26,7 +37,7 @@ export default function ({item}) {
                     {item.price}$
                 </div>
                 <Link className="est__readMore link--white" to={`/specific/?id=${item.id}`}>Read more</Link>
-                <Link className="est__book btn--primary" to="/checkout" onClick={localStorage.setItem("order", JSON.stringify(item))}>Book now</Link>
+                <Link className="est__book btn--primary" to="/checkout" onClick={_checkout}>Book now</Link>
             </div>
         </div>
     )
