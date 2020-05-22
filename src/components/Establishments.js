@@ -4,7 +4,6 @@ import EstablishmentItem from "./components/establishments/EstablishmentItem";
 import DateFromTo from "./components/filters/DateFromTo";
 import SearchBox from "./components/filters/SearchBox";
 import {useForm} from "react-hook-form";
-import * as yup from "yup";
 import People from "./components/filters/People";
 import PriceRange from "./components/filters/PriceRange";
 import {_filterEstablishments, _goToCheckout} from "../functions/handleEstablishmentForm";
@@ -61,12 +60,12 @@ export default function ({establishments}) {
                 }} onSubmit={handleSubmit(values => _goToCheckout(data, values))}>
                     <div className="filterArea__filters col-12 col-d-10">
                         <div className="filterArea__section row">
-                            <SearchBox className="filterArea" sectionCol="col-12 col-d-6" updateData={_updateData} data={data} Ref={register} results={false}/>
-                            <DateFromTo className="filterArea" groupCol="col-6 col-m-12" sectionCol="col-12 col-d-6" Ref={register}/>
+                            <SearchBox className="filterArea" sectionCol="col-12 col-d-6" updateData={_updateData} data={data} results={false} Ref={register} errors={errors}/>
+                            <DateFromTo className="filterArea" groupCol="col-6 col-m-12" sectionCol="col-12 col-d-6" Ref={register} errors={errors}/>
                         </div>
                         <div className="filterArea__section row">
-                            <People className="filterArea" sectionCol="col-m-12 col-6" groupCol="column" adults={true} children={true} Ref={register}/>
-                            <PriceRange className="filterArea" sectionCol="col-m-12 col-6" Ref={register} data={data} updateData={_updateData} />
+                            <People className="filterArea" sectionCol="col-m-12 col-6" groupCol="column--split" Ref={register} errors={errors}/>
+                            <PriceRange className="filterArea" sectionCol="col-m-12 col-6" data={data} updateData={_updateData} Ref={register} errors={errors}/>
                         </div>
                     </div>
                     <div className="filterArea__action filterArea__section col-d-2">

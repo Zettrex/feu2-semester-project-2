@@ -1,3 +1,28 @@
+.orderConfirm {
+  padding: 20px;
+  background-color: $thirdColor;
+  max-width: 550px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+
+  //start of Establishment (est)
+  &__est {
+    flex-direction: row;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $white;
+  }
+  &__estImg {
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+    margin-right: auto;
+    flex-shrink: 0;
+  }
+  //end of Establishment (est)
+}
+
 .checkout {
   &__continue {
     color: white;
@@ -21,6 +46,12 @@
 
 @media only screen {
   @media (min-width: $mobile) {
+    .orderConfirm {
+      min-width: 400px;
+      &__est {
+        flex-wrap: nowrap;
+      }
+    }
     .checkout {
       &__main {
         order: 1;

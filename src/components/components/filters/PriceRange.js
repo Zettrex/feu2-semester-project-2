@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Nouislider from "react-nouislider";
 
-export default function ({className, sectionCol, Ref}) {
+export default function ({className, sectionCol, Ref, errors}) {
     const defaultRange = {
         min: 1,
         max: 350
@@ -41,7 +41,7 @@ export default function ({className, sectionCol, Ref}) {
 
     return (
         <div className={`${className}__priceRange form__Price form__section ${sectionCol}`}>
-            <div className="form__range form_group">
+            <div className="form__range form__group">
                 <div className="form__rangeControls row">
                     <label className="form__rangeLabel column" htmlFor="Price">Price</label>
                     <input className="form__rangeInput--min column" type="number" name="price1" min={defaultRange.min} max={defaultRange.max} value={range.min} onChange={event => handleMin(parseInt(event.target.value))} ref={Ref}/>
@@ -67,6 +67,8 @@ export default function ({className, sectionCol, Ref}) {
                     />
                 </div>
             </div>
+            {errors.price1 && <p className="form__error">{errors.price1.message}</p>}
+            {errors.price2 && <p className="form__error">{errors.price2.message}</p>}
         </div>
     )
 }

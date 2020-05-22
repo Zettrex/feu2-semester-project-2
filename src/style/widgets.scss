@@ -18,7 +18,7 @@
   flex-shrink: 1;
   align-items: stretch;
   min-height: 1px;
-  margin: $spacingPrimary;
+  margin: 0 $spacingPrimary;
 }
 [class*="col-"]{
   @extend .column;
@@ -47,6 +47,9 @@
 @media only screen {
   /*for all*/
   @include makeGrid($prefix:"col-");
+  .col-auto {
+    flex-grow: 1;
+  }
 
   /*for mobile*/
   @media (min-width: 0) and (max-width: $mobile) {

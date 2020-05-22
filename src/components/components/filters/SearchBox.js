@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-export default function ({className, updateData, data, Ref, sectionCol, groupCol, results}) {
+export default function ({className, updateData, data, sectionCol, groupCol, results, Ref, errors}) {
     const [search, setSearch] = useState({
         focus: false,
         input: ""
@@ -73,6 +73,7 @@ export default function ({className, updateData, data, Ref, sectionCol, groupCol
                     </ul>
                 )}
             </div>
+            {errors.search && <p className="form__error">{errors.search.message}</p>}
         </div>
     )
 }

@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import { useForm } from  "react-hook-form";
-import * as yup from "yup";
 import DateFromTo from "./components/filters/DateFromTo";
 import SearchBox from "./components/filters/SearchBox";
 import People from "./components/filters/People";
@@ -50,11 +49,11 @@ export default function ({establishments}) {
                 }} onSubmit={handleSubmit(values => _goToCheckout(data, values))}>
                     <div className="orderBox__filter">
                         <div className="form__section row">
-                            <SearchBox className="orderBox" sectionCol="col-d-6 col-12" data={data} updateData={_updateData} Ref={register} results={true}/>
-                            <People className="orderBox" sectionCol="col-d-6 col-12" groupCol="col-6 col-m-12" Ref={register} children={true} adults={true}/>
+                            <SearchBox className="orderBox" sectionCol="col-d-6 col-12" data={data} updateData={_updateData} results={true} Ref={register} errors={errors}/>
+                            <People className="orderBox" sectionCol="col-d-6 col-12" groupCol="col-6 col-m-12" Ref={register} errors={errors}/>
                         </div>
                         <div className="form__section row">
-                            <DateFromTo className="orderBox" groupCol="col-6" sectionCol="col-12" Ref={register}/>
+                            <DateFromTo className="orderBox" groupCol="col-6" sectionCol="col-12" Ref={register} errors={errors}/>
                             <div className="orderBox__action form__section">
                                 <div className="form__group">
                                     <button type="submit" className="orderBox__submit btn--primary">Find place</button>

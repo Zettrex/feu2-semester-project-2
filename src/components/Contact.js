@@ -20,8 +20,8 @@ export default function () {
             setContact(contact);
             setValid(true);
             return fetch("http://localhost:8888/contact-success.php", {
-                method: 'POST',
-                headers: {'Content-Type':'application/x-www-form-urlencoded'},
+                method: "POST",
+                headers: {"Content-Type":"application/x-www-form-urlencoded"},
                 body: `clientName=${encodeURIComponent(`${data.firstName} ${data.lastName}`)}&email=${encodeURIComponent(data.email)}&subject=${encodeURIComponent(data.subject)}&message=${encodeURIComponent(data.message)}`
             })
         } else {

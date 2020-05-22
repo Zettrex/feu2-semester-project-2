@@ -98,15 +98,15 @@ export default function (props) {
                 {errors.cardowner && <p className="form__error">{errors.cardowner.message}</p>}
             </div>
             <div className="form__section row">
-                <div className="checkout__cardNrWrapper form__section col-12 col-d-8">
+                <div className="checkout__cardNrWrapper form__section col-auto">
                     <div className="checkout__cardNr form__group">
                         <label className="checkout__cardNrLabel form__label--compact" htmlFor="cardnr">Card number</label>
                         <input className="checkout__cardNrInput form__input--compact" type="text" name="cardnr" placeholder="#### #### #### ####" defaultValue="1234 4321 1234 4321" ref={register}/>
                     </div>
                     {errors.cardnr && <p className="form__error">{errors.cardnr.message}</p>}
                 </div>
-                <div className="checkout__ssvWrapper form__section col-d-4">
-                    <div className="checkout__ssv form__group ">
+                <div className="checkout__ssvWrapper form__section">
+                    <div className="checkout__ssv form__group">
                         <label className="checkout__ssvLabel form__label--compact" htmlFor="ssv">SSV</label>
                         <input className="checkout__ssvInput form__input--compact" type="number" max={999} name="ssv" placeholder="123" defaultValue={987} ref={register}/>
                     </div>

@@ -15,10 +15,8 @@ class Enquiry
     public $checkout;
     public $adults;
     public $children;
-    public $rooms;
     public $payMethod;
     public $price;
-    public $notes;
 }
 
 //Creates new enquiry and sets properties
@@ -35,10 +33,8 @@ $newEnquiry->checkin = $_POST["checkin"];
 $newEnquiry->checkout = $_POST["checkout"];
 $newEnquiry->adults = $_POST["adults"];
 $newEnquiry->children = $_POST["children"];
-$newEnquiry->rooms = $_POST["rooms"];
 $newEnquiry->payMethod = $_POST["payMethod"];
 $newEnquiry->price = $_POST["price"];
-$newEnquiry->notes = $_POST["notes"];
 
 //Adds object to array
 $enquiriesList = file_get_contents('enquiries.json');
