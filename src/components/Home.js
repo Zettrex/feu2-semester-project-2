@@ -3,50 +3,61 @@ import { useForm } from  "react-hook-form";
 import DateFromTo from "./components/filters/DateFromTo";
 import SearchBox from "./components/filters/SearchBox";
 import People from "./components/filters/People";
-import {_goToCheckout, _filterEstablishments} from "../functions/handleEstablishmentForm";
+import {_filterEstablishments} from "../functions/handleEstablishmentForm";
+import * as yup from "yup";
+
 
 
 export default function ({establishments}) {
     const [data, setData] = useState({
         oEstablishments: establishments,
         fEstablishments: establishments,
-        sEstablishment: {}
+        sEstablishment: null
     });
+    function _checkout(filters) {
+        console.log(filters);
+        const chart = {
+            ...data.sEstablishment,
+            adults: filters.adults,
+            children: filters.children,
+            date1: filters.date1,
+            date2: filters.date2
+        };
+        localStorage.setItem("order", JSON.stringify(chart));
+        window.location="/checkout";
+    }
 
     function _updateData(values) {
         setData(values);
     }
-    const {register, handleSubmit, getValues, errors} = useForm(/*{
+    const {register, handleSubmit, getValues, errors} = useForm({
         validationSchema : yup.object().shape({
-            type: yup
-                .string()
-                .matches(/(hotel|bnb|cabin|^$)/),
             search: yup
-                .string(),
+                .string()
+                .test({
+                    message: "please select an establishment",
+                    test: () => {
+                        return data.sEstablishment !== null;
+                    }
+                }),
             adults: yup
-                .string()
-                .matches(/\d+/)
-                .required(),
+                .string(),
             children: yup
-                .string()
-                .matches(/\d+/)
-                .required(),
+                .string(),
             date1: yup
-                .date()
-                .required(),
+                .string(),
             date2: yup
-                .date()
-                .min(yup.ref("date1"), ({min}) => `Date needs to be later then ${new Date(min).toLocaleDateString()}`)/!*https://stackoverflow.com/a/57161582*!/
-                .required()
+                .string()
         })
-    }*/);
+    });
     return (
         <div className="page">
+            {console.log(errors)}
             <div className="home-hero">
                 <form className="orderBox form" onChange={() => {
                     const values = getValues();
                     _filterEstablishments(data, _updateData, values)
-                }} onSubmit={handleSubmit(values => _goToCheckout(data, values))}>
+                }} onSubmit={handleSubmit(_checkout)}>
                     <div className="orderBox__filter">
                         <div className="form__section row">
                             <SearchBox className="orderBox" sectionCol="col-d-6 col-12" data={data} updateData={_updateData} results={true} Ref={register} errors={errors}/>
@@ -62,14 +73,6 @@ export default function ({establishments}) {
                         </div>
                     </div>
                 </form>
-                <div className="greet">
-                    {errors.search && (<p>search: {errors.search.message}</p>)}
-                    {errors.adults && (<p>search: {errors.adults.message}</p>)}
-                    {errors.children && (<p>search: {errors.children.message}</p>)}
-                    {errors.date1 && (<p>search: {errors.date1.message}</p>)}
-                    {errors.date2 && (<p>search: {errors.date2.message}</p>)}
-                    {errors.type && (<p>search: {errors.type.message}</p>)}
-                </div>
             </div>
         </div>
     )

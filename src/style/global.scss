@@ -121,11 +121,13 @@ body {
   color: white;
 
   &__section {
+    position: relative;
     padding: 0;
     margin: 10px 0;
   }
 
   &__container {
+    position: relative;
     padding: 0;
     margin: 0;
     &:last-child.column--split {
@@ -139,6 +141,23 @@ body {
     position: relative;
     &:last-child.column--split {
       margin-left: auto;
+    }
+  }
+  &__error {
+    position: absolute;
+    top: 13px;
+    right: 16px;
+    z-index: 5;
+    background-color: white;
+    border-radius: 4px;
+    font-size: 8px;
+    color: red;
+    &--left {
+      @extend .form__error;
+      right: 6px;
+    }
+    &--right {
+      @extend .form__error;
     }
   }
 }

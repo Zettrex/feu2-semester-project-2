@@ -8,7 +8,7 @@ export default function ({user, loginF}) {
     const  [userType, setUserType] = useState("user");
     return (
         <div className="checkout__continue col-12 row">
-            {!user ? (
+            {!user && (
                 <div className="checkout__selectUser col-6">
                     <div className="checkout__selectOption form__group">
                         <label className="checkout__user form__radio"
@@ -42,13 +42,6 @@ export default function ({user, loginF}) {
                         </span>
                             <span className="checkout__guestLabel form__radioLabel">Continue as Guest</span>
                         </label>
-                    </div>
-                </div>
-            ): (
-                <div className="checkout__loggedInUser">
-                    <div className="checkout__loginInfo">
-                        <span>Logged in as: </span>
-                        <span>{user.username}</span>
                     </div>
                 </div>
             )}

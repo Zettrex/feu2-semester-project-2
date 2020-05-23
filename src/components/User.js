@@ -93,6 +93,10 @@ export default function ({enquiries, messages, establishments}) {
             <aside className="admin__establishments admin__section">
                 <h2 className="h2 admin__establishmentsHeading">Establishments</h2>
                 <div className="row">
+                    <div className="admin__establishmentsAction">
+                        <span>Add</span>
+                        <button className="admin__establishmentsAdd btn--primary">+</button>
+                    </div>
                     <form className="admin__establishmentsFilter form col-12 col-t-5 col-d-3" onChange={handleFilter}>
                         <div className="admin__filterName">
                             <label className="admin__filterNameLabel form__label" htmlFor="establishmentName">Name of establishment</label>

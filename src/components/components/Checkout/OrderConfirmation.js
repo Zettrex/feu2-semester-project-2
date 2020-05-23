@@ -16,11 +16,11 @@ export default function ({data, updateConfirmed}) {
                 .string(),
             adults: yup
                 .string()
-                .required("Select number of adults")
+                .required("Select adults")
                 .matches(/\d+/, "this is not a valid number"),
             children: yup
                 .string()
-                .required("Select number of children")
+                .required("Select children")
                 .matches(/\d+/, "this is not a valid number"),
             date1: yup
                 .string()

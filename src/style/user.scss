@@ -56,8 +56,18 @@
 //Start of Establishments
 .admin {
   &__establishments {
+    position: relative;
     &Heading {
       padding-left: 10px;
+    }
+    &Add {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 16px;
+      height: 32px;
+      width: 32px;
+      padding: 0;
     }
   }
 }
