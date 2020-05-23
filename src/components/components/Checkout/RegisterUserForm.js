@@ -2,7 +2,7 @@ import React from "react";
 import {useForm} from "react-hook-form";
 import * as yup from "yup";
 
-export default function ({loginF}) {
+export default function ({loginF, updatePayment}) {
 
     //start of https://github.com/jquense/yup/issues/97#issuecomment-306547261
     //this basicly takes the parameters ref ans msg creates a new test that sees if the value it equal ro ref's value
