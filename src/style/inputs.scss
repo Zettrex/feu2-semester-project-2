@@ -33,7 +33,7 @@
 
   //Start of Items
   &__item {
-    height: 30px;
+    height: 34px;
     margin: auto 0;
     padding: 8px;
     border-radius: $borderRadius;
@@ -79,13 +79,14 @@
   //Start of Textarea
   &__textarea {
     @extend .form__item;
+    min-height: 60px;
+    resize: vertical;
+    height: 150px;
 
     &--compact {
       @extend .form__item--compact;
       @extend .form__textarea;
       padding: 36px 10px 10px;
-      resize: vertical;
-      height: 150px;
     }
   }
 

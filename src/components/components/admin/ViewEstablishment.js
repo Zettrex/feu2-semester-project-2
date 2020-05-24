@@ -16,12 +16,16 @@ export default function ({data, closeF}) {
                         <label className="form__label" htmlFor="name">Establishment name</label>
                         <input className="form__input" name="name" type="text" defaultValue={est.establishmentName}/>
                     </div>
-                    <div className="view-est__address form__group col-6 col-m-12">
+                        <div className="view-est__email form__group col-6 col-m-12">
+                            <label className="form__label" htmlFor="establishmentEmail">Establishment Email</label>
+                            <input className="form__input" name="establishmentEmail" id="establishmentEmail" type="text" defaultValue={est.establishmentEmail}/>
+                        </div>
+                </div>
+                <div className="form__section row">
+                    <div className="view-est__address form__group col-12">
                         <label className="form__label" htmlFor="address">Establishment address</label>
                         <input className="form__input" name="address" type="text" defaultValue={est.establishmentAddress && (est.establishmentAddress)}/>
                     </div>
-                </div>
-                <div className="form__section row">
                     <div className="view-est__latitude form__group col-6 col-m-12">
                         <label className="form__label" htmlFor="address">Google Latitude</label>
                         <input className="form__input" name="googleLat" type="text" defaultValue={est.googleLat}/>
@@ -32,10 +36,16 @@ export default function ({data, closeF}) {
                     </div>
                 </div>
                 <div className="view-est__image form__section">
-                    <img className="view-est__showcase" src={est.imageUrl} alt="showcase of what image page would display for establishment"/>
+                    <img className="view-est__showcase" src={est.imageUrl} alt="showcase of display for establishment"/>
                     <div className="form__group">
                         <label className="form__label" htmlFor="img">Image URL</label>
                         <input className="form__input" name="img" type="text" defaultValue={est.imageUrl}/>
+                    </div>
+                </div>
+                <div className="form__section row">
+                    <div className="view-est__description form__group col-12">
+                        <label className="form__label" htmlFor="establishmentDescription">Establishment name</label>
+                        <textarea className="form__textarea" name="name" defaultValue={est.description}/>
                     </div>
                 </div>
                 <div className="view-est__price form__group">

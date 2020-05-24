@@ -60,10 +60,16 @@
     &Heading {
       padding-left: 10px;
     }
-    &Add {
+    &Action {
       position: absolute;
-      right: 10px;
-      top: 10px;
+      right: 20px;
+      top: 0px;
+    }
+    &AddLabel {
+      display: block;
+      margin: auto 6px auto 0;
+    }
+    &Add {
       font-size: 16px;
       height: 32px;
       width: 32px;
