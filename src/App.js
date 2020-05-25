@@ -20,13 +20,13 @@ function App() {
     const [enquiries, setEnquiries] = useState();
     const [userLoggedIn] = useState(false)
     useEffect(() => {
-        fetch("/get-enquiries.php")
+        fetch("http://localhost:8888/get-enquiries.php")
             .then(response => response.json())
             .then(setEnquiries);
-        fetch("/get-contacts.php")
+        fetch("http://localhost:8888/get-contacts.php")
             .then(response => response.json())
             .then(setMessages);
-        fetch("/get-establishments.php")
+        fetch("http://localhost:8888/get-establishments.php")
             .then(response => response.json())
             .then(setEstablishments)
     }, []);

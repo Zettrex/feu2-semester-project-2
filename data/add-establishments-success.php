@@ -14,7 +14,7 @@ class Establishment
     public $googleLong;
     public $description;
     public $selfCatering;
-    public $id;
+    public $establishmentID;
 }
 
 //Creates new establishment and sets properties

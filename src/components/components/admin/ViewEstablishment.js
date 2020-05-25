@@ -21,7 +21,15 @@ export default function ({data, closeF, job}) {
         });
     }
     function _sendEst(values) {
-        console.log(values);
+        if (job === "add") {
+            return fetch("http://localhost:8888/add-establishments-success.php", {
+                method: "POST",
+                headers: {"Content-Type":"application/x-www-form-urlencoded"},
+                body: `establishmentName=${encodeURIComponent(est.establishmentName)}&establishmentEmail=${encodeURIComponent(est.establishmentEmail)}&establishmentAddress=${encodeURIComponent(est.establishmentAddress)}&imageUrl=${encodeURIComponent(est.imageUrl)}&price=${encodeURIComponent(est.price)}&googleLat=${encodeURIComponent(est.googleLat)}&googleLong=${encodeURIComponent(est.googleLong)}&description=${est.description}&selfCatering=${encodeURIComponent(est.selfCatering)}&establishmentID=${est.establishmentID}`
+            })
+        } else {
+            
+        }
     }
     const { register, handleSubmit, errors, getValues} = useForm({
         validationSchema: yup.object().shape({

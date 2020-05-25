@@ -63,7 +63,7 @@
     &Action {
       position: absolute;
       right: 20px;
-      top: 0px;
+      top: 0;
     }
     &AddLabel {
       display: block;
@@ -95,7 +95,7 @@
     text-align: right;
     position: fixed;
     top: 20px;
-    right: 40px;
+    right: 20px;
     width: 100%;
   }
   &__content {
@@ -149,7 +149,7 @@
   &__priceInput {
     padding: 8px 8px 8px 36px;
     min-width: 80px;
-    width: fit-content;
+    width: max-content;
     display: inline-flex;
   }
   &__currency {

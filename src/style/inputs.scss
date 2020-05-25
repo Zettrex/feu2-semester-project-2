@@ -203,6 +203,8 @@
   //Start of Checkbox
   &__checkbox {
     @extend .form__radio;
+    display: inline-flex;
+    width: max-content;
   }
 
   &__checkboxButton {
@@ -263,7 +265,7 @@
 }
 .noUi-connect {
   height: 14px;
-  background-color: $thirdColor;
+  background-color: #65534a;
   position: absolute;
   top: 0;
 }

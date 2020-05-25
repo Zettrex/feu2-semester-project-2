@@ -3,12 +3,13 @@ import RadioButton from "../inputs/selectors/RadioButton";
 import {Link} from "react-router-dom";
 import RegisterUserForm from "./RegisterUserForm";
 import LoginUserForm from "./LoginUserForm";
+import {v4 as uuidv4} from "uuid";
 
 export default function ({user, loginF}) {
     const  [userType, setUserType] = useState("user");
     return (
         <div className="checkout__continue col-12 row">
-            {!user && (
+            {user && user.username === "guest" && (
                 <div className="checkout__selectUser col-6">
                     <div className="checkout__selectOption form__group">
                         <label className="checkout__user form__radio"
