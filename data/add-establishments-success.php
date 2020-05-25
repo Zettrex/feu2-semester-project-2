@@ -28,7 +28,7 @@ $newEstablishment->googleLat = $_POST["googleLat"];
 $newEstablishment->googleLong = $_POST["googleLong"];
 $newEstablishment->description = $_POST["description"];
 $newEstablishment->selfCatering = $_POST["selfCatering"];
-$newEstablishment->id = $_POST["id"];
+$newEstablishment->establishmentID = $_POST["establishmentID"];
 
 //Adds object to array
 $establishmentsList = file_get_contents('establishments.json');

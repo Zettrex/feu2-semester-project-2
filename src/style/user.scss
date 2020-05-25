@@ -82,7 +82,7 @@
 //start of view-window
 .view-window {
   z-index: 5;
-  padding: 20px 20px 60px 20px;
+  padding: 60px 20px 20px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -90,10 +90,17 @@
   width: 60%;
   background-color: $thirdColor;
   color: white;
-  max-height: 70vh;
-  overflow: auto;
+
   &__topBar {
     text-align: right;
+    position: fixed;
+    top: 20px;
+    right: 40px;
+    width: 100%;
+  }
+  &__content {
+    overflow: auto;
+    height: 64vh;
   }
   &__actions {
     position: absolute;
@@ -104,20 +111,14 @@
 }
 //Start of enquiries
 .view-enquiry {
-  &__client {
-    padding: 10px 0 30px;
-    border-bottom: 1px solid darkgray;
-  }
-  &__information {
-    padding: 30px 0;
-  }
+
 }
 //End of enquiries
 
 //start of messages
 .view-message {
   min-height: 400px;
-  &__contact {
+  &__information {
     border-right: 1px solid darkgray;
   }
 }
@@ -125,21 +126,38 @@
 
 //start of establishment
 .view-est {
+  &__idLabel {
+    font-size: 12px;
+  }
+  &__idInput {
+    margin-left: 4px;
+    background: none;
+    border: none;
+    color: white;
+    width: 250px;
+  }
   &__showcase {
     max-width: 100px;
     margin-left: 10px;
+  }
+  &__price {
+    display: inline-block;
   }
   &__priceLabel {
     display: block;
   }
   &__priceInput {
-    display: inline-block;
-    width: 60px;
+    padding: 8px 8px 8px 36px;
+    min-width: 80px;
+    width: fit-content;
+    display: inline-flex;
   }
   &__currency {
     margin: 0 6px;
   }
-
+  &__facilities {
+    padding-bottom: 60px;
+  }
 }
 //end of establishment
 //End of view-window

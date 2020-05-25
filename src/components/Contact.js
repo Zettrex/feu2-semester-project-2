@@ -12,6 +12,7 @@ export default function () {
         console.log(JSON.stringify(contact) === JSON.stringify(data));
         if (JSON.stringify(contact) !== JSON.stringify(data)) { //work around due to shallow compare
             const contact = {
+                caseID: `${Math.random().toString(36).substr(2, 6)}`,
                 clientName: `${data.firstName} ${data.lastName}`,
                 email: data.email,
                 subject: data.subject,

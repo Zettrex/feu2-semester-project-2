@@ -11,7 +11,7 @@ export default function ({establishment, openF}) {
             </div>
             <div className="admin-item__right admin-item__section">
                 <span className="establishment__area admin-item__info">area</span>
-                <button className="btn--primary admin-item__btn" onClick={() => openF("open", "establishment", establishment)}>Edit</button>
+                <button className="btn--primary admin-item__btn" onClick={() => openF("open", "establishment", establishment, "edit")}>Edit</button>
             </div>
         </div>
     )

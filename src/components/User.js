@@ -13,14 +13,15 @@ export default function ({enquiries, messages, establishments}) {
         blurBackground: false,
         enquiry: false,
         message: false,
-        establishment: false
+        establishment: false,
+        job: ""
     });
 
     function handleFilter() {
 
     }
 
-    function handleWindow(action, window, data) {
+    function handleWindow(action, window, data, job) {
         if (action === "close") {
             setView({
                 ...view,
@@ -28,7 +29,8 @@ export default function ({enquiries, messages, establishments}) {
                 blurBackground: false,
                 enquiry: false,
                 message: false,
-                establishment: false
+                establishment: false,
+                job: ""
             })
         } else if (action === "open") {
             switch (window) {
@@ -37,8 +39,9 @@ export default function ({enquiries, messages, establishments}) {
                         ...view,
                         viewData: data,
                         viewWindow: true,
+                        blurBackground: true,
                         enquiry: true,
-                        blurBackground: true
+                        job: job
                     });
                     break;
                 case "message":
@@ -46,8 +49,9 @@ export default function ({enquiries, messages, establishments}) {
                         ...view,
                         viewData: data,
                         viewWindow: true,
+                        blurBackground: true,
                         message: true,
-                        blurBackground: true
+                        job: job
                     });
                     break;
                 case "establishment":
@@ -55,8 +59,9 @@ export default function ({enquiries, messages, establishments}) {
                         ...view,
                         viewData: data,
                         viewWindow: true,
+                        blurBackground: true,
                         establishment: true,
-                        blurBackground: true
+                        job: job
                     });
                     break;
                 default:
@@ -66,8 +71,10 @@ export default function ({enquiries, messages, establishments}) {
                         blurBackground: false,
                         enquiry: false,
                         message: false,
-                        establishment: false
+                        establishment: false,
+                        job: ""
                     });
+                    console.log("Something unexpected occurred, tried to open none-valid item");
                     break;
             }
         }
@@ -75,25 +82,24 @@ export default function ({enquiries, messages, establishments}) {
     }
     return (
         <div className="page">
-            {console.log("return", view)}
             <main className="admin__inbox row">
                 <div className="admin__enquiries admin__section col-6 col-m-12">
                     <h2 className="h2 admin__enquiriesHeading">Enquiries</h2>
                     <div className="admin__list">
-                        {enquiries && enquiries.map(enquiry => <EnquiryItem enquiry={enquiry} openF={handleWindow}/>)}
+                        {enquiries && enquiries.map(enquiry => <EnquiryItem key={enquiry.orderID} enquiry={enquiry} openF={handleWindow}/>)}
                     </div>
                 </div>
                 <div className="admin__messages admin__section col-6 col-m-12">
                     <h2 className="h2 admin__messagesHeading">Messages</h2>
                     <div className="admin__list">
-                        {messages && messages.map(message => <MessageItem message={message} openF={handleWindow}/>)}
+                        {messages && messages.map(message => <MessageItem key={message.caseID} message={message} openF={handleWindow}/>)}
                     </div>
                 </div>
             </main>
             <aside className="admin__establishments admin__section">
                 <h2 className="h2 admin__establishmentsHeading">Establishments</h2>
                 <div className="row">
-                    <div className="admin__establishmentsAction row">
+                    <div className="admin__establishmentsAction row" onClick={() => handleWindow("open", "establishment", "", "add")}>
                         <span className="admin__establishmentsAddLabel">Add</span>
                         <button className="admin__establishmentsAdd btn--primary">+</button>
                     </div>
@@ -122,7 +128,7 @@ export default function ({enquiries, messages, establishments}) {
                         </div>
                     </form>
                     <div className="admin__establishmentsList admin__list col-12 col-t-7 col-d-9">
-                        {establishments && establishments.map(establishment => <EstablishmentItem establishment={establishment} openF={handleWindow}/>)}
+                        {establishments && establishments.map(establishment => <EstablishmentItem key={establishment.establishmentID} establishment={establishment} openF={handleWindow}/>)}
                     </div>
                 </div>
             </aside>
@@ -136,7 +142,7 @@ export default function ({enquiries, messages, establishments}) {
                     </div>
                     {view.enquiry && (<ViewEnquiry data={view.viewData} closeF={handleWindow}/>)}
                     {view.message && (<ViewMessage data={view.viewData} closeF={handleWindow}/>)}
-                    {view.establishment && (<ViewEstablishment data={view.viewData} closeF={handleWindow}/>)}
+                    {view.establishment && (<ViewEstablishment data={view.viewData} closeF={handleWindow} job={view.job}/>)}
                 </div>
             )}
         </div>

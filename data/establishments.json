@@ -8,7 +8,7 @@
         "googleLong": "5.228720",
         "description": "Get ready for some amazing sunsets as you sip a cocktail and watch dolphins play in the harbour below.",
         "selfCatering": "true",
-        "id": "1"
+        "establishmentID": "1"
     },
     {
         "establishmentName": "Rest Easy",
@@ -19,7 +19,7 @@
         "googleLong": "5.235602",
         "description": "Need some time off from your busy life to relax and unwind? Choose Rest Easy for the complete relaxation experience you desire.",
         "selfCatering": "false",
-        "id": "2"
+        "establishmentID": "2"
     },
     {
         "establishmentName": "The Hideaway",
@@ -30,7 +30,7 @@
         "googleLong": "5.358141",
         "description": "This secluded wilderness cabin is the perfect spot for a restful and cosy getaway.",
         "selfCatering": "true",
-        "id": "3"
+        "establishmentID": "3"
     },
     {
         "establishmentName": "Farm Cottage",
@@ -41,7 +41,7 @@
         "googleLong": "5.371878",
         "description": "Voted the best B&B in Norway, this farm cottage is available for family holidays throughout the summer.",
         "selfCatering": "false",
-        "id": "4"
+        "establishmentID": "4"
     },
     {
         "establishmentName": "Tree Tops",
@@ -52,7 +52,7 @@
         "googleLong": "5.352511",
         "description": "For a getaway like no other, this unique treehouse offers a cosy and comfortable wilderness experience.",
         "selfCatering": "true",
-        "id": "5"
+        "establishmentID": "5"
     },
     {
         "establishmentName": "Coast to Coast",
@@ -63,7 +63,7 @@
         "googleLong": "5.322961",
         "description": "This trendy apartment in the heart of the city is the perfect base from which to explore Bergen.",
         "selfCatering": "true",
-        "id": "6"
+        "establishmentID": "6"
     },
     {
         "establishmentName": "Koselig hytte Spa Resort",
@@ -74,7 +74,7 @@
         "googleLong": "5.353859",
         "description": "A beautiful lakeside retreat where you can relax, unwind and explore the beauty of the natural world.",
         "selfCatering": "false",
-        "id": "7"
+        "establishmentID": "7"
     },
     {
         "establishmentName": "City Break",
@@ -85,7 +85,7 @@
         "googleLong": "5.318007",
         "description": "If you're in Bergen on business or for a holiday, this cosy and classy apartment is the perfect place to stay.",
         "selfCatering": "true",
-        "id": "8"
+        "establishmentID": "8"
     },
     {
         "establishmentName": "Fjell Hotel",
@@ -96,7 +96,7 @@
         "googleLong": "5.118213",
         "description": "For a restful and relaxing trip, come visit our luxurious boutique hotel, with views of the sea from all our rooms",
         "selfCatering": "false",
-        "id": "9"
+        "establishmentID": "9"
     },
     {
         "establishmentName": "Glede Mountain Lodge",
@@ -107,7 +107,7 @@
         "googleLong": "5.376560",
         "description": "A luxury hotel nestled in the mountains. Our award winning chef will cater for your every desire.",
         "selfCatering": "false",
-        "id": "10"
+        "establishmentID": "10"
     },
     {
         "establishmentName": "Home from Home",
@@ -118,7 +118,7 @@
         "googleLong": "5.304774",
         "description": "A large and tastefully decorated home away from home. Perfect for bigger families or groups of friends.",
         "selfCatering": "true",
-        "id": "11"
+        "establishmentID": "11"
     },
     {
         "establishmentName": "Lodge Hotel",
@@ -129,7 +129,7 @@
         "googleLong": "5.468150",
         "description": "A family-friendly lodge with beautiful, well-appointed rooms. Located in a stunning valley close to winter sports facilities.",
         "selfCatering": "false",
-        "id": "12"
+        "establishmentID": "12"
     },
     {
         "establishmentName": "The Shed",
@@ -140,7 +140,7 @@
         "googleLong": "5.406012",
         "description": "A rustic and cosy rural cottage, perfect for romantic weekends away and quiet retreats into nature.",
         "selfCatering": "true",
-        "id": "13"
+        "establishmentID": "13"
     },
     {
         "establishmentName": "Innsjø Hus",
@@ -151,7 +151,7 @@
         "googleLong": "6.228147",
         "description": "Located on the banks of a beautiful and idyllic lake, this large and luxurious home is perfect for a rural getaway.",
         "selfCatering": "true",
-        "id": "14"
+        "establishmentID": "14"
     },
     {
         "establishmentName": "Peace and Quiet",
@@ -162,7 +162,7 @@
         "googleLong": "6.200421",
         "description": "A large and welcoming lake house retreat in the heart of a beautiful valley.",
         "selfCatering": "true",
-        "id": "15"
+        "establishmentID": "15"
     },
     {
         "establishmentName": "Adam's Place",
@@ -173,7 +173,7 @@
         "googleLong": "5.364432",
         "description": "Rest, relax and explore Bergen from this beautiful home in a quiet neighbourhood.",
         "selfCatering": "true",
-        "id": "16"
+        "establishmentID": "16"
     },
     {
         "establishmentName": "Buena Vista",
@@ -184,6 +184,6 @@
         "googleLong": "5.194310",
         "description": "With wonderful views of the surrounding area, and a host who is passionate about the area, Buena Vista is a must for those looking for an authentic experience at a reasonable price.",
         "selfCatering": "false",
-        "id": "17"
+        "establishmentID": "17"
     }
 ]

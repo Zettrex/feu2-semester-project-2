@@ -1,5 +1,6 @@
 [
   {
+    "caseID": "nmthy6",
     "clientName": "Susan Lispinsky",
     "clientRegistered": true,
     "clientID": "3fds-eAsf-23Ss",
@@ -8,6 +9,7 @@
     "message": "I'd like to add my establishment to the website please."
   },
   {
+    "caseID": "gwj14q",
     "clientName": "Marie Debussey",
     "clientRegistered": false,
     "clientID": null,
@@ -16,6 +18,7 @@
     "message": "Hello. I'd like to cancel a booking. Can you assist me?"
   },
   {
+    "caseID": "9muip9",
     "clientName": "Vegard Andersen",
     "clientRegistered": true,
     "clientID": "DvX4-j99A-aewq",
