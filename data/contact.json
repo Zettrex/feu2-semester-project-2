@@ -25,5 +25,11 @@
     "email": "vegard@gmail.com",
     "subject": "complaint",
     "message": "Hello. I didn't enjoy the last place I stayed at and would like to make a complaint."
+  },
+  {
+    "clientName": "Ricardo Milos",
+    "email": "ricardo-milos@smexy.lol",
+    "subject": "establishment",
+    "message": "I would like to edit my order 34iue-3432\nmove it to 30\/05-2020 - 03\/06-2019"
   }
 ]

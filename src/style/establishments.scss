@@ -49,8 +49,7 @@
 }
 .est {
   &__item {
-    background-color: $white;
-    color: $black;
+    color: $white;
     min-height: 200px;
     box-shadow: 0 3px 6px black;
     position: relative;
@@ -72,7 +71,6 @@
   //Start of Establishment Action
   &__action {
     padding: 40px 15px;
-    background-color: $thirdColor;
     color: white;
     text-align: center;
   }
@@ -82,6 +80,10 @@
   }
   &__readMore {
     padding: 10px;
+  }
+  &__book {
+    max-width: 100px;
+    margin: 0 auto;
   }
   //End of Establishment Action
 }

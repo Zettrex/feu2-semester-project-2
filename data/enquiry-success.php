@@ -5,8 +5,9 @@ class Enquiry
 {
     public $orderID;
     public $orderDate;
-    public $establishment;
+    public $establishmentName;
     public $establishmentEmail;
+    public $establishmentImg;
     public $clientName;
     public $clientRegistered;
     public $clientID;
@@ -23,7 +24,8 @@ class Enquiry
 $newEnquiry = new Enquiry();
 $newEnquiry->orderID = $_POST["orderID"];
 $newEnquiry->orderDate = $_POST["orderDate"];
-$newEnquiry->establishment = $_POST["establishment"];
+$newEnquiry->establishmentName = $_POST["establishmentName"];
+$newEnquiry->establishmentImg = $_POST["establishmentImg"];
 $newEnquiry->establishmentEmail = $_POST["establishmentEmail"];
 $newEnquiry->clientName = $_POST["clientName"];
 $newEnquiry->clientRegistered = $_POST["clientRegistered"];

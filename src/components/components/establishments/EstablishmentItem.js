@@ -14,7 +14,7 @@ export default function ({item, filters}) {
         localStorage.setItem("order", JSON.stringify(chart));
     }
     return (
-        <div className="est__item row">
+        <div className="est__item containerBox row">
             <div className="est__showcase col-3 col-m-4">
                 <div className="est__image" style={{
                     backgroundImage:`url(${item.imageUrl})`

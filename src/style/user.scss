@@ -2,9 +2,6 @@
   &__inbox {
     margin-bottom: 50px;
   }
-  &__section {
-
-  }
   &__list {
     min-height: 400px;
     height: 70vh;
@@ -13,21 +10,41 @@
 }
 
 .admin-item {
-  background-color: $thirdColor;
   margin: 5px 0;
-  padding: 5px;
   border-radius: 7px;
+  position: relative;
+  background-color: $thirdColor;
+  flex-wrap: nowrap;
   &__section {
     display: flex;
     flex-direction: row;
     align-items: center;
   }
   &__left {
+    z-index: 3;
     @extend .admin-item__section;
+    padding: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   &__right {
+    z-index: 3;
     @extend .admin-item__section;
     margin-left: auto;
+    padding: 5px;
+    justify-content: right;
+    &--odd {
+      @extend .admin-item__right;
+      background: linear-gradient(110deg, $thirdColor 10px, $fourthColor 10px);
+    }
+    &--even {
+      @extend .admin-item__right;
+      background: linear-gradient(70deg, $thirdColor 10px, $fourthColor 10px);
+    }
+  }
+  &__name {
+
   }
   //Start of information
   &__item {
@@ -49,6 +66,7 @@
   }
   &__btn {
     @extend .admin-item__item;
+    display: block;
   }
   //End of Information
 }
@@ -61,13 +79,11 @@
       padding-left: 10px;
     }
     &Action {
-      position: absolute;
-      right: 20px;
-      top: 0;
+      width: 100%;
     }
     &AddLabel {
       display: block;
-      margin: auto 6px auto 0;
+      margin: auto 6px auto auto;
     }
     &Add {
       font-size: 16px;
@@ -110,12 +126,20 @@
   }
 }
 //Start of enquiries
-.view-enquiry {
 
+.view-enquiry {
+  &__client {
+    border-right: 1px solid darkgray;
+  }
 }
 //End of enquiries
 
 //start of messages
+.message {
+  &__right {
+    width: 276px;
+  }
+}
 .view-message {
   min-height: 400px;
   &__information {
@@ -159,6 +183,12 @@
     padding-bottom: 60px;
   }
 }
+
+.est-item {
+  &__background {
+    background: linear-gradient(80deg, $thirdColor 100px, $fourthColor 100px);
+  }
+}
 //end of establishment
 //End of view-window
 
@@ -176,6 +206,19 @@
     .admin {
       &__enquiries, &__messages {
         flex-basis: 100% !important;
+      }
+    }
+  }
+  //for tablet and up
+  @media (min-width: $mobile) {
+    .admin {
+      &__establishments {
+        &Action {
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: unset;
+        }
       }
     }
   }

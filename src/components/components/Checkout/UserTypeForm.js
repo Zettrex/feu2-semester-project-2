@@ -3,7 +3,6 @@ import RadioButton from "../inputs/selectors/RadioButton";
 import {Link} from "react-router-dom";
 import RegisterUserForm from "./RegisterUserForm";
 import LoginUserForm from "./LoginUserForm";
-import {v4 as uuidv4} from "uuid";
 
 export default function ({user, loginF}) {
     const  [userType, setUserType] = useState("user");

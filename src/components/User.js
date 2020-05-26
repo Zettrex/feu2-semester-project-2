@@ -92,7 +92,7 @@ export default function ({enquiries, messages, establishments}) {
                 <div className="admin__messages admin__section col-6 col-m-12">
                     <h2 className="h2 admin__messagesHeading">Messages</h2>
                     <div className="admin__list">
-                        {messages && messages.map(message => <MessageItem key={message.caseID} message={message} openF={handleWindow}/>)}
+                        {messages && messages.map((message, i) => <MessageItem key={message.caseID} odd={!((i+1) % 2 === 0)} message={message} openF={handleWindow}/>)}
                     </div>
                 </div>
             </main>

@@ -54,7 +54,7 @@ export default function ({establishments}) {
         <div className="page">
             {console.log(errors)}
             <div className="home-hero">
-                <form className="orderBox form" onChange={() => {
+                <form className="orderBox containerBox form" onChange={() => {
                     const values = getValues();
                     _filterEstablishments(data, _updateData, values)
                 }} onSubmit={handleSubmit(_checkout)}>
