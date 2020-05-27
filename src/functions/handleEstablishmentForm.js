@@ -17,11 +17,9 @@ export function _filterEstablishments(data, updateData, values) {
     }
 }
 export function _goToCheckout(data, values) {
-    console.log("we get here?!");
     const chart = {
         ...values,
         establishment: data.sEstablishment
     };
     localStorage.setItem("chart", JSON.stringify(chart));
-    console.log(chart)
 }

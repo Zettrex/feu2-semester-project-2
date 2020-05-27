@@ -1,12 +1,12 @@
 import React from "react";
 
-export default function ({data, closeF}) {
+export default function ({data}) {
     console.log(data);
     return (
         <div className="view-enquiry view-window__content">
             <h2 className="h1 prompt__heading">Enquiry</h2>
-                <div className="view-enquiry__content">
-                    <div className="view-enquiry__client">
+                <div className="view-enquiry__content row">
+                    <div className="view-enquiry__client section col-6 col-m-12">
                         <h2 className="h3">Client Information</h2>
                         <div className="view-enquiry__name group">
                             <span>Name: </span>
@@ -27,7 +27,8 @@ export default function ({data, closeF}) {
                             <span>{data.clientEmail}</span>
                         </div>
                     </div>
-                    <div className="view-enquiry__information">
+                    <div className="view-enquiry__information section col-6 col-m-12">
+                        <h2 className="h3">Order Information</h2>
                         <div className="view-enquiry__orderInfo section">
                             <div className="view-enquiry__orderID group">
                                 <span>Order: </span>

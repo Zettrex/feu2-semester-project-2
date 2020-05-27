@@ -1,7 +1,7 @@
 //headings sizes
 @for $i from 1 through 6 {
   .h#{$i} {
-    font-size: 12px + 6px * (6 - $i);
+    font-size: 12px + 6px * (5 - $i);
     margin: 0.4em 0;
     &--black {
       @extend .h#{$i};
@@ -30,11 +30,6 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  ::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
 }
 
 @mixin makeGrid ($cols-in-grid: 12, $prefix: "col-") {
@@ -49,6 +44,17 @@
   @include makeGrid($prefix:"col-");
   .col-auto {
     flex-grow: 1;
+  }
+  .column--split {
+    margin: 0 auto;
+    &:first-child {
+      margin-right: auto;
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-left: auto;
+      margin-right: 0;
+    }
   }
 
   /*for mobile*/

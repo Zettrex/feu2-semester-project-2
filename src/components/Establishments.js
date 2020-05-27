@@ -70,19 +70,22 @@ export default function ({establishments}) {
                     </div>
                     <div className="filterArea__action filterArea__section col-d-2">
                         <div className="filterArea__matches">
-                            Found {data.fEstablishments.length}<br/>Matches
+                            <div>Found {data.fEstablishments.length}</div>
+                            <div>Matches</div>
                         </div>
                     </div>
                 </form>
             </div>
             <div className="est__wrapper row">
-                <aside className="col-12 col-d-5">
-                    <Map/>
+                <aside className="est__mapWrapper col-12 col-d-5">
+                    <div className="est__mapContainer">
+                        <Map/>
+                    </div>
                 </aside>
                 <main className="est-list col-12 col-d-7">
-                    {data.fEstablishments.length > 0 ? data.fEstablishments.map((est) => {
+                    {data.fEstablishments.length > 0 ? data.fEstablishments.map((est, i) => {
                         const values = getValues();
-                        return <EstablishmentItem filters={values} key={est.id} item={est}/>
+                        return <EstablishmentItem filters={values} key={est.id} odd={!((i+1) % 2 === 0)} item={est}/>
                     }): null}
                 </main>
             </div>

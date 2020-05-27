@@ -4,6 +4,7 @@ header('Content-Type: application/json');
 //Creates a class called Message
 class Message
 {
+    public $caseID;
     public $clientName;
     public $email;
     public $subject;
@@ -12,6 +13,7 @@ class Message
 
 //Creates new message and sets properties
 $newMessage = new Message();
+$newMessage->caseID = $_POST["caseID"];
 $newMessage->clientName = $_POST["clientName"];
 $newMessage->email = $_POST["email"];
 $newMessage->subject = $_POST["subject"];

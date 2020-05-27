@@ -5,14 +5,14 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
-import Home from "./components/Home";
-import Establishments from "./components/Establishments";
-import Contact from "./components/Contact";
-import User from "./components/User";
-import Checkout from "./components/Checkout";
-import Navigation from "./components/Navigation";
-import Footer from "./components/Footer";
-import Styleguide from "./components/Styleguide";
+import Home from "./src/components/Home"
+import Establishments from "./src/components/Establishments";
+import Contact from "./src/components/Contact";
+import User from "./src/components/User";
+import Checkout from "./src/components/Checkout";
+import Navigation from "./src/components/Navigation";
+import Footer from "./src/components/Footer";
+import Styleguide from "./src/components/Styleguide";
 
 function App() {
     const [establishments, setEstablishments] = useState();

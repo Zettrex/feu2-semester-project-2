@@ -3,6 +3,7 @@ import {useForm} from "react-hook-form";
 import * as yup from "yup"
 import DateFromTo from "../filters/DateFromTo";
 import People from "../filters/People";
+import StarRating from "../StarRating";
 
 export default function ({data, updateConfirmed}) {
     console.log(data);
@@ -16,11 +17,11 @@ export default function ({data, updateConfirmed}) {
                 .string(),
             adults: yup
                 .string()
-                .required("Select number of adults")
+                .required("Select adults")
                 .matches(/\d+/, "this is not a valid number"),
             children: yup
                 .string()
-                .required("Select number of children")
+                .required("Select children")
                 .matches(/\d+/, "this is not a valid number"),
             date1: yup
                 .string()
@@ -50,12 +51,12 @@ export default function ({data, updateConfirmed}) {
         updateConfirmed(values)
     }
     return (
-        <form onSubmit={handleSubmit(_updateConfirmed)} className="orderConfirm">
+        <form onSubmit={handleSubmit(_updateConfirmed)} className="orderConfirm containerBox">
             <div className="form__section orderConfirm__est col-12 row">
                 <div className="orderConfirm__estImg bgImage" style={{backgroundImage: `url(${data.imageUrl})`}}/>
                 <div className="orderConfirm__estInfo col-auto col-m-12">
                     <div className="orderConfirm__estName">{data.establishmentName}</div>
-                    <div className="orderConfirm__estRating">XXXXX</div>
+                    <div className="orderConfirm__estRating"><StarRating rating={data.rating}/></div>
                     <div className="orderConfirm__estDesc">{data.description}</div>
                 </div>
             </div>

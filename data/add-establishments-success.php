@@ -9,12 +9,13 @@ class Establishment
     public $establishmentEmail;
     public $imageUrl;
     public $price;
+    public $rating;
     public $maxGuests;
     public $googleLat;
     public $googleLong;
     public $description;
     public $selfCatering;
-    public $id;
+    public $establishmentID;
 }
 
 //Creates new establishment and sets properties
@@ -22,13 +23,14 @@ $newEstablishment = new Establishment();
 $newEstablishment->establishmentName = $_POST["establishmentName"];
 $newEstablishment->establishmentEmail = $_POST["establishmentEmail"];
 $newEstablishment->imageUrl = $_POST["imageUrl"];
+$newEstablishment->rating = $_POST["rating"];
 $newEstablishment->price = $_POST["price"];
 $newEstablishment->maxGuests = $_POST["maxGuests"];
 $newEstablishment->googleLat = $_POST["googleLat"];
 $newEstablishment->googleLong = $_POST["googleLong"];
 $newEstablishment->description = $_POST["description"];
 $newEstablishment->selfCatering = $_POST["selfCatering"];
-$newEstablishment->id = $_POST["id"];
+$newEstablishment->establishmentID = $_POST["establishmentID"];
 
 //Adds object to array
 $establishmentsList = file_get_contents('establishments.json');

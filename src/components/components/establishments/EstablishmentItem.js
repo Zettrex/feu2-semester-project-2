@@ -1,7 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import StarRating from "../StarRating";
 
-export default function ({item, filters}) {
+export default function ({odd,item, filters}) {
     function _checkout() {
         console.log(filters);
         const chart = {
@@ -14,25 +15,24 @@ export default function ({item, filters}) {
         localStorage.setItem("order", JSON.stringify(chart));
     }
     return (
-        <div className="est__item row">
+        <div className="est__item  row">
             <div className="est__showcase col-3 col-m-4">
                 <div className="est__image" style={{
                     backgroundImage:`url(${item.imageUrl})`
                 }}/>
             </div>
             <div className="est__info col-6 col-m-8">
-                <h3 className="est__name est__content">{item.establishmentName}</h3>
+                <div className="h3 est__name est__content">{item.establishmentName}</div>
                 <div className="est__rating est__content">
-                    <span className="est__ratingLabel">Rating</span>
                     <div className="est__ratingStars">
-                        X X X X X
+                        <StarRating rating={item.rating}/>
                     </div>
                 </div>
                 <div className="est__description est__content">
                     {item.description}
                 </div>
             </div>
-            <div className="est__action col-3 col-m-12">
+            <div className={`est__action${odd ? "--odd" : "--even"} col-3 col-m-12`}>
                 <div className="est__price">
                     {item.price}$
                 </div>

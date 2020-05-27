@@ -3,7 +3,7 @@ import RadioButton from "./components/inputs/selectors/RadioButton";
 import Checkbox from "./components/inputs/selectors/Checkbox";
 import Nouislider from "react-nouislider";
 
-export default function (props) {
+export default function () {
     const [checked, setChecked] = useState({
         radio: false,
         checkbox: false

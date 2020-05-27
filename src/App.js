@@ -18,7 +18,7 @@ function App() {
     const [establishments, setEstablishments] = useState();
     const [messages, setMessages] = useState();
     const [enquiries, setEnquiries] = useState();
-
+    const [userLoggedIn] = useState(false)
     useEffect(() => {
         fetch("http://localhost:8888/get-enquiries.php")
             .then(response => response.json())
@@ -30,12 +30,11 @@ function App() {
             .then(response => response.json())
             .then(setEstablishments)
     }, []);
-
     if (establishments && enquiries && messages) {
         console.log("app: ", enquiries);
         return (
             <Router className="App">
-                <Navigation/>
+                <Navigation userLoggedIn={userLoggedIn}/>
                 <Switch>
                     <Route path="/" exact component={() => <Home establishments={establishments}/>}/>
                     <Route path="/establishments" component={() => <Establishments establishments={establishments}/>}/>

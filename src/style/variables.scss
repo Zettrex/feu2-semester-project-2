@@ -1,18 +1,19 @@
 //grid
-$mobile: 575px;
-$tablet: 1120px;
+$mobile: 610px;
+$tablet: 1200px;
 $desktop: 2560px;
 
 //margins
 $spacingPrimary: 10px;
 
 //Colors
-$primaryColor: #FFB367;
-$secondaryColor: #051033;
-$thirdColor: #4B4B4B;
+$primaryColor: #ffb36a;
+$secondaryColor: #182442;
+$thirdColor: #43668e;
+$fourthColor: #2a4058;
 $black: #000000;
 $white: #FEFEFE;
-$footerColor: #141414;
+$footerColor: $fourthColor;
 
 //Border-radius
 $borderRadius: 6px;

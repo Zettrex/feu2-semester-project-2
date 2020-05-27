@@ -33,13 +33,13 @@
 
   //Start of Items
   &__item {
-    height: 30px;
+    height: 34px;
     margin: auto 0;
-    padding: 6px;
+    padding: 8px;
     border-radius: $borderRadius;
     display: block;
     width: 100%;
-    border: 2px solid $thirdColor;
+    border: 2px solid $fourthColor;
     font-size: 12px;
 
     &:focus {
@@ -79,13 +79,14 @@
   //Start of Textarea
   &__textarea {
     @extend .form__item;
+    min-height: 60px;
+    resize: vertical;
+    height: 150px;
 
     &--compact {
       @extend .form__item--compact;
       @extend .form__textarea;
       padding: 36px 10px 10px;
-      resize: vertical;
-      height: 150px;
     }
   }
 
@@ -202,6 +203,8 @@
   //Start of Checkbox
   &__checkbox {
     @extend .form__radio;
+    display: inline-flex;
+    width: max-content;
   }
 
   &__checkboxButton {
@@ -219,15 +222,18 @@
   //End of Checkbox
   //End of Selectors (checkbox & radiobutton)
 }
+
 //Start of Range
 .form {
   &__multiRange {
     position: relative;
   }
+
   &__rangeControls {
     position: relative;
     padding: 0 0 10px;
   }
+
   &__rangeInput {
     @extend .form__item;
     display: inline-block;
@@ -236,21 +242,25 @@
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
     appearance: none;
+
     &--min {
       @extend .form__rangeInput;
       order: 1;
     }
+
     &--max {
       @extend .form__rangeInput;
       order: 3;
     }
   }
+
   &__rangeLabel {
     margin: 0 auto;
     order: 2;
     text-align: center;
   }
 }
+
 //Start of Nouislider
 .noUi-target {
   position: relative;
@@ -258,29 +268,35 @@
   border-radius: $borderRadius;
   background-color: white;
 }
+
 .noUi-base {
 }
+
 .noUi-connect {
   height: 14px;
   background-color: $thirdColor;
   position: absolute;
   top: 0;
 }
+
 .noUi-origin {
   position: absolute;
   top: 0;
   z-index: 5;
 }
+
 .noUi-handle {
   border-radius: $borderRadius;
   width: 24px;
   height: 24px;
   background-color: $primaryColor;
   transform: translate(0, -25%);
+
   &-upper {
     transform: translate(-100%, -25%);
   }
 }
+
 //End of Nouislider
 //End of Range
 //Start of Action
@@ -289,22 +305,25 @@
     text-align: right;
   }
 }
+
 //End of Action
 
 @media only screen {
+
   //for Mobile
-  @media (max-width: 750px) {
+  @media (max-width: $mobile) {
     .form {
       &__label {
         &--right {
           left: 20px;
         }
       }
+
       &__date {
         &--left, &--right {
           padding: 10px;
-          flex-basis: 100% !important;
         }
+
         &Input--left, &Input--right {
           padding-left: 40px;
           border-radius: $borderRadius;

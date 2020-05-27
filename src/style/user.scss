@@ -2,9 +2,6 @@
   &__inbox {
     margin-bottom: 50px;
   }
-  &__section {
-
-  }
   &__list {
     min-height: 400px;
     height: 70vh;
@@ -13,21 +10,35 @@
 }
 
 .admin-item {
-  background-color: $thirdColor;
   margin: 5px 0;
-  padding: 5px;
   border-radius: 7px;
+  position: relative;
+  background-color: $thirdColor;
+  flex-wrap: nowrap;
   &__section {
     display: flex;
     flex-direction: row;
     align-items: center;
   }
   &__left {
+    z-index: 3;
     @extend .admin-item__section;
+    padding: 5px;
   }
   &__right {
+    z-index: 3;
     @extend .admin-item__section;
     margin-left: auto;
+    padding: 5px;
+    justify-content: right;
+    font-size: 12px;
+    border-radius: 0 6px 6px 0;
+    &--odd {
+      @extend .admin-item__right;
+    }
+    &--even {
+      @extend .admin-item__right;
+    }
   }
   //Start of information
   &__item {
@@ -41,32 +52,27 @@
   &__name {
     @extend .admin-item__item;
   }
+  &__infoWrapper {
+  }
   &__info {
     @extend .admin-item__item;
+    margin-left: auto;
   }
   &__date {
     @extend .admin-item__item;
+    margin-left: auto;
   }
   &__btn {
     @extend .admin-item__item;
+    display: block;
   }
   //End of Information
 }
 
-//Start of Establishments
-.admin {
-  &__establishments {
-    &Heading {
-      padding-left: 10px;
-    }
-  }
-}
-//End of Establishments
-
 //start of view-window
 .view-window {
   z-index: 5;
-  padding: 20px 20px 60px 20px;
+  padding: 60px 20px 20px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -74,10 +80,17 @@
   width: 60%;
   background-color: $thirdColor;
   color: white;
-  max-height: 70vh;
-  overflow: auto;
+
   &__topBar {
     text-align: right;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 100%;
+  }
+  &__content {
+    overflow: auto;
+    height: 64vh;
   }
   &__actions {
     position: absolute;
@@ -87,48 +100,102 @@
   }
 }
 //Start of enquiries
+
 .view-enquiry {
   &__client {
-    padding: 10px 0 30px;
-    border-bottom: 1px solid darkgray;
+    border-right: 1px solid darkgray;
   }
-  &__information {
-    padding: 30px 0;
-  }
+}
+
+.enquiry {
+
 }
 //End of enquiries
 
 //start of messages
+.message {
+}
 .view-message {
   min-height: 400px;
-  &__contact {
+  &__information {
     border-right: 1px solid darkgray;
   }
 }
 //end of messages
 
+//Start of Establishments
+.admin {
+  &__establishments {
+    position: relative;
+    &Heading {
+      padding-left: 10px;
+    }
+    &Action {
+      width: 100%;
+    }
+    &AddLabel {
+      display: block;
+      margin: auto 6px auto auto;
+    }
+    &Add {
+      font-size: 16px;
+      height: 32px;
+      width: 32px;
+      padding: 0;
+    }
+  }
+}
+//End of Establishments
+
 //start of establishment
 .view-est {
+  &__idLabel {
+    font-size: 12px;
+  }
+  &__idInput {
+    margin-left: 4px;
+    background: none;
+    border: none;
+    color: white;
+    width: 250px;
+  }
   &__showcase {
     max-width: 100px;
     margin-left: 10px;
+  }
+  &__price {
+    display: inline-block;
   }
   &__priceLabel {
     display: block;
   }
   &__priceInput {
-    display: inline-block;
-    width: 60px;
+    padding: 8px 8px 8px 36px;
+    min-width: 80px;
+    width: max-content;
+    display: inline-flex;
   }
   &__currency {
     margin: 0 6px;
   }
+  &__facilities {
+    padding-bottom: 60px;
+  }
+}
 
+.est-item {
 }
 //end of establishment
 //End of view-window
 
 @media only screen {
+  @media (max-width: 900px) {
+    .admin {
+      &__enquiries, &__messages {
+        flex-basis: 100% !important;
+      }
+    }
+  }
   @media (max-width: $mobile) {
     .admin {
       &__establishments {
@@ -137,11 +204,56 @@
         }
       }
     }
+
+    //Start of admin-item
+    .admin-item {
+      &__right {
+        width: unset;
+        background: none;
+      }
+    }
+    //End of admin-item
   }
-  @media (max-width: 920px) {
+  //for tablet and up
+  @media (min-width: $mobile) {
     .admin {
-      &__enquiries, &__messages {
-        flex-basis: 100% !important;
+      &__establishments {
+        &Action {
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: unset;
+        }
+      }
+    }
+    .admin-item {
+      &__right {
+        &--odd {
+          background: linear-gradient(110deg, $thirdColor 20px, $fourthColor 20px);
+        }
+        &--even {
+          background: linear-gradient(70deg, $thirdColor 20px, $fourthColor 20px);
+        }
+        & > *:first-child {
+          padding-left: 30px;
+        }
+      }
+    }
+    .message  {
+      &__right {
+        width: 200px;
+      }
+    }
+  }
+  @media (min-width: $tablet) {
+    .admin-item {
+      &__infoWrapper {
+        flex-direction: row;
+      }
+    }
+    .message {
+      &__right {
+        width: 300px;
       }
     }
   }

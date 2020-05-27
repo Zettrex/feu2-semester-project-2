@@ -7,7 +7,11 @@
   display: table;
 }
 body {
+  max-width: 2460px;
   height: 100%;
+  -webkit-font-smoothing: antialiased;
+  font-family: sans-serif;
+  font-size: 14px;
 }
 .root {
   position: relative;
@@ -23,11 +27,6 @@ body {
   &__topBar {
     z-index: 4;
   }
-}
-.bgImage {
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 .hero {
@@ -48,6 +47,56 @@ body {
 }
 
 //Start of elements
+
+//Start of Button
+.btn {
+  display: inline-block;
+  padding: 10px 12px;
+  border-radius: $borderRadius;
+  border: none;
+  &--primary {
+    @extend .btn;
+    background-color: $primaryColor;
+    color: black;
+  }
+  &--close {
+    @extend .btn--primary;
+    width: 26px;
+    height: 26px;
+    padding: 4px 8px;
+    border-radius: 2px;
+  }
+}
+//End of Button
+//Start of Link
+.link {
+  color: black;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+  &--white {
+    @extend .link;
+    color: white;
+  }
+}
+//end of Link
+//start of sections & groups
+.section {
+  margin: 20px 0;
+}
+.group {
+  margin: 4px 0;
+}
+//end of sections & groups
+
+//Start of image elements
+.bgImage {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+//End of image elements
 
 //Start of Navigation
 .nav {
@@ -101,7 +150,7 @@ body {
 
 //Start of Footer
 .footer {
-  background-color: #141414;
+  background-color: $footerColor;
   &__link {
     @extend .nav__link;
     margin: 10px 0;
@@ -121,24 +170,37 @@ body {
   color: white;
 
   &__section {
+    position: relative;
     padding: 0;
     margin: 10px 0;
   }
 
   &__container {
+    position: relative;
     padding: 0;
     margin: 0;
-    &:last-child.column--split {
-      margin-left: auto;
-    }
   }
 
   &__group {
     margin: auto 0;
     padding: 10px;
     position: relative;
-    &:last-child.column--split {
-      margin-left: auto;
+  }
+  &__error {
+    position: absolute;
+    top: 13px;
+    right: 16px;
+    z-index: 5;
+    background-color: white;
+    border-radius: 4px;
+    font-size: 8px;
+    color: red;
+    &--left {
+      @extend .form__error;
+      right: 6px;
+    }
+    &--right {
+      @extend .form__error;
     }
   }
 }
@@ -146,47 +208,16 @@ body {
 //End of Form
 
 //Start of General Items
-//Start of Button
-.btn {
-  display: inline-block;
-  padding: 10px 12px;
-  border-radius: $borderRadius;
-  border: none;
-  &--primary {
-    @extend .btn;
-    background-color: $primaryColor;
-    color: black;
+//Start of containerBox
+.containerBox {
+  &:nth-child(odd) {
+    background: linear-gradient(110deg, $thirdColor 65%, $fourthColor 35%);
   }
-  &--close {
-    @extend .btn--primary;
-    width: 26px;
-    height: 26px;
-    padding: 4px 8px;
-    border-radius: 2px;
+  &:nth-child(even) {
+    background: linear-gradient(70deg, $thirdColor 65%, $fourthColor 35%);
   }
 }
-//End of Button
-//Start of Link
-.link {
-  color: black;
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
-  &--white {
-    @extend .link;
-    color: white;
-  }
-}
-//end of Link
-//start of sections & groups
-.section {
-  margin: 20px 0;
-}
-.group {
-  margin: 4px 0;
-}
-//end of sections & groups
+//End of containerBox
 
 //start of search Results
 
@@ -243,6 +274,18 @@ body {
 
 
 @media only screen {
+  //for small screens
+  @media (max-width: 300px) {
+    .form {
+      &__container {
+        flex-basis: 100% !important;
+        &:last-child.column--split {
+          margin: 0;
+        }
+      }
+    }
+  }
+
   //for tablet
   @media (min-width: $mobile) {
     //Start of Nav

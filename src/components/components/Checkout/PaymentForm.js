@@ -58,7 +58,7 @@ export default function ({updatePayment}) {
     
     return (
         <form className="checkout__payment col-10" onSubmit={handleSubmit(_checkValid)}>
-            <h2>Payment Information</h2>
+            <h2 className="h2">Payment Information</h2>
             <div className="checkout__firstNameWrapper form__section">
                 <div className="checkout__firstName form__group col-6 col-m-12">
                     <label className="checkout__firstNameLabel form__label--compact" htmlFor="clientFirstName">First name</label>
@@ -100,7 +100,7 @@ export default function ({updatePayment}) {
             <div className="form__section row">
                 <div className="checkout__cardNrWrapper form__section col-auto">
                     <div className="checkout__cardNr form__group">
-                        <label className="checkout__cardNrLabel form__label--compact" htmlFor="cardNr">Card number</label>
+                        <label className="checkout__cardNrLabel form__label--compact" htmlFor="cardNr">Card Nr</label>
                         <input className="checkout__cardNrInput form__input--compact" type="text" name="cardNr" placeholder="#### #### #### ####" defaultValue="1234 4321 1234 4321" ref={register}/>
                     </div>
                     {errors.cardNr && <p className="form__error">{errors.cardNr.message}</p>}
@@ -113,7 +113,7 @@ export default function ({updatePayment}) {
                     {errors.ssv && <p className="form__error">{errors.ssv.message}</p>}
                 </div>
             </div>
-            <div className="form__section">
+            <div className="checkout__action form__section">
                 <button className="checkout__order btn--primary" type="submit">Check out</button>
             </div>
         </form>

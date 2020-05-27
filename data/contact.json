@@ -1,5 +1,6 @@
 [
   {
+    "caseID": "nmthy6",
     "clientName": "Susan Lispinsky",
     "clientRegistered": true,
     "clientID": "3fds-eAsf-23Ss",
@@ -8,6 +9,7 @@
     "message": "I'd like to add my establishment to the website please."
   },
   {
+    "caseID": "gwj14q",
     "clientName": "Marie Debussey",
     "clientRegistered": false,
     "clientID": null,
@@ -16,11 +18,18 @@
     "message": "Hello. I'd like to cancel a booking. Can you assist me?"
   },
   {
+    "caseID": "9muip9",
     "clientName": "Vegard Andersen",
     "clientRegistered": true,
     "clientID": "DvX4-j99A-aewq",
     "email": "vegard@gmail.com",
     "subject": "complaint",
     "message": "Hello. I didn't enjoy the last place I stayed at and would like to make a complaint."
+  },
+  {
+    "clientName": "Ricardo Milos",
+    "email": "ricardo-milos@smexy.lol",
+    "subject": "establishment",
+    "message": "I would like to edit my order 34iue-3432\nmove it to 30\/05-2020 - 03\/06-2019"
   }
 ]

@@ -1,6 +1,5 @@
 .orderConfirm {
   padding: 20px;
-  background-color: $thirdColor;
   max-width: 550px;
   position: absolute;
   transform: translate(-50%, -50%);
@@ -24,6 +23,13 @@
 }
 
 .checkout {
+  //Start of main
+  &__main {
+    & > *:first-child {
+      padding-top: 50px;
+    }
+  }
+  //Start of userType
   &__continue {
     color: white;
   }
@@ -35,13 +41,42 @@
     min-width: 250px;
     margin-left: auto;
   }
+  //End of userType
+  //Start of payment form
+  &__action {
+    text-align: right;
+    padding-right: 10px;
+  }
+  &__ssvWrapper {
+    margin-left: auto;
+  }
+  //End of payment form
+  //End of main
+
+  //Start of aside
+  &__aside {
+    background: linear-gradient(110deg, $thirdColor 50px, $fourthColor 50px);
+    padding: 30px;
+  }
+  //start of order Summary
   &__orderSummary {
-    background-color: $thirdColor;
     padding: 20px;
     max-width: 400px;
-    margin-left: auto;
+    margin: 0 auto;
     color: white;
   }
+  &__orderLabel {
+    width: 80px;
+    display: inline-block;
+  }
+  &__ratingLabel, &__fromLabel, &__toLabel, &__adultsLabel, &__childrenLabel, &__priceLabel {
+    @extend .checkout__orderLabel;
+  }
+  &__ratingStars {
+    display: inline-block;
+  }
+  //end of order Summary
+  //end of aside
 }
 
 @media only screen {
@@ -60,6 +95,16 @@
         order: 2;
       }
     }
-
+  }
+  @media (max-width: 700px) {
+    .checkout__aside {
+      order: 1;
+      background: $fourthColor;
+      flex-basis: 100% !important;
+    }
+    .checkout__main {
+      order: 2;
+      flex-basis: 100% !important;
+    }
   }
 }
