@@ -20,13 +20,13 @@ function App() {
     const [enquiries, setEnquiries] = useState();
     const [userLoggedIn] = useState(false)
     useEffect(() => {
-        fetch("https://zettrex.no/Noroff/semester4/data/get-enquiries.php")
+        fetch("../get-enquiries.php")
             .then(response => response.json())
             .then(setEnquiries);
-        fetch("https://zettrex.no/Noroff/semester4/data/get-contacts.php")
+        fetch("../get-contacts.php")
             .then(response => response.json())
             .then(setMessages);
-        fetch("https://zettrex.no/Noroff/semester4/data/get-establishments.php")
+        fetch("../semester4/data/get-establishments.php")
             .then(response => response.json())
             .then(setEstablishments)
     }, []);
