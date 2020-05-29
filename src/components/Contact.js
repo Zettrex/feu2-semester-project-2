@@ -28,7 +28,7 @@ export default function () {
             };
             setContact(contact);
             setValid(true);
-            return fetch("http://localhost:8888/contact-success.php", {
+            return fetch("https://zettrex.no/Noroff/semester4/data/contact-success.php", {
                 method: "POST",
                 headers: {"Content-Type": "application/x-www-form-urlencoded"},
                 body: `clientName=${encodeURIComponent(contact.clientName)}&clientRegistered=${encodeURIComponent(contact.clientRegistered)}&clientID=${contact.clientID}&clientEmail=${encodeURIComponent(contact.clientEmail)}&subject=${encodeURIComponent(contact.subject)}&message=${encodeURIComponent(contact.message)}`

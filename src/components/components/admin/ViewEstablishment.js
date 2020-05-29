@@ -23,7 +23,7 @@ export default function ({data, closeF, job}) {
     }
     function _sendEst() {
         if (job === "add") {
-            return fetch("http://localhost:8888/add-establishments-success.php", {
+            return fetch("https://zettrex.no/Noroff/semester4/data/add-establishments-success.php", {
                 method: "POST",
                 headers: {"Content-Type":"application/x-www-form-urlencoded"},
                 body: `establishmentName=${encodeURIComponent(est.establishmentName)}&establishmentEmail=${encodeURIComponent(est.establishmentEmail)}&establishmentAddress=${encodeURIComponent(est.establishmentAddress)}&imageUrl=${encodeURIComponent(est.imageUrl)}&rating=${encodeURIComponent(Math.round(Math.random() * 5)*2)/2}&price=${encodeURIComponent(est.price)}&googleLat=${encodeURIComponent(est.googleLat)}&googleLong=${encodeURIComponent(est.googleLong)}&description=${est.description}&selfCatering=${encodeURIComponent(est.selfCatering)}&establishmentID=${est.establishmentID}`
