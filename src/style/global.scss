@@ -31,8 +31,9 @@ body {
 
 .hero {
   margin: -30px -16px 30px;
-  height: 75vh;
+  min-height: 75vh;
   position: relative;
+  padding: 40px 0;
   @extend .bgImage;
 }
 .blurBackground {
@@ -168,6 +169,11 @@ body {
 //Start of Form
 .form {
   color: white;
+  &__group {
+    margin: auto 0;
+    padding: 10px;
+    position: relative;
+  }
 
   &__section {
     position: relative;
@@ -180,28 +186,26 @@ body {
     padding: 0;
     margin: 0;
   }
-
-  &__group {
-    margin: auto 0;
-    padding: 10px;
-    position: relative;
-  }
   &__error {
     position: absolute;
     top: 13px;
     right: 16px;
     z-index: 5;
-    background-color: white;
     border-radius: 4px;
     font-size: 8px;
     color: red;
     &--left {
       @extend .form__error;
-      right: 6px;
     }
     &--right {
       @extend .form__error;
     }
+  }
+  &__adults.form__select--compact {
+    padding-left: 40px;
+  }
+  &__children.form__select--compact {
+    padding-left: 50px;
   }
 }
 
@@ -361,5 +365,16 @@ body {
       }
     }
     //End of Footer
+  }
+  @media (min-width: $dateBreak) {
+    //Start of form
+    .form {
+      &__error {
+        &--left {
+          right: 6px;
+        }
+      }
+    }
+    //End of form
   }
 }

@@ -53,7 +53,7 @@ export default function ({establishments}) {
     return (
         <div className="page">
             {console.log(errors)}
-            <div className="home-hero">
+            <div className="home-hero hero row">
                 <form className="orderBox containerBox form" onChange={() => {
                     const values = getValues();
                     _filterEstablishments(data, _updateData, values)

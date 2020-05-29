@@ -6,7 +6,9 @@ class Message
 {
     public $caseID;
     public $clientName;
-    public $email;
+    public $clientRegistered;
+    public $clientID;
+    public $clientEmail;
     public $subject;
     public $message;
 }
@@ -15,7 +17,9 @@ class Message
 $newMessage = new Message();
 $newMessage->caseID = $_POST["caseID"];
 $newMessage->clientName = $_POST["clientName"];
-$newMessage->email = $_POST["email"];
+$newMessage->clientRegistered = $_POST["clientRegistered"];
+$newMessage->clientID = $_POST["clientID"];
+$newMessage->clientEmail = $_POST["clientEmail"];
 $newMessage->subject = $_POST["subject"];
 $newMessage->message = $_POST["message"];
 

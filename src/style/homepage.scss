@@ -7,14 +7,10 @@
 
 //Start of OrderBox
 .orderBox {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
+  margin: auto;
   max-width: 800px;
   width: 60%;
   min-width: 340px;
-  margin: auto;
   background-color: $thirdColor;
   box-shadow: 0 5px 10px black;
   //Start of Types

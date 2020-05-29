@@ -85,7 +85,7 @@ export default function ({establishments}) {
                 <main className="est-list col-12 col-d-7">
                     {data.fEstablishments.length > 0 ? data.fEstablishments.map((est, i) => {
                         const values = getValues();
-                        return <EstablishmentItem filters={values} key={est.id} odd={!((i+1) % 2 === 0)} item={est}/>
+                        return <EstablishmentItem filters={values} key={est.establishmentID} odd={!((i+1) % 2 === 0)} item={est}/>
                     }): null}
                 </main>
             </div>

@@ -111,7 +111,6 @@
   }
 
   &__date {
-    text-align: right;
     @extend .form__item;
 
     &--left {
@@ -130,7 +129,7 @@
 
     &Input--right {
       @extend .form__date;
-      padding-left: 24px;
+      padding-left: 26px;
       border-radius: 0 $borderRadius $borderRadius 0;
     }
   }
@@ -267,6 +266,7 @@
   height: 14px;
   border-radius: $borderRadius;
   background-color: white;
+  box-shadow: 0 0 2px 2px rgba(0,0,0,0.2);
 }
 
 .noUi-base {
@@ -274,7 +274,7 @@
 
 .noUi-connect {
   height: 14px;
-  background-color: $thirdColor;
+  background-color: $fifthColor;
   position: absolute;
   top: 0;
 }
@@ -311,7 +311,7 @@
 @media only screen {
 
   //for Mobile
-  @media (max-width: $mobile) {
+@media (max-width: $dateBreak) {
     .form {
       &__label {
         &--right {
@@ -320,6 +320,10 @@
       }
 
       &__date {
+        &From, &To {
+          flex-basis: 100% !important;
+        }
+
         &--left, &--right {
           padding: 10px;
         }
@@ -328,6 +332,9 @@
           padding-left: 40px;
           border-radius: $borderRadius;
         }
+      }
+      &__dateGroup {
+        padding: 0;
       }
     }
   }

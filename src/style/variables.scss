@@ -3,6 +3,9 @@ $mobile: 610px;
 $tablet: 1200px;
 $desktop: 2560px;
 
+//breakpoints
+$dateBreak: 900px;
+
 //margins
 $spacingPrimary: 10px;
 
@@ -11,8 +14,9 @@ $primaryColor: #ffb36a;
 $secondaryColor: #182442;
 $thirdColor: #43668e;
 $fourthColor: #2a4058;
+$fifthColor: #54779f;
 $black: #000000;
-$white: #FEFEFE;
+$white: #fefefe;
 $footerColor: $fourthColor;
 
 //Border-radius

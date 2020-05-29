@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 import * as yup from "yup";
 
@@ -6,6 +6,12 @@ export default function () {
     const [contact, setContact] = useState({});
     const [valid, setValid] = useState(false);
     const [duplicateMessage, setDuplicateMessage] = useState(false);
+    const [user, setUser] = useState();
+    useEffect(() => {
+        if (localStorage.getItem("user")){
+            setUser(JSON.parse(localStorage.getItem("user")));
+        }
+    }, [])
 
     function _sendForm(data) {
         console.log(data);
@@ -14,7 +20,9 @@ export default function () {
             const contact = {
                 caseID: `${Math.random().toString(36).substr(2, 6)}`,
                 clientName: `${data.firstName} ${data.lastName}`,
-                email: data.email,
+                clientRegistered: user.clientRegistered,
+                clientID: user.clientID,
+                clientEmail: data.email,
                 subject: data.subject,
                 message: data.message
             };
@@ -23,7 +31,7 @@ export default function () {
             return fetch("http://localhost:8888/contact-success.php", {
                 method: "POST",
                 headers: {"Content-Type": "application/x-www-form-urlencoded"},
-                body: `clientName=${encodeURIComponent(`${data.firstName} ${data.lastName}`)}&clientEmail=${encodeURIComponent(data.email)}&subject=${encodeURIComponent(data.subject)}&message=${encodeURIComponent(data.message)}`
+                body: `clientName=${encodeURIComponent(contact.clientName)}&clientRegistered=${encodeURIComponent(contact.clientRegistered)}&clientID=${contact.clientID}&clientEmail=${encodeURIComponent(contact.clientEmail)}&subject=${encodeURIComponent(contact.subject)}&message=${encodeURIComponent(contact.message)}`
             })
         } else {
             setDuplicateMessage(true);

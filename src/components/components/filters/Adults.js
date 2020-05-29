@@ -5,7 +5,7 @@ export default function ({className, groupCol, value, Ref, errors}) {
     return (
         <div className={`${className}__adultsWrapper form__container ${groupCol}`}>
             <div className={`${className}__adults form__group`}>
-                <Select className={`${className}__adultsInput`} label="Adults" name="adults" selected={value} Ref={Ref}>
+                <Select className={`${className}__adultsInput form__adults`} label="Adults" name="adults" selected={value} Ref={Ref}>
                     <option className="form__option" value="0">0</option>
                     <option className="form__option" value="1">1</option>
                     <option className="form__option" value="2">2</option>
