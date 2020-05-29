@@ -1,5 +1,4 @@
-<?php
-header('Access-Control-Allow-Origin: *'); 
+header('Access-Control-Allow-Origin: *');
 // header('Content-Type: application/json');
 
 $establishmentsList = file_get_contents('establishments.json');
@@ -20,5 +19,3 @@ foreach($json as $item)
         echo json_encode($item);
     }
 }
-
-?>

@@ -1,4 +1,3 @@
-<?php
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 //Creates a class called Message
@@ -31,4 +30,3 @@ array_push($jsonInput, $newMessage);
 //Writes array to JSON file
 $jsonData = json_encode($jsonInput);
 file_put_contents('contact.json', $jsonData);
-?>

@@ -1,4 +1,3 @@
-<?php
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 //Creates a class called Contact
@@ -40,4 +39,3 @@ array_push($jsonInput, $newEstablishment);
 //Writes array to JSON file
 $jsonData = json_encode($jsonInput);
 file_put_contents('establishments.json', $jsonData);
-?>

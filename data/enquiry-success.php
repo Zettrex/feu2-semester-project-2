@@ -1,5 +1,4 @@
-<?php
-header('Access-Control-Allow-Origin: *'); 
+header('Access-Control-Allow-Origin: *');
 //Creates a class called Enquiry
 class Enquiry
 {
@@ -46,4 +45,3 @@ array_push($jsonInput, $newEnquiry);
 //Writes array to JSON file
 $jsonData = json_encode($jsonInput);
 file_put_contents('enquiries.json', $jsonData);
-?>
