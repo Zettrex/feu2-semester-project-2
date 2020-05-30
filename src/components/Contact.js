@@ -17,10 +17,14 @@ export default function () {
         console.log(data);
         console.log(JSON.stringify(contact) === JSON.stringify(data));
         if (JSON.stringify(contact) !== JSON.stringify(data)) { //work around due to shallow compare
+            let registered = false;
+            if (user.id) {
+                registered = true
+            }
             const contact = {
                 caseID: `${Math.random().toString(36).substr(2, 6)}`,
                 clientName: `${data.firstName} ${data.lastName}`,
-                clientRegistered: user.clientRegistered,
+                clientRegistered: registered,
                 clientID: user.clientID,
                 clientEmail: data.email,
                 subject: data.subject,

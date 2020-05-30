@@ -1,15 +1,15 @@
 import React, {useState} from "react";
 import RadioButton from "../inputs/selectors/RadioButton";
 import {Link} from "react-router-dom";
-import RegisterUserForm from "./RegisterUserForm";
-import LoginUserForm from "./LoginUserForm";
+import RegisterUserForm from "../RegisterUserForm";
+import LoginUserForm from "../LoginUserForm";
 
 export default function ({user, loginF}) {
     const  [userType, setUserType] = useState("user");
     return (
-        <div className="checkout__continue col-12 row">
-            {user && user.username === "guest" && (
-                <div className="checkout__selectUser col-6">
+        <div className="checkout__continue col-10 col-m-12 row">
+            {!user && (
+                <div className="checkout__selectUser col-6 col-m-12">
                     <div className="checkout__selectOption form__group">
                         <label className="checkout__user form__radio"
                                onClick={() => setUserType("user")}
@@ -45,7 +45,7 @@ export default function ({user, loginF}) {
                     </div>
                 </div>
             )}
-            <div className="checkout__selectAction col-6">
+            <div className="checkout__selectAction col-6 col-m-12">
                 {userType === "user" && (
                     <LoginUserForm user={user} loginF={loginF}/>
                 )}

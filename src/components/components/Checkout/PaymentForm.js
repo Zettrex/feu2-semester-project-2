@@ -39,11 +39,11 @@ export default function ({updatePayment}) {
                 .required(),
             cardNr: yup
                 .string()
+                .required("please enter your card number")
                 .matches(/(((\d{4}\s){3}\d{4})|(\d{16}))/, {
                     message: "not a valid card number",
                     excludeEmptyString: true
-                })
-                .required("please enter your card number"),
+                }),
             ssv: yup
                 .string()
                 .matches(/\d{3}/, {

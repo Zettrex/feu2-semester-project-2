@@ -1,33 +1,21 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import PaymentForm from "./components/Checkout/PaymentForm";
 import UserTypeForm from "./components/Checkout/UserTypeForm";
 import OrderConfirmation from "./components/Checkout/OrderConfirmation";
-import {v4 as uuidv4} from "uuid";
 import StarRating from "./components/StarRating";
 
-export default function () {
+export default function ({user, updateUser}) {
     const [enquiry, setEnquiry] = useState({
         order: JSON.parse(localStorage.getItem("order")),
         payment: null
     })
-    const [user, setUser] = useState();
     const [confirmed, setConfirmed] = useState(false);
     const [valid, setValid] = useState({
         order: false,
         payment: false
     })
-    useEffect(() => {
-        setUser(JSON.parse(localStorage.getItem("user")))
-    }, [])
     function _loginUser(loginInfo) {
-        const userInfo = {
-            username: loginInfo.username,
-            clientRegistered: true,
-            clientID: uuidv4(),
-            clientEmail: loginInfo.email
-        }
-        localStorage.setItem("user", JSON.stringify(userInfo));
-        setUser(userInfo);
+        updateUser(loginInfo);
     }
 
     function _handleConfirmed(values) {
@@ -67,7 +55,7 @@ export default function () {
             return fetch("https://www.zettrex.no/Noroff/semester4/data/enquiry-success.php", {
                 method: "POST",
                 headers: {"Content-Type":"application/x-www-form-urlencoded"},
-                body: `orderID=${encodeURIComponent(Math.random().toString(36).substr(2, 9))}&orderDate=${encodeURIComponent(JSON.stringify(new Date()))}&establishmentName=${encodeURIComponent(enquiry.order.establishmentName)}&establishmentImg=${encodeURIComponent(enquiry.order.imageUrl)}&establishmentEmail=${enquiry.order.establishmentEmail}&clientName=${encodeURIComponent(enquiry.payment.clientFirstName + " " + enquiry.payment.clientLastName)}${enquiry.user.clientRegistered ? (`&clientRegistered=${true}&clientID=${encodeURIComponent(enquiry.user.clientID)}`) : `&clientRegistered=${false}&clientID=${null}`}&clientEmail=${encodeURIComponent(enquiry.payment.clientEmail)}&checkin=${encodeURIComponent(enquiry.order.date1)}&checkout=${encodeURIComponent(enquiry.order.date2)}&adults=${encodeURIComponent(enquiry.order.adults)}&children=${encodeURIComponent(enquiry.order.children)}&payMethod=${encodeURIComponent(enquiry.payment.paymentMethod)}&price=${encodeURIComponent(enquiry.order.price)}`
+                body: `orderID=${encodeURIComponent(Math.random().toString(36).substr(2, 9))}&orderDate=${encodeURIComponent(JSON.stringify(new Date()))}&establishmentName=${encodeURIComponent(enquiry.order.establishmentName)}&establishmentImg=${encodeURIComponent(enquiry.order.imageUrl)}&establishmentEmail=${enquiry.order.establishmentEmail}&clientName=${encodeURIComponent(enquiry.payment.clientFirstName + " " + enquiry.payment.clientLastName)}${enquiry.user.id ? (`&clientRegistered=${true}&clientID=${encodeURIComponent(enquiry.user.id)}`) : `&clientRegistered=${false}&clientID=""`}&clientEmail=${encodeURIComponent(enquiry.payment.clientEmail)}&checkin=${encodeURIComponent(enquiry.order.date1)}&checkout=${encodeURIComponent(enquiry.order.date2)}&adults=${encodeURIComponent(enquiry.order.adults)}&children=${encodeURIComponent(enquiry.order.children)}&payMethod=${encodeURIComponent(enquiry.payment.paymentMethod)}&price=${encodeURIComponent(enquiry.order.price)}`
             })
         }
     }

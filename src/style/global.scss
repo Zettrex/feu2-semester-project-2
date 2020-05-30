@@ -60,6 +60,10 @@ body {
     background-color: $primaryColor;
     color: black;
   }
+  &--secondary {
+    @extend .btn;
+    color: black;
+  }
   &--close {
     @extend .btn--primary;
     width: 26px;
@@ -91,6 +95,12 @@ body {
 }
 //end of sections & groups
 
+//Start of Login form
+.login {
+
+}
+//End of Login form
+
 //Start of image elements
 .bgImage {
   background-position: center;
@@ -114,7 +124,6 @@ body {
   &__right{
     margin-left: auto;
     padding: 10px;
-    text-align: right;
   }
   &__menuToggle {
     @extend .nav__link;
@@ -131,7 +140,7 @@ body {
       text-align: center;
       display: block;
       background-color: $primaryColor;
-      box-shadow: 0 6px 2px black;
+      box-shadow: 0 3px 2px black;
     }
   }
   &__link {
@@ -142,8 +151,21 @@ body {
     &--mobile {
       @extend .nav__link;
       margin: 10px 0;
+      width: 100%;
     }
   }
+
+  //Start of login box
+  &__loginBox {
+    z-index: 4;
+    background-color: $footerColor;
+    box-shadow: 0 3px 5px black;
+    max-height: 50vh;
+    overflow: auto;
+    width: 100%;
+    margin: 0;
+  }
+  //End of login box
 }
 
 //End of Navigation
@@ -277,6 +299,7 @@ body {
 //End of elements
 
 
+//Start of media queries
 @media only screen {
   //for small screens
   @media (max-width: 300px) {
@@ -310,6 +333,16 @@ body {
       &__menuToggle {
         display: none;
       }
+      //Start of login box
+      &__loginBox {
+        position: absolute;
+        top: 56px;
+        right: 40px;
+        width: unset;
+        max-width: 260px;
+        max-height: none;
+      }
+      //End of login box
     }
     //End of Nav
     //Start of Page
@@ -337,6 +370,9 @@ body {
     .nav {
       padding: 0 85px;
       &__link {
+      }
+      &__loginBox {
+        right: 100px;
       }
     }
     //End of Nav
