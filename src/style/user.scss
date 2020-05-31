@@ -1,11 +1,20 @@
 .admin {
-  &__inbox {
-    margin-bottom: 50px;
+  &__showMore {
+    cursor: pointer;
+    color: white;
+    border-radius: $borderRadius;
   }
   &__list {
     min-height: 400px;
     height: 70vh;
     overflow: auto;
+  }
+  &__content--hidden {
+    display: none;
+  }
+  &__establishmentContent {
+    position: relative;
+    padding-top: 50px;
   }
 }
 
@@ -189,10 +198,25 @@
 //End of view-window
 
 @media only screen {
-  @media (max-width: 900px) {
+  @media (max-width: 899px) {
     .admin {
       &__enquiries, &__messages {
         flex-basis: 100% !important;
+      }
+    }
+  }
+  @media (min-width: 900px) {
+    .admin {
+      &__showMore {
+        text-align: left;
+        cursor: unset;
+        pointer-events: none;
+        &--indicator {
+          display: none;
+        }
+      }
+      &__inbox {
+        margin-bottom: 50px;
       }
     }
   }

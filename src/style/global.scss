@@ -144,7 +144,7 @@ body {
   z-index: 10;
   background: linear-gradient(to bottom, #FFC67F, $primaryColor, $primaryColor);
   box-shadow: 0 2px 6px black;
-  &--mobile {
+  &--hamburger {
     @extend .nav;
     box-shadow: none;
   }
@@ -159,7 +159,7 @@ body {
   }
   &__links {
     display: none;
-    &--mobile {
+    &--hamburger {
       position: absolute;
       top: 56px;
       left: 0;
@@ -175,7 +175,7 @@ body {
     display: block;
     padding: 10px 15px;
     color: black;
-    &--mobile {
+    &--hamburger {
       @extend .nav__link;
       margin: 10px 0;
       width: 100%;

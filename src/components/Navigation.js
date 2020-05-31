@@ -24,7 +24,7 @@ export default function ({userLoggedIn, updateUser}) {
 
     if (showMenu) {
         return (
-            <nav className="nav--mobile row">
+            <nav className="nav--hamburger row">
                 <div className="nav__left">
                     {/*Logo place*/}
                 </div>
@@ -32,23 +32,19 @@ export default function ({userLoggedIn, updateUser}) {
                     <button className="nav__menuToggle" onClick={() => setShowMenu(false)}>
                         <i className="fas fa-bars"/>
                     </button>
-                    <div className="nav__links--mobile">
-                        <NavLink activeClassName="nav__link--active" className="nav__home nav__link--mobile" to="/" exact onClick={() => setShowMenu(false)}>HOME</NavLink>
-                        <NavLink activeClassName="nav__link--active" className="nav__establishments nav__link--mobile" to="/establishments" onClick={() => setShowMenu(false)}>ESTABLISHMENTS</NavLink>
-                        <NavLink activeClassName="nav__link--active" className="nav__about nav__link--mobile" to="/contact" onClick={() => setShowMenu(false)}>CONTACT US</NavLink>
+                    <div className="nav__links--hamburger">
+                        <NavLink activeClassName="nav__link--active" className="nav__home nav__link--hamburger" to="/" exact onClick={() => setShowMenu(false)}>HOME</NavLink>
+                        <NavLink activeClassName="nav__link--active" className="nav__establishments nav__link--hamburger" to="/establishments" onClick={() => setShowMenu(false)}>ESTABLISHMENTS</NavLink>
+                        <NavLink activeClassName="nav__link--active" className="nav__about nav__link--hamburger" to="/contact" onClick={() => setShowMenu(false)}>CONTACT US</NavLink>
                         {(!userLoggedIn && !showLogin) &&
-                            (<button className="nav__login nav__link--mobile" onClick={() => {
-                                setShowMenu(false)
-                                handleShowLogin()
-                            }}>LOGIN <i className="fas fa-angle-down"/></button>)
+                        (<button className="nav__login nav__link--hamburger" onClick={() => handleShowLogin()}>LOGIN <i className="fas fa-angle-down"/></button>)
                         }
                         {(!userLoggedIn && showLogin) && (
-                            (<button className="nav__login nav__link--mobile" onClick={() => handleShowLogin()}>
+                            (<button className="nav__login nav__link--hamburger" onClick={() => handleShowLogin()}>
                                 LOGIN <i className="fas fa-angle-up"/></button>)
                         )}
                         {userLoggedIn && (
-                            <button className="nav__login nav__link--mobile" onClick={() => handleShowLogin()}>
-                                USER <i className="fas fa-angle-up"/></button>
+                            <NavLink activeClassName="nav__link--active" className="nav__login nav__link--hamburger" to="/user" onClick={() => setShowMenu(false)}>MY PAGE</NavLink>
                         )}
                     </div>
                     {(!userLoggedIn && showLogin) && (
