@@ -13,7 +13,6 @@ import Checkout from "./components/Checkout";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Styleguide from "./components/Styleguide";
-import {v4 as uuidv4} from "uuid";
 
 function App() {
     const [establishments, setEstablishments] = useState();

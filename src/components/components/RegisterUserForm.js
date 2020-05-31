@@ -60,17 +60,22 @@ export default function (props) {
             username: registerInfo.username,
             id: uuidv4(),
             email: registerInfo.email
-        }
+        };
         props.loginF(userInfo);
 
-        fetch("https://www.zettrex.no/Noroff/semester4/data/user-success.php", {
+        fetch("https://www.zettrex.no/Noroff/semester4/data/users-success.php", {
             method: "POST",
             headers: {"Content-Type":"application/x-www-form-urlencoded"},
             body: `firstName=${encodeURIComponent(userInfo.firstName)}&lastName=${encodeURIComponent(userInfo.lastName)}&username=${encodeURIComponent(userInfo.username)}&id=${encodeURIComponent(userInfo.id)}&email=${encodeURIComponent(userInfo.email)}&password=${registerInfo.password1}`
-        })
+        });
     }
     return (
-        <form className={`${props.nav ? "nav__loginBox" : `${props.className}__register`} register `} onSubmit={handleSubmit(_registerUser)}>
+        <form className={`${props.nav ? "nav__loginBox" : `${props.className}__register`} register `} onSubmit={handleSubmit(_registerUser)} onKeyUp={event => {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                return handleSubmit(_registerUser)
+            }
+        }}>
             <div className="register__userNameWrapper">
                 <div className="register__userName form__group">
                     <label className="register__userNameLabel form__label--compact" htmlFor="userName">First name</label>
@@ -113,13 +118,13 @@ export default function (props) {
                 </div>
                 {errors.password2 && (<p className="form__error">{errors.password2.message}</p>)}
             </div>
-            <div className="form__section row">
-                <div className="form__group">
+            <div className="form__section register__buttons clearfix">
+                <div className="form__group register__extra">
                     {props.children}
                 </div>
-                <div className="form__action form__group">
-                    <button className="btn--primary" type="submit">Register</button>
-                </div>
+                <div className="form__action form__group register__submit">
+                <button className="btn--primary" type="submit">Register</button>
+            </div>
             </div>
         </form>
     )

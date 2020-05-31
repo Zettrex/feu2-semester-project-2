@@ -48,8 +48,12 @@ export default function ({data, updateConfirmed}) {
         })
     });
     function _updateConfirmed(values) {
-        updateConfirmed(values)
-        localStorage.setItem("order", JSON.stringify(values))
+        const order = {
+            ...data,
+            ...values
+        }
+        updateConfirmed(order)
+        localStorage.setItem("order", JSON.stringify(order))
     }
     return (
         <form onSubmit={handleSubmit(_updateConfirmed)} className="orderConfirm containerBox">

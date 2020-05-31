@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import * as yup from "yup";
-import {v4 as uuidv4} from "uuid";
 
 export default function (props) {
     const [invalidUser, setInvalidUser] = useState(false);
@@ -18,20 +17,35 @@ export default function (props) {
         })
     });
     function _validateLogin(loginInfo) {
-        const userInfo = {
-            firstName: loginInfo.firstName,
-            lastName: loginInfo.lastName,
-            username: loginInfo.username,
-            id: uuidv4(),
-            email: loginInfo.email
+        fetch("https://www.zettrex.no/Noroff/semester4/data/get-users.php")
+            .then(response => response.json())
+            .then(validate);
+        function validate(users) {
+            console.log("users:", users);
+            console.log("filter: ", users.filter(user => user.username === loginInfo.username && user.password === loginInfo.password));
+            const user = users.filter(user => user.username === loginInfo.username && user.password === loginInfo.password);
+            if (user.length > 0) {
+                const userInfo = {
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    username: user.username,
+                    id: user.id,
+                    email: user.email
+                };
+                props.loginF(userInfo);
+                setInvalidUser(false);
+            } else {
+                setInvalidUser(true);
+            }
         }
-        props.loginF(userInfo);
-
-        //for later if i decide to have a user database
-        fetch("https://www.zettrex.no/Noroff/semester4/data/get-")
     }
     return (
-        <form className={`${props.nav ? "nav__loginBox" : `${props.className}__login`} login`} onSubmit={handleSubmit(_validateLogin)}>
+        <form className={`${props.nav ? "nav__loginBox" : `${props.className}__login`} login`} onSubmit={handleSubmit(_validateLogin)} onKeyUp={event => {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                return handleSubmit(_validateLogin)
+            }
+        }}>
             <div className="form__group">
                 <div className="form__section">
                     <div className="login__userName form__group">
@@ -47,13 +61,15 @@ export default function (props) {
                     </div>
                     {errors.password && (<p className="form__error">{errors.password.message}</p>)}
                 </div>
-                {invalidUser && (<p className="form__error">Username or password is incorrect please try again.</p>)}
-                <div className="form__section row">
-                    <div className="form__group">
-                        {props.children}
-                    </div>
-                    <div className="form__action form__group">
+                <div className="form__section">
+                    {invalidUser && (<p className="login__error">Username or password is incorrect please try again.</p>)}
+                </div>
+                <div className="form__section login__buttons clearfix">
+                    <div className="form__action form__group login__submit">
                         <button className="login__loginBtn btn--primary" type="submit">Log in</button>
+                    </div>
+                    <div className="form__group login__extra">
+                        {props.children}
                     </div>
                 </div>
             </div>

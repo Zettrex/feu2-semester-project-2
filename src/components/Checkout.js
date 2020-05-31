@@ -8,12 +8,12 @@ export default function ({user, updateUser}) {
     const [enquiry, setEnquiry] = useState({
         order: JSON.parse(localStorage.getItem("order")),
         payment: null
-    })
+    });
     const [confirmed, setConfirmed] = useState(false);
     const [valid, setValid] = useState({
         order: false,
         payment: false
-    })
+    });
     function _loginUser(loginInfo) {
         updateUser(loginInfo);
     }
@@ -23,7 +23,7 @@ export default function ({user, updateUser}) {
         setValid({
             ...valid,
             order: true
-        })
+        });
         setEnquiry({
             ...enquiry,
             order: {
@@ -40,11 +40,11 @@ export default function ({user, updateUser}) {
                 ...values
             },
             user: user
-        }
+        };
         setValid({
             ...valid,
             payment: true
-        })
+        });
         setEnquiry(enquiryInfo);
         _sendEnquiry(enquiryInfo, valid.order, true);
     }
@@ -56,7 +56,7 @@ export default function ({user, updateUser}) {
                 method: "POST",
                 headers: {"Content-Type":"application/x-www-form-urlencoded"},
                 body: `orderID=${encodeURIComponent(Math.random().toString(36).substr(2, 9))}&orderDate=${encodeURIComponent(JSON.stringify(new Date()))}&establishmentName=${encodeURIComponent(enquiry.order.establishmentName)}&establishmentImg=${encodeURIComponent(enquiry.order.imageUrl)}&establishmentEmail=${enquiry.order.establishmentEmail}&clientName=${encodeURIComponent(enquiry.payment.clientFirstName + " " + enquiry.payment.clientLastName)}${enquiry.user.id ? (`&clientRegistered=${true}&clientID=${encodeURIComponent(enquiry.user.id)}`) : `&clientRegistered=${false}&clientID=""`}&clientEmail=${encodeURIComponent(enquiry.payment.clientEmail)}&checkin=${encodeURIComponent(enquiry.order.date1)}&checkout=${encodeURIComponent(enquiry.order.date2)}&adults=${encodeURIComponent(enquiry.order.adults)}&children=${encodeURIComponent(enquiry.order.children)}&payMethod=${encodeURIComponent(enquiry.payment.paymentMethod)}&price=${encodeURIComponent(enquiry.order.price)}`
-            })
+            });
         }
     }
 
@@ -117,7 +117,7 @@ export default function ({user, updateUser}) {
                     </div>
                 )}
             </div>
-        )
+        );
     } else {
         return (
             <div className="page">
@@ -125,6 +125,6 @@ export default function ({user, updateUser}) {
                     <h1>An error has occurred, you have no order selected. please </h1>
                 </div>
             </div>
-        )
+        );
     }
 }
