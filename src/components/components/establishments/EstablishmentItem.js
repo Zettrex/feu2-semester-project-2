@@ -36,7 +36,7 @@ export default function ({odd,item, filters}) {
                 <div className="est__price">
                     {item.price}$
                 </div>
-                <Link className="est__readMore link--white" to={`/specific/?id=${item.id}`}>Read more</Link>
+                <Link className="est__readMore link--white" to={`/specific?id=${item.establishmentID}`}>Read more</Link>
                 <Link className="est__book btn--primary" to="/checkout" onClick={_checkout}>Book now</Link>
             </div>
         </div>

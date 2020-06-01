@@ -13,6 +13,7 @@ import Checkout from "./components/Checkout";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Styleguide from "./components/Styleguide";
+import SpecificEstablishment from "./components/components/SpecificEstablishment";
 
 function App() {
     const [establishments, setEstablishments] = useState();
@@ -45,6 +46,7 @@ function App() {
                 <Switch>
                     <Route path="/" exact component={() => <Home establishments={establishments}/>}/>
                     <Route path="/establishments" component={() => <Establishments establishments={establishments}/>}/>
+                    <Route path="/specific" component={() => <SpecificEstablishment/>}/>
                     <Route path="/contact" component={() => <Contact/>}/>
                     <Route path="/user" component={() => <User messages={messages} enquiries={enquiries} establishments={establishments}/>}/>
                     <Route path="/styleguide" component={() => <Styleguide/>}/>

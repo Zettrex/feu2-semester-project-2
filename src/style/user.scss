@@ -62,6 +62,7 @@
     @extend .admin-item__item;
   }
   &__infoWrapper {
+    margin-left: auto;
   }
   &__info {
     @extend .admin-item__item;
@@ -86,8 +87,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 60%;
+  width: 100%;
   background-color: $thirdColor;
+  box-shadow: 0 3px 5px black;
   color: white;
 
   &__topBar {
@@ -241,6 +243,7 @@
   //for tablet and up
   @media (min-width: $mobile) {
     .admin {
+      //start of admin tools
       &__establishments {
         &Action {
           position: absolute;
@@ -263,11 +266,21 @@
         }
       }
     }
+
+    //Start of message item
     .message  {
       &__right {
         width: 200px;
       }
     }
+    //End of message item
+    //End of admin tools
+
+    //Start of view-window
+    .view-window {
+      width: 60%;
+    }
+    //End of view-window
   }
   @media (min-width: $tablet) {
     .admin-item {

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-export default function ({className, groupCol, value, Ref, errors}) {
+export default function ({className, groupCol, value="", Ref, errors}) {
     const [toDate, setToDate] = useState(value);
     return (
         <div className={`${className}__dateTo form__dateTo form__container ${groupCol}`}>

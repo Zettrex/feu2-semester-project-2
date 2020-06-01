@@ -37,7 +37,7 @@ export default function ({className, updateData, data, sectionCol, groupCol, res
                     <ul className="searchResults">
                         {data.fEstablishments.map(est => {
                             return (
-                                <li className="searchResults__item" key={est.id}>
+                                <li className="searchResults__item" key={est.establishmentID}>
                                     <label className="resultItem row"
                                            onClick={(item) => {
                                                selectEstablishment(item.target, est);

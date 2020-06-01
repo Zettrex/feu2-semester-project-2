@@ -3,6 +3,7 @@ import PaymentForm from "./components/Checkout/PaymentForm";
 import UserTypeForm from "./components/Checkout/UserTypeForm";
 import OrderConfirmation from "./components/Checkout/OrderConfirmation";
 import StarRating from "./components/StarRating";
+import ConfirmationBox from "./ConfirmationBox";
 
 export default function ({user, updateUser}) {
     const [enquiry, setEnquiry] = useState({
@@ -14,8 +15,12 @@ export default function ({user, updateUser}) {
         order: false,
         payment: false
     });
+    const [showPrompt, setShowPrompt] = useState(true);
     function _loginUser(loginInfo) {
         updateUser(loginInfo);
+    }
+    function togglePrompt(value) {
+        setShowPrompt(value);
     }
 
     function _handleConfirmed(values) {
@@ -35,6 +40,11 @@ export default function ({user, updateUser}) {
     function _handlePayment(values) {
         const enquiryInfo = {
             ...enquiry,
+            order: {
+                ...enquiry.order,
+                orderID: Math.random().toString(36).substr(2, 9),
+                orderDate: new Date().toLocaleString()
+            },
             payment: {
                 ...enquiry.payment,
                 ...values
@@ -46,6 +56,7 @@ export default function ({user, updateUser}) {
             payment: true
         });
         setEnquiry(enquiryInfo);
+        setShowPrompt(true);
         _sendEnquiry(enquiryInfo, valid.order, true);
     }
 
@@ -55,7 +66,7 @@ export default function ({user, updateUser}) {
             return fetch("https://www.zettrex.no/Noroff/semester4/data/enquiry-success.php", {
                 method: "POST",
                 headers: {"Content-Type":"application/x-www-form-urlencoded"},
-                body: `orderID=${encodeURIComponent(Math.random().toString(36).substr(2, 9))}&orderDate=${encodeURIComponent(JSON.stringify(new Date()))}&establishmentName=${encodeURIComponent(enquiry.order.establishmentName)}&establishmentImg=${encodeURIComponent(enquiry.order.imageUrl)}&establishmentEmail=${enquiry.order.establishmentEmail}&clientName=${encodeURIComponent(enquiry.payment.clientFirstName + " " + enquiry.payment.clientLastName)}${enquiry.user.id ? (`&clientRegistered=${true}&clientID=${encodeURIComponent(enquiry.user.id)}`) : `&clientRegistered=${false}&clientID=""`}&clientEmail=${encodeURIComponent(enquiry.payment.clientEmail)}&checkin=${encodeURIComponent(enquiry.order.date1)}&checkout=${encodeURIComponent(enquiry.order.date2)}&adults=${encodeURIComponent(enquiry.order.adults)}&children=${encodeURIComponent(enquiry.order.children)}&payMethod=${encodeURIComponent(enquiry.payment.paymentMethod)}&price=${encodeURIComponent(enquiry.order.price)}`
+                body: `orderID=${encodeURIComponent(enquiry.order.orderID)}&orderDate=${encodeURIComponent(enquiry.order.orderDate)}&establishmentName=${encodeURIComponent(enquiry.order.establishmentName)}&establishmentImg=${encodeURIComponent(enquiry.order.imageUrl)}&establishmentEmail=${enquiry.order.establishmentEmail}&clientName=${encodeURIComponent(enquiry.payment.clientFirstName + " " + enquiry.payment.clientLastName)}${enquiry.user.id ? (`&clientRegistered=${true}&clientID=${encodeURIComponent(enquiry.user.id)}`) : `&clientRegistered=${false}&clientID=""`}&clientEmail=${encodeURIComponent(enquiry.payment.clientEmail)}&checkin=${encodeURIComponent(enquiry.order.date1)}&checkout=${encodeURIComponent(enquiry.order.date2)}&adults=${encodeURIComponent(enquiry.order.adults)}&children=${encodeURIComponent(enquiry.order.children)}&payMethod=${encodeURIComponent(enquiry.payment.paymentMethod)}&price=${encodeURIComponent(enquiry.order.price)}`
             });
         }
     }
@@ -64,10 +75,10 @@ export default function ({user, updateUser}) {
         console.log(enquiry);
         return (
             <div className="page">
-                {!confirmed && (
+                {(!confirmed && !showPrompt) && (
                     <OrderConfirmation data={enquiry.order} updateConfirmed={_handleConfirmed}/>
                 )}
-                {confirmed && (
+                {(confirmed && !showPrompt) && (
                     <div className="checkout containerBox row ">
                         <aside className="checkout__aside col-4 col-m-12">
                             <div className="checkout__orderSummary">
@@ -115,6 +126,72 @@ export default function ({user, updateUser}) {
                             <PaymentForm updatePayment={_handlePayment}/>
                         </main>
                     </div>
+                )}
+                {showPrompt && (
+                    <ConfirmationBox updateConfirmed={togglePrompt}>
+                        <div className="row">
+                            <div className="confirmation__heading col-12">
+                                <h2 className="h2">Thank you for your order.</h2>
+                                <p className="confirmation__aside">We wish you a nice evening, and wish you a nice stay.</p>
+                            </div>
+                            <div className="confirmation__left col-12 col-d-6">
+                                <h3 className="h3">Order Summary</h3>
+                                <div className="confirmation__section">
+                                    <img className="confirmation__image" src={enquiry.order.imageUrl} alt={enquiry.order.establishmentName}/>
+                                    <div className="h4">{enquiry.order.establishmentName}</div>
+                                </div>
+                                <div className="confirmation__section">
+                                    <div className="group">
+                                        <span className="confirmation__label">From </span>
+                                        <span>{enquiry.order.date1}</span>
+                                    </div>
+                                    <div className="group">
+                                        <span className="confirmation__label">To </span>
+                                        <span>{enquiry.order.date2}</span>
+                                    </div>
+                                </div>
+                                <div className="confirmation__section">
+                                    <div className="group">
+                                        <span className="confirmation__label">Adults </span>
+                                        <span>{enquiry.order.adults}</span>
+                                    </div>
+                                    <div className="group">
+                                        <span className="confirmation__label">Children </span>
+                                        <span>{enquiry.order.children}</span>
+                                    </div>
+                                </div>
+                                <div className="confirmation__section">
+                                    <div className="group">
+                                        <span className="confirmation__label">Price </span>
+                                        <span>{enquiry.order.price}$</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="confirmation__right col-12 col-d-6">
+                                <h3 className="h3">Order Information</h3>
+                                <div className="confirmation__section">
+                                    <div className="group">
+                                        <span className="confirmation__label">Order </span>
+                                        <span>{enquiry.order.orderID}</span>
+                                    </div>
+                                    <div className="group">
+                                        <span className="confirmation__label">Order date </span>
+                                        <span>{enquiry.order.orderDate}</span>
+                                    </div>
+                                </div>
+                                <div className="confirmation__section">
+                                    <div className="group">
+                                        <div>Contact Establishment</div>
+                                        <div>{enquiry.order.establishmentEmail}</div>
+                                    </div>
+                                    <div className="group">
+                                        <div>Contact Us</div>
+                                        <div>contact@hollidaze.com</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ConfirmationBox>
                 )}
             </div>
         );

@@ -260,7 +260,72 @@ body {
 
 //End of Form
 
-//Start of General Items
+//Start of Confirmation box
+.confirmation {
+  &__prompt {
+    @extend .containerBox;
+    border-radius: $borderRadius;
+    box-shadow: 0 3px 10px black;
+    margin: 50px auto;
+  }
+  &__Wrapper{
+    position: relative;
+    padding-top: 50px;
+  }
+  &__topbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: right;
+    background-color: $primaryColor;
+    border-radius: $borderRadius $borderRadius 0 0;
+  }
+  &__close {
+    padding: 10px 16px;
+  }
+  &__content {
+    padding: 20px;
+  }
+  &__label {
+    display: inline-block;
+    min-width: 80px;
+  }
+  &__heading {
+
+    &--center {
+      @extend .confirmation__heading;
+      text-align: center;
+    }
+  }
+  &__image {
+    width: 100%;
+    max-width: 240px;
+  }
+  &__checkWrapper {
+    text-align: center;
+    padding: 30px 0;
+  }
+  &__check {
+    font-size: 100px;
+  }
+  &__body {
+    padding: 20px;
+  }
+  &__paragraph {
+    display: block;
+    padding: 6px 0;
+  }
+  &__main {
+    font-size: 20px;
+  }
+  &__action {
+    text-align: right;
+  }
+}
+
+//End of Confirmation box
+
 //Start of containerBox
 .containerBox {
   &:nth-child(odd) {
@@ -271,58 +336,8 @@ body {
   }
 }
 //End of containerBox
+//Start of General Items
 
-//start of search Results
-
-.searchResults {
-  position: absolute;
-  top: 80%;
-  left: 0;
-  z-index: 5;
-  width: 100%;
-  background-color: $white;
-  padding: 2px;
-  max-height: 350px;
-  overflow: auto;
-  border-radius: $borderRadius;
-  border: 3px solid $white;
-}
-.resultItem {
-  background-color: $thirdColor;
-  border-radius: $borderRadius;
-  padding: 6px;
-  margin: 4px 0;
-  justify-content: left;
-  cursor: pointer;
-  border: 2px solid rgba(0,0,0,0);
-  &:hover {
-    opacity: 0.95;
-  }
-  &:focus {
-    border: 2px solid $primaryColor;
-  }
-  &__img {
-    width: 26px;
-    height: 26px;
-    display: inline-block;
-  }
-  &__info {
-    width: 150px;
-    margin-left: 6px;
-    display: inline-block;
-    font-size: 12px;
-  }
-  &__name {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 14px;
-  }
-
-
-}
-
-//End of search results
 //End of elements
 
 
@@ -380,6 +395,21 @@ body {
       margin: -50px;
     }
     //End of Page
+
+    //Start of Confirmation box
+    .confirmation {
+      &__prompt {
+        width: 60%;
+      }
+      &__left, &__right {
+        padding: 20px 30px;
+      }
+      &__heading {
+        padding: 6px 30px;
+      }
+    }
+    //End of Confirmation box
+
     //Start of Footer
     .footer__link {
       color: white;

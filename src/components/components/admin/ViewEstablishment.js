@@ -22,11 +22,12 @@ export default function ({data, closeF, job}) {
         });
     }
     function _sendEst() {
+        closeF("close");
         if (job === "add") {
             return fetch("https://www.zettrex.no/Noroff/semester4/data/add-establishments-success.php", {
                 method: "POST",
                 headers: {"Content-Type":"application/x-www-form-urlencoded"},
-                body: `establishmentName=${encodeURIComponent(est.establishmentName)}&establishmentEmail=${encodeURIComponent(est.establishmentEmail)}&establishmentAddress=${encodeURIComponent(est.establishmentAddress)}&imageUrl=${encodeURIComponent(est.imageUrl)}&rating=${encodeURIComponent(Math.round(Math.random() * 5)*2)/2}&price=${encodeURIComponent(est.price)}&googleLat=${encodeURIComponent(est.googleLat)}&googleLong=${encodeURIComponent(est.googleLong)}&description=${est.description}&selfCatering=${encodeURIComponent(est.selfCatering)}&establishmentID=${est.establishmentID}`
+                body: `establishmentName=${encodeURIComponent(est.establishmentName)}&establishmentEmail=${encodeURIComponent(est.establishmentEmail)}&imageUrl=${encodeURIComponent(est.imageUrl)}&rating=${encodeURIComponent(Math.round(Math.random() * 5)*2)/2}&price=${encodeURIComponent(est.price)}&googleLat=${encodeURIComponent(est.googleLat)}&googleLong=${encodeURIComponent(est.googleLong)}&description=${est.description}&selfCatering=${encodeURIComponent(est.selfCatering)}&establishmentID=${est.establishmentID}`
             })
         } else {
             
@@ -81,20 +82,6 @@ export default function ({data, closeF, job}) {
                         }
                     }
                 }),
-            establishmentAddress: yup
-                .string()
-                .test({
-                    message: "Enter address or Longitude & latitude",
-                    test: value => {
-                        const estValues = getValues();
-                        if (!(estValues.googleLong && estValues.googleLong)) {
-                            return (new RegExp(/w+/, "i").test(value));
-                        } else {
-                            return true;
-                        }
-                    }
-                })
-            ,
             description: yup
                 .string()
                 .required("Enter a description")
@@ -138,13 +125,6 @@ export default function ({data, closeF, job}) {
                         </div>
                     </div>
                     <div className="form__section row">
-                        <div className="form__container col-12">
-                            <div className="view-est__address form__group">
-                                <label className="form__label--compact" htmlFor="address">Address</label>
-                                <input className="form__input--compact" name="address" type="text" value={est.establishmentAddress && (est.establishmentAddress)} onChange={event => setEst({...est, establishmentAddress: event.target.value})} ref={register}/>
-                                {errors.establishmentAddress && <p className="form__error">{errors.establishmentAddress.message}</p>}
-                            </div>
-                        </div>
                         <div className="form__section col-12 row">
                             <div className="form__container col-12 col-d-6">
                                 <div className="view-est__latitude form__group">
