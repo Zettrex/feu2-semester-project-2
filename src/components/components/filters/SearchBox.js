@@ -67,7 +67,7 @@ export default function ({className, updateData, data, sectionCol, groupCol, res
                                                 </div>
                                             </div>
                                             <div className="resultItem__action column col-m-12">
-                                                <Link className="resultItem__readMore btn" to={`/specific/${est.establishmentID}`}>Read more</Link>
+                                                <Link className="resultItem__readMore link--white" to={`/specific/${est.establishmentID}`}>Read more</Link>
                                             </div>
                                         </div>
                                     </label>

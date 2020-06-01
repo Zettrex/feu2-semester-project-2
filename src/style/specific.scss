@@ -8,9 +8,12 @@
     @extend .bgImage;
     min-height: 400px;
   }
+  &__priceLabel {
+    font-size: 20px;
+  }
   &__price {
     font-size: 40px;
-    padding: 20px;
+    padding-top: 10px;
   }
 }
 
@@ -42,6 +45,13 @@
     .specific {
       &__main {
         flex-wrap: nowrap;
+      }
+      &__priceLabel {
+        text-align: center;
+        padding: 0 20px;
+      }
+      &__price {
+        padding: 10px 20px;
       }
     }
   }

@@ -39,6 +39,7 @@ export default function () {
                                 <div className="specific__description group">{est.description}</div>
                             </div>
                             <div className="col-m-12 column">
+                                <div className="specific__priceLabel">Price</div>
                                 <div className="specific__price">{est.price}$</div>
                             </div>
                         </div>
