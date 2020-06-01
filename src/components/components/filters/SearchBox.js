@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {Link} from "react-router-dom";
 
 export default function ({className, updateData, data, sectionCol, groupCol, results, Ref, errors}) {
     const [search, setSearch] = useState({
@@ -53,17 +54,20 @@ export default function ({className, updateData, data, sectionCol, groupCol, res
                                             /*onFocus={() => setSearch({...search, focus: true})}
                                             onBlur={() => setSearch({...search, focus: false})}*/
                                         />
-                                        <div className="form__checkboxDesign">
-                                            <div className="resultItem__img bgImage" style={{
-                                                backgroundImage: `url(${est.imageUrl})`
-                                            }}/>
-                                            <div className="resultItem__info">
-                                                <div className="resultItem__name">
-                                                    {est.establishmentName}
+                                        <div className="form__checkboxDesign resultItem__design col-12 row">
+                                            <div className="resultItem__content col-auto row">
+                                                <div className="resultItem__img bgImage" style={{
+                                                    backgroundImage: `url(${est.imageUrl})`
+                                                }}/>
+                                                <div className="resultItem__info">
+                                                    <div className="resultItem__name">
+                                                        {est.establishmentName}
+                                                    </div>
+                                                    <span className="resultItem__price">Price: {est.price}$</span>
                                                 </div>
-                                                <span className="resultItem__price">
-                                                    Price: {est.price}$
-                                                </span>
+                                            </div>
+                                            <div className="resultItem__action column col-m-12">
+                                                <Link className="resultItem__readMore btn" to={`/specific/${est.establishmentID}`}>Read more</Link>
                                             </div>
                                         </div>
                                     </label>

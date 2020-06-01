@@ -1,0 +1,55 @@
+.specific {
+  &__wrapper {
+    min-height: 75vh;
+    margin: 40px 0;
+    padding: 20px;
+  }
+  &__img {
+    @extend .bgImage;
+    min-height: 400px;
+  }
+  &__price {
+    font-size: 40px;
+    padding: 20px;
+  }
+}
+
+//start of facilities
+.facility {
+  width: fit-content;
+  padding: 10px;
+  &__icon {
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+  }
+}
+//End of facilities
+
+//Start of map
+.specific {
+  &__map {
+    width: 100%;
+    margin: 120px 0 60px;
+    height: 500px;
+  }
+}
+//End of map
+
+@media only screen {
+  //tablets and up
+  @media (min-width: $mobile) {
+    .specific {
+      &__main {
+        flex-wrap: nowrap;
+      }
+    }
+  }
+  @media (min-width: $tablet) {
+    .specific {
+      &__wrapper {
+        padding: 60px;
+      }
+    }
+  }
+}

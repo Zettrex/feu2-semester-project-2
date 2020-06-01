@@ -46,7 +46,7 @@ function App() {
                 <Switch>
                     <Route path="/" exact component={() => <Home establishments={establishments}/>}/>
                     <Route path="/establishments" component={() => <Establishments establishments={establishments}/>}/>
-                    <Route path="/specific" component={() => <SpecificEstablishment/>}/>
+                    <Route path="/specific/:id" component={() => <SpecificEstablishment/>}/>
                     <Route path="/contact" component={() => <Contact/>}/>
                     <Route path="/user" component={() => <User messages={messages} enquiries={enquiries} establishments={establishments}/>}/>
                     <Route path="/styleguide" component={() => <Styleguide/>}/>

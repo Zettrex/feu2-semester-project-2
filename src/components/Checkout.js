@@ -15,7 +15,7 @@ export default function ({user, updateUser}) {
         order: false,
         payment: false
     });
-    const [showPrompt, setShowPrompt] = useState(true);
+    const [showPrompt, setShowPrompt] = useState(false);
     function _loginUser(loginInfo) {
         updateUser(loginInfo);
     }

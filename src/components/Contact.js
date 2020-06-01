@@ -5,7 +5,7 @@ import ConfirmationBox from "./ConfirmationBox";
 
 export default function () {
     const [contact, setContact] = useState({});
-    const [confirmation, setConfirmation] = useState(true);
+    const [confirmation, setConfirmation] = useState(false);
     const [duplicateMessage, setDuplicateMessage] = useState(false);
     const [user, setUser] = useState();
     const [caseID, setCaseID] = useState();

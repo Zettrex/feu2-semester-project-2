@@ -7,6 +7,7 @@ import {useForm} from "react-hook-form";
 import People from "./components/filters/People";
 import PriceRange from "./components/filters/PriceRange";
 import {_filterEstablishments, _goToCheckout} from "../functions/handleEstablishmentForm";
+import * as yup from "yup";
 
 export default function ({establishments}) {
     const [data, setData] = useState({
@@ -19,37 +20,46 @@ export default function ({establishments}) {
         setData(values)
     }
 
-    const {register, handleSubmit, getValues, errors} = useForm(/*{
+    const {register, handleSubmit, getValues, errors} = useForm({
         validationSchema : yup.object().shape({
-            type: yup
-                .string()
-                .matches(/(hotel|bnb|cabin|^$)/),
             search: yup
                 .string(),
             adults: yup
                 .string()
-                .matches(/\d+/)
-                .required(),
+                .matches(/\d+/, {
+                    message: "invalid number",
+                    excludeEmptyString: true
+                }),
             children: yup
                 .string()
-                .matches(/\d+/)
-                .required(),
+                .matches(/\d+/, {
+                    message: "invalid number",
+                    excludeEmptyString: true
+                }),
             date1: yup
-                .date()
-                .required(),
+                .date({
+                    message: "not a valid date",
+                    excludeEmptyString: true
+                }),
             date2: yup
-                .date()
-                .min(yup.ref("date1"), ({min}) => `Date needs to be later then ${new Date(min).toLocaleDateString()}`)/!*https://stackoverflow.com/a/57161582*!/
-                .required(),
+                .date({
+                    message: "not a valid date",
+                    excludeEmptyString: true
+                }),
             price1: yup
-                .number()
-                .max(350, "max is above 350")
-                .required(),
+                .string()
+                .matches(/\d+/, {
+                    message: "invalid number",
+                    excludeEmptyString: true
+                }),
             price2: yup
-                .number()
-                .max(350, "max is above 350")
+                .string()
+                .matches(/\d+/, {
+                    message: "invalid number",
+                    excludeEmptyString: true
+                }),
         })
-    }*/);
+    });
 
     return (
         <div className="page est">
@@ -79,7 +89,7 @@ export default function ({establishments}) {
             <div className="est__wrapper row">
                 <aside className="est__mapWrapper col-12 col-d-5">
                     <div className="est__mapContainer">
-                        <Map/>
+                        <Map fixHeight={true}/>
                     </div>
                 </aside>
                 <main className="est-list col-12 col-d-7">
