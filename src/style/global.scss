@@ -81,6 +81,13 @@ body {
   }
 }
 //end of Link
+
+//Start of paragraph
+.paragraph {
+  padding: 10px 0;
+}
+//End of paragraph
+
 //start of sections & groups
 .section {
   margin: 20px 0;
@@ -105,6 +112,9 @@ body {
   position: relative;
   padding: 40px 0;
   @extend .bgImage;
+  &__heading {
+    margin: 0 auto;
+  }
 }
 //End of Hero
 //Start of background blur element

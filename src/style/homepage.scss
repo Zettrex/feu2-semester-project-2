@@ -137,20 +137,52 @@
 
 //End of search results
 
+//Start of Bergen
+
+.bergen {
+  &__image {
+  }
+  &__info {
+    font-size: 20px;
+  }
+}
+
+//End of Bergen
+
 @media only screen {
+  //345px and down
   @media (max-width: 345px) {
     .orderBox {
       min-width: unset;
       width: 90%;
     }
   }
+
+  //Tablet and up
   @media (min-width: $mobile) {
     .resultItem {
       &__action {
         padding: 10px;
       }
     }
+    .bergen {
+      &__image {
+        order: 1;
+      }
+      &__info {
+        order: 2;
+      }
+    }
   }
+
+  //from tablet to desktop
+  @media (min-width: $mobile) and (max-width: $tablet){
+    .bergen {
+      padding-top: 60px;
+    }
+  }
+
+  //desktop and up
   @media (min-width: $tablet) {
     .orderBox {
       &__filter {

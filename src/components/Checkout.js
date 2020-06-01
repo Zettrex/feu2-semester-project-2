@@ -186,7 +186,7 @@ export default function ({user, updateUser}) {
                                     </div>
                                     <div className="group">
                                         <div>Contact Us</div>
-                                        <div>contact@hollidaze.com</div>
+                                        <div>contact@holidaze.com</div>
                                     </div>
                                 </div>
                             </div>

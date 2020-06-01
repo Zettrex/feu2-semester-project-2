@@ -5,6 +5,7 @@ import SearchBox from "./components/filters/SearchBox";
 import People from "./components/filters/People";
 import {_filterEstablishments} from "../functions/handleEstablishmentForm";
 import * as yup from "yup";
+import bergenImage from "../media/images/lachlan-gowen-J38KXYtVrBA-unsplash.jpg";
 
 
 
@@ -53,7 +54,7 @@ export default function ({establishments}) {
     return (
         <div className="page">
             {console.log(errors)}
-            <div className="home-hero hero row">
+            <div className="home-hero hero column">
                 <form className="orderBox containerBox form" onChange={() => {
                     const values = getValues();
                     _filterEstablishments(data, _updateData, values)
@@ -74,6 +75,25 @@ export default function ({establishments}) {
                     </div>
                 </form>
             </div>
+            <main className="bergen">
+                <h1 className="h1">Welcome to Bergen</h1>
+                <div className="row">
+                    <div className="bergen__info col-7 col-m-12">
+                        <p className="paragraph">
+                            Bergen, historically Bjørgvin, is a city and municipality in Vestland county on the west coast of Norway. At the end of 2019, the municipality's population was 283,929, and the Bergen metropolitan region had about 420,000 inhabitants.
+                        </p>
+                        <p className="paragraph">
+                             Bergen is the second-largest city in Norway. The municipality covers 465 square kilometres (180 sq mi) and is on the peninsula of Bergenshalvøyen. The city centre and northern neighbourhoods are on Byfjorden, 'the city fjord', and the city is surrounded by mountains; Bergen is known as the 'city of seven mountains'. Many of the extra-municipal suburbs are on islands.
+                        </p>
+                        <p className="paragraph">
+                            Bergen is the administrative centre of Vestland county. The city consists of eight boroughs: Arna, Bergenhus, Fana, Fyllingsdalen, Laksevåg, Ytrebygda, Årstad, and Åsane.
+                        </p>
+                    </div>
+                    <div className="bergen__image col-5 col-m-12">
+                        <img src={bergenImage} alt="Bergen brygge"/>
+                    </div>
+                </div>
+            </main>
         </div>
     )
 }

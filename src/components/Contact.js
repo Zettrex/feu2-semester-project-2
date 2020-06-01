@@ -160,7 +160,7 @@ export default function () {
                         <i className="far fa-check-circle confirmation__check"/>
                     </div>
                     <div className="confirmation__body">
-                        <p className="confirmation__paragraph confirmation__main">Thank you for contacting Hollidaze</p>
+                        <p className="confirmation__paragraph confirmation__main">Thank you for contacting Holidaze</p>
                         <p className="confirmation__paragraph confirmation__aside">We will contact you as soon as we can, and hope to help you as quickly as possible</p>
                         <p className="confirmation__paragraph confirmation__aside">Your case id is: {caseID}</p>
                     </div>
