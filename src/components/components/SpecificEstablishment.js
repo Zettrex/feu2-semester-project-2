@@ -26,9 +26,9 @@ export default function () {
         <div className="specific page">
             {est ? (
                 <div className="specific__wrapper containerBox row">
-                    <div className="specific__img col-5 col-m-12" style={{
-                        backgroundImage: `url(${est.imageUrl})`
-                    }}/>
+                    <div className="specific__img col-5 col-m-12">
+                        <img src={est.imageUrl} alt={est.establishmentName}/>
+                    </div>
                     <main className="specific__info col-7 col-m-12">
                         <div className="specific__main section row">
                             <div className="group col-auto">

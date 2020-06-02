@@ -35,7 +35,7 @@
 @mixin makeGrid ($cols-in-grid: 12, $prefix: "col-") {
   @for $i from 1 through $cols-in-grid {
     .#{$prefix}#{$i} {
-      flex-basis: $i / $cols-in-grid * 100% !important;
+      flex-basis: $i / $cols-in-grid * 100% ;
     }
   }
 }

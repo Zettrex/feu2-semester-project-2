@@ -143,10 +143,16 @@ body {
     font-size: 12px;
     color: white;
   }
+  &__extraBtn {
+    padding: 10px;
+  }
 }
 //End of Login form
 //Start of Register
 .register {
+  &__wrapper {
+    padding: $spacingPrimary;
+  }
   &__submit {
     @extend .login__submit;
   }
@@ -172,17 +178,23 @@ body {
   &__right{
     margin-left: auto;
     padding: 10px;
+    &--max {
+      @extend .nav__right;
+      width: 100%;
+      margin-left: 0;
+    }
   }
   &__menuToggle {
     @extend .nav__link;
     display: block;
     border: none;
+    margin-left: auto;
   }
   &__links {
     display: none;
     &--hamburger {
       position: absolute;
-      top: 56px;
+      top: 54px;
       left: 0;
       width: 100%;
       text-align: center;
@@ -196,10 +208,14 @@ body {
     display: block;
     padding: 10px 15px;
     color: black;
+    font-size: 12px;
     &--hamburger {
       @extend .nav__link;
       margin: 10px 0;
       width: 100%;
+    }
+    &--active {
+      text-decoration: underline;
     }
   }
 
@@ -208,7 +224,7 @@ body {
     z-index: 4;
     background-color: $footerColor;
     box-shadow: 0 3px 5px black;
-    max-height: 50vh;
+    max-height: 400px;
     overflow: auto;
     width: 100%;
     margin: 0;
@@ -371,7 +387,7 @@ body {
   @media (max-width: 300px) {
     .form {
       &__container {
-        flex-basis: 100% !important;
+        flex-basis: 100%;
         &:last-child.column--split {
           margin: 0;
         }
@@ -381,36 +397,6 @@ body {
 
   //for tablet
   @media (min-width: $mobile) {
-    //Start of Nav
-    .nav {
-      padding: 0 35px;
-      &__links {
-        display: block;
-      }
-      &__link {
-        &:first-child {
-          padding-left: 15px;
-        }
-        &:last-child {
-          padding-right: 15px;
-        }
-        display: inline-block;
-      }
-      &__menuToggle {
-        display: none;
-      }
-      //Start of login box
-      &__loginBox {
-        position: absolute;
-        top: 56px;
-        right: 40px;
-        width: unset;
-        max-width: 260px;
-        max-height: none;
-      }
-      //End of login box
-    }
-    //End of Nav
     //Start of Page
     .page {
       padding: 50px;
@@ -419,7 +405,6 @@ body {
       margin: -50px;
     }
     //End of Page
-
     //Start of Confirmation box
     .confirmation {
       &__prompt {
@@ -445,6 +430,50 @@ body {
       }
     }
   }
+
+  //for 750px and up
+  @media (min-width: 750px) {
+    //Start of Nav
+    .nav {
+      padding: 0 35px;
+      &__right {
+        &--max {
+          width: unset;
+          margin-left: auto;
+        }
+      }
+      &__links {
+        display: block;
+      }
+      &__link {
+        &:first-child {
+          padding-left: 15px;
+        }
+        &:last-child {
+          padding-right: 15px;
+        }
+        display: inline-block;
+      }
+      &__menuToggle {
+        display: none;
+      }
+    }
+    //End of Nav
+    //Start of login box
+    .nav {
+      &__loginBox {
+        position: absolute;
+        top: 56px;
+        right: 40px;
+        width: unset;
+        max-width: 300px;
+        max-height: none;
+        z-index: 20;
+      }
+    }
+    //End of login box
+  }
+
   //for desktop
   @media (min-width: $tablet) {
     //Start of Nav

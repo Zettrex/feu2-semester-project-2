@@ -192,6 +192,7 @@
   &__facilities {
     padding-bottom: 60px;
   }
+
 }
 
 .est-item {
@@ -200,14 +201,14 @@
 //End of view-window
 
 @media only screen {
-  @media (max-width: 899px) {
+  @media (max-width: $adminBreak) {
     .admin {
       &__enquiries, &__messages {
-        flex-basis: 100% !important;
+        flex-basis: 100%;
       }
     }
   }
-  @media (min-width: 900px) {
+  @media (min-width: $adminBreak) {
     .admin {
       &__showMore {
         text-align: left;

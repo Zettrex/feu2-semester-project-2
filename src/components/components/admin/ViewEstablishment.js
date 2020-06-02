@@ -186,7 +186,7 @@ export default function ({data, closeF, job}) {
                     </div>
                     <div className="form__section">
                         <div className="view-window__actions">
-                            <button className="view-est__cancelBtn btn" onClick={() => closeF("close")}>Cancel</button>
+                            <button className="view-est__cancelBtn link--white" onClick={() => closeF("close")}>Cancel</button>
                             <button className="view-est__saveBtn btn--primary" type="submit">Save</button>
                         </div>
                     </div>

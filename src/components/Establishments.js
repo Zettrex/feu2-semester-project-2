@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Map from "./components/establishments/Map";
+import Map from "./components/establishments/Map3";
 import EstablishmentItem from "./components/establishments/EstablishmentItem";
 import DateFromTo from "./components/filters/DateFromTo";
 import SearchBox from "./components/filters/SearchBox";
@@ -89,7 +89,9 @@ export default function ({establishments}) {
             <div className="est__wrapper row">
                 <aside className="est__mapWrapper col-12 col-d-5">
                     <div className="est__mapContainer">
-                        <Map fixHeight={true}/>
+                        {data.fEstablishments && (
+                            <Map fixHeight={true} data={data.fEstablishments}/>
+                        )}
                     </div>
                 </aside>
                 <main className="est-list col-12 col-d-7">

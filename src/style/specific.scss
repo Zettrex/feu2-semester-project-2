@@ -55,6 +55,13 @@
       }
     }
   }
+  @media (max-width: 616px) {
+    .specific {
+      &__img, &__info{
+        flex-basis: 100%;
+      }
+    }
+  }
   @media (min-width: $tablet) {
     .specific {
       &__wrapper {

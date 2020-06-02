@@ -28,40 +28,60 @@ export default function ({userLoggedIn, updateUser}) {
                 <div className="nav__left">
                     {/*Logo place*/}
                 </div>
-                <div className="nav__right">
-                    <button className="nav__menuToggle" onClick={() => setShowMenu(false)}>
+                <div className={`nav__right ${(showRegister || showLogin) && "nav__right--max"}`}>
+                    <button className="nav__menuToggle" onClick={() => {
+                        setShowMenu(false)
+                        if (showLogin || showRegister) {
+                            handleShowLogin();
+                        }
+                    }}>
                         <i className="fas fa-bars"/>
                     </button>
-                    <div className="nav__links--hamburger">
-                        <NavLink activeClassName="nav__link--active" className="nav__home nav__link--hamburger" to="/" exact onClick={() => setShowMenu(false)}>HOME</NavLink>
-                        <NavLink activeClassName="nav__link--active" className="nav__establishments nav__link--hamburger" to="/establishments" onClick={() => setShowMenu(false)}>ESTABLISHMENTS</NavLink>
-                        <NavLink activeClassName="nav__link--active" className="nav__about nav__link--hamburger" to="/contact" onClick={() => setShowMenu(false)}>CONTACT US</NavLink>
-                        {(!userLoggedIn && !showLogin) &&
-                        (<button className="nav__login nav__link--hamburger" onClick={() => handleShowLogin()}>LOGIN <i className="fas fa-angle-down"/></button>)
-                        }
-                        {(!userLoggedIn && showLogin) && (
-                            (<button className="nav__login nav__link--hamburger" onClick={() => handleShowLogin()}>
-                                LOGIN <i className="fas fa-angle-up"/></button>)
-                        )}
-                        {userLoggedIn && (
-                            <NavLink activeClassName="nav__link--active" className="nav__login nav__link--hamburger" to="/user" onClick={() => setShowMenu(false)}>MY PAGE</NavLink>
-                        )}
-                    </div>
+                    {!showLogin && !showRegister && (
+                        <div className="nav__links--hamburger">
+                            <NavLink activeClassName="nav__link--active" className="nav__home nav__link--hamburger" to="/" exact onClick={() => setShowMenu(false)}>HOME</NavLink>
+                            <NavLink activeClassName="nav__link--active" className="nav__establishments nav__link--hamburger" to="/establishments" onClick={() => setShowMenu(false)}>ESTABLISHMENTS</NavLink>
+                            <NavLink activeClassName="nav__link--active" className="nav__about nav__link--hamburger" to="/contact" onClick={() => setShowMenu(false)}>CONTACT US</NavLink>
+                            {(!userLoggedIn && !showLogin) &&
+                            (<button className="nav__login nav__link--hamburger" onClick={() => {
+                                handleShowLogin();
+                            }}>LOGIN <i className="fas fa-angle-down"/></button>)
+                            }
+                            {(!userLoggedIn && showLogin) && (
+                                (<button className="nav__login nav__link--hamburger" onClick={() => {
+                                    handleShowLogin()
+                                }}>
+                                    LOGIN <i className="fas fa-angle-up"/></button>)
+                            )}
+                            {userLoggedIn && (
+                                <NavLink activeClassName="nav__link--active" className="nav__login nav__link--hamburger" to="/user" onClick={() => setShowMenu(false)}>MY PAGE</NavLink>
+                            )}
+                        </div>
+                    )}
                     {(!userLoggedIn && showLogin) && (
-                        <LoginUserForm loginF={updateUser} nav={true}>
-                            <button className="login__register btn link--white" onClick={() => {
-                                setShowRegister(true);
-                                setShowLogin(false);
-                            }}>Register</button>
-                        </LoginUserForm>
+                        <div>
+                            <button className="nav__login nav__link--hamburger" onClick={() => handleShowLogin()}>
+                                LOGIN <i className="fas fa-angle-up"/></button>
+                            <LoginUserForm fullWidth={true} loginF={updateUser} nav={true}>
+                                <button className="login__register btn link--white" onClick={() => {
+                                    setShowRegister(true);
+                                    setShowLogin(false);
+                                }}>Register</button>
+                            </LoginUserForm>
+                        </div>
+
                     )}
                     {(!userLoggedIn && showRegister) && (
-                        <RegisterUserForm loginF={updateUser} nav={true}>
-                            <button className="login__login btn link--white" onClick={() => {
-                                setShowRegister(false);
-                                setShowLogin(true);
-                            }}>Got user?</button>
-                        </RegisterUserForm>
+                        <div>
+                            <button className="nav__login nav__link--hamburger" onClick={() => handleShowLogin()}>
+                                LOGIN <i className="fas fa-angle-up"/></button>
+                            <RegisterUserForm fullWidth={true} loginF={updateUser} nav={true}>
+                                <button className="login__login btn link--white" onClick={() => {
+                                    setShowRegister(false);
+                                    setShowLogin(true);
+                                }}>Got user?</button>
+                            </RegisterUserForm>
+                        </div>
                     )}
                 </div>
             </nav>
@@ -72,8 +92,13 @@ export default function ({userLoggedIn, updateUser}) {
                 <div className="nav__left">
                     {/*Logo place*/}
                 </div>
-                <div className="nav__right">
-                    <button className="nav__menuToggle" onClick={() => setShowMenu(true)}>
+                <div className={`nav__right ${(showRegister || showLogin) && "nav__right--max"}`}>
+                    <button className="nav__menuToggle" onClick={() => {
+                        setShowMenu(true)
+                        if (showLogin || showRegister) {
+                            handleShowLogin();
+                        }
+                    }}>
                         <i className="fas fa-bars"/>
                     </button>
                     <div className="nav__links">
@@ -93,7 +118,7 @@ export default function ({userLoggedIn, updateUser}) {
                     </div>
                     {(!userLoggedIn && showLogin) && (
                         <LoginUserForm loginF={updateUser} nav={true}>
-                            <button className="login__register btn link--white" onClick={() => {
+                            <button className="login__register login__extraBtn link--white" onClick={() => {
                                 setShowRegister(true);
                                 setShowLogin(false);
                             }}>Register</button>
@@ -101,7 +126,7 @@ export default function ({userLoggedIn, updateUser}) {
                     )}
                     {(!userLoggedIn && showRegister) && (
                         <RegisterUserForm loginF={updateUser} nav={true}>
-                            <button className="login__login btn link--white" onClick={() => {
+                            <button className="login__login login__extraBtn link--white" onClick={() => {
                                 setShowRegister(false);
                                 setShowLogin(true);
                             }}>Got user?</button>
