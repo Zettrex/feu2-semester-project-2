@@ -1,0 +1,18 @@
+.map {
+  &__img {
+    max-width: 200px !important;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+.gm-style-iw {
+  @extend .containerBox;
+  padding: 30px 20px !important;
+}
+.gm-ui-hover-effect {
+  color: white !important;
+}
+.gm-style-iw-d {
+  overflow: hidden !important;
+}

@@ -1,5 +1,8 @@
-import React, {Component, useState} from "react";
+import React, {Component, useEffect, useState} from "react";
 import {Map, GoogleApiWrapper, Marker, InfoWindow} from "google-maps-react";
+import StarRating from "../StarRating";
+import closeIcon from "../../../media/images/icons/times-solid.svg";
+import $ from 'jquery';
 
 export class MapContainer extends Component {
     constructor(props) {
@@ -10,7 +13,8 @@ export class MapContainer extends Component {
             mapCenter: {lat: 60.39299, lng: 5.32415},
             activeMarker: {},
             showingInfoWindow: false,
-            selectedPlace: {}
+            selectedPlace: {},
+            mapHeight: null
         }
     }
     onMarkerClick = (props, marker, e) =>
@@ -31,6 +35,19 @@ export class MapContainer extends Component {
         }
     };
 
+    updateMapHeight() {
+        if (this.props.fixHeight) {
+            this.setState({
+                mapHeight: window.innerHeight-80
+            })
+        }
+    }
+
+    componentDidMount() {
+        this.updateMapHeight();
+        window.addEventListener("resize", this.updateMapHeight.bind(this));
+    }
+
     displayMarkers = () => {
         return this.props.data.map((est, index) => {
             return <Marker key={index} id={index} position={{
@@ -47,33 +64,37 @@ export class MapContainer extends Component {
 
     render() {
         if (this.state.data) {
-            return (
-                <div style={{width: "100%", height: "100vh"}}>
-                    <Map
-                        google={this.props.google}
-                        zoom={10}
-                        initialCenter={this.state.mapCenter}
-                    >
-                        {this.displayMarkers()}
-                        <InfoWindow
-                            position={{
-                                lat: parseFloat(this.state.selectedPlace.googleLat),
-                                lng: parseFloat(this.state.selectedPlace.googleLong)
-                            }}
+            if (this.props.fixHeight) {
+                return (
+                    <div style={{width: "100%", height: this.state.mapHeight}}>
+                        <Map
                             google={this.props.google}
-                            marker={this.state.activeMarker}
-                            visible={this.state.showingInfoWindow}
-                            map={this.props.map}
-                            onClose={this.onInfoWindowClose}
+                            zoom={10}
+                            initialCenter={this.state.mapCenter}
                         >
-                            <div>
-                                <div className="h3 map__name">{this.state.selectedPlace.establishmentName}</div>
-                                <img src={this.state.selectedPlace.imageUrl} alt={this.state.selectedPlace.establishmentName}/>
-                            </div>
-                        </InfoWindow>
-                    </Map>
-                </div>
-            );
+                            {this.displayMarkers()}
+                            <InfoWindow
+                                position={{
+                                    lat: parseFloat(this.state.selectedPlace.googleLat),
+                                    lng: parseFloat(this.state.selectedPlace.googleLong)
+                                }}
+                                google={this.props.google}
+                                marker={this.state.activeMarker}
+                                visible={this.state.showingInfoWindow}
+                                map={this.props.map}
+                                onClose={this.onInfoWindowClose}
+                                mapCenter={true}
+                            >
+                                <div>
+                                    <img className="map__img" src={this.state.selectedPlace.imageUrl} alt={this.state.selectedPlace.establishmentName}/>
+                                    <div className="h3 map__name">{this.state.selectedPlace.establishmentName}</div>
+                                    <StarRating rating={this.state.selectedPlace.rating}/>
+                                </div>
+                            </InfoWindow>
+                        </Map>
+                    </div>
+                );
+            }
         }
     }
 }

@@ -117,20 +117,28 @@ export default function ({userLoggedIn, updateUser}) {
                         )}
                     </div>
                     {(!userLoggedIn && showLogin) && (
-                        <LoginUserForm loginF={updateUser} nav={true}>
-                            <button className="login__register login__extraBtn link--white" onClick={() => {
-                                setShowRegister(true);
-                                setShowLogin(false);
-                            }}>Register</button>
-                        </LoginUserForm>
+                        <div>
+                            <button className="nav__login nav__link--hamburger" onClick={() => handleShowLogin()}>
+                                LOGIN <i className="fas fa-angle-up"/></button>
+                            <LoginUserForm loginF={updateUser} nav={true}>
+                                <button className="login__register login__extraBtn link--white" onClick={() => {
+                                    setShowRegister(true);
+                                    setShowLogin(false);
+                                }}>Register</button>
+                            </LoginUserForm>
+                        </div>
                     )}
                     {(!userLoggedIn && showRegister) && (
-                        <RegisterUserForm loginF={updateUser} nav={true}>
-                            <button className="login__login login__extraBtn link--white" onClick={() => {
-                                setShowRegister(false);
-                                setShowLogin(true);
-                            }}>Got user?</button>
-                        </RegisterUserForm>
+                        <div>
+                            <button className="nav__login nav__link--hamburger" onClick={() => handleShowLogin()}>
+                                LOGIN <i className="fas fa-angle-up"/></button>
+                            <RegisterUserForm loginF={updateUser} nav={true}>
+                                <button className="login__login login__extraBtn link--white" onClick={() => {
+                                    setShowRegister(false);
+                                    setShowLogin(true);
+                                }}>Got user?</button>
+                            </RegisterUserForm>
+                        </div>
                     )}
                 </div>
             </nav>
