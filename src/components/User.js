@@ -10,7 +10,7 @@ import ConfirmationBox from "./ConfirmationBox";
 export default function ({enquiries, messages, establishments}) {
     const [showAdmin, setShowAdmin] = useState("none");
     const [target, setTarget] = useState();
-    const [showConfirmation, setShowConfirmation] = useState(true);
+    const [showConfirmation, setShowConfirmation] = useState(false);
     const [view, setView] = useState({
         viewData: {},
         viewWindow: false,
