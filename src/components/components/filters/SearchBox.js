@@ -28,7 +28,7 @@ export default function ({className, updateData, data, sectionCol, groupCol, res
         <div className={`${className}__search form__section ${sectionCol}`}>
             <div className={`${className}__place form__group ${groupCol}`}>
                 <label className={`${className}__placeLabel form__label--compact`} htmlFor="est-search">Place</label>
-                <input className={`${className}__placeInput form__input--compact`} type="text" placeholder="Name or area" name="search" ref={Ref}
+                <input className={`${className}__placeInput form__search form__input--compact`} type="text" placeholder="Name or area" name="search" ref={Ref}
                        onInput={() => setSearch({...search, focus: true})}
                        onClick={() => setSearch({...search, focus: true})}
                        onFocus={() => setSearch({...search, focus: true})}

@@ -6,7 +6,7 @@
     &--compact {
       @extend .form__label;
       position: absolute;
-      font-size: 10px;
+      font-size: 12px;
       left: 20px;
       top: 50%;
       transform: translate(0, -50%);
@@ -40,7 +40,7 @@
     display: block;
     width: 100%;
     border: 2px solid $fourthColor;
-    font-size: 12px;
+    font-size: 14px;
 
     &:focus {
       border-color: $primaryColor;
@@ -112,7 +112,7 @@
 
   &__date {
     @extend .form__item;
-
+    font-size: 14px;
     &--left {
       padding-right: 0;
     }
@@ -137,7 +137,7 @@
   //End of Date
   //Start of Select
   &__select {
-    font-size: 10px;
+    font-size: 12px;
     @extend .form__item;
 
     &--label {
@@ -315,7 +315,7 @@
     .form {
       &__label {
         &--right {
-          left: 20px;
+          left: 24px;
         }
       }
 

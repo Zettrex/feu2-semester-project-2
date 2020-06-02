@@ -272,10 +272,13 @@ body {
     }
   }
   &__adults.form__select--compact {
-    padding-left: 40px;
+    padding-left: 46px;
   }
   &__children.form__select--compact {
-    padding-left: 50px;
+    padding-left: 60px;
+  }
+  &__search.form__input--compact {
+    padding-left: 44px;
   }
 }
 
