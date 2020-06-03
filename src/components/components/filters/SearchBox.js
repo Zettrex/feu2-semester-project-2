@@ -42,7 +42,6 @@ export default function SearchBox({className, updateData, data, sectionCol, grou
                                                selectEstablishment(item.target, est);
                                            }}
                                            onKeyDown={(event => {
-                                               console.log(event.target);
                                                if (event.key === "Enter") {
                                                    selectEstablishment(event.target, est);
                                                }

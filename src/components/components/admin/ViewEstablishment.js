@@ -30,11 +30,15 @@ export default function ViewEstablishment({data, closeF, job}) {
                 headers: {"Content-Type":"application/x-www-form-urlencoded"},
                 body: `establishmentName=${encodeURIComponent(est.establishmentName)}&establishmentEmail=${encodeURIComponent(est.establishmentEmail)}&imageUrl=${encodeURIComponent(est.imageUrl)}&rating=${encodeURIComponent(Math.round(Math.random() * 5)*2)/2}&price=${encodeURIComponent(est.price)}&googleLat=${encodeURIComponent(est.googleLat)}&googleLong=${encodeURIComponent(est.googleLong)}&description=${est.description}&selfCatering=${encodeURIComponent(est.selfCatering)}&establishmentID=${est.establishmentID}`
             })
-        } else {
-            
+        } else if (job === "edit") {
+            return fetch("https://www.zettrex.no/Noroff/semester4/data/edit-establishments-success.php", {
+                method: "POST",
+                headers: {"Content-Type":"application/x-www-form-urlencoded"},
+                body: `establishmentName=${encodeURIComponent(est.establishmentName)}&establishmentEmail=${encodeURIComponent(est.establishmentEmail)}&imageUrl=${encodeURIComponent(est.imageUrl)}&rating=${encodeURIComponent(est.rating)}&price=${encodeURIComponent(est.price)}&googleLat=${encodeURIComponent(est.googleLat)}&googleLong=${encodeURIComponent(est.googleLong)}&description=${est.description}&selfCatering=${encodeURIComponent(est.selfCatering)}&establishmentID=${est.establishmentID}`
+            })
         }
     }
-    const { register, handleSubmit, errors, getValues} = useForm({
+    const { register, handleSubmit, errors} = useForm({
         validationSchema: yup.object().shape({
             establishmentID: yup
                 .string()
@@ -61,12 +65,7 @@ export default function ViewEstablishment({data, closeF, job}) {
                 .test({
                     message: "Enter address or Longitude & latitude",
                     test: value => {
-                        const estValues = getValues();
-                        if (!estValues.establishmentAddress) {
-                            return (!estValues.establishmentAddress && new RegExp(/\d{1,3}\.\d{6}/).test(value));
-                        } else {
-                            return true;
-                        }
+                        return (new RegExp(/\d{1,3}\.\d{6}/).test(value));
                     }
                 }),
             googleLong: yup
@@ -74,13 +73,7 @@ export default function ViewEstablishment({data, closeF, job}) {
                 .test({
                     message: "Enter address or Longitude & latitude",
                     test: value => {
-                        console.log(value);
-                        const estValues = getValues();
-                        if (!estValues.establishmentAddress) {
-                            return (new RegExp(/\d{1,3}\.\d{6}/).test(value));
-                        } else {
-                            return true;
-                        }
+                        return (new RegExp(/\d{1,3}\.\d{6}/).test(value));
                     }
                 }),
             description: yup
@@ -202,5 +195,5 @@ export default function ViewEstablishment({data, closeF, job}) {
 ViewEstablishment.propTypes = {
     data: PropTypes.object.isRequired,
     closeF: PropTypes.func.isRequired,
-    job: PropTypes.string.isRequired
+    job: PropTypes.string.isRequired,
 }

@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 export default function Select(props) {
     const [selected, setSelected] = useState(props.selected);
-    console.log(props.value);
     return (
         <div className="form__select--custom">
             <label className="form__select--label" htmlFor={props.name}>{props.label}</label>

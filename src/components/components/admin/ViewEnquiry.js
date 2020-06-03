@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export default function ViewEnquiry ({data}) {
-    console.log(data);
     return (
         <div className="view-enquiry view-window__content">
             <h2 className="h1 prompt__heading">Enquiry</h2>

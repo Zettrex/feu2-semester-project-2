@@ -20,8 +20,6 @@ export default function () {
     }
 
     function _sendForm(data) {
-        console.log(data);
-        console.log(JSON.stringify(contact) === JSON.stringify(data));
         if (JSON.stringify(contact) !== JSON.stringify(data)) { //work around due to shallow compare
             let registered = false;
             if (user.id) {

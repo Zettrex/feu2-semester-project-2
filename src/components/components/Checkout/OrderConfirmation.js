@@ -7,8 +7,6 @@ import StarRating from "../StarRating";
 import PropTypes from "prop-types";
 
 export default function OrderConfrimation({data, updateConfirmed}) {
-    console.log(data);
-
     const {register, handleSubmit, errors, getValues} = useForm({
         validationSchema : yup.object().shape({
             type: yup

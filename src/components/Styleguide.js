@@ -43,7 +43,6 @@ export default function () {
     }
     return (
         <div className="page">
-            {console.log(range)}
             <button className="btn--primary">
                 save
             </button>

@@ -9,7 +9,7 @@
     "googleLong": "5.228720",
     "description": "Get ready for some amazing sunsets as you sip a cocktail and watch dolphins play in the harbour below.",
     "selfCatering": "false",
-    "establishmentID": "1"
+    "establishmentID": "0bca66e5-d9f8-4c5d-92dd-8ddc08e8f3ba"
   },
   {
     "establishmentName": "Rest Easy",
@@ -21,7 +21,7 @@
     "googleLong": "5.235602",
     "description": "Need some time off from your busy life to relax and unwind? Choose Rest Easy for the complete relaxation experience you desire.",
     "selfCatering": "false",
-    "establishmentID": "2"
+    "establishmentID": "aa8607e7-f98a-492c-aa92-e33c3e74f339"
   },
   {
     "establishmentName": "The Hideaway",
@@ -33,7 +33,7 @@
     "googleLong": "5.358141",
     "description": "This secluded wilderness cabin is the perfect spot for a restful and cosy getaway.",
     "selfCatering": "true",
-    "establishmentID": "3"
+    "establishmentID": "917fac56-e89e-4a3a-a585-24b19f844481"
   },
   {
     "establishmentName": "Farm Cottage",
@@ -45,7 +45,7 @@
     "googleLong": "5.371878",
     "description": "Voted the best B&B in Norway, this farm cottage is available for family holidays throughout the summer.",
     "selfCatering": "false",
-    "establishmentID": "4"
+    "establishmentID": "05b7b397-99ec-4faf-9251-b881e3cb4d4a"
   },
   {
     "establishmentName": "Tree Tops",
@@ -57,7 +57,7 @@
     "googleLong": "5.352511",
     "description": "For a getaway like no other, this unique treehouse offers a cosy and comfortable wilderness experience.",
     "selfCatering": "true",
-    "establishmentID": "5"
+    "establishmentID": "16901836-0e4c-45fe-9c24-60e8ef306c90"
   },
   {
     "establishmentName": "Coast to Coast",
@@ -69,7 +69,7 @@
     "googleLong": "5.322961",
     "description": "This trendy apartment in the heart of the city is the perfect base from which to explore Bergen.",
     "selfCatering": "true",
-    "establishmentID": "6"
+    "establishmentID": "576427d3-be28-4c6d-9e49-7a0fda07ca50"
   },
   {
     "establishmentName": "Koselig hytte Spa Resort",
@@ -81,7 +81,7 @@
     "googleLong": "5.353859",
     "description": "A beautiful lakeside retreat where you can relax, unwind and explore the beauty of the natural world.",
     "selfCatering": "false",
-    "establishmentID": "7"
+    "establishmentID": "3c3dd042-7c33-4bdb-922e-a4e649f64959"
   },
   {
     "establishmentName": "City Break",
@@ -93,7 +93,7 @@
     "googleLong": "5.318007",
     "description": "If you're in Bergen on business or for a holiday, this cosy and classy apartment is the perfect place to stay.",
     "selfCatering": "true",
-    "establishmentID": "8"
+    "establishmentID": "234128cb-1bcb-4c3e-b4f5-d6c36bdf4165"
   },
   {
     "establishmentName": "Fjell Hotel",
@@ -105,7 +105,7 @@
     "googleLong": "5.118213",
     "description": "For a restful and relaxing trip, come visit our luxurious boutique hotel, with views of the sea from all our rooms",
     "selfCatering": "false",
-    "establishmentID": "9"
+    "establishmentID": "9d88ccfc-bd4c-486a-a78c-9e71efbeb081"
   },
   {
     "establishmentName": "Glede Mountain Lodge",
@@ -117,7 +117,7 @@
     "googleLong": "5.376560",
     "description": "A luxury hotel nestled in the mountains. Our award winning chef will cater for your every desire.",
     "selfCatering": "false",
-    "establishmentID": "10"
+    "establishmentID": "19541168-0858-4428-8a62-50b9563f2143"
   },
   {
     "establishmentName": "Home from Home",
@@ -129,7 +129,7 @@
     "googleLong": "5.304774",
     "description": "A large and tastefully decorated home away from home. Perfect for bigger families or groups of friends.",
     "selfCatering": "true",
-    "establishmentID": "11"
+    "establishmentID": "7f749267-c4ae-4cd5-b7f8-3b9bb04d2e52"
   },
   {
     "establishmentName": "Lodge Hotel",
@@ -141,7 +141,7 @@
     "googleLong": "5.468150",
     "description": "A family-friendly lodge with beautiful, well-appointed rooms. Located in a stunning valley close to winter sports facilities.",
     "selfCatering": "false",
-    "establishmentID": "12"
+    "establishmentID": "c9d915a2-2931-4870-a2d0-1bd33b5db027"
   },
   {
     "establishmentName": "The Shed",
@@ -153,7 +153,7 @@
     "googleLong": "5.406012",
     "description": "A rustic and cosy rural cottage, perfect for romantic weekends away and quiet retreats into nature.",
     "selfCatering": "true",
-    "establishmentID": "13"
+    "establishmentID": "212e0c3b-b0f2-48eb-b0e7-3439a22d0ab5"
   },
   {
     "establishmentName": "Innsj\u00f8 Hus",
@@ -165,7 +165,7 @@
     "googleLong": "6.228147",
     "description": "Located on the banks of a beautiful and idyllic lake, this large and luxurious home is perfect for a rural getaway.",
     "selfCatering": "true",
-    "establishmentID": "14"
+    "establishmentID": "8c263397-55fb-4ca4-babd-31315302c8db"
   },
   {
     "establishmentName": "Peace and Quiet",
@@ -177,7 +177,7 @@
     "googleLong": "6.200421",
     "description": "A large and welcoming lake house retreat in the heart of a beautiful valley.",
     "selfCatering": "true",
-    "establishmentID": "15"
+    "establishmentID": "24ff77ec-bf04-4cfd-9131-19834f8838aa"
   },
   {
     "establishmentName": "Adam's Place",
@@ -189,7 +189,7 @@
     "googleLong": "5.364432",
     "description": "Rest, relax and explore Bergen from this beautiful home in a quiet neighbourhood.",
     "selfCatering": "true",
-    "establishmentID": "16"
+    "establishmentID": "35df4906-5c74-41cb-92de-57db592579aa"
   },
   {
     "establishmentName": "Buena Vista",
@@ -201,14 +201,14 @@
     "googleLong": "5.194310",
     "description": "With wonderful views of the surrounding area, and a host who is passionate about the area, Buena Vista is a must for those looking for an authentic experience at a reasonable price.",
     "selfCatering": "false",
-    "establishmentID": "17"
+    "establishmentID": "40cefe2a-c5eb-4416-b6ea-cb48f21012ab"
   },
   {
-    "establishmentName": "House of Ricardo",
+    "establishmentName": "House of memes",
     "establishmentEmail": "contact@richardo.com",
     "imageUrl": "https:\/\/i.ytimg.com\/vi\/aW0DRWhdZyY\/maxresdefault.jpg",
-    "rating": "5",
     "price": "123",
+    "rating": "5",
     "maxGuests": null,
     "googleLat": "30.235394",
     "googleLong": "30.344323",

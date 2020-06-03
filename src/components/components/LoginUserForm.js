@@ -23,7 +23,6 @@ export default function LoginUserForm(props) {
             .then(validate);
         function validate(users) {
             const user = users.filter(user => user.username === loginInfo.username && user.password === loginInfo.password);
-            console.log(user);
             if (user.length === 1) {
                 const userInfo = {
                     firstName: user[0].firstName,
@@ -32,7 +31,6 @@ export default function LoginUserForm(props) {
                     id: user[0].id,
                     email: user[0].email
                 };
-                console.log(userInfo);
                 props.loginF(userInfo);
                 setInvalidUser(false);
             } else {

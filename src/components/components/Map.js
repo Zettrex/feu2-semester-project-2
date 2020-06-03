@@ -19,7 +19,6 @@ export class MapContainer extends Component {
     }
     onMarkerClick = (props, marker, e) =>
         {
-            console.log(props, marker, e)
             this.setState({
                 selectedPlace: props,
                 activeMarker: marker,
@@ -121,7 +120,6 @@ export class MapContainer extends Component {
     });
 
     function onMarkerClick(props, marker, e) {
-        console.log(props, marker, e)
         setState({
             selectedPlace: props,
             activeMarker: marker,

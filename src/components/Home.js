@@ -19,9 +19,8 @@ export default function Home({establishments}) {
     });
     const history = useHistory();
     function _checkout(filters) {
-        console.log(filters);
         const chart = {
-            ...data.sEstablishment,
+            ...data.sEstablishment[0],
             adults: filters.adults,
             children: filters.children,
             date1: filters.date1,
@@ -59,11 +58,10 @@ export default function Home({establishments}) {
     });
     return (
         <div className="page">
-            {console.log(errors)}
             <div className="home-hero hero column">
                 <form className="orderBox containerBox form" onChange={() => {
                     const values = getValues();
-                    _filterEstablishments(data, _updateData, values)
+                    _filterEstablishments(data.oEstablishments, _updateData, values)
                 }} onSubmit={handleSubmit(_checkout)}>
                     <div className="orderBox__filter">
                         <div className="form__section row">

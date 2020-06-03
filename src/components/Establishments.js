@@ -6,7 +6,7 @@ import SearchBox from "./components/filters/SearchBox";
 import {useForm} from "react-hook-form";
 import People from "./components/filters/People";
 import PriceRange from "./components/filters/PriceRange";
-import {_filterEstablishments, _goToCheckout} from "../functions/handleEstablishmentForm";
+import {_filterEstablishments} from "../functions/handleEstablishmentForm";
 import * as yup from "yup";
 import PropTypes from 'prop-types';
 
@@ -24,7 +24,7 @@ export default function Establishments ({establishments}) {
         })
     }
 
-    const {register, handleSubmit, getValues, errors} = useForm({
+    const {register, getValues, errors} = useForm({
         validationSchema : yup.object().shape({
             search: yup
                 .string(),
@@ -70,8 +70,8 @@ export default function Establishments ({establishments}) {
             <div className="page__topBar">
                 <form className="filterArea row" onChange={() => {
                     const values = getValues();
-                    _filterEstablishments(data, _updateData, values)
-                }} onSubmit={handleSubmit(values => _goToCheckout(data, values))}>
+                    _filterEstablishments(data.oEstablishments, _updateData, values)
+                }}>
                     <div className="filterArea__filters col-12 col-d-10">
                         <div className="filterArea__section row">
                             <SearchBox className="filterArea" sectionCol="col-12 col-d-6" updateData={_updateData} data={data} results={false} Ref={register} errors={errors}/>

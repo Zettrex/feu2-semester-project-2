@@ -30,6 +30,7 @@ export default function User({enquiries, messages, establishments}) {
         confirmation: false,
         job: ""
     });
+
     useEffect(() => {
         if (target && showAdmin !== "establishments") {
             window.scrollTo(0,target.offsetTop-60);
@@ -132,6 +133,7 @@ export default function User({enquiries, messages, establishments}) {
                     setView({
                         ...view,
                         viewWindow: false,
+                        viewData: null,
                         blurBackground: false,
                         enquiry: false,
                         message: false,
@@ -142,7 +144,6 @@ export default function User({enquiries, messages, establishments}) {
                     break;
             }
         }
-        console.log("handle", view);
         toggleConfirmation(false);
     }
 
@@ -263,5 +264,5 @@ export default function User({enquiries, messages, establishments}) {
 User.propTypes = {
     messages: PropTypes.array.isRequired,
     enquiries: PropTypes.array.isRequired,
-    establishments: PropTypes.array.isRequired
+    establishments: PropTypes.array.isRequired,
 }

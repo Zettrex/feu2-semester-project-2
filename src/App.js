@@ -20,27 +20,53 @@ function App() {
     const [messages, setMessages] = useState();
     const [enquiries, setEnquiries] = useState();
     const [userLoggedIn, setUserLoggedIn] = useState()
+
     useEffect(() => {
-        if (localStorage.getItem("user")) {
-            setUserLoggedIn(JSON.parse(localStorage.getItem("user")));
-        }
-        fetch("https://www.zettrex.no/Noroff/semester4/data/get-enquiries.php")
-            .then(response => response.json())
-            .then(setEnquiries);
-        fetch("https://www.zettrex.no/Noroff/semester4/data/get-contacts.php")
-            .then(response => response.json())
-            .then(setMessages);
-        fetch("https://www.zettrex.no/Noroff/semester4/data/get-establishments.php")
-            .then(response => response.json())
-            .then(setEstablishments)
+        updateAPIData("initial")
     }, []);
+
+    function updateAPIData(job) {
+        switch (job) {
+            case "initial":
+                if (localStorage.getItem("user")) {
+                    setUserLoggedIn(JSON.parse(localStorage.getItem("user")));
+                }
+                fetch("https://www.zettrex.no/Noroff/semester4/data/get-enquiries.php")
+                    .then(response => response.json())
+                    .then(setEnquiries);
+                fetch("https://www.zettrex.no/Noroff/semester4/data/get-contacts.php")
+                    .then(response => response.json())
+                    .then(setMessages);
+                fetch("https://www.zettrex.no/Noroff/semester4/data/get-establishments.php")
+                    .then(response => response.json())
+                    .then(setEstablishments)
+                break;
+            case "enquiries":
+                fetch("https://www.zettrex.no/Noroff/semester4/data/get-enquiries.php")
+                    .then(response => response.json())
+                    .then(setEnquiries);
+                break;
+            case "messages":
+                fetch("https://www.zettrex.no/Noroff/semester4/data/get-contacts.php")
+                    .then(response => response.json())
+                    .then(setMessages);
+                break;
+            case "establishments":
+                fetch("https://www.zettrex.no/Noroff/semester4/data/get-establishments.php")
+                    .then(response => response.json())
+                    .then(setEstablishments)
+                break;
+            default:
+                break;
+        }
+    }
+
+
     function updateUser(user) {
-        console.log("what?!", user);
         setUserLoggedIn(user);
         localStorage.setItem("user", JSON.stringify(user));
     }
     if (establishments && enquiries && messages) {
-        console.log("app: ", enquiries);
         return (
             <Router className="App">
                 <Navigation userLoggedIn={userLoggedIn} updateUser={updateUser}/>

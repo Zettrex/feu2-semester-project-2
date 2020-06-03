@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 
 export default function EstablishmentItem({odd,item, filters}) {
     function _checkout() {
-        console.log(filters);
         const chart = {
             ...item,
             adults: filters.adults,

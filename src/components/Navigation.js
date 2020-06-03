@@ -21,7 +21,6 @@ export default function Navigation({userLoggedIn, updateUser}) {
             setShowMenu(false);
         }
     }
-    console.log(userLoggedIn);
 
     if (showMenu) {
         return (

@@ -62,7 +62,6 @@ export default function Checkout({user, updateUser}) {
     }
 
     function _sendEnquiry(enquiry, order, payment) {
-        console.log("inside Send: ", enquiry.user.clientRegistered);
         if (order && payment) {
             return fetch("https://www.zettrex.no/Noroff/semester4/data/enquiry-success.php", {
                 method: "POST",
@@ -73,7 +72,6 @@ export default function Checkout({user, updateUser}) {
     }
 
     if (enquiry.order) {
-        console.log(enquiry);
         return (
             <div className="page">
                 {(!confirmed && !showPrompt) && (
