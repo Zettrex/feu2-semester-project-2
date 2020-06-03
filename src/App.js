@@ -13,7 +13,7 @@ import Checkout from "./components/Checkout";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Styleguide from "./components/Styleguide";
-import SpecificEstablishment from "./components/components/SpecificEstablishment";
+import SpecificEstablishment from "./components/SpecificEstablishment";
 
 function App() {
     const [establishments, setEstablishments] = useState();
@@ -35,6 +35,7 @@ function App() {
             .then(setEstablishments)
     }, []);
     function updateUser(user) {
+        console.log("what?!", user);
         setUserLoggedIn(user);
         localStorage.setItem("user", JSON.stringify(user));
     }

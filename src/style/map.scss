@@ -1,17 +1,32 @@
 .map {
   &__img {
-    max-width: 200px !important;
+    width: 200px;
+    height: 120px;
     margin: 0 auto;
     display: block;
+  }
+
+  &__close {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    font-size: 20px;
   }
 }
 
 .gm-style-iw {
   @extend .containerBox;
-  padding: 30px 20px !important;
+  padding: 40px 20px 30px !important;
+  max-width: 260px !important;
 }
 .gm-ui-hover-effect {
-  color: white !important;
+  top: -6px !important;
+  right: -6px !important;
+  width: 40px !important;
+  height: 40px !important;
+  & > img {
+    display: none !important;
+  }
 }
 .gm-style-iw-d {
   overflow: hidden !important;

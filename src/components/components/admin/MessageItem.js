@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export default function ({odd, message, openF}) {
+export default function MessageItem({odd, message, openF}) {
     return (
         <div className="message admin-item row">
             <div className="message__left admin-item__left col-auto">
@@ -17,4 +18,10 @@ export default function ({odd, message, openF}) {
             </div>
         </div>
     )
+}
+
+MessageItem.propTypes = {
+    odd: PropTypes.bool.isRequired,
+    message: PropTypes.object.isRequired,
+    openF: PropTypes.func.isRequired
 }

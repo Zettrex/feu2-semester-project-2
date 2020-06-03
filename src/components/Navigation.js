@@ -2,8 +2,9 @@ import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
 import LoginUserForm from "./components/LoginUserForm";
 import RegisterUserForm from "./components/RegisterUserForm";
+import PropTypes from "prop-types";
 
-export default function ({userLoggedIn, updateUser}) {
+export default function Navigation({userLoggedIn, updateUser}) {
     const [showMenu, setShowMenu] = useState(false);
     const [showLogin, setShowLogin] = useState(false);
     const [showRegister, setShowRegister] = useState(false);
@@ -144,5 +145,9 @@ export default function ({userLoggedIn, updateUser}) {
             </nav>
         )
     }
+}
 
+Navigation.propTypes = {
+    userLoggedIn: PropTypes.object.isRequired,
+    updateUser: PropTypes.func.isRequired
 }

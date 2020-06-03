@@ -4,8 +4,9 @@ import * as yup from "yup"
 import DateFromTo from "../filters/DateFromTo";
 import People from "../filters/People";
 import StarRating from "../StarRating";
+import PropTypes from "prop-types";
 
-export default function ({data, updateConfirmed}) {
+export default function OrderConfrimation({data, updateConfirmed}) {
     console.log(data);
 
     const {register, handleSubmit, errors, getValues} = useForm({
@@ -76,4 +77,8 @@ export default function ({data, updateConfirmed}) {
             </div>
         </form>
     )
+}
+OrderConfrimation.propTypes = {
+    data: PropTypes.object.isRequired,
+    updateConfirmed: PropTypes.func.isRequired
 }

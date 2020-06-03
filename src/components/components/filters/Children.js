@@ -1,7 +1,8 @@
 import React from "react";
 import Select from "../inputs/Select";
+import PropTypes from "prop-types";
 
-export default function ({className, groupCol, value, Ref, errors}) {
+export default function Children({className, groupCol, value, Ref, errors}) {
     return (
         <div className={`${className}__childrenWrapper form__container ${groupCol}`}>
             <div className={`${className}__children form__group`}>
@@ -23,4 +24,11 @@ export default function ({className, groupCol, value, Ref, errors}) {
         </div>
 
     )
+}
+Children.propTypes = {
+    className: PropTypes.string,
+    groupCol: PropTypes.string,
+    value: PropTypes.string,
+    Ref: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
 }

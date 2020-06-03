@@ -204,15 +204,15 @@
     "establishmentID": "17"
   },
   {
-    "establishmentName": "Somewhere",
-    "establishmentEmail": "somewhere@stupid.com",
+    "establishmentName": "House of Ricardo",
+    "establishmentEmail": "contact@richardo.com",
     "imageUrl": "https:\/\/i.ytimg.com\/vi\/aW0DRWhdZyY\/maxresdefault.jpg",
     "rating": "5",
     "price": "123",
     "maxGuests": null,
     "googleLat": "30.235394",
     "googleLong": "30.344323",
-    "description": "Ricardo milos is love",
+    "description": "Ricardo Milos establishment",
     "selfCatering": "false",
     "establishmentID": "3de26ce5-41f6-433a-9963-3509a091307e"
   }

@@ -239,7 +239,8 @@ body {
 .footer {
   background-color: $footerColor;
   &__link {
-    @extend .nav__link;
+    @extend .link;
+    display: inline-block;
     margin: 10px 0;
     padding: 10px 0;
     color: white;
@@ -418,17 +419,6 @@ body {
       }
     }
     //End of Confirmation box
-
-    //Start of Footer
-    .footer__link {
-      color: white;
-      &:first-child {
-        padding-left: 0;
-      }
-      &:last-child {
-        padding-right: 0;
-      }
-    }
   }
 
   //for 750px and up

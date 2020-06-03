@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-export default function (props) {
+export default function () {
     return (
         <footer className="footer row">
             <div className="footer__links col-12 col-d-4">

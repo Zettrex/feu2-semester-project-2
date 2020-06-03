@@ -4,8 +4,9 @@ import UserTypeForm from "./components/Checkout/UserTypeForm";
 import OrderConfirmation from "./components/Checkout/OrderConfirmation";
 import StarRating from "./components/StarRating";
 import ConfirmationBox from "./ConfirmationBox";
+import PropTypes from "prop-types";
 
-export default function ({user, updateUser}) {
+export default function Checkout({user, updateUser}) {
     const [enquiry, setEnquiry] = useState({
         order: JSON.parse(localStorage.getItem("order")),
         payment: null
@@ -89,7 +90,7 @@ export default function ({user, updateUser}) {
                                     <div className="checkout__OrderRating group">
                                         <span className="checkout__ratingLabel">Rating</span>
                                         <div className="checkout__ratingStars">
-                                            <StarRating rating={enquiry.order.rating}/>
+                                            <StarRating score={enquiry.order.rating}/>
                                         </div>
                                     </div>
                                 </div>
@@ -123,7 +124,7 @@ export default function ({user, updateUser}) {
                         </aside>
                         <main className="checkout__main col-8 col-m-12 row">
                             {!user && (<UserTypeForm user={user} loginF={_loginUser}/>)}
-                            <PaymentForm updatePayment={_handlePayment}/>
+                            <PaymentForm updatePayment={_handlePayment} data={enquiry}/>
                         </main>
                     </div>
                 )}
@@ -204,4 +205,9 @@ export default function ({user, updateUser}) {
             </div>
         );
     }
+}
+
+Checkout.propTypes = {
+    user: PropTypes.object.isRequired,
+    updateUser: PropTypes.func.isRequired
 }

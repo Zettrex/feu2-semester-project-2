@@ -1,7 +1,8 @@
 import React from "react";
 import Select from "../inputs/Select";
+import PropTypes from "prop-types";
 
-export default function ({className, groupCol, value, Ref, errors}) {
+export default function Adults({className, groupCol, value, Ref, errors}) {
     return (
         <div className={`${className}__adultsWrapper form__container ${groupCol}`}>
             <div className={`${className}__adults form__group`}>
@@ -22,4 +23,11 @@ export default function ({className, groupCol, value, Ref, errors}) {
             {errors.adults && <p className="form__error">{errors.adults.message}</p>}
         </div>
     )
+}
+Adults.propTypes = {
+    className: PropTypes.string,
+    groupCol: PropTypes.string,
+    value: PropTypes.string,
+    Ref: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
 }

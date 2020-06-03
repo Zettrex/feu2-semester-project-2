@@ -2,9 +2,9 @@ import React from "react";
 import {useForm} from "react-hook-form";
 import * as yup from "yup";
 import {v4 as uuidv4} from "uuid";
+import PropTypes from "prop-types";
 
-export default function (props) {
-
+export default function RegisterUserForm(props) {
     //start of https://github.com/jquense/yup/issues/97#issuecomment-306547261
     //this basicly takes the parameters ref ans msg creates a new test that sees if the value it equal ro ref's value
     function equalTo(ref, msg) {
@@ -130,4 +130,11 @@ export default function (props) {
             </div>
         </form>
     )
+}
+
+RegisterUserForm.propTypes = {
+    children: PropTypes.element.isRequired,
+    loginF: PropTypes.func.isRequired,
+    nav: PropTypes.bool,
+    className: PropTypes.string
 }

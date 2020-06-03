@@ -1,6 +1,7 @@
 import React, {useState} from "react";
+import PropTypes from "prop-types";
 
-export default function (props) {
+export default function Select(props) {
     const [selected, setSelected] = useState(props.selected);
     console.log(props.value);
     return (
@@ -13,4 +14,10 @@ export default function (props) {
             <span className="form__item--toggle"><i className="fas fa-sort-down"/></span>
         </div>
     )
+}
+Select.propTypes = {
+    selected: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    children: PropTypes.array.isRequired || PropTypes.element.isRequired
 }

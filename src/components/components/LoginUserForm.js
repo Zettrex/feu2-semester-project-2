@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import * as yup from "yup";
+import PropTypes from "prop-types";
 
-export default function (props) {
+export default function LoginUserForm(props) {
     const [invalidUser, setInvalidUser] = useState(false);
     const { register, handleSubmit, errors } = useForm({
         validationSchema: yup.object().shape({
@@ -21,17 +22,17 @@ export default function (props) {
             .then(response => response.json())
             .then(validate);
         function validate(users) {
-            console.log("users:", users);
-            console.log("filter: ", users.filter(user => user.username === loginInfo.username && user.password === loginInfo.password));
             const user = users.filter(user => user.username === loginInfo.username && user.password === loginInfo.password);
-            if (user.length > 0) {
+            console.log(user);
+            if (user.length === 1) {
                 const userInfo = {
-                    firstName: user.firstName,
-                    lastName: user.lastName,
-                    username: user.username,
-                    id: user.id,
-                    email: user.email
+                    firstName: user[0].firstName,
+                    lastName: user[0].lastName,
+                    username: user[0].username,
+                    id: user[0].id,
+                    email: user[0].email
                 };
+                console.log(userInfo);
                 props.loginF(userInfo);
                 setInvalidUser(false);
             } else {
@@ -75,4 +76,11 @@ export default function (props) {
             </div>
         </form>
     )
+}
+
+LoginUserForm.propTypes = {
+    children: PropTypes.element.isRequired,
+    loginF: PropTypes.func.isRequired,
+    nav: PropTypes.bool,
+    className: PropTypes.string
 }

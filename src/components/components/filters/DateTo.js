@@ -1,6 +1,7 @@
 import React, {useState} from "react";
+import PropTypes from "prop-types";
 
-export default function ({className, groupCol, value="", Ref, errors}) {
+export default function DateTo({className, groupCol, value="", Ref, errors}) {
     const [toDate, setToDate] = useState(value);
     return (
         <div className={`${className}__dateTo form__dateTo form__container ${groupCol}`}>
@@ -11,4 +12,12 @@ export default function ({className, groupCol, value="", Ref, errors}) {
             {errors.date2 && <p className="form__error--right">{errors.date2.message}</p>}
         </div>
     )
+}
+
+DateTo.propTypes = {
+    className: PropTypes.string,
+    groupCol: PropTypes.string,
+    value: PropTypes.string,
+    Ref: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
 }

@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import Nouislider from "react-nouislider";
+import PropTypes from "prop-types";
 
-export default function ({className, sectionCol, Ref, errors}) {
+export default function PriceRange({className, sectionCol, Ref, errors}) {
     const defaultRange = {
         min: 1,
         max: 350
@@ -71,4 +72,10 @@ export default function ({className, sectionCol, Ref, errors}) {
             {errors.price2 && <p className="form__error">{errors.price2.message}</p>}
         </div>
     )
+}
+PriceRange.propTypes = {
+    className: PropTypes.string,
+    sectionCol: PropTypes.string,
+    Ref: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
 }

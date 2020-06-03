@@ -1,6 +1,7 @@
-export function _filterEstablishments(data, updateData, values) {
+import PropTypes from "prop-types";
+
+export function _filterEstablishments(original, updateData, values) {
     console.log(values);
-    const original = data.oEstablishments;
     let filtered = original.filter(item => {
         if (values.price1 && values.price2) {
             return ((parseInt(item.price) >= parseInt(values.price1)) && (parseInt(item.price) <= parseInt(values.price2))) && new RegExp(`^${values.search}`, "gi").test(item.establishmentName);
@@ -10,10 +11,7 @@ export function _filterEstablishments(data, updateData, values) {
     });
     console.log(filtered);
     if (updateData) {
-        updateData({
-            ...data,
-            fEstablishments: filtered
-        })
+        updateData(filtered)
     }
 }
 export function _goToCheckout(data, values) {
@@ -22,4 +20,10 @@ export function _goToCheckout(data, values) {
         establishment: data.sEstablishment
     };
     localStorage.setItem("chart", JSON.stringify(chart));
+}
+
+_filterEstablishments.propTypes = {
+    original: PropTypes.object.isRequired,
+    updateData: PropTypes.func.isRequired,
+    values: PropTypes.object.isRequired
 }

@@ -3,8 +3,9 @@ import Checkbox from "../inputs/selectors/Checkbox";
 import {v4 as uuidv4} from "uuid";
 import {useForm} from "react-hook-form";
 import * as yup from "yup";
+import PropTypes from "prop-types";
 
-export default function ({data, closeF, job}) {
+export default function ViewEstablishment({data, closeF, job}) {
     const [est, setEst] = useState(data)
     if (job === "add" && est === "") {
         setEst ({
@@ -196,4 +197,10 @@ export default function ({data, closeF, job}) {
     } else {
         return null;
     }
+}
+
+ViewEstablishment.propTypes = {
+    data: PropTypes.object.isRequired,
+    closeF: PropTypes.func.isRequired,
+    job: PropTypes.string.isRequired
 }

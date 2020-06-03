@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Map from "./components/establishments/Map3";
+import Map from "./components/Map";
 import EstablishmentItem from "./components/establishments/EstablishmentItem";
 import DateFromTo from "./components/filters/DateFromTo";
 import SearchBox from "./components/filters/SearchBox";
@@ -8,16 +8,20 @@ import People from "./components/filters/People";
 import PriceRange from "./components/filters/PriceRange";
 import {_filterEstablishments, _goToCheckout} from "../functions/handleEstablishmentForm";
 import * as yup from "yup";
+import PropTypes from 'prop-types';
 
-export default function ({establishments}) {
+export default function Establishments ({establishments}) {
     const [data, setData] = useState({
         oEstablishments: establishments,
         fEstablishments: establishments,
         sEstablishment: null
     });
 
-    function _updateData(values) {
-        setData(values)
+    function _updateData(newData) {
+        setData({
+            ...data,
+            fEstablishments: newData
+        })
     }
 
     const {register, handleSubmit, getValues, errors} = useForm({
@@ -103,4 +107,8 @@ export default function ({establishments}) {
             </div>
         </div>
     )
+}
+
+Establishments.propTypes = {
+    establishments: PropTypes.array.isRequired
 }

@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
-import StarRating from "./StarRating";
-import Map from "./establishments/Map";
+import {useParams, useHistory} from "react-router-dom";
+import StarRating from "./components/StarRating";
+import Map from "./components/Map";
 
 export default function () {
+    const history = useHistory();
     const [est, setEst] = useState();
     const {id} = useParams();
     useEffect(() => {
@@ -20,12 +21,12 @@ export default function () {
             date2: ""
         };
         localStorage.setItem("order", JSON.stringify(chart));
-        window.location = "/checkout";
+        history.push("/checkout");
     }
     return (
         <div className="specific page">
             {est ? (
-                <div className="specific__wrapper containerBox row">
+                <div className="specific__wrapper row">
                     <div className="specific__img col-5 col-m-12">
                         <img src={est.imageUrl} alt={est.establishmentName}/>
                     </div>
@@ -34,7 +35,7 @@ export default function () {
                             <div className="group col-auto">
                                 <h1 className="h3 specific__name group">{est.establishmentName}</h1>
                                 <div className="specific__rating group">
-                                    <StarRating rating={est.rating}/>
+                                    <StarRating score={est.rating}/>
                                 </div>
                                 <div className="specific__description group">{est.description}</div>
                             </div>
@@ -57,7 +58,7 @@ export default function () {
                         </div>
                     </main>
                     <div className="specific__map">
-                        <Map/>
+                        <Map fixHeight={false} data={[est]}/>
                     </div>
                 </div>
             ) : null}

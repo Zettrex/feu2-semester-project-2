@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export default function (props) {
+export default function ConfirmationBox(props) {
     return (
         <div className="confirmation__prompt">
             <div className="confirmation__Wrapper">
@@ -16,4 +17,8 @@ export default function (props) {
             </div>
         </div>
     )
+}
+ConfirmationBox.propTypes = {
+    updateConfirmed: PropTypes.func.isRequired,
+    children: PropTypes.array.isRequired
 }

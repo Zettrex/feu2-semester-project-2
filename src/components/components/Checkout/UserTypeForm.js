@@ -3,8 +3,9 @@ import RadioButton from "../inputs/selectors/RadioButton";
 import {Link} from "react-router-dom";
 import RegisterUserForm from "../RegisterUserForm";
 import LoginUserForm from "../LoginUserForm";
+import PropTypes from "prop-types";
 
-export default function ({user, loginF}) {
+export default function UserTypeForm({user, loginF}) {
     const  [userType, setUserType] = useState("user");
     return (
         <div className="checkout__continue col-10 col-m-12 row">
@@ -62,4 +63,8 @@ export default function ({user, loginF}) {
         </div>
 
     )
+}
+UserTypeForm.propTypes = {
+    user: PropTypes.object.isRequired,
+    loginF: PropTypes.func.isRequired
 }

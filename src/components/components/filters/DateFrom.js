@@ -1,6 +1,7 @@
 import React, {useState} from "react";
+import PropTypes from "prop-types";
 
-export default function ({className, groupCol, value="", Ref, errors}) {
+export default function DateFrom({className, groupCol, value="", Ref, errors}) {
     const [fromDate, setFromDate] = useState(value);
     return (
         <div className={`${className}__dateFrom form__dateFrom form__container ${groupCol}`}>
@@ -11,4 +12,11 @@ export default function ({className, groupCol, value="", Ref, errors}) {
             {errors.date1 && <p className="form__error--left">{errors.date1.message}</p>}
         </div>
     )
+}
+DateFrom.propTypes = {
+    className: PropTypes.string,
+    groupCol: PropTypes.string,
+    value: PropTypes.string,
+    Ref: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
 }

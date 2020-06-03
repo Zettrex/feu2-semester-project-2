@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export default function ({data}) {
+export default function ViewMessage({data}) {
     return (
         <div className="view-message view-window__content">
             <div className="group col-auto">
@@ -44,4 +45,8 @@ export default function ({data}) {
             </div>
         </div>
     )
+}
+
+ViewMessage.propTypes = {
+    data: PropTypes.object.isRequired
 }

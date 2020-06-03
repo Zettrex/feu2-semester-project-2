@@ -1,8 +1,9 @@
 import React from "react";
 import {useForm} from "react-hook-form";
 import * as yup from "yup";
+import PropTypes from "prop-types";
 
-export default function ({updatePayment}) {
+export default function PaymentForm({updatePayment}) {
     const { register, handleSubmit, errors } = useForm({
         validationSchema: yup.object().shape({
             clientFirstName: yup
@@ -118,4 +119,8 @@ export default function ({updatePayment}) {
             </div>
         </form>
     )
+}
+
+PaymentForm.propTypes = {
+    data: PropTypes.object.isRequired
 }

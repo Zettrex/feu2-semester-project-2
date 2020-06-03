@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
-export default function ({odd, enquiry, openF}) {
+export default function EnquiryItem ({odd, enquiry, openF}) {
     return (
         <div className="enquiry admin-item row">
             <div className="enquiry__establishment admin-item__left">
@@ -15,4 +16,9 @@ export default function ({odd, enquiry, openF}) {
             </div>
         </div>
     )
+}
+EnquiryItem.propTypes = {
+    odd: PropTypes.bool.isRequired,
+    enquiry: PropTypes.object.isRequired,
+    openF: PropTypes.func.isRequired
 }

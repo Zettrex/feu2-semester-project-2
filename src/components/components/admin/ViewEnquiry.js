@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export default function ({data}) {
+export default function ViewEnquiry ({data}) {
     console.log(data);
     return (
         <div className="view-enquiry view-window__content">
@@ -98,4 +99,7 @@ export default function ({data}) {
                 </div>
             </div>
     )
+}
+ViewEnquiry.propTypes = {
+    data: PropTypes.object.isRequired
 }

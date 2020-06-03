@@ -6,8 +6,10 @@
   }
   &__list {
     min-height: 400px;
-    height: 70vh;
+    max-height: 70vh;
     overflow: auto;
+    align-content: flex-start;
+    align-items: flex-start;
   }
   &__content--hidden {
     display: none;
@@ -15,6 +17,9 @@
   &__establishmentContent {
     position: relative;
     padding-top: 50px;
+  }
+  &__fixWrapper {
+    padding: 0 $spacingPrimary;
   }
 }
 
@@ -195,8 +200,6 @@
 
 }
 
-.est-item {
-}
 //end of establishment
 //End of view-window
 

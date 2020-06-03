@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export default function ({checked}) {
+export default function RadioButton({checked}) {
     if (checked) {
         return (
             <i className="far fa-dot-circle"/>
@@ -10,4 +11,7 @@ export default function ({checked}) {
             <i className="far fa-circle"/>
         )
     }
+}
+RadioButton.propTypes = {
+    checked: PropTypes.bool.isRequired
 }

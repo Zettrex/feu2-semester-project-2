@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
 
-export default function ({className, updateData, data, sectionCol, groupCol, results, Ref, errors}) {
+export default function SearchBox({className, updateData, data, sectionCol, groupCol, results, Ref, errors}) {
     const [search, setSearch] = useState({
         focus: false,
         input: ""
@@ -14,10 +15,7 @@ export default function ({className, updateData, data, sectionCol, groupCol, res
         })
     }
     function selectEstablishment(target, item) {
-        updateData({
-            ...data,
-            sEstablishment: item
-        });
+        updateData(item);
         setSearch({
             focus: false,
             input: item.establishmentName
@@ -28,7 +26,7 @@ export default function ({className, updateData, data, sectionCol, groupCol, res
         <div className={`${className}__search form__section ${sectionCol}`}>
             <div className={`${className}__place form__group ${groupCol}`}>
                 <label className={`${className}__placeLabel form__label--compact`} htmlFor="est-search">Place</label>
-                <input className={`${className}__placeInput form__search form__input--compact`} type="text" placeholder="Name or area" name="search" ref={Ref}
+                <input className={`${className}__placeInput form__search form__input--compact`} type="text" placeholder="Name of Establishment" name="search" ref={Ref}
                        onInput={() => setSearch({...search, focus: true})}
                        onClick={() => setSearch({...search, focus: true})}
                        onFocus={() => setSearch({...search, focus: true})}
@@ -80,4 +78,13 @@ export default function ({className, updateData, data, sectionCol, groupCol, res
             {errors.search && <p className="form__error">{errors.search.message}</p>}
         </div>
     )
+}
+SearchBox.propTypes = {
+    className: PropTypes.string,
+    sectionCol: PropTypes.string,
+    groupCol: PropTypes.string,
+    updateData: PropTypes.func,
+    results: PropTypes.bool.isRequired,
+    Ref: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired
 }

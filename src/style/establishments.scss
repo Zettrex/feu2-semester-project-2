@@ -103,9 +103,6 @@
 @media (min-width: $mobile) {
   //Start of Establishments Map
   .est {
-    &__mapWrapper {
-      //position: relative;
-    }
     &__mapContainer {
       position: sticky;
       top: 66px;

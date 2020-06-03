@@ -1,8 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import StarRating from "../StarRating";
+import PropTypes from "prop-types";
 
-export default function ({odd,item, filters}) {
+export default function EstablishmentItem({odd,item, filters}) {
     function _checkout() {
         console.log(filters);
         const chart = {
@@ -25,7 +26,7 @@ export default function ({odd,item, filters}) {
                 <div className="h3 est__name est__content">{item.establishmentName}</div>
                 <div className="est__rating est__content">
                     <div className="est__ratingStars">
-                        <StarRating rating={item.rating}/>
+                        <StarRating score={item.rating}/>
                     </div>
                 </div>
                 <div className="est__description est__content">
@@ -41,4 +42,9 @@ export default function ({odd,item, filters}) {
             </div>
         </div>
     )
+}
+EstablishmentItem.propTypes = {
+    odd: PropTypes.bool.isRequired,
+    item: PropTypes.object.isRequired,
+    filters: PropTypes.object.isRequired
 }

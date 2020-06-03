@@ -1,10 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export default function ({rating:score}) {
+export default function StarRating({score}) {
     let rating = parseFloat(score);
     const stars = []
     for (let i = 0; i < 5; i++) {
-        console.log(score, rating)
         if (rating >= 1) {
             rating -= 1;
             stars.push(<i key={i} className="fas fa-star"/>)
@@ -16,4 +16,9 @@ export default function ({rating:score}) {
         }
     }
     return stars;
+}
+
+StarRating.propTypes = {
+    score: PropTypes.string //removed isRequired due to map not parsing in the rating always as it loads infoWindow
+    // before it displays it
 }

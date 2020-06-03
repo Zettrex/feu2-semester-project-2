@@ -6,11 +6,20 @@ import ViewEnquiry from "./components/admin/ViewEnquiry";
 import ViewMessage from "./components/admin/ViewMessage";
 import ViewEstablishment from "./components/admin/ViewEstablishment";
 import ConfirmationBox from "./ConfirmationBox";
+import PropTypes from "prop-types";
+import * as yup from "yup";
+import {useForm} from "react-hook-form";
+import SearchBox from "./components/filters/SearchBox";
+import {_filterEstablishments} from "../functions/handleEstablishmentForm";
 
-export default function ({enquiries, messages, establishments}) {
+export default function User({enquiries, messages, establishments}) {
     const [showAdmin, setShowAdmin] = useState("none");
     const [target, setTarget] = useState();
     const [showConfirmation, setShowConfirmation] = useState(false);
+    const [data, setData] = useState({
+        oEstablishment: establishments,
+        fEstablishment: establishments
+    })
     const [view, setView] = useState({
         viewData: {},
         viewWindow: false,
@@ -28,6 +37,14 @@ export default function ({enquiries, messages, establishments}) {
             window.scrollTo(0,target.offsetTop+190);
         }
     }, [target, showAdmin]);
+    const {register, getValues, errors} = useForm({
+        validationSchema : yup.object().shape({
+            search: yup
+                .string(),
+        })
+    });
+
+
     function toggleAdmin (target, elem) {
         if (showAdmin !== elem && showAdmin !== "all") {
             setShowAdmin(elem);
@@ -61,8 +78,11 @@ export default function ({enquiries, messages, establishments}) {
     window.onresize = () => {
         setResponsive();
     }
-    function handleFilter() {
-
+    function _updateData(newData) {
+        setData({
+            ...data,
+            fEstablishment: newData
+        })
     }
 
     function handleWindow(action, window, data, job) {
@@ -130,7 +150,7 @@ export default function ({enquiries, messages, establishments}) {
         <div className="page">
             {!showConfirmation && (
                 <div className="page__wrapper">
-                    <main className="admin__inbox row">
+                    <div className="admin__inbox row">
                         {(showAdmin === "all" || showAdmin === "enquires") ? (
                             <div id="enquiries" className="admin__enquiries admin__section col-6 col-m-12">
                                 <button className="admin__showMore" onClick={event => toggleAdmin(event.target,"enquires")}>
@@ -169,81 +189,45 @@ export default function ({enquiries, messages, establishments}) {
                                 </div>
                             </div>
                         )}
-                    </main>
+                    </div>
                     {(showAdmin === "all" || showAdmin === "establishments") ? (
-                        <aside id="establishments" className="admin__establishments admin__section col-12">
+                        <div id="establishments" className="admin__establishments admin__section">
                             <button className="admin__showMore" onClick={event => toggleAdmin(event.target,"establishments")}>
                                 <h2 className="h2 admin__establishmentsHeading">Establishments <i className="fas fa-angle-up admin__showMore--indicator"/></h2>
                             </button>
-                            <div className="admin__establishmentContent admin__content row">
+                            <div className="admin__establishmentContent admin__content">
                                 <div className="admin__establishmentsAction row" onClick={() => handleWindow("open", "establishment", "", "add")}>
                                     <span className="admin__establishmentsAddLabel">Add</span>
                                     <button className="admin__establishmentsAdd btn--primary">+</button>
                                 </div>
-                                <form className="admin__establishmentsFilter form col-12 col-t-5 col-d-3" onChange={handleFilter}>
-                                    <div className="admin__filterName">
-                                        <label className="admin__filterNameLabel form__label" htmlFor="establishmentName">Name of establishment</label>
-                                        <input className="admin__filterNameInput form__input" type="text"/>
-                                    </div>
-                                    <div className="admin__filterType">
-                                        <label className="admin__filterTypeLabel form__label" htmlFor="establishmentName">Type of establishment</label>
-                                        <select className="admin__filterTypeInput form__input">
-                                            <option className="form__option" value="hotel">Hotel</option>
-                                            <option className="form__option" value="bnb">B&B</option>
-                                            <option className="form__option" value="house">House</option>
-                                            <option className="form__option" value="cabin">Cabin</option>
-                                        </select>
-                                    </div>
-                                    <div className="admin__filterLocation">
-                                        <label className="admin__filterLocationLabel form__label" htmlFor="establishmentName">Location of establishment</label>
-                                        <select className="admin__filterLocationInput form__input">
-                                            <option className="form__option" value="aasene">Åsane</option>
-                                            <option className="form__option" value="sotra">Sotra</option>
-                                            <option className="form__option" value="sentrum">Sentrum</option>
-                                            <option className="form__option" value="minde">Minde</option>
-                                        </select>
-                                    </div>
+                                <form className="admin__establishmentsFilter form" onChange={() => {
+                                    const values = getValues();
+                                    _filterEstablishments(data.oEstablishment, _updateData, values)
+                                }}>
+                                    <SearchBox className="admin-est" data={establishments} Ref={register} errors={errors} results={false}/>
                                 </form>
-                                <div className="admin__establishmentsList admin__list col-12 col-t-7 col-d-9">
-                                    {establishments && establishments.map((establishment, i) => <EstablishmentItem key={establishment.establishmentID} odd={!((i+1) % 2 === 0)} establishment={establishment} openF={handleWindow}/>)}
+                                <div className="admin__establishmentsList admin__list row">
+                                    {data.fEstablishment && data.fEstablishment.map((establishment, i) => <EstablishmentItem key={establishment.establishmentID} odd={!((i+1) % 2 === 0)} establishment={establishment} openF={handleWindow}/>)}
                                 </div>
                             </div>
-                        </aside>
+                        </div>
                     ) : (
-                        <aside id="establishments" className="admin__establishments admin__section col-12">
+                        <aside id="establishments" className="admin__establishments admin__section">
                             <button className="admin__showMore" onClick={event => toggleAdmin(event.target,"establishments")}>
                                 <h2 className="h2 admin__establishmentsHeading">Establishments <i className="fas fa-angle-down admin__showMore--indicator"/></h2>
                             </button>
-                            <div className="admin__establishmentContent admin__content--hidden row">
+                            <div className="admin__establishmentContent admin__content--hidden">
                                 <div className="admin__establishmentsAction row" onClick={() => handleWindow("open", "establishment", "", "add")}>
                                     <span className="admin__establishmentsAddLabel">Add</span>
                                     <button className="admin__establishmentsAdd btn--primary">+</button>
                                 </div>
-                                <form className="admin__establishmentsFilter form col-12 col-t-5 col-d-3" onChange={handleFilter}>
-                                    <div className="admin__filterName">
-                                        <label className="admin__filterNameLabel form__label" htmlFor="establishmentName">Name of establishment</label>
-                                        <input className="admin__filterNameInput form__input" type="text"/>
-                                    </div>
-                                    <div className="admin__filterType">
-                                        <label className="admin__filterTypeLabel form__label" htmlFor="establishmentName">Type of establishment</label>
-                                        <select className="admin__filterTypeInput form__input">
-                                            <option className="form__option" value="hotel">Hotel</option>
-                                            <option className="form__option" value="bnb">B&B</option>
-                                            <option className="form__option" value="house">House</option>
-                                            <option className="form__option" value="cabin">Cabin</option>
-                                        </select>
-                                    </div>
-                                    <div className="admin__filterLocation">
-                                        <label className="admin__filterLocationLabel form__label" htmlFor="establishmentName">Location of establishment</label>
-                                        <select className="admin__filterLocationInput form__input">
-                                            <option className="form__option" value="aasene">Åsane</option>
-                                            <option className="form__option" value="sotra">Sotra</option>
-                                            <option className="form__option" value="sentrum">Sentrum</option>
-                                            <option className="form__option" value="minde">Minde</option>
-                                        </select>
-                                    </div>
+                                <form className="admin__establishmentsFilter form" onChange={() => {
+                                    const values = getValues();
+                                    _filterEstablishments(data.oEstablishment, _updateData, values)
+                                }}>
+                                    <SearchBox className="admin-est" data={establishments} Ref={register} errors={errors} results={false}/>
                                 </form>
-                                <div className="admin__establishmentsList admin__list col-12 col-t-7 col-d-9">
+                                <div className="admin__establishmentsList admin__list row">
                                     {establishments && establishments.map((establishment, i) => <EstablishmentItem key={establishment.establishmentID} odd={!((i+1) % 2 === 0)} establishment={establishment} openF={handleWindow}/>)}
                                 </div>
                             </div>
@@ -274,4 +258,10 @@ export default function ({enquiries, messages, establishments}) {
             </ConfirmationBox>)}
         </div>
     )
+}
+
+User.propTypes = {
+    messages: PropTypes.array.isRequired,
+    enquiries: PropTypes.array.isRequired,
+    establishments: PropTypes.array.isRequired
 }

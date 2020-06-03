@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export default function ({checked}) {
+export default function Checkbox({checked}) {
     if (checked) {
         return (
             <i className="far fa-check-square"/>
@@ -10,4 +11,8 @@ export default function ({checked}) {
             <i className="far fa-square"/>
         )
     }
+}
+
+Checkbox.propTypes = {
+    checked: PropTypes.bool.isRequired
 }

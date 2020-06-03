@@ -1,20 +1,23 @@
 import React, {useState} from "react";
 import { useForm } from  "react-hook-form";
+import {useHistory} from "react-router-dom";
 import DateFromTo from "./components/filters/DateFromTo";
 import SearchBox from "./components/filters/SearchBox";
 import People from "./components/filters/People";
 import {_filterEstablishments} from "../functions/handleEstablishmentForm";
-import * as yup from "yup";
 import bergenImage from "../media/images/lachlan-gowen-J38KXYtVrBA-unsplash.jpg";
+import PropTypes from 'prop-types';
+import * as yup from "yup";
 
 
 
-export default function ({establishments}) {
+export default function Home({establishments}) {
     const [data, setData] = useState({
         oEstablishments: establishments,
         fEstablishments: establishments,
         sEstablishment: null
     });
+    const history = useHistory();
     function _checkout(filters) {
         console.log(filters);
         const chart = {
@@ -25,11 +28,14 @@ export default function ({establishments}) {
             date2: filters.date2
         };
         localStorage.setItem("order", JSON.stringify(chart));
-        window.location="/checkout";
+        history.push("/checkout");
     }
 
-    function _updateData(values) {
-        setData(values);
+    function _updateData(newData) {
+        setData({
+            ...data,
+            sEstablishment: newData
+        });
     }
     const {register, handleSubmit, getValues, errors} = useForm({
         validationSchema : yup.object().shape({
@@ -96,4 +102,8 @@ export default function ({establishments}) {
             </main>
         </div>
     )
+}
+
+Home.propTypes = {
+    establishments: PropTypes.array.isRequired
 }
