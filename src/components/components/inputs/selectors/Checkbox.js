@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export default function Checkbox({checked}) {
-    if (checked) {
+    if (checked === "false") {
         return (
             <i className="far fa-check-square"/>
         )
@@ -14,5 +14,5 @@ export default function Checkbox({checked}) {
 }
 
 Checkbox.propTypes = {
-    checked: PropTypes.bool.isRequired
+    checked: PropTypes.string.isRequired
 }
