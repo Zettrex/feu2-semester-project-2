@@ -33,9 +33,17 @@ export default function User({enquiries, messages, establishments}) {
 
     useEffect(() => {
         if (target && showAdmin !== "establishments") {
-            window.scrollTo(0,target.offsetTop-60);
+            window.scroll({
+                top: target.offsetTop-60,
+                left: 0,
+                behavior: "smooth"
+            })
         } else if (target && showAdmin === "establishments") {
-            window.scrollTo(0,target.offsetTop+190);
+            window.scroll({
+                top: target.offsetTop+260,
+                left: 0,
+                behavior: "smooth"
+            })
         }
     }, [target, showAdmin]);
     const {register, getValues, errors} = useForm({
@@ -153,7 +161,7 @@ export default function User({enquiries, messages, establishments}) {
                 <div className="page__wrapper">
                     <div className="admin__inbox row">
                         {(showAdmin === "all" || showAdmin === "enquires") ? (
-                            <div id="enquiries" className="admin__enquiries admin__section col-6 col-m-12">
+                            <div id="enquiries" className="admin__enquiries admin__section col-6 col-s-12">
                                 <button className="admin__showMore" onClick={event => toggleAdmin(event.target,"enquires")}>
                                     <h2 className="h2 admin__enquiriesHeading">Enquiries <i className="fas fa-angle-up admin__showMore--indicator"/></h2>
                                 </button>
@@ -162,7 +170,7 @@ export default function User({enquiries, messages, establishments}) {
                                 </div>
                             </div>
                         ) : (
-                            <div id="enquiries" className="admin__enquiries admin__section col-6 col-m-12">
+                            <div id="enquiries" className="admin__enquiries admin__section col-6 col-s-12">
                                 <button className="admin__showMore" onClick={event => toggleAdmin(event.target,"enquires")}>
                                     <h2 className="h2 admin__enquiriesHeading">Enquiries <i className="fas fa-angle-down admin__showMore--indicator"/></h2>
                                 </button>
@@ -172,7 +180,7 @@ export default function User({enquiries, messages, establishments}) {
                             </div>
                         )}
                         {(showAdmin === "all" || showAdmin === "messages") ? (
-                            <div id="messages" className="admin__messages admin__section col-6 col-m-12">
+                            <div id="messages" className="admin__messages admin__section col-6 col-s-12">
                                 <button className="admin__showMore" onClick={event => toggleAdmin(event.target,"messages")}>
                                     <h2 className="h2 admin__messagesHeading">Messages <i className="fas fa-angle-up admin__showMore--indicator"/></h2>
                                 </button>
@@ -181,7 +189,7 @@ export default function User({enquiries, messages, establishments}) {
                                 </div>
                             </div>
                         ) : (
-                            <div id="messages" className="admin__messages admin__section col-6 col-m-12">
+                            <div id="messages" className="admin__messages admin__section col-6 col-s-12">
                                 <button className="admin__showMore" onClick={event => toggleAdmin(event.target,"messages")}>
                                     <h2 className="h2 admin__messagesHeading">Messages <i className="fas fa-angle-down admin__showMore--indicator"/></h2>
                                 </button>
@@ -208,7 +216,7 @@ export default function User({enquiries, messages, establishments}) {
                                     <SearchBox className="admin-est" data={establishments} Ref={register} errors={errors} results={false}/>
                                 </form>
                                 <div className="admin__establishmentsList admin__list row">
-                                    {data.fEstablishment && data.fEstablishment.map((establishment, i) => <EstablishmentItem key={establishment.establishmentID} odd={!((i+1) % 2 === 0)} establishment={establishment} openF={handleWindow}/>)}
+                                    {data.fEstablishment && data.fEstablishment.map((establishment, i) => <EstablishmentItem key={establishment.establishmentID} odd={((((i+1) % 4) / 4 === 0.75) || (((i+1) % 4) / 4 === 0))} establishment={establishment} openF={handleWindow}/>)}
                                 </div>
                             </div>
                         </div>
@@ -229,7 +237,7 @@ export default function User({enquiries, messages, establishments}) {
                                     <SearchBox className="admin-est" data={establishments} Ref={register} errors={errors} results={false}/>
                                 </form>
                                 <div className="admin__establishmentsList admin__list row">
-                                    {establishments && establishments.map((establishment, i) => <EstablishmentItem key={establishment.establishmentID} odd={!((i+1) % 2 === 0)} establishment={establishment} openF={handleWindow}/>)}
+                                    {data.fEstablishment && data.fEstablishment.map((establishment, i) => <EstablishmentItem key={establishment.establishmentID} odd={((((i+1) % 4) / 4 === 0.75) || (((i+1) % 4) / 4 === 0))} establishment={establishment} openF={handleWindow}/>)}
                                 </div>
                             </div>
                         </aside>

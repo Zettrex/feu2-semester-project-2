@@ -12,7 +12,7 @@ export default function ViewMessage({data}) {
                 </div>
             </div>
             <div className="row">
-                <div className="view-message__information section col-4 col-m-12">
+                <div className="view-message__information section col-4 col-s-12">
                     <div className="view-message__contact">
                         <h2 className="h3">Contact Information</h2>
                         <div className="view-message__name group">
@@ -35,7 +35,7 @@ export default function ViewMessage({data}) {
                         </div>
                     </div>
                 </div>
-                <div className="view-message__message section col-8 col-m-12">
+                <div className="view-message__message section col-8 col-s-12">
                     <h2 className="h3 view-message__subject">{data.subject.charAt(0).toUpperCase() + data.subject.slice(1)}</h2>
                     <div className="view-message__content">{data.message}</div>
                 </div>

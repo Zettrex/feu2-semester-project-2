@@ -63,7 +63,7 @@ export default function SearchBox({className, updateData, data, sectionCol, grou
                                                     <span className="resultItem__price">Price: {est.price}$</span>
                                                 </div>
                                             </div>
-                                            <div className="resultItem__action column col-m-12">
+                                            <div className="resultItem__action column col-s-12">
                                                 <Link className="resultItem__readMore link--white" to={`/specific/${est.establishmentID}`}>Read more</Link>
                                             </div>
                                         </div>

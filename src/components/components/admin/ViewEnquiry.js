@@ -6,7 +6,7 @@ export default function ViewEnquiry ({data}) {
         <div className="view-enquiry view-window__content">
             <h2 className="h1 prompt__heading">Enquiry</h2>
                 <div className="view-enquiry__content row">
-                    <div className="view-enquiry__client section col-6 col-m-12">
+                    <div className="view-enquiry__client section col-6 col-s-12">
                         <h2 className="h3">Client Information</h2>
                         <div className="view-enquiry__name group">
                             <span>Name: </span>
@@ -27,7 +27,7 @@ export default function ViewEnquiry ({data}) {
                             <span>{data.clientEmail}</span>
                         </div>
                     </div>
-                    <div className="view-enquiry__information section col-6 col-m-12">
+                    <div className="view-enquiry__information section col-6 col-s-12">
                         <h2 className="h3">Order Information</h2>
                         <div className="view-enquiry__orderInfo section">
                             <div className="view-enquiry__orderID group">

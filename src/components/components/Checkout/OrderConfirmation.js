@@ -58,15 +58,15 @@ export default function OrderConfrimation({data, updateConfirmed}) {
         <form onSubmit={handleSubmit(_updateConfirmed)} className="orderConfirm containerBox">
             <div className="form__section orderConfirm__est col-12 row">
                 <div className="orderConfirm__estImg bgImage" style={{backgroundImage: `url(${data.imageUrl})`}}/>
-                <div className="orderConfirm__estInfo col-auto col-m-12">
+                <div className="orderConfirm__estInfo col-auto col-s-12">
                     <div className="orderConfirm__estName">{data.establishmentName}</div>
                     <div className="orderConfirm__estRating"><StarRating rating={data.rating}/></div>
                     <div className="orderConfirm__estDesc">{data.description}</div>
                 </div>
             </div>
             <div className="form__section col-12">
-                <DateFromTo value1={data.date1} value2={data.date2} className="orderConfirm" sectionCol="col-12" groupCol="col-6 col-m-12" Ref={register} errors={errors}/>
-                <People className="orderConfirm" sectionCol="col-12" groupCol="column--split col-m-12" adultsValue={data.adults} childrenValue={data.children} Ref={register} errors={errors}/>
+                <DateFromTo value1={data.date1} value2={data.date2} className="orderConfirm" sectionCol="col-12" groupCol="col-6 col-s-12" Ref={register} errors={errors}/>
+                <People className="orderConfirm" sectionCol="col-12" groupCol="column--split col-s-12" adultsValue={data.adults} childrenValue={data.children} Ref={register} errors={errors}/>
             </div>
             <div className="form__section col-12">
                 <div className="form__action form__group">

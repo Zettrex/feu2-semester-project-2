@@ -61,14 +61,14 @@ export default function PaymentForm({updatePayment}) {
         <form className="checkout__payment col-10" onSubmit={handleSubmit(_checkValid)}>
             <h2 className="h2">Payment Information</h2>
             <div className="checkout__firstNameWrapper form__section">
-                <div className="checkout__firstName form__group col-6 col-m-12">
+                <div className="checkout__firstName form__group col-6 col-s-12">
                     <label className="checkout__firstNameLabel form__label--compact" htmlFor="clientFirstName">First name</label>
                     <input className="checkout__firstNameInput form__input--compact" name="clientFirstName" id="clientFirstName" type="text" placeholder="First name" ref={register}/>
                 </div>
                 {errors.clientFirstName && <p className="form__error">{errors.clientFirstName.message}</p>}
             </div>
             <div className="checkout__lastNameWrapper form__section">
-                <div className="checkout__lastName form__group col-6 col-m-12">
+                <div className="checkout__lastName form__group col-6 col-s-12">
                     <label className="checkout__lastNameLabel form__label--compact" htmlFor="clientLastName">Last name</label>
                     <input className="checkout__lastNameInput form__input--compact" name="clientLastName" id="clientLastName" type="text" placeholder="Last name" ref={register}/>
                 </div>

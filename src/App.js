@@ -14,6 +14,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import Styleguide from "./components/Styleguide";
 import SpecificEstablishment from "./components/SpecificEstablishment";
+import ScrollToTop from "./functions/ScrollToTop";
 
 function App() {
     const [establishments, setEstablishments] = useState();
@@ -68,8 +69,9 @@ function App() {
     }
     if (establishments && enquiries && messages) {
         return (
-            <Router className="App">
+            <Router className="App" >
                 <Navigation userLoggedIn={userLoggedIn} updateUser={updateUser}/>
+                <ScrollToTop/>
                 <Switch>
                     <Route path="/" exact component={() => <Home establishments={establishments}/>}/>
                     <Route path="/establishments" component={() => <Establishments establishments={establishments}/>}/>

@@ -11,8 +11,10 @@ export default function EnquiryItem ({odd, enquiry, openF}) {
                 <span className="enquiry__name admin-item__name">{enquiry.establishmentName}</span>
             </div>
             <div className={`admin-item__right${odd ? "--odd" : "--even"}`}>
-                <div className="enquiry__date admin-item__date">{enquiry.checkin}</div>
-                <button className="enquiry__view btn--primary admin-item__btn" onClick={() => openF("open", "enquiry", enquiry)}>View</button>
+                <div className="admin-item__action row">
+                    <div className="enquiry__date admin-item__date">{enquiry.checkin}</div>
+                    <button className="enquiry__view btn--primary admin-item__btn" onClick={() => openF("open", "enquiry", enquiry)}>View</button>
+                </div>
             </div>
         </div>
     )

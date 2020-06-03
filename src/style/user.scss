@@ -203,14 +203,18 @@
 //End of view-window
 
 @media only screen {
-  @media (max-width: $adminBreak) {
+  @media (max-width: $breakPoint2) {
     .admin {
       &__enquiries, &__messages {
         flex-basis: 100%;
       }
+      &__showMore {
+        margin: 0 auto;
+        display: block;
+      }
     }
   }
-  @media (min-width: $adminBreak) {
+  @media (min-width: $breakPoint2) {
     .admin {
       &__showMore {
         text-align: left;
@@ -225,7 +229,7 @@
       }
     }
   }
-  @media (max-width: $mobile) {
+  @media (max-width: $sGrid) {
     .admin {
       &__establishments {
         &List {
@@ -244,7 +248,7 @@
     //End of admin-item
   }
   //for tablet and up
-  @media (min-width: $mobile) {
+  @media (min-width: $sGrid) {
     .admin {
       //start of admin tools
       &__establishments {
@@ -264,9 +268,9 @@
         &--even {
           background: linear-gradient(70deg, $thirdColor 20px, $fourthColor 20px);
         }
-        & > *:first-child {
-          padding-left: 30px;
-        }
+      }
+      &__action {
+        padding-left: 30px;
       }
     }
 
@@ -285,7 +289,7 @@
     }
     //End of view-window
   }
-  @media (min-width: $tablet) {
+  @media (min-width: $mGrid) {
     .admin-item {
       &__infoWrapper {
         flex-direction: row;

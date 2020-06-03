@@ -2,7 +2,7 @@
   //Start of label
   &__label {
     color: white;
-
+    font-family: $labelFont;
     &--compact {
       @extend .form__label;
       position: absolute;
@@ -41,7 +41,7 @@
     width: 100%;
     border: 2px solid $fourthColor;
     font-size: 14px;
-
+    font-family: $bodyFont;
     &:focus {
       border-color: $primaryColor;
     }
@@ -82,7 +82,9 @@
     min-height: 60px;
     resize: vertical;
     height: 150px;
-
+    &:focus {
+      border-color: $primaryColor;
+    }
     &--compact {
       @extend .form__item--compact;
       @extend .form__textarea;
@@ -216,6 +218,7 @@
 
   &__checkboxLabel {
     @extend .form__radioLabel;
+    padding: 5px 0 0 5px;
   }
 
   //End of Checkbox
@@ -311,7 +314,7 @@
 @media only screen {
 
   //for Mobile
-@media (max-width: $dateBreak) {
+@media (max-width: $breakPoint2) {
     .form {
       &__label {
         &--right {
