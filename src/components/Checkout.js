@@ -79,7 +79,7 @@ export default function Checkout({user, updateUser}) {
                 )}
                 {(confirmed && !showPrompt) && (
                     <div className="checkout containerBox row ">
-                        <aside className="checkout__aside col-4 col-m-12">
+                        <aside className="checkout__aside col-4 col-s-12">
                             <div className="checkout__orderSummary">
                                 <h2 className="h3 checkout__orderHeading">Order summary</h2>
                                 <img className="checkout__orderImage" src={enquiry.order.imageUrl} alt={enquiry.order.establishmentName}/>
@@ -120,7 +120,7 @@ export default function Checkout({user, updateUser}) {
                                 </div>
                             </div>
                         </aside>
-                        <main className="checkout__main col-8 col-m-12 row">
+                        <main className="checkout__main col-8 col-s-12 row">
                             {!user && (<UserTypeForm user={user} loginF={_loginUser}/>)}
                             <PaymentForm updatePayment={_handlePayment} data={enquiry}/>
                         </main>
@@ -133,7 +133,7 @@ export default function Checkout({user, updateUser}) {
                                 <h2 className="h2">Thank you for your order.</h2>
                                 <p className="confirmation__aside">We wish you a nice evening, and wish you a nice stay.</p>
                             </div>
-                            <div className="confirmation__left col-12 col-d-6">
+                            <div className="confirmation__left col-12 col-l-6">
                                 <h3 className="h3">Order Summary</h3>
                                 <div className="confirmation__section">
                                     <img className="confirmation__image" src={enquiry.order.imageUrl} alt={enquiry.order.establishmentName}/>
@@ -166,7 +166,7 @@ export default function Checkout({user, updateUser}) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="confirmation__right col-12 col-d-6">
+                            <div className="confirmation__right col-12 col-l-6">
                                 <h3 className="h3">Order Information</h3>
                                 <div className="confirmation__section">
                                     <div className="group">

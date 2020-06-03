@@ -77,7 +77,7 @@
 }
 
 @media only screen {
-  @media (min-width: $mobile) {
+  @media (min-width: $sGrid) {
     .orderConfirm {
       min-width: 400px;
       &__est {

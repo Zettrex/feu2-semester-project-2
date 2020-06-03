@@ -81,18 +81,18 @@ export default function () {
         <div className="page contact">
             {!confirmation && (
                 <div className="contact__container row">
-                    <main className="contact__form col-8 col-m-12">
+                    <main className="contact__form col-8 col-s-12">
                         <h1 className="h1 contact__heading">Contact Us</h1>
                         <form className="form" onSubmit={handleSubmit(_sendForm)}>
                             <div className="form__section row">
-                                <div className="contact__firstName form__group col-6 col-m-12">
+                                <div className="contact__firstName form__group col-6 col-s-12">
                                     <label className="contact__firstNameLabel form__label--compact" htmlFor="firstName">First
                                         name</label>
                                     <input className="contact__firstNameInput form__input--compact" name="firstName"
                                            id="firstName" type="text" placeholder="First name" ref={register}/>
                                     {errors.firstName && <p className="form__error">{errors.firstName.message}</p>}
                                 </div>
-                                <div className="contact__lastName form__group col-6 col-m-12">
+                                <div className="contact__lastName form__group col-6 col-s-12">
                                     <label className="contact__lastNameLabel form__label--compact" htmlFor="surname">Last
                                         name</label>
                                     <input className="contact__lastNameInput form__input--compact" name="lastName" id="lastName"
@@ -132,21 +132,27 @@ export default function () {
                             {duplicateMessage && (<p className="form__error">This message have already been sent</p>)}
                         </form>
                     </main>
-                    <aside className="contact__info col-4 col-m-12">
-                        <div className="contact__infoRight">
-                            <div className="contact__times contact__section">
-                                <span className="contact__open">24/7 Support</span>
-                            </div>
+                    <aside className="contact__info col-4 col-s-12">
+                        <div className="contact__infoRight row">
                             <div className="contact__phone contact__section">
-                                <a className="contact__number link--white" href="tel:+4712345678">+47 12 34 56 78</a>
+                                <a className="contact__number contact__link" href="tel:+4712345678">
+                                    <i className="fas fa-phone contact__icon"/>
+                                    <span className="contact__infoText link--white">+47 12 34 56 78</span>
+                                </a>
                             </div>
                             <div className="contact__email contact__section">
-                                <a className="contact__emailAddress link--white"
-                                   href="mailto:example@example.com">example@example.com</a>
+                                <a className="contact__emailAddress contact__link"
+                                   href="mailto:example@example.com">
+                                    <i className="fas fa-envelope contact__icon"/>
+                                    <span className="contact__infoText link--white">support@holidaze.com</span>
+                                </a>
                             </div>
                             <div className="contact__address contact__section">
-                                <a className="contact__mapLink link--white" href="https://goo.gl/maps/xNDw2LRC37zVD8bh7"
-                                   target="_blank" rel="noopener noreferrer">Something gate 4</a>
+                                <a className="contact__mapLink contact__link" href="https://goo.gl/maps/xNDw2LRC37zVD8bh7"
+                                   target="_blank" rel="noopener noreferrer">
+                                    <i className="fas fa-map-marker-alt contact__icon"/>
+                                    <span className="contact__infoText link--white">Nordnesbakken 4, 5005 Bergen</span>
+                                </a>
                             </div>
                         </div>
                     </aside>

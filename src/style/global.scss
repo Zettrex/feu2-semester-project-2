@@ -11,7 +11,7 @@ body {
   max-width: 2460px;
   height: 100%;
   -webkit-font-smoothing: antialiased;
-  font-family: sans-serif;
+  font-family: $bodyFont;
   font-size: 14px;
 }
 .root {
@@ -329,6 +329,7 @@ body {
     padding: 20px;
   }
   &__label {
+    font-family: $labelFont;
     display: inline-block;
     min-width: 80px;
   }
@@ -397,7 +398,7 @@ body {
   }
 
   //for tablet
-  @media (min-width: $mobile) {
+  @media (min-width: $sGrid) {
     //Start of Page
     .page {
       padding: 50px;
@@ -468,7 +469,7 @@ body {
   }
 
   //for desktop
-  @media (min-width: $tablet) {
+  @media (min-width: $mGrid) {
     //Start of Nav
     .nav {
       padding: 0 85px;
@@ -505,7 +506,7 @@ body {
     }
     //End of Footer
   }
-  @media (min-width: $dateBreak) {
+  @media (min-width: $breakPoint2) {
     //Start of form
     .form {
       &__error {

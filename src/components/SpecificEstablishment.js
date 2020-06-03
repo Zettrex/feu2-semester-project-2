@@ -27,10 +27,10 @@ export default function () {
         <div className="specific page">
             {est ? (
                 <div className="specific__wrapper row">
-                    <div className="specific__img col-5 col-m-12">
+                    <div className="specific__img col-5 col-s-12">
                         <img src={est.imageUrl} alt={est.establishmentName}/>
                     </div>
-                    <main className="specific__info col-7 col-m-12">
+                    <main className="specific__info col-7 col-s-12">
                         <div className="specific__main section row">
                             <div className="group col-auto">
                                 <h1 className="h3 specific__name group">{est.establishmentName}</h1>
@@ -39,7 +39,7 @@ export default function () {
                                 </div>
                                 <div className="specific__description group">{est.description}</div>
                             </div>
-                            <div className="col-m-12 column">
+                            <div className="col-s-12 column">
                                 <div className="specific__priceLabel">Price</div>
                                 <div className="specific__price">{est.price}$</div>
                             </div>

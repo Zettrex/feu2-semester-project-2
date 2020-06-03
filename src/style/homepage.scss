@@ -4,10 +4,9 @@
   @extend .hero;
   background-image: url("../media/images/HeroImage.jpg");
 }
-
 //Start of OrderBox
 .orderBox {
-  margin: auto;
+  margin: auto;                                               
   max-width: 800px;
   width: 60%;
   min-width: 340px;
@@ -69,8 +68,13 @@
 //End of OrderBox
 
 //start of search Results
-
+.orderBox__place {
+  &:focus-within > .searchResults {
+    display: block;
+  }
+}
 .searchResults {
+  display: none;
   position: absolute;
   top: 80%;
   left: 0;
@@ -156,7 +160,7 @@
   }
 
   //Tablet and up
-  @media (min-width: $mobile) {
+  @media (min-width: $sGrid) {
     .resultItem {
       &__action {
         padding: 10px;
@@ -173,14 +177,14 @@
   }
 
   //from tablet to desktop
-  @media (min-width: $mobile) and (max-width: $tablet){
+  @media (min-width: $sGrid) and (max-width: $mGrid){
     .bergen {
       padding-top: 60px;
     }
   }
 
   //desktop and up
-  @media (min-width: $tablet) {
+  @media (min-width: $mGrid) {
     .orderBox {
       &__filter {
         padding: 20px 30px;

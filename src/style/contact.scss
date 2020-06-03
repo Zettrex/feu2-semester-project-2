@@ -7,15 +7,65 @@
   &__heading {
     padding-left: 10px;
   }
+  &__section {
+    margin: 30px 0;
+  }
+  &__link {
+    color: white;
+  }
   &__info {
     color: white;
     padding-top: 80px;
-    font-size: 25px;
+    font-size: 18px;
   }
-  &__section {
-    margin: 30px 0;
+  &__icon {
+    width: 42px;
+    height: 42px;
+    font-size: 40px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+  }
+  &__infoText {
+    padding: 6px;
+    display: block;
+    font-size: 14px;
+    text-align: center;
   }
   &__times {
     margin-bottom: 60px;
   }
 }
+
+@media only screen {
+  @media (min-width: $sGrid) {
+    .contact {
+      &__messageInput {
+        min-height: 320px;
+      }
+    }
+  }
+  @media (max-width: $breakPoint1) {
+    .contact {
+      &__form, &__info {
+        flex-basis: 100%;
+      }
+      &__icon {
+        width: 20px;
+        height: 20px;
+        font-size: 20px;
+      }
+      &__section {
+        padding: 10px;
+      }
+    }
+  }
+  @media (min-width: $breakPoint1 + 1px) {
+    .contact {
+      &__section {
+        width: 100%;
+      }
+    }
+  }
+}
+

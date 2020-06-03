@@ -13,7 +13,9 @@ export default function MessageItem({odd, message, openF}) {
                     <span className="message__date admin-item__date">20/12-2020</span>
                 </div>
                 <div className="message__rightAction">
-                    <button className="message__view btn--primary admin-item__btn" onClick={() => openF("open", "message", message)}>View</button>
+                    <div className="admin-item__action">
+                        <button className="message__view btn--primary admin-item__btn" onClick={() => openF("open", "message", message)}>View</button>
+                    </div>
                 </div>
             </div>
         </div>

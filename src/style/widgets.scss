@@ -3,6 +3,7 @@
   .h#{$i} {
     font-size: 12px + 6px * (5 - $i);
     margin: 0.4em 0;
+    font-family: $headingFont;
     &--black {
       @extend .h#{$i};
       color: black;
@@ -58,17 +59,17 @@
   }
 
   /*for mobile*/
-  @media (min-width: 0) and (max-width: $mobile) {
-    @include makeGrid($prefix:"col-m-");
+  @media (min-width: 0) and (max-width: $sGrid) {
+    @include makeGrid($prefix:"col-s-");
   }
 
   /*for tablet*/
-  @media (min-width: $mobile) and (max-width: $tablet) {
-    @include makeGrid($prefix:"col-t-");
+  @media (min-width: $sGrid) and (max-width: $mGrid) {
+    @include makeGrid($prefix:"col-m-");
   }
 
   /*for desktop*/
-  @media (min-width: $tablet) and (max-width: $desktop) {
-    @include makeGrid($prefix:"col-d-");
+  @media (min-width: $mGrid) and (max-width: $lGrid) {
+    @include makeGrid($prefix:"col-l-");
   }
 }

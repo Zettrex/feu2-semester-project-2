@@ -8,9 +8,9 @@ import PropTypes from "prop-types";
 export default function UserTypeForm({user, loginF}) {
     const  [userType, setUserType] = useState("user");
     return (
-        <div className="checkout__continue col-10 col-m-12 row">
+        <div className="checkout__continue col-10 col-s-12 row">
             {!user && (
-                <div className="checkout__selectUser col-6 col-m-12">
+                <div className="checkout__selectUser col-6 col-s-12">
                     <div className="checkout__selectOption form__group">
                         <label className="checkout__user form__radio"
                                onClick={() => setUserType("user")}
@@ -46,7 +46,7 @@ export default function UserTypeForm({user, loginF}) {
                     </div>
                 </div>
             )}
-            <div className="checkout__selectAction col-6 col-m-12">
+            <div className="checkout__selectAction col-6 col-s-12">
                 {userType === "user" && (
                     <LoginUserForm user={user} loginF={loginF}/>
                 )}

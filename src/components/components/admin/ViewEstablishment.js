@@ -102,14 +102,14 @@ export default function ViewEstablishment({data, closeF, job}) {
                 </div>
                 <div className="view-est__content">
                     <div className="form__section row">
-                        <div className="form__container col-12 col-d-6">
+                        <div className="form__container col-12 col-l-6">
                             <div className="view-est__name form__group">
                                 <label className="view-est__nameLabel form__label--compact" htmlFor="establishmentName">Name</label>
                                 <input className="view-est__nameInput form__input--compact" name="establishmentName" id="establishmentName" type="text" value={est.establishmentName} onChange={event => setEst({...est, establishmentName: event.target.value})} ref={register}/>
                                 {errors.establishmentName && <p className="form__error">{errors.establishmentName.message}</p>}
                             </div>
                         </div>
-                        <div className="form__container col-12 col-d-6">
+                        <div className="form__container col-12 col-l-6">
                             <div className="view-est__email form__group">
                                 <label className="view-est__emailLabel form__label--compact" htmlFor="establishmentEmail">Email</label>
                                 <input className="view-est__emailInput form__input--compact" name="establishmentEmail" id="establishmentEmail" type="text" value={est.establishmentEmail}
@@ -120,14 +120,14 @@ export default function ViewEstablishment({data, closeF, job}) {
                     </div>
                     <div className="form__section row">
                         <div className="form__section col-12 row">
-                            <div className="form__container col-12 col-d-6">
+                            <div className="form__container col-12 col-l-6">
                                 <div className="view-est__latitude form__group">
                                     <label className="view-est__latitudeLabel form__label--compact" htmlFor="address">Latitude</label>
                                     <input className="view-est__latitudeInput form__input--compact" name="googleLat" type="text" value={est.googleLat} onChange={event => setEst({...est, googleLat: event.target.value})} ref={register}/>
                                     {errors.googleLat && <p className="form__error">{errors.googleLat.message}</p>}
                                 </div>
                             </div>
-                            <div className="form__container col-12 col-d-6">
+                            <div className="form__container col-12 col-l-6">
                                 <div className="view-est__longitude form__group">
                                     <label className="view-est__longitudeLabel form__label--compact" htmlFor="address">Longitude</label>
                                     <input className="view-est__longitudeInput form__input--compact" name="googleLong" type="text" value={est.googleLong} onChange={event => setEst({...est, googleLong: event.target.value})} ref={register}/>

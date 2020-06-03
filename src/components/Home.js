@@ -65,11 +65,11 @@ export default function Home({establishments}) {
                 }} onSubmit={handleSubmit(_checkout)}>
                     <div className="orderBox__filter">
                         <div className="form__section row">
-                            <SearchBox className="orderBox" sectionCol="col-d-6 col-12" data={data} updateData={_updateData} results={true} Ref={register} errors={errors}/>
-                            <People className="orderBox" sectionCol="col-d-6 col-12" groupCol="col-6 col-m-12" Ref={register} errors={errors}/>
+                            <SearchBox className="orderBox" sectionCol="col-l-6 col-12" data={data} updateData={_updateData} results={true} Ref={register} errors={errors}/>
+                            <People className="orderBox" sectionCol="col-l-6 col-12" groupCol="col-6 col-s-12" Ref={register} errors={errors}/>
                         </div>
                         <div className="form__section row">
-                            <DateFromTo className="orderBox" groupCol="col-6 col-m-12" sectionCol="col-12" Ref={register} errors={errors}/>
+                            <DateFromTo className="orderBox" groupCol="col-6 col-s-12" sectionCol="col-12" Ref={register} errors={errors}/>
                             <div className="orderBox__action form__section">
                                 <div className="form__group">
                                     <button type="submit" className="orderBox__submit btn--primary">Find place</button>
@@ -82,7 +82,7 @@ export default function Home({establishments}) {
             <main className="bergen">
                 <h1 className="h1">Welcome to Bergen</h1>
                 <div className="row">
-                    <div className="bergen__info col-7 col-m-12">
+                    <div className="bergen__info col-7 col-s-12">
                         <p className="paragraph">
                             Bergen, historically Bjørgvin, is a city and municipality in Vestland county on the west coast of Norway. At the end of 2019, the municipality's population was 283,929, and the Bergen metropolitan region had about 420,000 inhabitants.
                         </p>
@@ -93,7 +93,7 @@ export default function Home({establishments}) {
                             Bergen is the administrative centre of Vestland county. The city consists of eight boroughs: Arna, Bergenhus, Fana, Fyllingsdalen, Laksevåg, Ytrebygda, Årstad, and Åsane.
                         </p>
                     </div>
-                    <div className="bergen__image col-5 col-m-12">
+                    <div className="bergen__image col-5 col-s-12">
                         <img src={bergenImage} alt="Bergen brygge"/>
                     </div>
                 </div>

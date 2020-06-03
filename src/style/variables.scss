@@ -1,11 +1,11 @@
 //grid
-$mobile: 610px;
-$tablet: 1200px;
-$desktop: 2560px;
+$sGrid: 610px;
+$mGrid: 1200px;
+$lGrid: 2560px;
 
 //breakpoints
-$dateBreak: 900px;
-$adminBreak: 900px;
+$breakPoint1: 750px;
+$breakPoint2: 900px;
 
 //margins
 $spacingPrimary: 10px;
@@ -22,6 +22,11 @@ $footerColor: $fourthColor;
 
 //Border-radius
 $borderRadius: 6px;
+
+//fonts
+$headingFont: 'Vesper Libre', serif;
+$bodyFont: 'Ubuntu', sans-serif;
+$labelFont: 'Roboto Condensed', sans-serif;
 
 //font-size
 $defaultFontSize: 12px;
