@@ -20,6 +20,7 @@ export default function () {
     }
 
     function _sendForm(data) {
+        window.alert("we run sendForm")
         if (JSON.stringify(contact) !== JSON.stringify(data)) { //work around due to shallow compare
             window.alert("we got in here")
             let registered = false;
@@ -46,6 +47,7 @@ export default function () {
                 .then(() => window.alert("and we did fetch"))
                 .catch(error => window.alert(error));
         } else {
+            window.alert("not inside post")
             setDuplicateMessage(true);
         }
     }
