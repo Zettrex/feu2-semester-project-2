@@ -22,32 +22,30 @@ export default function () {
     function _sendForm(data) {
         if (JSON.stringify(contact) !== JSON.stringify(data)) { //work around due to shallow compare
             let registered = false;
-            if (user.id) {
+            let userID = ""
+            if (user && user.id) {
                 registered = true
+                userID = user.id
             }
             const contact = {
                 caseID: `${Math.random().toString(36).substr(2, 6)}`,
                 clientName: `${data.firstName} ${data.lastName}`,
                 clientRegistered: registered,
-                clientID: user.clientID,
+                clientID: userID,
                 clientEmail: data.email,
                 subject: data.subject,
                 message: data.message
             };
-            window.alert("we get here??")
             setCaseID(contact.caseID);
             setContact(contact);
             setConfirmation(true);
-            window.alert("we did the thing");
             fetch("https://www.zettrex.no/Noroff/semester4/data/contact-success.php", {
-                method: "GET",
+                method: "POST",
                 headers: {"Content-Type": "application/x-www-form-urlencoded"},
-                body: `clientName=${encodeURIComponent(contact.clientName)}&clientRegistered=${encodeURIComponent(contact.clientRegistered)}&clientID=${contact.clientID}&clientEmail=${encodeURIComponent(contact.clientEmail)}&subject=${encodeURIComponent(contact.subject)}&message=${encodeURIComponent(contact.message)}`
+                body: `caseID=${encodeURIComponent(contact.caseID)}&clientName=${encodeURIComponent(contact.clientName)}&clientRegistered=${encodeURIComponent(contact.clientRegistered)}&clientID=${contact.clientID}&clientEmail=${encodeURIComponent(contact.clientEmail)}&subject=${encodeURIComponent(contact.subject)}&message=${encodeURIComponent(contact.message)}`
             })
-                .then(() => window.alert("and we did fetch"))
-                .catch(error => window.alert(error));
+                .catch(error => console.error(error));
         } else {
-            window.alert("not inside post")
             setDuplicateMessage(true);
         }
     }
