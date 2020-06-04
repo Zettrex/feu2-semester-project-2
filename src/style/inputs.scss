@@ -141,6 +141,7 @@
   &__select {
     @extend .form__item;
     -webkit-appearance: none;
+    background-color: white;
     &--label {
       @extend .form__label--compact;
     }
@@ -228,6 +229,10 @@
 .form {
   &__multiRange {
     position: relative;
+    background-color: white;
+    margin: 0 2px;
+    box-shadow: 0 0 2px 2px rgba(0,0,0,0.2);
+    border-radius: 2px;
   }
   &__rangeHiddenInputs {
     display: none;
@@ -240,7 +245,7 @@
   &__rangeInput {
     @extend .form__item;
     display: inline-block;
-    padding: 2px 0 2px 4px;
+    padding: 6px 0 6px 6px;
     width: 64px;
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
@@ -268,9 +273,7 @@
 .noUi-target {
   position: relative;
   height: 14px;
-  border-radius: $borderRadius;
-  background-color: white;
-  box-shadow: 0 0 2px 2px rgba(0,0,0,0.2);
+  margin: 0 12px;
 }
 
 .noUi-base {
@@ -294,11 +297,7 @@
   width: 24px;
   height: 24px;
   background-color: $primaryColor;
-  transform: translate(0, -25%);
-
-  &-upper {
-    transform: translate(-100%, -25%);
-  }
+  transform: translate(-50%, -25%);
 }
 
 //End of Nouislider

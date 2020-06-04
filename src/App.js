@@ -21,10 +21,19 @@ function App() {
     const [messages, setMessages] = useState();
     const [enquiries, setEnquiries] = useState();
     const [userLoggedIn, setUserLoggedIn] = useState()
+    const [showLogin, setShowLogin] = useState(false);
 
     useEffect(() => {
         updateAPIData("initial")
     }, []);
+
+    function toggleLogin(state) {
+        if (state) {
+            setShowLogin(state)
+        } else {
+            setShowLogin(!showLogin);
+        }
+    }
 
     function updateAPIData(job) {
         switch (job) {
@@ -70,7 +79,7 @@ function App() {
     if (establishments && enquiries && messages) {
         return (
             <Router className="App" >
-                <Navigation userLoggedIn={userLoggedIn} updateUser={updateUser}/>
+                <Navigation showLogin={showLogin} setShowLogin={toggleLogin} userLoggedIn={userLoggedIn} updateUser={updateUser}/>
                 <ScrollToTop/>
                 <Switch>
                     <Route path="/" exact component={() => <Home establishments={establishments}/>}/>
@@ -81,7 +90,7 @@ function App() {
                     <Route path="/styleguide" component={() => <Styleguide/>}/>
                     <Route path="/checkout" component={() => <Checkout user={userLoggedIn} updateUser={updateUser}/>}/>
                 </Switch>
-                <Footer/>
+                <Footer openLogin={() => toggleLogin(true)} user={userLoggedIn}/>
             </Router>
         );
     } else {

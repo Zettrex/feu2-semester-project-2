@@ -4,10 +4,10 @@ import LoginUserForm from "./components/LoginUserForm";
 import RegisterUserForm from "./components/RegisterUserForm";
 import PropTypes from "prop-types";
 
-export default function Navigation({userLoggedIn, updateUser}) {
+export default function Navigation({userLoggedIn, updateUser, showLogin, setShowLogin}) {
     const [showMenu, setShowMenu] = useState(false);
-    const [showLogin, setShowLogin] = useState(false);
     const [showRegister, setShowRegister] = useState(false);
+
     function handleShowLogin() {
         if (showLogin || showRegister) {
             setShowLogin(false);
@@ -148,5 +148,7 @@ export default function Navigation({userLoggedIn, updateUser}) {
 
 Navigation.propTypes = {
     userLoggedIn: PropTypes.object,
-    updateUser: PropTypes.func.isRequired
+    updateUser: PropTypes.func.isRequired,
+    showLogin: PropTypes.bool.isRequired,
+    setShowLogin: PropTypes.func.isRequired
 }

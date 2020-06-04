@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect, useCallback} from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import Nouislider from "react-nouislider";
 import PropTypes from "prop-types";
 

@@ -27,7 +27,7 @@
   &__matches {
     margin: auto;
     text-align: center;
-    font-size: 24px;
+    font-size: 22px;
   }
   &__buttons {
     margin: auto;
@@ -113,7 +113,6 @@
   }
   @media (min-width: $mGrid) {
     .filterArea {
-      margin-left: 30px;
       flex-wrap: nowrap;
     }
   }

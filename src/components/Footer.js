@@ -1,14 +1,23 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import PropTypes from 'prop-types';
 
-export default function () {
+export default function Footer({user, openLogin}) {
+    console.log(user);
     return (
         <footer className="footer row">
             <div className="footer__links col-6 col-s-12">
                 <Link className="footer__link--home footer__link" to="/">Home</Link>
                 <Link className="footer__link--projects footer__link" to="/establishments">Establishments</Link>
                 <Link className="footer__link--about footer__link" to="/contact">Contact Us</Link>
-                <Link className="footer__link--login footer__link" to="/login">Login</Link>
+                {user ? (
+                    <Link className="footer__link--about footer__link" to="/user">My Page</Link>
+                ) : (
+                    <button className="footer__link--login footer__link" onClick={() => {
+                        window.scroll({top: 0, left: 0, smooth: true})
+                        openLogin();
+                    }}>Login</button>
+                )}
             </div>
             <div className="footer__contact col-6 col-s-12">
                 <div className="footer__support footer__elem">
@@ -24,3 +33,9 @@ export default function () {
         </footer>
     )
 }
+
+Footer.propTypes = {
+    user: PropTypes.object,
+    openLogin: PropTypes.func.isRequired
+};
+

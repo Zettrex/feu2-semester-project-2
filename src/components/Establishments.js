@@ -9,7 +9,6 @@ import PriceRange from "./components/filters/PriceRange";
 import {_filterEstablishments} from "../functions/handleEstablishmentForm";
 import * as yup from "yup";
 import PropTypes from 'prop-types';
-import LazyLoad from "react-lazyload"
 
 export default function Establishments ({establishments}) {
     const [data, setData] = useState({
@@ -100,19 +99,15 @@ export default function Establishments ({establishments}) {
                 <aside className="est__mapWrapper col-12 col-l-5">
                     <div className="est__mapContainer">
                         {data.fEstablishments && (
-                            <LazyLoad once>
-                                <Map fixHeight={true} data={data.fEstablishments}/>
-                            </LazyLoad>
+                            <Map fixHeight={true} data={data.fEstablishments}/>
                         )}
                     </div>
                 </aside>
                 <main className="est-list col-12 col-l-7">
-                   <LazyLoad once>
                        {data.fEstablishments.length > 0 ? data.fEstablishments.map((est, i) => {
                            const values = getValues();
                            return <EstablishmentItem filters={values} key={est.establishmentID} odd={!((i+1) % 2 === 0)} item={est}/>
                        }): null}
-                   </LazyLoad>
                 </main>
             </div>
         </div>
