@@ -5,7 +5,7 @@ import ConfirmationBox from "./ConfirmationBox";
 
 export default function () {
     const [contact, setContact] = useState({});
-    const [confirmation, setConfirmation] = useState(false);
+    const [confirmation, setConfirmation] = useState(true);
     const [duplicateMessage, setDuplicateMessage] = useState(false);
     const [user, setUser] = useState();
     const [caseID, setCaseID] = useState();
@@ -21,7 +21,7 @@ export default function () {
 
     function _sendForm(data) {
         if (JSON.stringify(contact) !== JSON.stringify(data)) { //work around due to shallow compare
-            window.alert("fuck2!", confirmation);
+            window.alert("fuck2!");
             let registered = false;
             if (user.id) {
                 registered = true
