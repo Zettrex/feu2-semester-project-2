@@ -43,7 +43,8 @@ export default function () {
                     setCaseID(contact.caseID);
                     setContact(contact);
                     setConfirmation(true);
-                });
+                })
+                .catch(error => window.alert(error));
         } else {
             setDuplicateMessage(true);
         }
