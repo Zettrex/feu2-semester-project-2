@@ -15,6 +15,7 @@ export default function SearchBox({className, label, updateData, data, sectionCo
         })
     }
     function selectEstablishment(target, item) {
+        console.log("uhm");
         updateData(item);
         setSearch({
             focus: false,
@@ -48,10 +49,17 @@ export default function SearchBox({className, label, updateData, data, sectionCo
                                            })}
                                     >
                                         <input className="form__checkboxButton" type="checkbox" name="establishment"
-                                            /*onFocus={() => setSearch({...search, focus: true})}
-                                            onBlur={() => setSearch({...search, focus: false})}*/
+                                               onClick={(item) => {
+                                                   selectEstablishment(item.target, est);
+                                               }}
+                                               onKeyDown={(event => {
+                                                   if (event.key === "Enter") {
+                                                       selectEstablishment(event.target, est);
+                                                   }
+                                               })}
                                         />
-                                        <div className="form__checkboxDesign resultItem__design col-12 row">
+                                        <div className="form__checkboxDesign resultItem__design col-12 row"
+                                        tabIndex="-1">
                                             <div className="resultItem__content col-auto row">
                                                 <div className="resultItem__img bgImage" style={{
                                                     backgroundImage: `url(${est.imageUrl})`
@@ -64,7 +72,8 @@ export default function SearchBox({className, label, updateData, data, sectionCo
                                                 </div>
                                             </div>
                                             <div className="resultItem__action column col-s-12">
-                                                <Link className="resultItem__readMore link--white" to={`/specific/${est.establishmentID}`} tabIndex="-1">Read more</Link>
+                                                <Link className="resultItem__readMore link--white" to={`/specific/${est.establishmentID}`}
+                                                >Read more</Link>
                                             </div>
                                         </div>
                                     </label>

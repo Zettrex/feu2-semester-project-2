@@ -11,6 +11,7 @@ export function _filterEstablishments(original, updateData, values) {
     });
     console.log(original, values, filtered)
     if (updateData) {
+        console.log("hey")
         updateData(filtered)
     }
 }

@@ -60,7 +60,7 @@ export default function OrderConfrimation({data, updateConfirmed}) {
                 <div className="orderConfirm__estImg bgImage" style={{backgroundImage: `url(${data.imageUrl})`}}/>
                 <div className="orderConfirm__estInfo col-auto col-s-12">
                     <div className="orderConfirm__estName">{data.establishmentName}</div>
-                    <div className="orderConfirm__estRating"><StarRating rating={data.rating}/></div>
+                    <div className="orderConfirm__estRating"><StarRating score={data.rating}/></div>
                     <div className="orderConfirm__estDesc">{data.description}</div>
                 </div>
             </div>

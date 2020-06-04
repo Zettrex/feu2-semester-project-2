@@ -20,7 +20,7 @@ export default function Home({establishments}) {
     const history = useHistory();
     function _checkout(filters) {
         const chart = {
-            ...data.sEstablishment[0],
+            ...data.sEstablishment,
             adults: filters.adults,
             children: filters.children,
             date1: filters.date1,
@@ -30,7 +30,7 @@ export default function Home({establishments}) {
         history.push("/checkout");
     }
 
-    function _updateData(newData) {
+    function _updateSelected(newData) {
         setData({
             ...data,
             sEstablishment: newData
@@ -49,7 +49,7 @@ export default function Home({establishments}) {
                 .test({
                     message: "please select an establishment",
                     test: () => {
-                        return data.sEstablishment.length > 0;
+                        return data.sEstablishment;
                     }
                 }),
             adults: yup
@@ -73,7 +73,7 @@ export default function Home({establishments}) {
                 }} onSubmit={handleSubmit(_checkout)}>
                     <div className="orderBox__filter">
                         <div className="form__section row">
-                            <SearchBox className="orderBox" label="place" sectionCol="col-l-6 col-12" data={data} updateData={_updateData} results={true} Ref={register} errors={errors}/>
+                            <SearchBox className="orderBox" label="place" sectionCol="col-l-6 col-12" data={data} updateData={_updateSelected} results={true} Ref={register} errors={errors}/>
                             <People className="orderBox" sectionCol="col-l-6 col-12" groupCol="col-6 col-s-12" Ref={register} errors={errors}/>
                         </div>
                         <div className="form__section row">

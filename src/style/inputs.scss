@@ -33,9 +33,8 @@
 
   //Start of Items
   &__item {
-    height: 34px;
     margin: auto 0;
-    padding: 10px;
+    padding: 10px 6px;
     border-radius: $borderRadius;
     display: block;
     width: 100%;
@@ -44,6 +43,7 @@
     font-family: $bodyFont;
     &:focus {
       border-color: $primaryColor;
+      outline: none;
     }
 
     &--compact {
@@ -139,7 +139,6 @@
   //End of Date
   //Start of Select
   &__select {
-    font-size: 12px;
     @extend .form__item;
 
     &--label {

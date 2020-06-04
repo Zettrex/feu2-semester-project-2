@@ -102,6 +102,7 @@
   &:focus-within {
     background-color: $primaryColor;
     color: black;
+    outline: none;
   }
   &__design {
     display: flex;
