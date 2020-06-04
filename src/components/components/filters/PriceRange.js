@@ -1,64 +1,83 @@
-import React, {useEffect, useState} from "react";
+import React, {useRef, useState, useEffect} from "react";
 import Nouislider from "react-nouislider";
 import PropTypes from "prop-types";
+
+function ComponentDidUpdate (callback, deps) {
+    const hasMount = useRef(false)
+
+    useEffect(() => {
+        if (hasMount.current) {
+            callback()
+        } else {
+            hasMount.current = true
+        }
+    }, deps)
+}
 
 export default function PriceRange({className, sectionCol, Ref, errors, updateFilters}) {
     const defaultRange = {
         min: 1,
         max: 350
     };
-    //range
-    const [rangeMin, setRangeMin] = useState(defaultRange.min);
-    const [rangeMax, setRangeMax] = useState(defaultRange.max);
-    //input
-    const [inputMin, setInputMin] = useState(defaultRange.min);
-    const [inputMax, setInputMax] = useState(defaultRange.max);
-
-    useEffect(() => {
-        setInputMin(rangeMin);
-    }, [rangeMin]);
-    useEffect(() => {
-        setInputMax(rangeMax);
-    }, [rangeMax]);
-
+    const [range, setRange] = useState({
+        min: defaultRange.min,
+        max: defaultRange.max
+    });
+    const [inputValue, setInputValue] = useState({
+        min: defaultRange.min,
+        max: defaultRange.max
+    })
     function handleMin(targetValue) {
-        if (targetValue <= rangeMax) {
-            setRangeMin(targetValue);
-        } else if (targetValue > rangeMax){
-            setRangeMin(rangeMax);
+        if (targetValue <= range.max) {
+            setRange({
+                ...range,
+                min: targetValue
+            });
+        } else if (targetValue > range.max){
+            setRange({
+                ...range,
+                min: range.max
+            });
         }
     }
+    ComponentDidUpdate(updateFilters, [range]);
     //updating the max value on price range, and making sure u cant place max below minimum price
     function handleMax(targetValue) {
-        if (targetValue > rangeMin) {
-            setRangeMin(targetValue);
-        } else if (targetValue <= rangeMin){
-            setRangeMax(rangeMin);
+        if (targetValue > range.min) {
+            setRange({
+                ...range,
+                max: targetValue
+            });
+        } else if (targetValue <= range.min){
+            setRange({
+                ...range,
+                max: range.min
+            });
         }
     }
 
     return (
         <div className={`${className}__priceRange form__Price form__section ${sectionCol}`}>
             <div className="priceRange__hiddenInputs">
-                <input value={rangeMin} name="price1" type="number" disabled ref={Ref}/>
-                <input value={rangeMax} name="price2" type="number" disabled ref={Ref}/>
+                <input value={range.min} name="price1" type="number" disabled ref={Ref}/>
+                <input value={range.max} name="price2" type="number" disabled ref={Ref}/>
             </div>
             <div className="form__range form__group">
                 <div className="form__rangeControls row">
                     <label className="form__rangeLabel column" htmlFor="Price">Price</label>
-                    <input className="form__rangeInput--min column" type="number" min={defaultRange.min} max={defaultRange.max} value={inputMin} onBlur={event => handleMin(parseInt(event.target.value))} onKeyDown={event => {
-                        if (event.keyCode === 13) {
-                            handleMin(parseInt(event.target.value));
-                        }
-                    }} onChange={event => {
-                        setInputMin(event.target.value);
+                    <input className="form__rangeInput--min column" type="number" min={defaultRange.min} max={defaultRange.max} value={inputValue.min} onChange={event => {
+                        handleMin(parseInt(event.target.value))
+                        setInputValue({
+                            ...inputValue,
+                            min: event.target.value
+                        })
                     }}/>
-                    <input className="form__rangeInput--max column" type="number" min={defaultRange.min} max={defaultRange.max} value={inputMax} onBlur={event => handleMax(parseInt(event.target.value))} onKeyUp={event => {
-                        if (event.keyCode === 13) {
-                            handleMax(parseInt(event.target.value));
-                        }
-                    }} onChange={event => {
-                        setInputMax(event.target.value)
+                    <input className="form__rangeInput--max column" type="number" min={defaultRange.min} max={defaultRange.max} value={inputValue.max} onChange={event => {
+                        handleMax(parseInt(event.target.value))
+                        setInputValue({
+                            ...inputValue,
+                            max: event.target.value
+                        })
                     }}/>
                 </div>
 
@@ -69,15 +88,23 @@ export default function PriceRange({className, sectionCol, Ref, errors, updateFi
                 <div className="form__multiRange">
                     <Nouislider
                         range={{min: defaultRange.min, max: defaultRange.max}}
-                        start={[rangeMin, rangeMax]}
+                        start={[range.min, range.max]}
                         connect={true}
                         onSlide={(values, handle) => {
                             if (handle === 0) {
                                 updateFilters();
                                 handleMin(parseInt(values[0]));
+                                setInputValue({
+                                    ...inputValue,
+                                    min: parseInt(values[0])
+                                })
                             } else {
                                 updateFilters();
-                                handleMax(parseInt(values[1]));
+                                handleMax(parseInt(values[1]))
+                                setInputValue({
+                                    ...inputValue,
+                                    max: parseInt(values[1])
+                                })
                             }
                         }}
                     />

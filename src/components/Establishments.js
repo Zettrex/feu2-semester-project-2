@@ -25,6 +25,11 @@ export default function Establishments ({establishments}) {
         })
     }
 
+    function updatePrice() {
+        const values = getValues();
+        _filterEstablishments(data.oEstablishments, _updateData, values);
+    }
+
     const {register, getValues, errors} = useForm({
         validationSchema : yup.object().shape({
             search: yup
@@ -80,10 +85,7 @@ export default function Establishments ({establishments}) {
                         </div>
                         <div className="filterArea__section row">
                             <People className="filterArea" sectionCol="col-s-12 col-6" groupCol="column--split" Ref={register} errors={errors}/>
-                            <PriceRange className="filterArea" sectionCol="col-s-12 col-6" data={data} updateFilters={() => { //why did i not know this earlier... god damn it
-                                const values = getValues();
-                                return _filterEstablishments(data.oEstablishments, _updateData, values);
-                            }} Ref={register} errors={errors}/>
+                            <PriceRange className="filterArea" sectionCol="col-s-12 col-6" data={data} updateFilters={updatePrice} Ref={register} errors={errors}/>
                         </div>
                     </div>
                     <div className="filterArea__action filterArea__section col-l-2">
