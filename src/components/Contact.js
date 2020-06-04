@@ -36,6 +36,7 @@ export default function () {
                 subject: data.subject,
                 message: data.message
             };
+            window.alert("we get here??")
             setCaseID(contact.caseID);
             setContact(contact);
             setConfirmation(true);
