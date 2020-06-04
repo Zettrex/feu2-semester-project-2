@@ -68,11 +68,6 @@
 //End of OrderBox
 
 //start of search Results
-.orderBox__search {
-  &:focus-within > .searchResults {
-    display: block;
-  }
-}
 .searchResults {
   display: none;
   position: absolute;
@@ -87,6 +82,13 @@
   border-radius: $borderRadius;
   border: 3px solid $white;
 }
+
+.searchBox {
+  &:focus-within > .searchResults {
+    display: block;
+  }
+}
+
 .resultItem {
   background-color: $thirdColor;
   border-radius: $borderRadius;
@@ -175,13 +177,6 @@
       &__info {
         order: 2;
       }
-    }
-  }
-
-  //from tablet to desktop
-  @media (min-width: $sGrid) and (max-width: $mGrid){
-    .bergen {
-      padding-top: 60px;
     }
   }
 

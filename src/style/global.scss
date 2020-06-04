@@ -107,7 +107,7 @@ body {
 
 //Start of Hero
 .hero {
-  margin: -30px -16px 30px;
+  margin: -30px -16px 50px;
   min-height: 75vh;
   position: relative;
   padding: 40px 0;
@@ -239,7 +239,7 @@ body {
 
 //Start of Footer
 .footer {
-  padding: 0 20px;
+  padding: 20px;
   background-color: $footerColor;
   &__link {
     @extend .link;
@@ -406,10 +406,10 @@ body {
   @media (min-width: $sGrid) {
     //Start of Page
     .page {
-      padding: 50px;
+      padding: 30px 50px 50px;
     }
     .hero {
-      margin: -50px;
+      margin: -30px -50px 50px;
     }
     //End of Page
     //Start of Confirmation box
@@ -510,7 +510,7 @@ body {
     //End of Page
     //Start of Hero
     .hero {
-      margin: -30px -100px 0;
+      margin: -30px -100px 50px;
     }
     //End of Hero
     //Start of Footer

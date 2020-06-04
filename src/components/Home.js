@@ -36,6 +36,12 @@ export default function Home({establishments}) {
             sEstablishment: newData
         });
     }
+    function updateFilters(newData) {
+        setData({
+            ...data,
+            fEstablishments: newData
+        })
+    }
     const {register, handleSubmit, getValues, errors} = useForm({
         validationSchema : yup.object().shape({
             search: yup
@@ -43,7 +49,7 @@ export default function Home({establishments}) {
                 .test({
                     message: "please select an establishment",
                     test: () => {
-                        return data.sEstablishment !== null;
+                        return data.sEstablishment.length > 0;
                     }
                 }),
             adults: yup
@@ -60,8 +66,10 @@ export default function Home({establishments}) {
         <div className="page">
             <div className="home-hero hero column">
                 <form className="orderBox containerBox form" onChange={() => {
+                    console.log(data.sEstablishment);
                     const values = getValues();
-                    _filterEstablishments(data.oEstablishments, _updateData, values)
+                    _filterEstablishments(data.oEstablishments, updateFilters
+                    , values)
                 }} onSubmit={handleSubmit(_checkout)}>
                     <div className="orderBox__filter">
                         <div className="form__section row">

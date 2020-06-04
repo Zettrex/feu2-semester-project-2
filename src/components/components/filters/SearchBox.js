@@ -24,7 +24,7 @@ export default function SearchBox({className, label, updateData, data, sectionCo
 
     return (
         <div className={`${className}__search form__section ${sectionCol}`}>
-            <div className={`${className}__searchWrapper form__group ${groupCol}`}>
+            <div className={`${className}__searchWrapper searchBox form__group ${groupCol}`}>
                 <label className={`${className}__searchLabel form__label--compact`} htmlFor="est-search">{label}</label>
                 <input className={`${className}__searchInput form__search form__input--compact`} type="text" placeholder="Name of Establishment" name="search" ref={Ref}
                        onInput={() => setSearch({...search, focus: true})}
@@ -64,7 +64,7 @@ export default function SearchBox({className, label, updateData, data, sectionCo
                                                 </div>
                                             </div>
                                             <div className="resultItem__action column col-s-12">
-                                                <Link className="resultItem__readMore link--white" to={`/specific/${est.establishmentID}`} tabindex="-1">Read more</Link>
+                                                <Link className="resultItem__readMore link--white" to={`/specific/${est.establishmentID}`} tabIndex="-1">Read more</Link>
                                             </div>
                                         </div>
                                     </label>
