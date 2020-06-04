@@ -20,9 +20,7 @@ export default function () {
     }
 
     function _sendForm(data) {
-        window.alert("we run sendForm");
         if (JSON.stringify(contact) !== JSON.stringify(data)) { //work around due to shallow compare
-            window.alert("we got in here");
             let registered = false;
             if (user.id) {
                 registered = true
