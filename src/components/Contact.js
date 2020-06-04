@@ -34,6 +34,9 @@ export default function () {
                 subject: data.subject,
                 message: data.message
             };
+            setCaseID(contact.caseID);
+            setContact(contact);
+            setConfirmation(true);
             fetch("https://www.zettrex.no/Noroff/semester4/data/contact-success.php", {
                 method: "GET",
                 headers: {"Content-Type": "application/x-www-form-urlencoded"},
