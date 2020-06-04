@@ -20,9 +20,9 @@ export default function () {
     }
 
     function _sendForm(data) {
-        window.alert("we run sendForm")
+        window.alert("we run sendForm");
         if (JSON.stringify(contact) !== JSON.stringify(data)) { //work around due to shallow compare
-            window.alert("we got in here")
+            window.alert("we got in here");
             let registered = false;
             if (user.id) {
                 registered = true
@@ -39,6 +39,7 @@ export default function () {
             setCaseID(contact.caseID);
             setContact(contact);
             setConfirmation(true);
+            window.alert("we did the thing");
             fetch("https://www.zettrex.no/Noroff/semester4/data/contact-success.php", {
                 method: "GET",
                 headers: {"Content-Type": "application/x-www-form-urlencoded"},
