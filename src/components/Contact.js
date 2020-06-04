@@ -35,15 +35,10 @@ export default function () {
                 message: data.message
             };
             fetch("https://www.zettrex.no/Noroff/semester4/data/contact-success.php", {
-                method: "POST",
+                method: "GET",
                 headers: {"Content-Type": "application/x-www-form-urlencoded"},
                 body: `clientName=${encodeURIComponent(contact.clientName)}&clientRegistered=${encodeURIComponent(contact.clientRegistered)}&clientID=${contact.clientID}&clientEmail=${encodeURIComponent(contact.clientEmail)}&subject=${encodeURIComponent(contact.subject)}&message=${encodeURIComponent(contact.message)}`
             })
-                .then(() => {
-                    setCaseID(contact.caseID);
-                    setContact(contact);
-                    setConfirmation(true);
-                })
                 .catch(error => window.alert(error));
         } else {
             setDuplicateMessage(true);
