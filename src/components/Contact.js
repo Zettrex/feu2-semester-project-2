@@ -20,8 +20,8 @@ export default function () {
     }
 
     function _sendForm(data) {
-        window.alert("fuck!");
         if (JSON.stringify(contact) !== JSON.stringify(data)) { //work around due to shallow compare
+            window.alert("fuck2!", confirmation);
             let registered = false;
             if (user.id) {
                 registered = true
@@ -44,6 +44,7 @@ export default function () {
                 body: `clientName=${encodeURIComponent(contact.clientName)}&clientRegistered=${encodeURIComponent(contact.clientRegistered)}&clientID=${contact.clientID}&clientEmail=${encodeURIComponent(contact.clientEmail)}&subject=${encodeURIComponent(contact.subject)}&message=${encodeURIComponent(contact.message)}`
             })
         } else {
+            window.alert("fucking hell!!!!")
             setDuplicateMessage(true);
         }
     }
