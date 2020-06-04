@@ -80,5 +80,5 @@ PriceRange.propTypes = {
     sectionCol: PropTypes.string,
     Ref: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired,
-    updateFilters: PropTypes.func
+    updateFilters: PropTypes.func.isRequired
 };
