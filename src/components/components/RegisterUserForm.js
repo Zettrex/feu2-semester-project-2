@@ -133,7 +133,7 @@ export default function RegisterUserForm(props) {
 }
 
 RegisterUserForm.propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.element,
     loginF: PropTypes.func.isRequired,
     nav: PropTypes.bool,
     className: PropTypes.string

@@ -65,6 +65,6 @@ export default function UserTypeForm({user, loginF}) {
     )
 }
 UserTypeForm.propTypes = {
-    user: PropTypes.object.isRequired,
+    user: PropTypes.object,
     loginF: PropTypes.func.isRequired
 }

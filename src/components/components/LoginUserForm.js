@@ -77,7 +77,7 @@ export default function LoginUserForm(props) {
 }
 
 LoginUserForm.propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.element,
     loginF: PropTypes.func.isRequired,
     nav: PropTypes.bool,
     className: PropTypes.string

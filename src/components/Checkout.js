@@ -79,7 +79,7 @@ export default function Checkout({user, updateUser}) {
                 )}
                 {(confirmed && !showPrompt) && (
                     <div className="checkout containerBox row ">
-                        <aside className="checkout__aside col-4 col-s-12">
+                        <aside className="checkout__aside col-10 col-l-4">
                             <div className="checkout__orderSummary">
                                 <h2 className="h3 checkout__orderHeading">Order summary</h2>
                                 <img className="checkout__orderImage" src={enquiry.order.imageUrl} alt={enquiry.order.establishmentName}/>
@@ -120,7 +120,7 @@ export default function Checkout({user, updateUser}) {
                                 </div>
                             </div>
                         </aside>
-                        <main className="checkout__main col-8 col-s-12 row">
+                        <main className="checkout__main col-12 col-l-8 row">
                             {!user && (<UserTypeForm user={user} loginF={_loginUser}/>)}
                             <PaymentForm updatePayment={_handlePayment} data={enquiry}/>
                         </main>
@@ -206,6 +206,6 @@ export default function Checkout({user, updateUser}) {
 }
 
 Checkout.propTypes = {
-    user: PropTypes.object.isRequired,
+    user: PropTypes.object,
     updateUser: PropTypes.func.isRequired
 }

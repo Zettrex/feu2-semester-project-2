@@ -18,3 +18,4 @@ _filterEstablishments.propTypes = {
     updateData: PropTypes.func.isRequired,
     values: PropTypes.object.isRequired
 }
+

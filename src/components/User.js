@@ -200,43 +200,43 @@ export default function User({enquiries, messages, establishments}) {
                         )}
                     </div>
                     {(showAdmin === "all" || showAdmin === "establishments") ? (
-                        <div id="establishments" className="admin__establishments admin__section">
+                        <div id="establishments" className="admin-est admin__section">
                             <button className="admin__showMore" onClick={event => toggleAdmin(event.target,"establishments")}>
-                                <h2 className="h2 admin__establishmentsHeading">Establishments <i className="fas fa-angle-up admin__showMore--indicator"/></h2>
+                                <h2 className="h2 admin-est__heading">Establishments <i className="fas fa-angle-up admin__showMore--indicator"/></h2>
                             </button>
-                            <div className="admin__establishmentContent admin__content">
-                                <div className="admin__establishmentsAction row" onClick={() => handleWindow("open", "establishment", "", "add")}>
-                                    <span className="admin__establishmentsAddLabel">Add</span>
-                                    <button className="admin__establishmentsAdd btn--primary">+</button>
+                            <div className="admin-est__content admin__content">
+                                <div className="admin-est__action row" onClick={() => handleWindow("open", "establishment", "", "add")}>
+                                    <span className="admin-est__addLabel">Add</span>
+                                    <button className="admin-est__add btn--primary">+</button>
                                 </div>
-                                <form className="admin__establishmentsFilter form" onChange={() => {
+                                <form className="admin-est__filter form" onChange={() => {
                                     const values = getValues();
                                     _filterEstablishments(data.oEstablishment, _updateData, values)
                                 }}>
-                                    <SearchBox className="admin-est" data={establishments} Ref={register} errors={errors} results={false}/>
+                                    <SearchBox className="admin-est" label="Search" data={establishments} Ref={register} errors={errors} results={false}/>
                                 </form>
-                                <div className="admin__establishmentsList admin__list row">
+                                <div className="admin-est__list admin__list row">
                                     {data.fEstablishment && data.fEstablishment.map((establishment, i) => <EstablishmentItem key={establishment.establishmentID} odd={((((i+1) % 4) / 4 === 0.75) || (((i+1) % 4) / 4 === 0))} establishment={establishment} openF={handleWindow}/>)}
                                 </div>
                             </div>
                         </div>
                     ) : (
-                        <aside id="establishments" className="admin__establishments admin__section">
+                        <aside id="establishments" className="admin-est admin__section">
                             <button className="admin__showMore" onClick={event => toggleAdmin(event.target,"establishments")}>
-                                <h2 className="h2 admin__establishmentsHeading">Establishments <i className="fas fa-angle-down admin__showMore--indicator"/></h2>
+                                <h2 className="h2 admin-est__heading">Establishments <i className="fas fa-angle-down admin__showMore--indicator"/></h2>
                             </button>
-                            <div className="admin__establishmentContent admin__content--hidden">
-                                <div className="admin__establishmentsAction row" onClick={() => handleWindow("open", "establishment", "", "add")}>
-                                    <span className="admin__establishmentsAddLabel">Add</span>
-                                    <button className="admin__establishmentsAdd btn--primary">+</button>
+                            <div className="admin-est__content admin__content--hidden">
+                                <div className="admin-est__action row" onClick={() => handleWindow("open", "establishment", "", "add")}>
+                                    <span className="admin-est__addLabel">Add</span>
+                                    <button className="admin-est__add btn--primary">+</button>
                                 </div>
-                                <form className="admin__establishmentsFilter form" onChange={() => {
+                                <form className="admin-est__filter form" onChange={() => {
                                     const values = getValues();
                                     _filterEstablishments(data.oEstablishment, _updateData, values)
                                 }}>
-                                    <SearchBox className="admin-est" data={establishments} Ref={register} errors={errors} results={false}/>
+                                    <SearchBox className="admin-est" label="Search" data={establishments} Ref={register} errors={errors} results={false}/>
                                 </form>
-                                <div className="admin__establishmentsList admin__list row">
+                                <div className="admin-est__list admin__list row">
                                     {data.fEstablishment && data.fEstablishment.map((establishment, i) => <EstablishmentItem key={establishment.establishmentID} odd={((((i+1) % 4) / 4 === 0.75) || (((i+1) % 4) / 4 === 0))} establishment={establishment} openF={handleWindow}/>)}
                                 </div>
                             </div>

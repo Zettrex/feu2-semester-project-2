@@ -14,10 +14,6 @@
   &__content--hidden {
     display: none;
   }
-  &__establishmentContent {
-    position: relative;
-    padding-top: 50px;
-  }
   &__fixWrapper {
     padding: 0 $spacingPrimary;
   }
@@ -130,6 +126,7 @@
 
 //start of messages
 .message {
+
 }
 .view-message {
   min-height: 400px;
@@ -140,25 +137,27 @@
 //end of messages
 
 //Start of Establishments
-.admin {
-  &__establishments {
+.admin-est {
+  position: relative;
+  &__content {
     position: relative;
-    &Heading {
-      padding-left: 10px;
-    }
-    &Action {
-      width: 100%;
-    }
-    &AddLabel {
-      display: block;
-      margin: auto 6px auto auto;
-    }
-    &Add {
-      font-size: 16px;
-      height: 32px;
-      width: 32px;
-      padding: 0;
-    }
+    padding-top: 50px;
+  }
+  &__heading {
+    padding-left: 10px;
+  }
+  &__action {
+    width: 100%;
+  }
+  &__addLabel {
+    display: block;
+    margin: auto 6px auto auto;
+  }
+  &__add {
+    font-size: 16px;
+    height: 32px;
+    width: 32px;
+    padding: 0;
   }
 }
 //End of Establishments
@@ -203,6 +202,29 @@
 //End of view-window
 
 @media only screen {
+  @media (max-width: $breakPoint1) {
+    .admin {
+      &__fixWrapper {
+        flex-basis: 100%;
+      }
+    }
+  }
+  @media (min-width: $breakPoint1) {
+    .admin-item {
+      &__right {
+        &--odd {
+          background: linear-gradient(110deg, $thirdColor 20px, $fourthColor 20px);
+        }
+        &--even {
+          background: linear-gradient(70deg, $thirdColor 20px, $fourthColor 20px);
+        }
+      }
+      &__action {
+        padding-left: 30px;
+        margin-left: auto;
+      }
+    }
+  }
   @media (max-width: $breakPoint2) {
     .admin {
       &__enquiries, &__messages {
@@ -230,11 +252,9 @@
     }
   }
   @media (max-width: $sGrid) {
-    .admin {
-      &__establishments {
-        &List {
-          margin-top: 40px;
-        }
+    .admin-est {
+      &__list {
+        margin-top: 40px;
       }
     }
 
@@ -249,29 +269,14 @@
   }
   //for tablet and up
   @media (min-width: $sGrid) {
-    .admin {
+    .admin-est {
       //start of admin tools
-      &__establishments {
-        &Action {
+        &__action {
           position: absolute;
           right: 0;
           top: 0;
           width: unset;
         }
-      }
-    }
-    .admin-item {
-      &__right {
-        &--odd {
-          background: linear-gradient(110deg, $thirdColor 20px, $fourthColor 20px);
-        }
-        &--even {
-          background: linear-gradient(70deg, $thirdColor 20px, $fourthColor 20px);
-        }
-      }
-      &__action {
-        padding-left: 30px;
-      }
     }
 
     //Start of message item

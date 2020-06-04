@@ -77,6 +77,16 @@
 }
 
 @media only screen {
+  //up to mobile
+  @media (max-width: $sGrid) {
+    .checkout__main {
+      order: 2;
+    }
+    .checkout__aside {
+      order: 1;
+    }
+  }
+  //from mobile and up
   @media (min-width: $sGrid) {
     .orderConfirm {
       min-width: 400px;
@@ -84,6 +94,21 @@
         flex-wrap: nowrap;
       }
     }
+  }
+
+  //up to tablet
+  @media (max-width: $mGrid) {
+    .checkout {
+      &__aside {
+        background: none;
+      }
+      &__orderSummary {
+        margin: 0;
+      }
+    }
+  }
+  //from tablet and up
+  @media (min-width: $mGrid) {
     .checkout {
       &__main {
         order: 1;
@@ -91,17 +116,6 @@
       &__aside {
         order: 2;
       }
-    }
-  }
-  @media (max-width: 700px) {
-    .checkout__aside {
-      order: 1;
-      background: $fourthColor;
-      flex-basis: 100%;
-    }
-    .checkout__main {
-      order: 2;
-      flex-basis: 100%;
     }
   }
 }

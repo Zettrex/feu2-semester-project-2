@@ -68,7 +68,7 @@
 //End of OrderBox
 
 //start of search Results
-.orderBox__place {
+.orderBox__search {
   &:focus-within > .searchResults {
     display: block;
   }
@@ -97,8 +97,9 @@
   &:hover {
     opacity: 0.95;
   }
-  &:focus {
-    border: 2px solid $primaryColor;
+  &:focus-within {
+    background-color: $primaryColor;
+    color: black;
   }
   &__design {
     display: flex;
@@ -106,9 +107,10 @@
   }
   &__content {
     justify-content: left;
+    padding: 6px 10px;
   }
   &__action {
-    padding: 0;
+    padding: 0 10px 6px;
   }
   &__img {
     width: 26px;
@@ -162,7 +164,7 @@
   //Tablet and up
   @media (min-width: $sGrid) {
     .resultItem {
-      &__action {
+      &__action, &__content {
         padding: 10px;
       }
     }

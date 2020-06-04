@@ -147,6 +147,6 @@ export default function Navigation({userLoggedIn, updateUser}) {
 }
 
 Navigation.propTypes = {
-    userLoggedIn: PropTypes.object.isRequired,
+    userLoggedIn: PropTypes.object,
     updateUser: PropTypes.func.isRequired
 }
