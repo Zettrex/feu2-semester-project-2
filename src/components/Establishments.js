@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import Map from "./components/Map";
 import EstablishmentItem from "./components/establishments/EstablishmentItem";
 import DateFromTo from "./components/filters/DateFromTo";
 import SearchBox from "./components/filters/SearchBox";
@@ -9,7 +8,6 @@ import PriceRange from "./components/filters/PriceRange";
 import {_filterEstablishments} from "../functions/handleEstablishmentForm";
 import * as yup from "yup";
 import PropTypes from 'prop-types';
-import LazyLoad from "react-lazy-load"
 
 export default function Establishments ({establishments}) {
     const [data, setData] = useState({
@@ -94,11 +92,7 @@ export default function Establishments ({establishments}) {
             <div className="est__wrapper row">
                 <aside className="est__mapWrapper col-12 col-l-5">
                     <div className="est__mapContainer">
-                        {data.fEstablishments && (
-                            <LazyLoad>
-                                <Map fixHeight={true} data={data.fEstablishments}/>
-                            </LazyLoad>
-                        )}
+
                     </div>
                 </aside>
                 <main className="est-list col-12 col-l-7">
