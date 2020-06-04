@@ -202,18 +202,5 @@
     "description": "With wonderful views of the surrounding area, and a host who is passionate about the area, Buena Vista is a must for those looking for an authentic experience at a reasonable price.",
     "selfCatering": "false",
     "establishmentID": "40cefe2a-c5eb-4416-b6ea-cb48f21012ab"
-  },
-  {
-    "establishmentName": "House of memes",
-    "establishmentEmail": "contact@richardo.com",
-    "imageUrl": "https:\/\/i.ytimg.com\/vi\/aW0DRWhdZyY\/maxresdefault.jpg",
-    "price": "123",
-    "rating": "5",
-    "maxGuests": null,
-    "googleLat": "30.235394",
-    "googleLong": "30.344323",
-    "description": "Ricardo Milos establishment",
-    "selfCatering": "false",
-    "establishmentID": "3de26ce5-41f6-433a-9963-3509a091307e"
   }
 ]

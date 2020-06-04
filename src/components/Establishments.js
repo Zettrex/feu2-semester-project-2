@@ -9,7 +9,7 @@ import PriceRange from "./components/filters/PriceRange";
 import {_filterEstablishments} from "../functions/handleEstablishmentForm";
 import * as yup from "yup";
 import PropTypes from 'prop-types';
-import LazyLoad from "react-lazy-load"
+import LazyLoad from "react-lazyload"
 
 export default function Establishments ({establishments}) {
     const [data, setData] = useState({
