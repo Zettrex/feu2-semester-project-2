@@ -205,6 +205,8 @@ body {
   }
   &__link {
     @extend .link;
+    font-family: $labelFont;
+    font-weight: bold;
     display: block;
     padding: 10px 15px;
     color: black;
