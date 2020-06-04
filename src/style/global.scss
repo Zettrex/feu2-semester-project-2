@@ -239,6 +239,7 @@ body {
 
 //Start of Footer
 .footer {
+  padding: 0 20px;
   background-color: $footerColor;
   &__link {
     @extend .link;
@@ -247,6 +248,7 @@ body {
     padding: 10px 0;
     color: white;
     text-decoration: none;
+    text-align: center;
   }
   &__elem {
     @extend .footer__link;
@@ -423,6 +425,24 @@ body {
       }
     }
     //End of Confirmation box
+    //Start of footer
+    .footer {
+      padding: 0 50px;
+      &__links {
+        order: 1;
+      }
+      &__display {
+        order: 2;
+      }
+      &__contact {
+        order: 3;
+        text-align: right;
+      }
+      &__link {
+        text-align: unset;
+      }
+    }
+    //End of footer
   }
 
   //for 750px and up
