@@ -21,7 +21,6 @@ export default function () {
 
     function _sendForm(data) {
         if (JSON.stringify(contact) !== JSON.stringify(data)) { //work around due to shallow compare
-            window.alert("fuck2!");
             let registered = false;
             if (user.id) {
                 registered = true
@@ -35,16 +34,17 @@ export default function () {
                 subject: data.subject,
                 message: data.message
             };
-            setCaseID(contact.caseID);
-            setContact(contact);
-            setConfirmation(true);
-            return fetch("https://www.zettrex.no/Noroff/semester4/data/contact-success.php", {
+            fetch("https://www.zettrex.no/Noroff/semester4/data/contact-success.php", {
                 method: "POST",
                 headers: {"Content-Type": "application/x-www-form-urlencoded"},
                 body: `clientName=${encodeURIComponent(contact.clientName)}&clientRegistered=${encodeURIComponent(contact.clientRegistered)}&clientID=${contact.clientID}&clientEmail=${encodeURIComponent(contact.clientEmail)}&subject=${encodeURIComponent(contact.subject)}&message=${encodeURIComponent(contact.message)}`
             })
+                .then(() => {
+                    setCaseID(contact.caseID);
+                    setContact(contact);
+                    setConfirmation(true);
+                });
         } else {
-            window.alert("fucking hell!!!!")
             setDuplicateMessage(true);
         }
     }
