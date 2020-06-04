@@ -78,7 +78,7 @@ export default function Establishments ({establishments}) {
                     const values = getValues();
                     _filterEstablishments(data.oEstablishments, _updateData, values)
                 }}>
-                    <div className="filterArea__filters col-12 col-l-10">
+                    <div className="filterArea__filters col-12 col-auto">
                         <div className="filterArea__section row">
                             <SearchBox className="filterArea" label="place" sectionCol="col-12 col-l-6" updateData={_updateData} data={data} results={false} Ref={register} errors={errors}/>
                             <DateFromTo className="filterArea" groupCol="col-6 col-s-12" sectionCol="col-12 col-l-6" Ref={register} errors={errors}/>
@@ -88,7 +88,7 @@ export default function Establishments ({establishments}) {
                             <PriceRange className="filterArea" sectionCol="col-s-12 col-6" data={data} updateFilters={updatePrice} Ref={register} errors={errors}/>
                         </div>
                     </div>
-                    <div className="filterArea__action filterArea__section col-l-2">
+                    <div className="filterArea__info filterArea__section column">
                         <div className="filterArea__matches">
                             <div>Found {data.fEstablishments.length}</div>
                             <div>Matches</div>

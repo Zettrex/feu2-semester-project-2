@@ -1,18 +1,6 @@
-import React, {useRef, useState, useEffect} from "react";
+import React, {useRef, useState, useEffect, useCallback} from "react";
 import Nouislider from "react-nouislider";
 import PropTypes from "prop-types";
-
-function ComponentDidUpdate (callback, deps) {
-    const hasMount = useRef(false)
-
-    useEffect(() => {
-        if (hasMount.current) {
-            callback()
-        } else {
-            hasMount.current = true
-        }
-    }, deps)
-}
 
 export default function PriceRange({className, sectionCol, Ref, errors, updateFilters}) {
     const defaultRange = {
@@ -40,7 +28,13 @@ export default function PriceRange({className, sectionCol, Ref, errors, updateFi
             });
         }
     }
-    ComponentDidUpdate(updateFilters, [range]);
+
+    //renders updates filter when range updates
+    const update = useCallback(updateFilters, []);
+    useEffect(() => {
+        update();
+    }, [update, range])
+
     //updating the max value on price range, and making sure u cant place max below minimum price
     function handleMax(targetValue) {
         if (targetValue > range.min) {
@@ -58,7 +52,7 @@ export default function PriceRange({className, sectionCol, Ref, errors, updateFi
 
     return (
         <div className={`${className}__priceRange form__Price form__section ${sectionCol}`}>
-            <div className="priceRange__hiddenInputs">
+            <div className="form__rangeHiddenInputs">
                 <input value={range.min} name="price1" type="number" disabled ref={Ref}/>
                 <input value={range.max} name="price2" type="number" disabled ref={Ref}/>
             </div>

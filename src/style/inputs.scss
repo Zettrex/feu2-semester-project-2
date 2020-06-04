@@ -140,7 +140,7 @@
   //Start of Select
   &__select {
     @extend .form__item;
-
+    -webkit-appearance: none;
     &--label {
       @extend .form__label--compact;
     }
@@ -229,7 +229,9 @@
   &__multiRange {
     position: relative;
   }
-
+  &__rangeHiddenInputs {
+    display: none;
+  }
   &__rangeControls {
     position: relative;
     padding: 0 0 10px;

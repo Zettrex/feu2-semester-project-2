@@ -100,13 +100,21 @@
 }
 //End of Establishment item
 
-@media (min-width: $sGrid) {
-  //Start of Establishments Map
-  .est {
-    &__mapContainer {
-      position: sticky;
-      top: 66px;
+@media only screen {
+  @media (min-width: $sGrid) {
+    //Start of Establishments Map
+    .est {
+      &__mapContainer {
+        position: sticky;
+        top: 66px;
+      }
+    }
+    //End of Establishments Map
+  }
+  @media (min-width: $mGrid) {
+    .filterArea {
+      margin-left: 30px;
+      flex-wrap: nowrap;
     }
   }
-  //End of Establishments Map
 }
