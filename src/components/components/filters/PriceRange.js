@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import Nouislider from "react-nouislider";
 import PropTypes from "prop-types";
 
-export default function PriceRange({className, sectionCol, Ref, errors}) {
+export default function PriceRange({className, sectionCol, Ref, errors, updateFilters}) {
     const defaultRange = {
         min: 1,
         max: 350
@@ -60,8 +60,10 @@ export default function PriceRange({className, sectionCol, Ref, errors}) {
                         connect={true}
                         onSlide={(values, handle) => {
                             if (handle === 0) {
+                                updateFilters();
                                 handleMin(parseInt(values[0]));
                             } else {
+                                updateFilters();
                                 handleMax(parseInt(values[1]))
                             }
                         }}
@@ -71,11 +73,12 @@ export default function PriceRange({className, sectionCol, Ref, errors}) {
             {errors.price1 && <p className="form__error">{errors.price1.message}</p>}
             {errors.price2 && <p className="form__error">{errors.price2.message}</p>}
         </div>
-    )
+    );
 }
 PriceRange.propTypes = {
     className: PropTypes.string,
     sectionCol: PropTypes.string,
     Ref: PropTypes.func.isRequired,
-    errors: PropTypes.object.isRequired
-}
+    errors: PropTypes.object.isRequired,
+    updateFilters: PropTypes.func.isRequired
+};

@@ -12,7 +12,7 @@ export default function EstablishmentItem({odd, establishment, openF}) {
                     <span className="est-item__name admin-item__name">{establishment.establishmentName}</span>
                 </div>
                 <div className={`admin-item__right${odd ? "--odd" : "--even"}`}>
-                    <div className="admin__item__action">
+                    <div className="admin-item__action">
                         <button className="btn--primary admin-item__btn" onClick={() => openF("open", "establishment", establishment, "edit")}>Edit</button>
                     </div>
                 </div>

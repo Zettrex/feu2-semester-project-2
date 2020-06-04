@@ -51,9 +51,9 @@
         flex-basis: 100%;
       }
       &__icon {
-        width: 20px;
-        height: 20px;
-        font-size: 20px;
+        width: 30px;
+        height: 30px;
+        font-size: 30px;
       }
       &__section {
         padding: 10px;
@@ -62,8 +62,11 @@
   }
   @media (min-width: $breakPoint1 + 1px) {
     .contact {
+      &__infoRight {
+        flex-direction: column;
+      }
       &__section {
-        width: 100%;
+        margin: 20px auto;
       }
     }
   }
