@@ -16,6 +16,7 @@
   }
   &__fixWrapper {
     padding: 0 $spacingPrimary;
+    margin-right: auto; //incase odd numbers put element to left
   }
 }
 
