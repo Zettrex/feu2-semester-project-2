@@ -258,12 +258,14 @@ export default function User({enquiries, messages, establishments}) {
                 </div>
             )}
             {showConfirmation && (<ConfirmationBox updateConfirmed={toggleConfirmation}>
-                <div className="confirmation__checkWrapper">
-                    <i className="far fa-check-circle confirmation__check"/>
-                </div>
-                <div className="confirmation__section">
-                    <h2 className="confirmation__heading--center h2">Order Successfully {view.job === "add" && "added"}{view.job === "edit" && "edited"}</h2>
-                </div>
+                <>
+                    <div className="confirmation__checkWrapper">
+                        <i className="far fa-check-circle confirmation__check"/>
+                    </div>
+                    <div className="confirmation__section">
+                        <h2 className="confirmation__heading--center h2">Order Successfully {view.job === "add" && "added"}{view.job === "edit" && "edited"}</h2>
+                    </div>
+                </>
             </ConfirmationBox>)}
         </div>
     )

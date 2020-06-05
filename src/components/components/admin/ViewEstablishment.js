@@ -4,6 +4,7 @@ import {v4 as uuidv4} from "uuid";
 import {useForm} from "react-hook-form";
 import * as yup from "yup";
 import PropTypes from "prop-types";
+import TextArea from "../inputs/TextArea";
 
 export default function ViewEstablishment({data, closeF, job}) {
     const [est, setEst] = useState(data)
@@ -147,11 +148,10 @@ export default function ViewEstablishment({data, closeF, job}) {
                         </div>
                     </div>
                     <div className="form__container">
-                        <div className="view-est__description form__group">
-                            <label className="view-est__descriptionLabel form__label--textarea" htmlFor="view-est__descriptionInput establishmentDescription">Description</label>
-                            <textarea className="form__textarea--compact" name="description" id="establishmentDescription" value={est.description} onChange={event => setEst({...est, description: event.target.value})} ref={register}/>
-                            {errors.description && <p className="form__error">{errors.description.message}</p>}
-                        </div>
+                        <TextArea className="view-est__description view-est" label="Description" name="description" Ref={register} errors={errors.description} value={est.description} setValue={event => setEst({
+                            ...est,
+                            description: event.target.value
+                        })}/>
                     </div>
                     <div className="form__container">
                         <div className="view-est__price form__group">

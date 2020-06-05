@@ -39,6 +39,10 @@ export default function Checkout({user, updateUser}) {
         });
     }
     function _handlePayment(values) {
+        let enquiryUser = false;
+        if (user && user.id !== "") {
+            enquiryUser = user
+        }
         const enquiryInfo = {
             ...enquiry,
             order: {
@@ -50,7 +54,7 @@ export default function Checkout({user, updateUser}) {
                 ...enquiry.payment,
                 ...values
             },
-            user: user
+            user: enquiryUser
         };
         setValid({
             ...valid,
@@ -66,7 +70,7 @@ export default function Checkout({user, updateUser}) {
             return fetch("https://www.zettrex.no/Noroff/semester4/data/enquiry-success.php", {
                 method: "POST",
                 headers: {"Content-Type":"application/x-www-form-urlencoded"},
-                body: `orderID=${encodeURIComponent(enquiry.order.orderID)}&orderDate=${encodeURIComponent(enquiry.order.orderDate)}&establishmentName=${encodeURIComponent(enquiry.order.establishmentName)}&establishmentImg=${encodeURIComponent(enquiry.order.imageUrl)}&establishmentEmail=${enquiry.order.establishmentEmail}&clientName=${encodeURIComponent(enquiry.payment.clientFirstName + " " + enquiry.payment.clientLastName)}${enquiry.user.id ? (`&clientRegistered=${true}&clientID=${encodeURIComponent(enquiry.user.id)}`) : `&clientRegistered=${false}&clientID=""`}&clientEmail=${encodeURIComponent(enquiry.payment.clientEmail)}&checkin=${encodeURIComponent(enquiry.order.date1)}&checkout=${encodeURIComponent(enquiry.order.date2)}&adults=${encodeURIComponent(enquiry.order.adults)}&children=${encodeURIComponent(enquiry.order.children)}&payMethod=${encodeURIComponent(enquiry.payment.paymentMethod)}&price=${encodeURIComponent(enquiry.order.price)}`
+                body: `orderID=${encodeURIComponent(enquiry.order.orderID)}&orderDate=${encodeURIComponent(enquiry.order.orderDate)}&establishmentName=${encodeURIComponent(enquiry.order.establishmentName)}&establishmentImg=${encodeURIComponent(enquiry.order.imageUrl)}&establishmentEmail=${enquiry.order.establishmentEmail}&clientName=${encodeURIComponent(enquiry.payment.clientFirstName + " " + enquiry.payment.clientLastName)}${(enquiry.user && enquiry.user.id) ? (`&clientRegistered=${encodeURIComponent("true")}&clientID=${encodeURIComponent(enquiry.user.id)}`) : (`&clientRegistered=${encodeURIComponent("false")}&clientID=""`)}&clientEmail=${encodeURIComponent(enquiry.payment.clientEmail)}&checkin=${encodeURIComponent(enquiry.order.date1)}&checkout=${encodeURIComponent(enquiry.order.date2)}&adults=${encodeURIComponent(enquiry.order.adults)}&children=${encodeURIComponent(enquiry.order.children)}&payMethod=${encodeURIComponent(enquiry.payment.paymentMethod)}&price=${encodeURIComponent(enquiry.order.price)}`
             });
         }
     }
@@ -127,7 +131,7 @@ export default function Checkout({user, updateUser}) {
                     </div>
                 )}
                 {showPrompt && (
-                    <ConfirmationBox updateConfirmed={togglePrompt}>
+                    <ConfirmationBox toHome={true} updateConfirmed={togglePrompt}>
                         <div className="row">
                             <div className="confirmation__heading col-12">
                                 <h2 className="h2">Thank you for your order.</h2>

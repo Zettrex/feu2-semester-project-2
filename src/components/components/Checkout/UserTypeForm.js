@@ -35,7 +35,9 @@ export default function UserTypeForm({user, loginF}) {
                     </div>
                     <div className="checkout__selectOption form__group">
                         <label className="checkout__guest form__radio"
-                               onClick={() => setUserType("guest")}
+                               onClick={() => {
+                                   setUserType("guest");
+                               }}
                         >
                             <input className="checkout__guestInput form__radioButton" type="radio" value="guest"/>
                             <span className="checkout__guestDesign form__radioDesign">

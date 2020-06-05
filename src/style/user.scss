@@ -185,12 +185,17 @@
     display: block;
   }
   &__priceInput {
-    padding: 8px 8px 8px 42px;
-    width: 1$spacingPrimary;
+    padding: 8px 20px 8px 42px;
+    width: 130px;
     display: inline-flex;
   }
   &__currency {
     margin: 0 6px;
+    position: absolute;
+    right: 12px;
+    transform: translate(0, -50%);
+    top: 50%;
+    color: $black;
   }
   &__facilities {
     padding-bottom: 60px;

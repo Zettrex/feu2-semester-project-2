@@ -16,12 +16,12 @@ export default function EstablishmentItem({odd,item, filters}) {
     }
     return (
         <div className="est__item  row">
-            <div className="est__showcase col-3 col-s-4">
+            <div className="est__showcase col-3 col-s-12">
                 <div className="est__image" style={{
                     backgroundImage:`url(${item.imageUrl})`
                 }}/>
             </div>
-            <div className="est__info col-6 col-s-8">
+            <div className="est__info col-6 col-s-12">
                 <div className="h3 est__name est__content">{item.establishmentName}</div>
                 <div className="est__rating est__content">
                     <div className="est__ratingStars">

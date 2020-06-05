@@ -26,7 +26,7 @@ export default function Footer({user, openLogin}) {
                 <a className="footer__email footer__elem" href="mailto:example@example.com">
                     support@holidaze.com <i className="fas fa-envelope"/>
                 </a>
-                <a className="footer__email footer__elem" href="mailto:example@example.com">
+                <a className="footer__email footer__elem" href="https://goo.gl/maps/xNDw2LRC37zVD8bh7">
                     Nordnesbakken 4, 5005 Bergen <i className="fas fa-map-marker-alt"/>
                 </a>
             </div>

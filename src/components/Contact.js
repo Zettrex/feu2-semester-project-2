@@ -2,8 +2,9 @@ import React, {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 import * as yup from "yup";
 import ConfirmationBox from "./ConfirmationBox";
+import TextArea from "./components/inputs/TextArea";
 
-export default function () {
+export default function Contact() {
     const [contact, setContact] = useState({});
     const [confirmation, setConfirmation] = useState(false);
     const [duplicateMessage, setDuplicateMessage] = useState(false);
@@ -18,7 +19,6 @@ export default function () {
     function updateConfirmed(data) {
         setConfirmation(data);
     }
-
     function _sendForm(data) {
         if (JSON.stringify(contact) !== JSON.stringify(data)) { //work around due to shallow compare
             let registered = false;
@@ -123,12 +123,7 @@ export default function () {
                                 </select>
                                 {errors.subject && <p className="form__error">{errors.subject.message}</p>}
                             </div>
-                            <div className="contact__message form__group">
-                                <label className="contact__messageLabel form__label--textarea" htmlFor="message">Message</label>
-                                <textarea className="contact__messageInput form__textarea--compact" name="message" id="message"
-                                          placeholder="Please enter your message here..." ref={register}/>
-                                {errors.message && <p className="form__error">{errors.message.message}</p>}
-                            </div>
+                            <TextArea className="contact" label="message" name="message" Ref={register} errors={errors.message}/>
                             <div className="contact__action form__action form__group">
                                 <button className="contact__submit form__submit btn--primary" type="submit">Send</button>
                             </div>
@@ -162,15 +157,17 @@ export default function () {
                 </div>
             )}
             {confirmation === true && (
-                <ConfirmationBox updateConfirmed={updateConfirmed}>
-                    <div className="confirmation__checkWrapper">
-                        <i className="far fa-check-circle confirmation__check"/>
-                    </div>
-                    <div className="confirmation__body">
-                        <p className="confirmation__paragraph confirmation__main">Thank you for contacting Holidaze</p>
-                        <p className="confirmation__paragraph confirmation__aside">We will contact you as soon as we can, and hope to help you as quickly as possible</p>
-                        <p className="confirmation__paragraph confirmation__aside">Your case id is: {caseID}</p>
-                    </div>
+                <ConfirmationBox toHome={true} updateConfirmed={updateConfirmed}>
+                    <>
+                        <div className="confirmation__checkWrapper">
+                            <i className="far fa-check-circle confirmation__check"/>
+                        </div>
+                        <div className="confirmation__body">
+                            <p className="confirmation__paragraph confirmation__main">Thank you for contacting Holidaze</p>
+                            <p className="confirmation__paragraph confirmation__aside">We will contact you as soon as we can, and hope to help you as quickly as possible</p>
+                            <p className="confirmation__paragraph confirmation__aside">Your case id is: {caseID}</p>
+                        </div>
+                    </>
                 </ConfirmationBox>
             )}
         </div>

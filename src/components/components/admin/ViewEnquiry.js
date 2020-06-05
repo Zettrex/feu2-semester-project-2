@@ -14,7 +14,7 @@ export default function ViewEnquiry ({data}) {
                         </div>
                         <div className="view-enquiry__registered section group">
                             <span>Registered user: </span>
-                            <span>{data.clientRegistered ? ("Yes"): ("No")}</span>
+                            <span>{data.clientRegistered === "true" ? ("Yes"): ("No")}</span>
                         </div>
                         {data.clientRegistered && (
                             <div className="view-enquiry__id group">
