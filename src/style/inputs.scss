@@ -17,6 +17,7 @@
     &--textarea {
       @extend .form__label--compact;
       top: 30px;
+      overflow: auto;
     }
 
     &--left {
@@ -74,25 +75,7 @@
       @extend .form__input;
     }
   }
-
   //End of Input
-  //Start of Textarea
-  &__textarea {
-    @extend .form__item;
-    min-height: 60px;
-    resize: vertical;
-    height: 150px;
-    &:focus {
-      border-color: $primaryColor;
-    }
-    &--compact {
-      @extend .form__item--compact;
-      @extend .form__textarea;
-      padding: 36px $spacingPrimary $spacingPrimary;
-    }
-  }
-
-  //End of Textarea
   //Start of Number
   &__number {
     @extend .form__item;
@@ -224,6 +207,32 @@
   //End of Checkbox
   //End of Selectors (checkbox & radiobutton)
 }
+
+//Start of textarea
+&__textarea {
+  @extend .form__item;
+  min-height: 60px;
+  resize: vertical;
+  background-color: white;
+  padding: 0;
+  &:focus {
+    border-color: $primaryColor;
+  }
+  &--compact {
+    @extend .form__item--compact;
+    @extend .form__textarea;
+    padding: 36px $spacingPrimary $spacingPrimary;
+  }
+}
+.textArea__input {
+  border: none;
+  width: 100%;
+  margin-top: 30px;
+  min-height: 150px;
+  padding: 0 10px 10px;
+  font-family: $bodyFont;
+}
+//End of textarea
 
 //Start of Range
 .form {

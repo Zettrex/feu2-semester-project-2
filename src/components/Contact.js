@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 import * as yup from "yup";
 import ConfirmationBox from "./ConfirmationBox";
+import TextArea from "./components/inputs/TextArea";
 
 export default function Contact() {
     const [contact, setContact] = useState({});
@@ -122,12 +123,7 @@ export default function Contact() {
                                 </select>
                                 {errors.subject && <p className="form__error">{errors.subject.message}</p>}
                             </div>
-                            <div className="contact__message form__group">
-                                <label className="contact__messageLabel form__label--textarea" htmlFor="message">Message</label>
-                                <textarea className="contact__messageInput form__textarea--compact" name="message" id="message"
-                                          placeholder="Please enter your message here..." ref={register}/>
-                                {errors.message && <p className="form__error">{errors.message.message}</p>}
-                            </div>
+                            <TextArea className="contact" label="message" name="message" Ref={register} errors={errors.message}/>
                             <div className="contact__action form__action form__group">
                                 <button className="contact__submit form__submit btn--primary" type="submit">Send</button>
                             </div>

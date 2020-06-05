@@ -545,7 +545,7 @@ body {
     //Start of login box
     .nav {
       &__loginArea {
-        top: 50px;
+        top: 49px;
         background: none;
         right: 46px;
         width: unset;
@@ -586,11 +586,8 @@ body {
       }
       &__link {
       }
-      &__loginBox {
+      &__loginBox, &__loginArea, &__userMenu {
         right: 100px;
-      }
-      &__userMenu {
-        right: 86px;
       }
     }
     //End of Nav
