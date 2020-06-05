@@ -3,6 +3,7 @@
   &__label {
     color: white;
     font-family: $labelFont;
+    overflow: hidden;
     &--compact {
       @extend .form__label;
       position: absolute;
@@ -17,7 +18,6 @@
     &--textarea {
       @extend .form__label--compact;
       top: 30px;
-      overflow: auto;
     }
 
     &--left {

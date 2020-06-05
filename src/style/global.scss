@@ -432,6 +432,32 @@ body {
 
 //End of elements
 
+//Start of scrollbar
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.2);
+  border: 1px gray;
+  border-radius: 4px;
+}
+body::-webkit-scrollbar-track {
+  background: white;
+  border: 1px gray;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primaryColor;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffbd80;
+}
+//End of scrollbar
+
 
 //Start of media queries
 @media only screen {

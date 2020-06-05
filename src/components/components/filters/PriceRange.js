@@ -51,7 +51,7 @@ export default function PriceRange({className, sectionCol, Ref, errors, updateFi
     }
 
     return (
-        <div className={`${className}__priceRange form__Price form__section ${sectionCol}`}>
+        <div className={`${className}__priceRange form__Price form__section ${sectionCol && sectionCol}`}>
             <div className="form__rangeHiddenInputs">
                 <input value={range.min} name="price1" type="number" disabled ref={Ref}/>
                 <input value={range.max} name="price2" type="number" disabled ref={Ref}/>

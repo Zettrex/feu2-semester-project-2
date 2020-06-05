@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 export default function Adults({className, groupCol, value, Ref, errors}) {
     return (
-        <div className={`${className}__adultsWrapper form__container ${groupCol}`}>
+        <div className={`${className}__adultsWrapper form__container ${groupCol && groupCol}`}>
             <div className={`${className}__adults form__group`}>
                 <Select className={`${className}__adultsInput form__adults`} label="Adults" name="adults" selected={value} Ref={Ref}>
                     <option className="form__option" value="0">0</option>

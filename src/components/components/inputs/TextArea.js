@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 export default function TextArea({name, label, className, value, setValue, sectionCol, groupCol, Ref, errors}) {
     return (
-        <div className={`form__section ${sectionCol}`}>
+        <div className={`form__section ${sectionCol && sectionCol}`}>
             <div className={`${className}__textArea form__group ${groupCol && groupCol}`}>
                 <div className="textArea__wrapper form__textarea">
                     <label className={`${className}__label textArea__label form__label--textarea`} htmlFor={name}>{label}</label>
