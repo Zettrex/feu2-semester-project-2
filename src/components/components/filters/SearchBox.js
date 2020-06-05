@@ -23,55 +23,57 @@ export default function SearchBox({className, label, updateData, data, sectionCo
     }
 
     return (
-        <div className={`${className}__search form__section ${sectionCol}`}>
-            <div className={`${className}__searchWrapper searchBox form__group ${groupCol}`}>
+        <div className={`${className}__search form__section ${sectionCol && sectionCol}`}>
+            <div className={`${className}__searchWrapper searchBox form__group ${groupCol && groupCol}`}>
                 <label className={`${className}__searchLabel form__label--compact`} htmlFor="est-search">{label}</label>
-                <input className={`${className}__searchInput form__search form__input--compact`} type="text" placeholder="Name of Establishment" name="search" ref={Ref}
+                <input autoComplete="off" className={`${className}__searchInput form__search form__input--compact`} type="text" placeholder="Name of Establishment" name="search" ref={Ref}
                        onInput={() => setSearch({...search, focus: true})}
                        onClick={() => setSearch({...search, focus: true})}
                        onFocus={() => setSearch({...search, focus: true})}
                        value={search.input} onChange={_handleSearchInput}
                 />
                 {search.focus && results && (
-                    <ul className="searchResults">
-                        {data.fEstablishments.map(est => {
-                            return (
-                                <li className="searchResults__item" key={est.establishmentID}>
-                                    <label className="resultItem row"
-                                           onClick={(item) => {
-                                               selectEstablishment(item.target, est);
-                                           }}
-                                           onKeyDown={(event => {
-                                               if (event.key === "Enter") {
-                                                   selectEstablishment(event.target, est);
-                                               }
-                                           })}
-                                    >
-                                        <input className="form__checkboxButton" type="checkbox" name="establishment"
-                                            /*onFocus={() => setSearch({...search, focus: true})}
-                                            onBlur={() => setSearch({...search, focus: false})}*/
-                                        />
-                                        <button className="form__checkboxDesign resultItem__design col-12 row">
-                                            <div className="resultItem__content col-auto row">
-                                                <div className="resultItem__img bgImage" style={{
-                                                    backgroundImage: `url(${est.imageUrl})`
-                                                }}/>
-                                                <div className="resultItem__info">
-                                                    <div className="resultItem__name">
-                                                        {est.establishmentName}
+                    <div className="searchResults">
+                        <ul className="searchResults__wrapper">
+                            {data.fEstablishments.map(est => {
+                                return (
+                                    <li className="searchResults__item" key={est.establishmentID}>
+                                        <label className="resultItem row"
+                                               onClick={(item) => {
+                                                   selectEstablishment(item.target, est);
+                                               }}
+                                               onKeyDown={(event => {
+                                                   if (event.key === "Enter") {
+                                                       selectEstablishment(event.target, est);
+                                                   }
+                                               })}
+                                        >
+                                            <input className="form__checkboxButton" type="checkbox" name="establishment"
+                                                /*onFocus={() => setSearch({...search, focus: true})}
+                                                onBlur={() => setSearch({...search, focus: false})}*/
+                                            />
+                                            <button className="form__checkboxDesign resultItem__design col-12 row">
+                                                <div className="resultItem__content col-auto row">
+                                                    <div className="resultItem__img bgImage" style={{
+                                                        backgroundImage: `url(${est.imageUrl})`
+                                                    }}/>
+                                                    <div className="resultItem__info">
+                                                        <div className="resultItem__name">
+                                                            {est.establishmentName}
+                                                        </div>
+                                                        <span className="resultItem__price">Price: {est.price}$</span>
                                                     </div>
-                                                    <span className="resultItem__price">Price: {est.price}$</span>
                                                 </div>
-                                            </div>
-                                            <div className="resultItem__action column col-s-12">
-                                                <Link className="resultItem__readMore link--white" to={`/specific/${est.establishmentID}`} tabIndex="-1">Read more</Link>
-                                            </div>
-                                        </button>
-                                    </label>
-                                </li>
-                            )
-                        })}
-                    </ul>
+                                                <div className="resultItem__action column col-s-12">
+                                                    <Link className="resultItem__readMore link--white" to={`/specific/${est.establishmentID}`} tabIndex="-1">Read more</Link>
+                                                </div>
+                                            </button>
+                                        </label>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
                 )}
             </div>
             {errors.search && <p className="form__error">{errors.search.message}</p>}
