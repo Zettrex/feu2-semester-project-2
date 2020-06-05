@@ -124,7 +124,6 @@ export default function Home({establishments}) {
         <div className="page">
             <div className="home-hero hero column">
                 <form className="orderBox containerBox form" onChange={() => {
-                    console.log(data.sEstablishment);
                     const values = getValues();
                     _filterEstablishments(data.oEstablishments, updateFilters
                     , values)
