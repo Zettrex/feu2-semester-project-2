@@ -4,6 +4,7 @@ header('Content-Type: application/json');
 //Creates a class called Message
 class User
 {
+    public $isAdmin;
     public $username;
     public $id;
     public $email;
@@ -14,6 +15,7 @@ class User
 
 //Creates new message and sets properties
 $newUser = new User();
+$newUser->isAdmin = $_POST["false"];
 $newUser->username = $_POST["username"];
 $newUser->id = $_POST["id"];
 $newUser->email = $_POST["email"];

@@ -25,6 +25,7 @@ export default function LoginUserForm(props) {
             const user = users.filter(user => user.username === loginInfo.username && user.password === loginInfo.password);
             if (user.length === 1) {
                 const userInfo = {
+                    isAdmin: user[0].isAdmin === "true",
                     firstName: user[0].firstName,
                     lastName: user[0].lastName,
                     username: user[0].username,

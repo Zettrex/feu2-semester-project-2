@@ -202,6 +202,14 @@ body {
   }
 
   //Start of login box
+  &__loginArea {
+    position: absolute;
+    top: 46px;
+    left: 0;
+    width: 100%;
+    background-color: $primaryColor;
+    box-shadow: 0 4px 3px $boxShadowColor;
+  }
   &__loginBox {
     z-index: 4;
     background-color: $footerColor;
@@ -212,8 +220,10 @@ body {
     margin: 0;
   }
   //End of login box
-
   //Start of user menu
+  &__myUser, &__login {
+    padding-left: 26px;
+  }
   &__userMenu {
     position: absolute;
     top: 230px;
@@ -496,14 +506,6 @@ body {
       &__menuToggle {
         margin: 0 34px 0 0;
       }
-      &__loginArea {
-        position: absolute;
-        top: 46px;
-        left: 0;
-        width: 100%;
-        background-color: $primaryColor;
-        box-shadow: 0 4px 3px $boxShadowColor;
-      }
     }
   }
   //for 750px and up
@@ -516,6 +518,9 @@ body {
           width: unset;
           margin-left: auto;
         }
+      }
+      &__myUser, &__login {
+        padding-left: 16px;
       }
       &__links {
         display: block;
@@ -539,10 +544,15 @@ body {
     //End of Nav
     //Start of login box
     .nav {
+      &__loginArea {
+        top: 50px;
+        background: none;
+        right: 46px;
+        width: unset;
+        left: unset;
+        z-index: 3;
+      }
       &__loginBox {
-        position: absolute;
-        top: 48px;
-        right: 40px;
         width: unset;
         max-width: 300px;
         max-height: none;
@@ -554,7 +564,8 @@ body {
     .nav {
       &__userMenu {
         top: 49px; //1px from nav to give illusion of coming out from inside
-        width: 100px;
+        width: 160px;
+        padding-top: 10px;
         right: 36px;
         background: linear-gradient(110deg, $thirdColor 65%, $fourthColor 65%);
       }

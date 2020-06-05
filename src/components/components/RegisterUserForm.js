@@ -66,7 +66,7 @@ export default function RegisterUserForm(props) {
         fetch("https://www.zettrex.no/Noroff/semester4/data/users-success.php", {
             method: "POST",
             headers: {"Content-Type":"application/x-www-form-urlencoded"},
-            body: `firstName=${encodeURIComponent(userInfo.firstName)}&lastName=${encodeURIComponent(userInfo.lastName)}&username=${encodeURIComponent(userInfo.username)}&id=${encodeURIComponent(userInfo.id)}&email=${encodeURIComponent(userInfo.email)}&password=${registerInfo.password1}`
+            body: `firstName=${encodeURIComponent(userInfo.firstName)}&lastName=${encodeURIComponent(userInfo.lastName)}&username=${encodeURIComponent(userInfo.username)}&id=${encodeURIComponent(userInfo.id)}&email=${encodeURIComponent(userInfo.email)}&password=${encodeURIComponent(registerInfo.password1)}`
         });
     }
     return (

@@ -9,9 +9,10 @@ export default function Footer({user, openLogin}) {
                 <Link className="footer__link--home footer__link" to="/">Home</Link>
                 <Link className="footer__link--projects footer__link" to="/establishments">Establishments</Link>
                 <Link className="footer__link--about footer__link" to="/contact">Contact Us</Link>
-                {user ? (
+                {(user && user.isAdmin) && (
                     <Link className="footer__link--about footer__link" to="/user">My Page</Link>
-                ) : (
+                )}
+                {!user && (
                     <button className="footer__link--login footer__link" onClick={() => {
                         window.scroll({top: 0, left: 0, smooth: true})
                         openLogin();

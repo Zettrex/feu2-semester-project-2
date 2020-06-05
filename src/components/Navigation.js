@@ -10,13 +10,22 @@ export default function Navigation({userLoggedIn, updateUser, showLogin, setShow
     const [showRegister, setShowRegister] = useState(false);
     const [showUserMenu, setShowUserMenu] = useState(false);
 
-    function handleShowLogin() {
-        if (showLogin || showRegister || showUserMenu) {
+    function handleMenu(state) {
+        if (state === false) {
             setShowLogin(false);
             setShowRegister(false);
             setShowUserMenu(false);
-        } else {
+            setShowMenu(false)
+        } else if (state === true) {
             setShowLogin(true);
+        } else {
+            if (showRegister || showLogin || showUserMenu) {
+                setShowLogin(false);
+                setShowRegister(false);
+                setShowUserMenu(false);
+            } else {
+                setShowLogin(true);
+            }
         }
     }
     window.onresize = () => {
@@ -30,15 +39,15 @@ export default function Navigation({userLoggedIn, updateUser, showLogin, setShow
         return (
             <nav className="nav--hamburger row">
                 <div className="nav__left">
-                    <NavLink to="/" exact>
-                        <img className="nav__logo" src={logo} alt="Hollodaze logo"/>
+                    <NavLink to="/" exact onClick={() => handleMenu(false)}>
+                        <img className="nav__logo" src={logo} alt="Holidaze logo"/>
                     </NavLink>
                 </div>
                 <div className={`${(showRegister || showLogin || showUserMenu) ? "nav__right--max" : "nav__right"}`}>
                     <button className="nav__menuToggle" onClick={() => {
                         setShowMenu(false)
                         if (showLogin || showRegister || showUserMenu) {
-                            handleShowLogin();
+                            handleMenu();
                         }
                     }}>
                         <i className="fas fa-bars"/>
@@ -50,22 +59,22 @@ export default function Navigation({userLoggedIn, updateUser, showLogin, setShow
                             <NavLink activeClassName="nav__link--active" className="nav__about nav__link--hamburger" to="/contact" onClick={() => setShowMenu(false)}>CONTACT US</NavLink>
                             {(!userLoggedIn && !showLogin) &&
                             (<button className="nav__login nav__link--hamburger" onClick={() => {
-                                handleShowLogin();
+                                handleMenu();
                             }}>LOGIN <i className="fas fa-angle-down"/></button>)
                             }
                             {(!userLoggedIn && showLogin) && (
                                 (<button className="nav__login nav__link--hamburger" onClick={() => {
-                                    handleShowLogin()
+                                    handleMenu()
                                 }}>
                                     LOGIN <i className="fas fa-angle-up"/></button>)
                             )}
-                            {(userLoggedIn && !showUserMenu) && <button className="nav__login nav__link--hamburger" onClick={() => {setShowUserMenu(true)}}>MY USER <i className="fas fa-angle-down"/></button>}
-                            {(userLoggedIn && showUserMenu) && <button className="nav__login nav__link--hamburger" onClick={() => setShowUserMenu(false)}>MY USER <i className="fas fa-angle-up"/></button>}
+                            {(userLoggedIn && !showUserMenu) && <button className="nav__myUser nav__link--hamburger" onClick={() => {setShowUserMenu(true)}}>MY USER <i className="fas fa-angle-down"/></button>}
+                            {(userLoggedIn && showUserMenu) && <button className="nav__myUser nav__link--hamburger" onClick={() => setShowUserMenu(false)}>MY USER <i className="fas fa-angle-up"/></button>}
                         </div>
                     )}
                     {(!userLoggedIn && showLogin) && (
                         <div className="nav__loginArea">
-                            <button className="nav__login nav__link--hamburger" onClick={() => handleShowLogin()}>
+                            <button className="nav__login nav__link--hamburger" onClick={() => handleMenu()}>
                                 LOGIN <i className="fas fa-angle-up"/></button>
                             <LoginUserForm fullWidth={true} loginF={updateUser} nav={true}>
                                 <button className="login__register btn link--white" onClick={() => {
@@ -78,7 +87,7 @@ export default function Navigation({userLoggedIn, updateUser, showLogin, setShow
                     )}
                     {(!userLoggedIn && showRegister) && (
                         <div className="nav__loginArea">
-                            <button className="nav__login nav__link--hamburger" onClick={() => handleShowLogin()}>
+                            <button className="nav__login nav__link--hamburger" onClick={() => handleMenu()}>
                                 LOGIN <i className="fas fa-angle-up"/></button>
                             <RegisterUserForm fullWidth={true} loginF={updateUser} nav={true}>
                                 <button className="login__login btn link--white" onClick={() => {
@@ -90,14 +99,16 @@ export default function Navigation({userLoggedIn, updateUser, showLogin, setShow
                     )}
                     {(userLoggedIn && showUserMenu) && (
                         <div className="nav__userMenu">
-                            <NavLink className="nav__user nav__link" to="/user" onClick={() => {
-                                handleShowLogin();
-                                setShowMenu(false);
-                            }}>MY PAGE</NavLink>
+                            {userLoggedIn.isAdmin && (
+                                <NavLink className="nav__user nav__link" to="/user" onClick={() => {
+                                    handleMenu();
+                                    setShowMenu(false);
+                                }}>CONTROL PANEL</NavLink>
+                            )}
                             <button className="nav__logOut nav__link" onClick={() => {
                                 localStorage.removeItem("user");
                                 updateUser(null)
-                            }}>Log Out</button>
+                            }}>LOG OUT</button>
                         </div>
                     )}
                 </div>
@@ -107,15 +118,15 @@ export default function Navigation({userLoggedIn, updateUser, showLogin, setShow
         return (
             <nav className="nav row">
                 <div className="nav__left">
-                    <NavLink to="/" exact>
-                        <img className="nav__logo" src={logo} alt="Hollodaze logo"/>
+                    <NavLink to="/" exact onClick={() => handleMenu(false)}>
+                        <img className="nav__logo" src={logo} alt="Holidaze logo"/>
                     </NavLink>
                 </div>
                 <div className={`${(showRegister || showLogin || showUserMenu) ? "nav__right--max" : "nav__right"}`}>
                     <button className="nav__menuToggle" onClick={() => {
                         setShowMenu(true)
                         if (showLogin || showRegister || showUserMenu) {
-                            handleShowLogin();
+                            handleMenu();
                         }
                     }}>
                         <i className="fas fa-bars"/>
@@ -125,18 +136,18 @@ export default function Navigation({userLoggedIn, updateUser, showLogin, setShow
                         <NavLink activeClassName="nav__link--active" className="nav__establishments nav__link" to="/establishments">ESTABLISHMENTS</NavLink>
                         <NavLink activeClassName="nav__link--active" className="nav__about nav__link" to="/contact">CONTACT US</NavLink>
                         {(!userLoggedIn && !showLogin) &&
-                        (<button className="nav__login nav__link" onClick={() => handleShowLogin()}>LOGIN <i className="fas fa-angle-down"/></button>)
+                        (<button className="nav__login nav__link" onClick={() => handleMenu()}>LOGIN <i className="fas fa-angle-down"/></button>)
                         }
                         {(!userLoggedIn && showLogin) && (
-                            (<button className="nav__login nav__link" onClick={() => handleShowLogin()}>
+                            (<button className="nav__login nav__link" onClick={() => handleMenu()}>
                                 LOGIN <i className="fas fa-angle-up"/></button>)
                         )}
-                        {(userLoggedIn && !showUserMenu) && <button className="nav__login nav__link" onClick={() => {setShowUserMenu(true)}}>MY USER <i className="fas fa-angle-down"/></button>}
-                        {(userLoggedIn && showUserMenu) && <button className="nav__login nav__link" onClick={() => setShowUserMenu(false)}>MY USER <i className="fas fa-angle-up"/></button>}
+                        {(userLoggedIn && !showUserMenu) && <button className="nav__myUser nav__link" onClick={() => {setShowUserMenu(true)}}>MY USER <i className="fas fa-angle-down"/></button>}
+                        {(userLoggedIn && showUserMenu) && <button className="nav__myUser nav__link" onClick={() => setShowUserMenu(false)}>MY USER <i className="fas fa-angle-up"/></button>}
                     </div>
                     {(!userLoggedIn && showLogin) && (
                         <div className="nav__loginArea">
-                            <button className="nav__login nav__link--hamburger" onClick={() => handleShowLogin()}>
+                            <button className="nav__login nav__link--hamburger" onClick={() => handleMenu()}>
                                 LOGIN <i className="fas fa-angle-up"/></button>
                             <LoginUserForm loginF={updateUser} nav={true}>
                                 <button className="login__register login__extraBtn link--white" onClick={() => {
@@ -148,7 +159,7 @@ export default function Navigation({userLoggedIn, updateUser, showLogin, setShow
                     )}
                     {(!userLoggedIn && showRegister) && (
                         <div className="nav__loginArea">
-                            <button className="nav__login nav__link--hamburger" onClick={() => handleShowLogin()}>
+                            <button className="nav__login nav__link--hamburger" onClick={() => handleMenu()}>
                                 LOGIN <i className="fas fa-angle-up"/></button>
                             <RegisterUserForm loginF={updateUser} nav={true}>
                                 <button className="login__login login__extraBtn link--white" onClick={() => {
@@ -160,14 +171,16 @@ export default function Navigation({userLoggedIn, updateUser, showLogin, setShow
                     )}
                     {(userLoggedIn && showUserMenu) && (
                         <div className="nav__userMenu">
-                            <NavLink className="nav__user nav__link" to="/user" onClick={() => {
-                                handleShowLogin();
-                                setShowMenu(false);
-                            }}>MY PAGE</NavLink>
+                            {(userLoggedIn.isAdmin) && (
+                                <NavLink className="nav__user nav__link" to="/user" onClick={() => {
+                                    handleMenu();
+                                    setShowMenu(false);
+                                }}>CONTROL PANEL</NavLink>
+                            )}
                             <button className="nav__logOut nav__link" onClick={() => {
                                 localStorage.removeItem("user");
                                 updateUser(null)
-                            }}>Log Out</button>
+                            }}>LOG OUT</button>
                         </div>
                     )}
                 </div>

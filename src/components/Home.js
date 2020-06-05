@@ -8,17 +8,16 @@ import {_filterEstablishments} from "../functions/handleEstablishmentForm";
 import bergenImage from "../media/images/lachlan-gowen-J38KXYtVrBA-unsplash.jpg";
 import PropTypes from 'prop-types';
 import * as yup from "yup";
-import {isElementOfType} from "react-dom/test-utils";
 
 
 
 export default function Home({establishments}) {
+    const history = useHistory();
     const [data, setData] = useState({
         oEstablishments: establishments,
         fEstablishments: establishments,
         sEstablishment: null
     });
-    const history = useHistory();
     function _checkout(filters) {
         const chart = {
             ...data.sEstablishment,

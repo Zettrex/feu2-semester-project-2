@@ -28,7 +28,7 @@ function App() {
     }, []);
 
     function toggleLogin(state) {
-        if (state) {
+        if (state !== undefined) {
             setShowLogin(state)
         } else {
             setShowLogin(!showLogin);

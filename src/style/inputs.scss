@@ -277,6 +277,7 @@
 }
 
 .noUi-base {
+  height: 14px;
 }
 
 .noUi-connect {
@@ -311,6 +312,17 @@
 }
 
 //End of Action
+@media (hover: none) {
+  .form {
+    &__multiRange {
+      display: none;
+    }
+    &__rangeInput {
+      padding: 12px 0 12px 6px;
+      width: 80px;
+    }
+  }
+}
 
 @media only screen {
 

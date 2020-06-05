@@ -9,9 +9,7 @@ export function _filterEstablishments(original, updateData, values) {
             return new RegExp(`${values.search}`, "gi").test(item.establishmentName)
         }
     });
-    console.log(original, values, filtered)
     if (updateData) {
-        console.log("hey")
         updateData(filtered)
     }
 }
