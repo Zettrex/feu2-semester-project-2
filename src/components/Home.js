@@ -130,7 +130,7 @@ export default function Home({establishments}) {
                 }} onSubmit={handleSubmit(_checkout)}>
                     <div className="orderBox__filter">
                         <div className="form__section row">
-                            <SearchBox className="orderBox" label="place" sectionCol="col-l-6 col-12" data={data} updateData={_updateSelected} results={true} Ref={register} errors={errors}/>
+                            <SearchBox className="orderBox" label="Place" sectionCol="col-l-6 col-12" data={data} updateData={_updateSelected} results={true} Ref={register} errors={errors}/>
                             <People className="orderBox" sectionCol="col-l-6 col-12" groupCol="col-6 col-s-12" Ref={register} errors={errors}/>
                         </div>
                         <div className="form__section row">
