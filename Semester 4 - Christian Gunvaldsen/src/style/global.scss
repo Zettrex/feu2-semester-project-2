@@ -1,0 +1,659 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+.clearfix::after {
+  content: '';
+  clear: both;
+  display: table;
+}
+//Start of root elements
+body {
+  max-width: 2460px;
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  font-family: $bodyFont;
+  font-size: 14px;
+}
+.root {
+  position: relative;
+  font-size: $defaultFontSize;
+}
+
+.page {
+  padding: 30px 16px;
+  height: 100%;
+  min-height: 100vh;
+  background: linear-gradient(to right, $secondaryColor, rgba($secondaryColor, 0.9), $secondaryColor);
+  color: white;
+  &__topBar {
+    z-index: 4;
+  }
+}
+//End of root elements
+
+//Start of elements
+
+//Start of Button
+.btn {
+  display: inline-block;
+  padding: $spacingPrimary 12px;
+  border-radius: $borderRadius;
+  border: none;
+  box-shadow: 0 2px 3px $boxShadowColor;
+  &:active {
+    box-shadow: none;
+  }
+  &--primary {
+    @extend .btn;
+    background-color: $primaryColor;
+    color: black;
+    &:hover {
+      background-color: #ffc67f;
+    }
+  }
+  &--secondary {
+    @extend .btn;
+    background-color: $thirdColor;
+    color: black;
+    &:hover {
+      background-color: $fifthColor
+    }
+  }
+  &--close {
+    @extend .btn--primary;
+    width: 26px;
+    height: 26px;
+    padding: 4px 8px;
+    border-radius: 2px;
+  }
+}
+//End of Button
+//Start of Link
+.link {
+  color: black;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+  &--white {
+    @extend .link;
+    color: white;
+  }
+}
+//end of Link
+
+//Start of paragraph
+.paragraph {
+  padding: $spacingPrimary 0;
+}
+//End of paragraph
+
+//start of sections & groups
+.section {
+  margin: 20px 0;
+}
+.group {
+  margin: 4px 0;
+}
+//end of sections & groups
+
+//Start of image elements
+.bgImage {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+//End of image elements
+
+//Start of Hero
+.hero {
+  margin: -30px -16px 50px;
+  min-height: 75vh;
+  position: relative;
+  padding: 40px 0;
+  @extend .bgImage;
+  &__heading {
+    margin: 0 auto;
+  }
+}
+//End of Hero
+//Start of background blur element
+.blurBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  background-color: $secondaryColor;
+  opacity: 80%;
+}
+//End of background blur element
+
+//Start of Navigation
+.nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: linear-gradient(to bottom, #FFC67F, $primaryColor, $primaryColor);
+  box-shadow: 0 2px 6px $boxShadowColor;
+  &--hamburger {
+    @extend .nav;
+    box-shadow: none;
+  }
+
+  &__logo {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    height: 44px;
+    display: block;
+    margin: auto;
+    padding: 6px 16px;
+  }
+  &__right{
+    margin-left: auto;
+    padding: 6px 0;
+    &--max {
+      @extend .nav__right;
+      width: 100%;
+      margin-left: 0;
+      padding: 6px 0;
+    }
+  }
+  &__links {
+    display: none;
+    &--hamburger {
+      position: absolute;
+      top: 46px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      display: block;
+      background-color: $primaryColor;
+      box-shadow: 0 3px 2px $boxShadowColor;
+    }
+  }
+  &__link {
+    @extend .link;
+    font-family: $labelFont;
+    font-weight: bold;
+    display: block;
+    padding: $spacingPrimary 16px;
+    color: black;
+    font-size: 14px;
+    &--hamburger {
+      @extend .nav__link;
+      margin: $spacingPrimary 0;
+      width: 100%;
+    }
+    &--active {
+      text-decoration: underline;
+    }
+  }
+  &__menuToggle {
+    @extend .nav__link;
+    display: block;
+    border: none;
+    margin: 0 10px 0 auto;
+    font-size: 18px;
+    padding: 6px 16px;
+  }
+
+  //Start of login box
+  &__loginArea {
+    position: absolute;
+    top: 46px;
+    left: 0;
+    width: 100%;
+    background-color: $primaryColor;
+    box-shadow: 0 4px 3px $boxShadowColor;
+  }
+  &__loginBox {
+    z-index: 4;
+    background-color: $footerColor;
+    box-shadow: 0 3px 5px $boxShadowColor;
+    max-height: 400px;
+    overflow: auto;
+    width: 100%;
+    margin: 0;
+  }
+  //End of login box
+  //Start of user menu
+  &__myUser, &__login {
+    padding-left: 26px;
+  }
+  &__userMenu {
+    position: absolute;
+    top: 230px;
+    width: 100%;
+    background-color: $primaryColor;
+    text-align: center;
+    padding-bottom: $spacingPrimary;
+    box-shadow: 0 4px 3px $boxShadowColor;
+  }
+  &__logOut {
+    width: 100%;
+  }
+  //End of user menu
+}
+
+//End of Navigation
+
+
+//Start of Login & Register
+//Start of Login form
+.login {
+  &__submit {
+    float: right;
+  }
+  &__extra {
+    float: left;
+  }
+  &__error {
+    font-size: 12px;
+    color: white;
+  }
+  &__extraBtn {
+    padding: $spacingPrimary;
+  }
+}
+//End of Login form
+//Start of Register
+.register {
+  &__wrapper {
+    padding: $spacingPrimary;
+  }
+  &__submit {
+    @extend .login__submit;
+  }
+  &__extra {
+    @extend .login__extra;
+  }
+}
+//End of Register
+//End of Login & Register
+
+
+//Start of Footer
+.footer {
+  padding: 20px;
+  background-color: $footerColor;
+  &__links {
+    padding-left: 0;
+  }
+  &__contact {
+    padding-right: 0;
+  }
+  &__link {
+    @extend .link;
+    display: inline-block;
+    margin: $spacingPrimary 0;
+    padding: $spacingPrimary 0;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+  }
+  &__elem {
+    @extend .footer__link;
+  }
+}
+
+//End of Footer
+
+//Start of Form
+.form {
+  color: white;
+  &__group {
+    margin: auto 0;
+    padding: $spacingPrimary;
+    position: relative;
+  }
+
+  &__section {
+    width: 100%;
+    position: relative;
+    padding: 0;
+    margin: $spacingPrimary 0;
+  }
+
+  &__container {
+    position: relative;
+    padding: 0;
+    margin: 0;
+  }
+  &__error {
+    position: absolute;
+    top: 13px;
+    right: 16px;
+    z-index: 5;
+    border-radius: 4px;
+    font-size: $spacingPrimary;
+    color: red;
+    &--left {
+      @extend .form__error;
+    }
+    &--right {
+      @extend .form__error;
+    }
+  }
+  &__adults.form__select--compact {
+    padding-left: 46px;
+  }
+  &__children.form__select--compact {
+    padding-left: 60px;
+  }
+  &__search.form__input--compact {
+    padding-left: 44px;
+  }
+}
+
+//End of Form
+
+//Start of Confirmation box
+.confirmation {
+  &__prompt {
+    @extend .containerBox;
+    border-radius: $borderRadius;
+    box-shadow: 0 3px 10px $boxShadowColor;
+    margin: 50px auto;
+  }
+  &__Wrapper{
+    position: relative;
+    padding-top: 50px;
+  }
+  &__topbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: right;
+    background-color: $primaryColor;
+    border-radius: $borderRadius $borderRadius 0 0;
+  }
+  &__close {
+    padding: $spacingPrimary 16px;
+  }
+  &__content {
+    padding: 20px;
+  }
+  &__label {
+    font-family: $labelFont;
+    display: inline-block;
+    min-width: 80px;
+  }
+  &__heading {
+
+    &--center {
+      @extend .confirmation__heading;
+      text-align: center;
+    }
+  }
+  &__image {
+    width: 100%;
+    max-width: 240px;
+  }
+  &__checkWrapper {
+    text-align: center;
+    padding: 30px 0;
+  }
+  &__check {
+    font-size: 100px;
+  }
+  &__body {
+    padding: 20px;
+  }
+  &__paragraph {
+    display: block;
+    padding: 6px 0;
+  }
+  &__main {
+    font-size: 20px;
+  }
+  &__action {
+    text-align: right;
+  }
+}
+
+//End of Confirmation box
+
+//Start of containerBox
+.containerBox {
+  &:nth-child(odd) {
+    background: linear-gradient(110deg, $thirdColor 65%, $fourthColor 65%);
+  }
+  &:nth-child(even) {
+    background: linear-gradient(70deg, $thirdColor 65%, $fourthColor 65%);
+  }
+}
+//End of containerBox
+//Start of General Items
+
+//End of elements
+
+//Start of scrollbar
+::-webkit-scrollbar {
+  width: 10px;
+  box-shadow: 0 0 2px 2px $boxShadowColor;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.2);
+  border: 1px gray;
+  border-radius: 4px;
+}
+body::-webkit-scrollbar-track {
+  background: white;
+  border: 1px gray;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primaryColor;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffbd80;
+}
+//End of scrollbar
+
+
+//Start of media queries
+@media only screen {
+  //for small screens
+  @media (max-width: 300px) {
+    .form {
+      &__container {
+        flex-basis: 100%;
+        &:last-child.column--split {
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  //for tablet
+  @media (min-width: $sGrid) {
+    //Start of nav
+    .nav {
+      &__logo {
+        left: 34px;
+      }
+      &__menuToggle {
+        margin: 0 50px 0 auto;
+      }
+    }
+    //End of nav
+
+    //Start of Page
+    .page {
+      padding: 30px 50px 50px;
+    }
+    .hero {
+      margin: -30px -50px 50px;
+    }
+    //End of Page
+    //Start of Confirmation box
+    .confirmation {
+      &__prompt {
+        width: 60%;
+      }
+      &__left, &__right {
+        padding: 20px 30px;
+      }
+      &__heading {
+        padding: 6px 30px;
+      }
+    }
+    //End of Confirmation box
+    //Start of footer
+    .footer {
+      padding: 0 50px;
+      &__links {
+        order: 1;
+      }
+      &__display {
+        order: 2;
+      }
+      &__contact {
+        order: 3;
+        text-align: right;
+      }
+      &__link {
+        text-align: unset;
+      }
+    }
+    //End of footer
+  }
+  //for up to 750px
+  @media (min-width: $sGrid) and (max-width: 750px) {
+    .nav {
+      &__menuToggle {
+        margin: 0 34px 0 0;
+      }
+    }
+  }
+  //for 750px and up
+  @media (min-width: 750px) {
+    //Start of Nav
+    .nav {
+      padding: 0 36px;
+      &__right {
+        &--max {
+          width: unset;
+          margin-left: auto;
+        }
+      }
+      &__myUser, &__login {
+        padding-left: 16px;
+      }
+      &__links {
+        display: block;
+      }
+      &__link {
+        &:first-child {
+          padding-left: 15px;
+        }
+        &:last-child {
+          padding-right: 15px;
+        }
+        display: inline-block;
+        &--hamburger {
+          display: none;
+        }
+      }
+      &__menuToggle {
+        display: none;
+      }
+    }
+    //End of Nav
+    //Start of login box
+    .nav {
+      &__loginArea {
+        top: 49px;
+        background: none;
+        right: 46px;
+        width: unset;
+        left: unset;
+        z-index: 3;
+      }
+      &__loginBox {
+        width: unset;
+        max-width: 300px;
+        max-height: none;
+        z-index: 20;
+      }
+    }
+    //End of login box
+    //Start of user box
+    .nav {
+      &__userMenu {
+        top: 49px; //1px from nav to give illusion of coming out from inside
+        width: 160px;
+        padding-top: 10px;
+        right: 36px;
+        background: linear-gradient(110deg, $thirdColor 65%, $fourthColor 65%);
+      }
+      &__user, &__logOut {
+        color: white;
+      }
+    }
+    //End of user box
+  }
+
+  //for desktop
+  @media (min-width: $mGrid) {
+    //Start of Nav
+    .nav {
+      padding: 0 85px;
+      &__logo {
+        left: 85px;
+      }
+      &__link {
+      }
+      &__loginBox, &__loginArea, &__userMenu {
+        right: 100px;
+      }
+    }
+    //End of Nav
+
+    //Start of Page
+    .page {
+      padding: 30px 100px;
+    }
+    //End of Page
+    //Start of Hero
+    .hero {
+      margin: -30px -100px 50px;
+    }
+    //End of Hero
+    //Start of Footer
+    .footer {
+      padding: $spacingPrimary 100px;
+      &__links {
+        order: 1;
+      }
+      &__display {
+        order: 2;
+      }
+      &__contact {
+        order: 3;
+        text-align: right;
+      }
+    }
+    //End of Footer
+  }
+  @media (min-width: $breakPoint2) {
+    //Start of form
+    .form {
+      &__error {
+        &--left {
+          right: 6px;
+        }
+      }
+    }
+    //End of form
+  }
+}

@@ -1,0 +1,126 @@
+.orderConfirm {
+  padding: $spacingSecondary;
+  max-width: 550px;
+  margin: auto;
+
+  //start of Establishment (est)
+  &__est {
+    flex-direction: row;
+    padding-bottom: $spacingSecondary;
+    border-bottom: 1px solid $white;
+  }
+  &__estImg {
+    width: 100px;
+    height: 100px;
+    margin-left: $spacingPrimary;
+    margin-right: auto;
+    flex-shrink: 0;
+  }
+  //end of Establishment (est)
+}
+
+.checkout {
+  //Start of main
+  &__main {
+    & > *:first-child {
+      padding-top: 50px;
+    }
+  }
+  //Start of userType
+  &__continue {
+    color: white;
+  }
+  &__selectOption {
+    margin: 0;
+  }
+  &__login {
+    max-width: 300px;
+    min-width: 250px;
+    margin-left: auto;
+  }
+  //End of userType
+  //Start of payment form
+  &__action {
+    text-align: right;
+    padding-right: $spacingPrimary;
+  }
+  &__ssvWrapper {
+    margin-left: auto;
+  }
+  //End of payment form
+  //End of main
+
+  //Start of aside
+  &__aside {
+    background: linear-gradient(110deg, $thirdColor 50px, $fourthColor 50px);
+    padding: 30px;
+  }
+  //start of order Summary
+  &__orderSummary {
+    padding: $spacingSecondary;
+    max-width: 400px;
+    margin: 0 auto;
+    color: white;
+  }
+  &__orderLabel {
+    width: 80px;
+    display: inline-block;
+  }
+  &__ratingLabel, &__fromLabel, &__toLabel, &__adultsLabel, &__childrenLabel, &__priceLabel {
+    @extend .checkout__orderLabel;
+  }
+  &__ratingStars {
+    display: inline-block;
+  }
+  //end of order Summary
+  //end of aside
+}
+
+@media only screen {
+  //up to mobile
+  @media (max-width: $sGrid) {
+    .checkout {
+      &__main {
+        order: 2;
+      }
+      &__aside {
+        order: 1;
+      }
+      &__payment, &__aside {
+        flex-basis: 100%;
+      }
+    }
+  }
+  //from mobile and up
+  @media (min-width: $sGrid) {
+    .orderConfirm {
+      min-width: 400px;
+      &__est {
+        flex-wrap: nowrap;
+      }
+    }
+  }
+
+  //up to tablet
+  @media (max-width: $mGrid) {
+    .checkout {
+      &__aside {
+        background: none;
+      }
+      &__orderSummary {
+        margin: 0;
+      }
+    }
+  }
+  //from tablet and up
+  @media (min-width: $mGrid) {
+    .checkout {
+      &__main {
+        order: 1;
+      }
+      &__aside {
+        order: 2;
+      }
+    }
+  }
+}

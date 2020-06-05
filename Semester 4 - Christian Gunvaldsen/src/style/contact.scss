@@ -1,0 +1,74 @@
+.contact {
+  padding-top: 20vh;
+  &__container {
+    background: linear-gradient(110deg, $thirdColor 50%, $fourthColor 50%);
+    margin-bottom: 100px;
+  }
+  &__heading {
+    padding-left: $spacingPrimary;
+  }
+  &__section {
+    margin: 30px 0;
+  }
+  &__link {
+    color: white;
+  }
+  &__info {
+    color: white;
+    padding-top: 80px;
+    font-size: 18px;
+  }
+  &__icon {
+    width: 42px;
+    height: 42px;
+    font-size: 40px;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+  }
+  &__infoText {
+    padding: 6px;
+    display: block;
+    font-size: 14px;
+    text-align: center;
+  }
+  &__times {
+    margin-bottom: 60px;
+  }
+}
+
+@media only screen {
+  @media (min-width: $sGrid) {
+    .contact {
+      &__messageInput {
+        min-height: 320px;
+      }
+    }
+  }
+  @media (max-width: $breakPoint1) {
+    .contact {
+      &__form, &__info {
+        flex-basis: 100%;
+      }
+      &__icon {
+        width: 30px;
+        height: 30px;
+        font-size: 30px;
+      }
+      &__section {
+        padding: $spacingPrimary;
+      }
+    }
+  }
+  @media (min-width: $breakPoint1 + 1px) {
+    .contact {
+      &__infoRight {
+        flex-direction: column;
+      }
+      &__section {
+        margin: $spacingSecondary auto;
+      }
+    }
+  }
+}
+

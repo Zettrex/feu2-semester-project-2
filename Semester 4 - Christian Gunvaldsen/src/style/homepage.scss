@@ -1,0 +1,225 @@
+@use "sass:color";
+
+.home-hero {
+  @extend .hero;
+  background-image: url("../media/images/HeroImage.jpg");
+}
+//Start of OrderBox
+.orderBox {
+  margin: auto;                                               
+  max-width: 800px;
+  width: 60%;
+  min-width: 340px;
+  background-color: $thirdColor;
+  box-shadow: 0 5px 10px black;
+  //Start of Types
+  &__type {
+    position: relative;
+    background-color: rgba($secondaryColor, 300%);
+    box-shadow: 0 1px 4px $boxShadowColor;
+    z-index: 1;
+    &--active {
+      @extend .orderBox__type;
+      background-color: $secondaryColor;
+      box-shadow: 0 2px 5px $boxShadowColor;
+      z-index: 5;
+    }
+  }
+  &__hotel {
+    z-index: 3;
+  }
+  &__bnb {
+    z-index: 2;
+  }
+  &__cabin {
+    z-index: 1;
+  }
+  &__typeButton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  &__typeDesign {
+    text-align: center;
+  }
+  //End of Types
+  //Start of Filter
+  &__filter {
+    padding: 5px;
+  }
+  //start of Place
+  &__search {
+    padding: 0;
+  }
+
+  //End of Place
+  //start of People (Adults & Children)
+  &__people {
+    padding: 0;
+  }
+  //End of People (Adults & Children)
+  //Start of Submit
+  &__action {
+    margin-left: auto;
+  }
+  //End of Submit
+}
+//End of OrderBox
+
+//start of search Results
+.searchResults {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  padding: 10px;
+  &__wrapper {
+    background-color: $fourthColor;
+    max-height: 350px;
+    overflow: auto;
+    border-radius: 0 0 $borderRadius $borderRadius;
+    padding: 10px;
+    box-shadow: 0 3px 3px $boxShadowColor;
+  }
+  &__item {
+    &:nth-child(odd) {
+      background: linear-gradient(110deg, $thirdColor 65%, $fourthColor 65%);
+    }
+    &:nth-child(even) {
+      background: linear-gradient(70deg, $thirdColor 65%, $fourthColor 65%);
+    }
+  }
+}
+
+.searchBox {
+  &:focus-within > .searchResults {
+    display: block;
+  }
+}
+
+.resultItem {
+  border-radius: $borderRadius;
+  margin: 4px 0;
+  justify-content: left;
+  cursor: pointer;
+  border: 2px solid white;
+  &:hover {
+    opacity: 0.95;
+  }
+  &:focus-within {
+    background-color: $primaryColor;
+    color: black;
+    outline: none;
+  }
+
+  &__design {
+    display: flex;
+    padding: 0;
+    text-align: left;
+    color: white;
+  }
+  &__content {
+    justify-content: left;
+    padding: 6px $spacingPrimary;
+  }
+  &__action {
+    padding: 0 $spacingPrimary 6px;
+  }
+  &__img {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    display: inline-block;
+  }
+  &__info {
+    margin-left: 6px;
+    display: inline-block;
+    font-size: 12px;
+  }
+  &__name {
+    font-size: 16px;
+  }
+  &__readMore {
+    font-size: 14px;
+    color: white;
+    margin: auto 0 auto auto;
+    display: block;
+    width: 80px;
+  }
+
+
+}
+
+//End of search results
+
+//Start of Bergen
+
+.bergen {
+  &__image {
+  }
+  &__info {
+    font-size: $spacingSecondary;
+  }
+}
+
+//End of Bergen
+
+@media only screen {
+  //345px and down
+  @media (max-width: 345px) {
+    .orderBox {
+      min-width: unset;
+      width: 90%;
+    }
+  }
+
+  //Tablet and up
+  @media (min-width: $sGrid) {
+    .resultItem {
+      &__action, &__content {
+        padding: $spacingPrimary;
+      }
+    }
+    .bergen {
+      &__image {
+        order: 1;
+      }
+      &__info {
+        order: 2;
+      }
+    }
+  }
+
+  //desktop and up
+  @media (min-width: $mGrid) {
+    .resultItem {
+      &__name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 146px;
+      }
+    }
+    .orderBox {
+      &__filter {
+        padding: $spacingSecondary 30px;
+      }
+    }
+    .bergen {
+      &__info {
+        padding: 0 40px;
+      }
+    }
+  }
+
+  @media (max-width: 1135px) {
+    .bergen {
+      &__info {
+        font-size: 14px;
+      }
+    }
+  }
+}

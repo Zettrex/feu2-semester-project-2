@@ -1,0 +1,75 @@
+//headings sizes
+@for $i from 1 through 6 {
+  .h#{$i} {
+    font-size: 12px + 6px * (5 - $i);
+    margin: 0.4em 0;
+    font-family: $headingFont;
+    &--black {
+      @extend .h#{$i};
+      color: black;
+    }
+  }
+}
+
+/*=======================[Grid]=======================*/
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  flex-shrink: 1;
+  align-items: stretch;
+  min-height: 1px;
+  margin: 0 $spacingPrimary;
+}
+[class*="col-"]{
+  @extend .column;
+  margin: 0;
+  padding: $spacingPrimary;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@mixin makeGrid ($cols-in-grid: 12, $prefix: "col-") {
+  @for $i from 1 through $cols-in-grid {
+    .#{$prefix}#{$i} {
+      flex-basis: $i / $cols-in-grid * 100% ;
+    }
+  }
+}
+@media only screen {
+  /*for all*/
+  @include makeGrid($prefix:"col-");
+  .col-auto {
+    flex-grow: 1;
+  }
+  .column--split {
+    margin: 0 auto;
+    &:first-child {
+      margin-right: auto;
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-left: auto;
+      margin-right: 0;
+    }
+  }
+
+  /*for mobile*/
+  @media (min-width: 0) and (max-width: $sGrid) {
+    @include makeGrid($prefix:"col-s-");
+  }
+
+  /*for tablet*/
+  @media (min-width: $sGrid) and (max-width: $mGrid) {
+    @include makeGrid($prefix:"col-m-");
+  }
+
+  /*for desktop*/
+  @media (min-width: $mGrid) and (max-width: $lGrid) {
+    @include makeGrid($prefix:"col-l-");
+  }
+}

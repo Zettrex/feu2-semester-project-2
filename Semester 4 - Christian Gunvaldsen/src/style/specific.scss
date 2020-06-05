@@ -1,0 +1,67 @@
+.specific {
+  &__wrapper {
+    min-height: 75vh;
+    margin: 40px 0;
+    padding: $spacingSecondary;
+  }
+  &__priceLabel {
+    font-size: $spacingSecondary;
+  }
+  &__price {
+    font-size: 40px;
+    padding-top: $spacingPrimary;
+  }
+}
+
+//start of facilities
+.facility {
+  width: fit-content;
+  padding: $spacingPrimary;
+  &__icon {
+    text-align: center;
+    padding: $spacingPrimary;
+    font-size: $spacingSecondary;
+  }
+}
+//End of facilities
+
+//Start of map
+.specific {
+  &__map {
+    width: 100%;
+    margin: 60px 0 0;
+  }
+}
+//End of map
+
+@media only screen {
+  //tablets and up
+  @media (min-width: $sGrid) {
+    .specific {
+      &__main {
+        flex-wrap: nowrap;
+      }
+      &__priceLabel {
+        text-align: center;
+        padding: 0 $spacingSecondary;
+      }
+      &__price {
+        padding: $spacingPrimary $spacingSecondary;
+      }
+    }
+  }
+  @media (max-width: 616px) {
+    .specific {
+      &__img, &__info{
+        flex-basis: 100%;
+      }
+    }
+  }
+  @media (min-width: $mGrid) {
+    .specific {
+      &__wrapper {
+        padding: 60px;
+      }
+    }
+  }
+}

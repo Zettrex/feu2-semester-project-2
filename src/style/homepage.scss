@@ -140,10 +140,7 @@
     font-size: 12px;
   }
   &__name {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 20px;
+    font-size: 16px;
   }
   &__readMore {
     font-size: 14px;
@@ -198,6 +195,14 @@
 
   //desktop and up
   @media (min-width: $mGrid) {
+    .resultItem {
+      &__name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 146px;
+      }
+    }
     .orderBox {
       &__filter {
         padding: $spacingSecondary 30px;

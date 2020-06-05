@@ -1,0 +1,138 @@
+.filterArea {
+  margin: 0 auto;
+  max-width: 1200px;
+  color: white;
+  &__group {
+    @extend .form__group;
+    padding: 4px $spacingPrimary;
+    &--compact {
+      @extend .filterArea__group;
+    }
+  }
+  &__section {
+    padding: 0;
+  }
+  &__date {
+    flex-direction: row;
+  }
+  &__dateLabel--right {
+    left: $spacingPrimary;
+  }
+  &__people{
+    flex-direction: row;
+  }
+  &__children {
+    margin-left: auto;
+  }
+  &__matches {
+    margin: auto;
+    text-align: center;
+    font-size: 22px;
+  }
+  &__buttons {
+    margin: auto;
+  }
+  &__searchInput {
+    padding-left: 40px;
+  }
+}
+
+//Start of Page Content
+
+.est__wrapper {
+  padding-top: 50px;
+}
+
+//Start of establishments Map
+.est {
+
+}
+//End of establishments Map
+//Start of Establishment item
+.est-list {
+
+}
+.est {
+  &__item {
+    color: $white;
+    min-height: 200px;
+    box-shadow: 0 3px 6px $boxShadowColor;
+    position: relative;
+    margin-bottom: $spacingSecondary;
+    background: $thirdColor;
+  }
+  &__image {
+    @extend .bgImage;
+    width: 100%;
+    height: 100%
+  }
+  //Start of establishment Info
+  &__content {
+    margin: $spacingPrimary 0;
+  }
+  //End of establishment Info
+  //Start of Establishment Action
+  &__action {
+    padding: 40px 15px 40px 40px;
+    color: white;
+    text-align: center;
+    &--odd {
+      @extend .est__action;
+      background: linear-gradient(110deg, $thirdColor 30px, $fourthColor 30px);
+    }
+    &--even {
+      @extend .est__action;
+      background: linear-gradient(70deg, $thirdColor 30px, $fourthColor 30px);
+    }
+  }
+  &__price {
+    font-size: 26px;
+    margin-bottom: auto;
+  }
+  &__readMore {
+    padding: $spacingPrimary;
+    margin: 0 auto 10px;
+  }
+  &__book {
+    max-width: 100px;
+    margin: 0 auto;
+  }
+  //End of Establishment Action
+}
+//End of Establishment item
+
+@media only screen {
+  @media (max-width: $sGrid) {
+    .est {
+      &__showcase {
+        min-height: 200px;
+      }
+      &__item {
+        &:nth-child(odd) {
+          background: linear-gradient(110deg, $thirdColor 50%, $fourthColor 50%);
+        }
+        &:nth-child(even) {
+          background: linear-gradient(70deg, $thirdColor 50%, $fourthColor 50%);
+        }
+      }
+      &__action {
+        background: none;
+      }
+    }
+  }
+  @media (min-width: $sGrid) {
+    //Start of Establishments Map
+    .est {
+      &__mapContainer {
+        position: sticky;
+        top: 66px;
+      }
+    }
+    //End of Establishments Map
+  }
+  @media (min-width: $mGrid) {
+    .filterArea {
+      flex-wrap: nowrap;
+    }
+  }
+}

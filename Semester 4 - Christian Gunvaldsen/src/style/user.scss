@@ -1,0 +1,314 @@
+.admin {
+  &__showMore {
+    cursor: pointer;
+    color: white;
+    border-radius: $borderRadius;
+  }
+  &__list {
+    min-height: 400px;
+    max-height: 70vh;
+    overflow: auto;
+    align-content: flex-start;
+    align-items: flex-start;
+  }
+  &__content--hidden {
+    display: none;
+  }
+  &__fixWrapper {
+    padding: 0 $spacingPrimary;
+    margin-right: auto; //incase odd numbers put element to left
+  }
+}
+
+.admin-item {
+  margin: 5px 0;
+  border-radius: 7px;
+  position: relative;
+  background-color: $thirdColor;
+  flex-wrap: nowrap;
+  &__section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  &__left {
+    z-index: 3;
+    @extend .admin-item__section;
+    padding: 5px;
+  }
+  &__right {
+    z-index: 3;
+    @extend .admin-item__section;
+    margin-left: auto;
+    padding: 5px;
+    justify-content: right;
+    font-size: 12px;
+    border-radius: 0 6px 6px 0;
+    &--odd {
+      @extend .admin-item__right;
+    }
+    &--even {
+      @extend .admin-item__right;
+    }
+  }
+  //Start of information
+  &__item {
+    padding: 5px $spacingPrimary;
+  }
+  &__img {
+    @extend .bgImage;
+    width: 26px;
+    height: 26px;
+  }
+  &__name {
+    @extend .admin-item__item;
+  }
+  &__infoWrapper {
+    margin-left: auto;
+  }
+  &__info {
+    @extend .admin-item__item;
+    margin-left: auto;
+  }
+  &__date {
+    @extend .admin-item__item;
+    margin-left: auto;
+  }
+  &__btn {
+    @extend .admin-item__item;
+    display: block;
+  }
+  //End of Information
+}
+
+//start of view-window
+.view-window {
+  z-index: 5;
+  padding: 60px $spacingSecondary $spacingSecondary;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  background-color: $thirdColor;
+  box-shadow: 0 3px 5px $boxShadowColor;
+  color: white;
+
+  &__topBar {
+    text-align: right;
+    position: fixed;
+    top: $spacingSecondary;
+    right: $spacingSecondary;
+    width: 100%;
+  }
+  &__content {
+    overflow: auto;
+    height: 64vh;
+  }
+  &__actions {
+    position: absolute;
+    right: $spacingSecondary;
+    bottom: $spacingSecondary;
+    text-align: right;
+  }
+}
+//Start of enquiries
+
+.view-enquiry {
+  &__client {
+    border-right: 1px solid darkgray;
+  }
+}
+
+.enquiry {
+
+}
+//End of enquiries
+
+//start of messages
+.message {
+
+}
+.view-message {
+  min-height: 400px;
+  &__information {
+    border-right: 1px solid darkgray;
+  }
+}
+//end of messages
+
+//Start of Establishments
+.admin-est {
+  position: relative;
+  &__content {
+    position: relative;
+  }
+  &__heading {
+    padding-left: $spacingPrimary;
+  }
+  &__action {
+    width: 100%;
+  }
+  &__addLabel {
+    display: block;
+    margin: auto 6px auto auto;
+  }
+  &__add {
+    font-size: 16px;
+    height: 32px;
+    width: 32px;
+    padding: 0;
+  }
+}
+//End of Establishments
+
+//start of establishment
+.view-est {
+  &__idLabel {
+    font-size: 12px;
+  }
+  &__idInput {
+    margin-left: 4px;
+    background: none;
+    border: none;
+    color: white;
+    width: 250px;
+  }
+  &__showcase {
+    max-width: 100px;
+    margin-left: $spacingPrimary;
+  }
+  &__price {
+    display: inline-block;
+  }
+  &__priceLabel {
+    display: block;
+  }
+  &__priceInput {
+    padding: 8px 20px 8px 42px;
+    width: 130px;
+    display: inline-flex;
+  }
+  &__currency {
+    margin: 0 6px;
+    position: absolute;
+    right: 12px;
+    transform: translate(0, -50%);
+    top: 50%;
+    color: $black;
+  }
+  &__facilities {
+    padding-bottom: 60px;
+  }
+
+}
+
+//end of establishment
+//End of view-window
+
+@media only screen {
+  @media (max-width: $breakPoint1) {
+    .admin {
+      &__fixWrapper {
+        flex-basis: 100%;
+      }
+    }
+  }
+  @media (min-width: $breakPoint1) {
+    .admin-item {
+      &__right {
+        &--odd {
+          background: linear-gradient(110deg, $thirdColor 20px, $fourthColor 20px);
+        }
+        &--even {
+          background: linear-gradient(70deg, $thirdColor 20px, $fourthColor 20px);
+        }
+      }
+      &__action {
+        padding-left: 30px;
+        margin-left: auto;
+      }
+    }
+  }
+  @media (max-width: $breakPoint2) {
+    .admin {
+      &__enquiries, &__messages {
+        flex-basis: 100%;
+      }
+      &__showMore {
+        margin: 0 auto;
+        display: block;
+      }
+    }
+  }
+  @media (min-width: $breakPoint2) {
+    .admin {
+      &__showMore {
+        text-align: left;
+        cursor: unset;
+        pointer-events: none;
+        &--indicator {
+          display: none;
+        }
+      }
+      &__inbox {
+        margin-bottom: 50px;
+      }
+    }
+  }
+  @media (max-width: $sGrid) {
+    .admin-est {
+      &__list {
+        margin-top: 40px;
+      }
+    }
+
+    //Start of admin-item
+    .admin-item {
+      &__right {
+        width: unset;
+        background: none;
+      }
+    }
+    //End of admin-item
+  }
+  //for tablet and up
+  @media (min-width: $sGrid) {
+    .admin-est {
+      //start of admin tools
+        &__action {
+          position: absolute;
+          right: 10px;
+          top: -50px;
+          width: unset;
+        }
+    }
+
+    //Start of message item
+    .message  {
+      &__right {
+        width: 200px;
+      }
+    }
+    //End of message item
+    //End of admin tools
+
+    //Start of view-window
+    .view-window {
+      width: 60%;
+    }
+    //End of view-window
+  }
+  @media (min-width: $mGrid) {
+    .admin-item {
+      &__infoWrapper {
+        flex-direction: row;
+      }
+    }
+    .message {
+      &__right {
+        width: 300px;
+      }
+    }
+  }
+}

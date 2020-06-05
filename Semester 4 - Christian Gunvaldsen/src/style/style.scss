@@ -1,0 +1,19 @@
+//import of Fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Amibo:wght@400&family=Vesper+Libre:wght@500&display=swap');
+
+//settings
+@use "sass:color";
+
+//Imports of scss
+@import "zero";
+@import "variables";
+@import "widgets";
+@import "global";
+@import "inputs";
+@import "homepage";
+@import "establishments";
+@import "specific";
+@import "contact";
+@import "checkout";
+@import "user";
+@import "map";
