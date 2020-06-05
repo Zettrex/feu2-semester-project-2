@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 export default function ConfirmationBox(props) {
     return (
@@ -11,7 +12,11 @@ export default function ConfirmationBox(props) {
                 <div className="confirmation__content">
                     {props.children}
                     <div className="section confirmation__action">
-                        <button className="confirmation__ok btn--primary" onClick={() => props.updateConfirmed(false)}>Ok</button>
+                        {props.toHome ? (
+                            <Link className="confirmation__ok btn--primary" to="/" exact>Ok</Link>
+                        ) : (
+                            <button className="confirmation__ok btn--primary" onClick={() => props.updateConfirmed(false)}>Ok</button>
+                        )}
                     </div>
                 </div>
             </div>
@@ -20,5 +25,6 @@ export default function ConfirmationBox(props) {
 }
 ConfirmationBox.propTypes = {
     updateConfirmed: PropTypes.func.isRequired,
-    children: PropTypes.array.isRequired
+    children: PropTypes.array.isRequired,
+    toHome: PropTypes.bool
 }

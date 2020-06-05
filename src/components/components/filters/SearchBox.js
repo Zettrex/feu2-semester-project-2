@@ -26,7 +26,7 @@ export default function SearchBox({className, label, updateData, data, sectionCo
         <div className={`${className}__search form__section ${sectionCol}`}>
             <div className={`${className}__searchWrapper searchBox form__group ${groupCol}`}>
                 <label className={`${className}__searchLabel form__label--compact`} htmlFor="est-search">{label}</label>
-                <input className={`${className}__searchInput form__search form__input--compact`} type="text" placeholder="Name of Establishment" name="search" ref={Ref}
+                <input autoComplete="off" className={`${className}__searchInput form__search form__input--compact`} type="text" placeholder="Name of Establishment" name="search" ref={Ref}
                        onInput={() => setSearch({...search, focus: true})}
                        onClick={() => setSearch({...search, focus: true})}
                        onFocus={() => setSearch({...search, focus: true})}

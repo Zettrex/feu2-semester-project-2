@@ -161,7 +161,7 @@ export default function Contact() {
                 </div>
             )}
             {confirmation === true && (
-                <ConfirmationBox updateConfirmed={updateConfirmed}>
+                <ConfirmationBox toHome={true} updateConfirmed={updateConfirmed}>
                     <div className="confirmation__checkWrapper">
                         <i className="far fa-check-circle confirmation__check"/>
                     </div>

@@ -127,7 +127,7 @@ export default function Checkout({user, updateUser}) {
                     </div>
                 )}
                 {showPrompt && (
-                    <ConfirmationBox updateConfirmed={togglePrompt}>
+                    <ConfirmationBox toHome={true} updateConfirmed={togglePrompt}>
                         <div className="row">
                             <div className="confirmation__heading col-12">
                                 <h2 className="h2">Thank you for your order.</h2>
