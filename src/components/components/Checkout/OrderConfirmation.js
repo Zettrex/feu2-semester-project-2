@@ -28,15 +28,28 @@ export default function OrderConfrimation({data, updateConfirmed}) {
                 .matches(/(?!(\d){4}([1-9] | 1[0-2]){2}(1[1-9] | 2[1-4]))/, "not a valid date")
                 .test({
                     test: value => {
+                        return (new Date(value).getTime() > new Date(new Date().toLocaleDateString()).getTime());
+                    },
+                    message: "Invalid date selected"
+                })
+                .test({
+                    test: value => {
                         const values = getValues()
                         return new Date(values.date2).getTime() >= new Date(value).getTime()
                     },
                     message: "Dates are wrong order"
-                }),
+                })
+                ,
             date2: yup
                 .string()
                 .required("please enter a date")
                 .matches(/(?!(\d){4}([1-9] | 1[0-2]){2}(1[1-9] | 2[1-4]))/, "not a valid date")
+                .test({
+                    test: value => {
+                        return (new Date(value).getTime() > new Date(new Date().toLocaleDateString()).getTime());
+                    },
+                    message: "Invalid date selected"
+                })
                 .test({
                     test: value => {
                         const values = getValues()
@@ -44,6 +57,7 @@ export default function OrderConfrimation({data, updateConfirmed}) {
                     },
                     message: "Dates are wrong order"
                 })
+
         })
     });
     function _updateConfirmed(values) {
@@ -60,7 +74,7 @@ export default function OrderConfrimation({data, updateConfirmed}) {
                 <div className="orderConfirm__estImg bgImage" style={{backgroundImage: `url(${data.imageUrl})`}}/>
                 <div className="orderConfirm__estInfo col-auto col-s-12">
                     <div className="orderConfirm__estName">{data.establishmentName}</div>
-                    <div className="orderConfirm__estRating"><StarRating rating={data.rating}/></div>
+                    <div className="orderConfirm__estRating"><StarRating score={data.rating}/></div>
                     <div className="orderConfirm__estDesc">{data.description}</div>
                 </div>
             </div>

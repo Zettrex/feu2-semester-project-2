@@ -9,7 +9,6 @@ import PriceRange from "./components/filters/PriceRange";
 import {_filterEstablishments} from "../functions/handleEstablishmentForm";
 import * as yup from "yup";
 import PropTypes from 'prop-types';
-import LazyLoad from "react-lazyload"
 
 export default function Establishments ({establishments}) {
     const [data, setData] = useState({
@@ -23,6 +22,11 @@ export default function Establishments ({establishments}) {
             ...data,
             fEstablishments: newData
         })
+    }
+
+    function updatePrice() {
+        const values = getValues();
+        _filterEstablishments(data.oEstablishments, _updateData, values);
     }
 
     const {register, getValues, errors} = useForm({
@@ -42,14 +46,58 @@ export default function Establishments ({establishments}) {
                     excludeEmptyString: true
                 }),
             date1: yup
-                .date({
-                    message: "not a valid date",
+                .string()
+                .matches(/(?!(\d){4}([1-9] | 1[0-2]){2}(1[1-9] | 2[1-4]))/, {
+                    message: "invalid date",
                     excludeEmptyString: true
+                })
+                .test({
+                    test: value => {
+                        if (value) {
+                            const values = getValues()
+                            return new Date(values.date2).getTime() >= new Date(value).getTime();
+                        } else {
+                            return true;
+                        }
+                    },
+                    message: "Dates are wrong order"
+                })
+                .test({
+                    test: value => {
+                        if (value) {
+                            return (new Date(value).getTime() > new Date(new Date().toLocaleDateString()).getTime());
+                        } else {
+                            return true;
+                        }
+                    },
+                    message: "Invalid date selected"
                 }),
             date2: yup
-                .date({
-                    message: "not a valid date",
+                .string()
+                .matches(/(?!(\d){4}([1-9] | 1[0-2]){2}(1[1-9] | 2[1-4]))/, {
+                    message: "invalid date",
                     excludeEmptyString: true
+                })
+                .test({
+                    test: value => {
+                        if (value) {
+                            const values = getValues()
+                            return new Date(values.date1).getTime() <= new Date(value).getTime();
+                        } else {
+                            return true;
+                        }
+                    },
+                    message: "Dates are wrong order"
+                })
+                .test({
+                    test: value => {
+                        if (value) {
+                            return (new Date(value).getTime() > new Date(new Date().toLocaleDateString()).getTime());
+                        } else {
+                            return true;
+                        }
+                    },
+                    message: "Invalid date selected",
                 }),
             price1: yup
                 .string()
@@ -73,20 +121,17 @@ export default function Establishments ({establishments}) {
                     const values = getValues();
                     _filterEstablishments(data.oEstablishments, _updateData, values)
                 }}>
-                    <div className="filterArea__filters col-12 col-l-10">
+                    <div className="filterArea__filters col-12 col-auto">
                         <div className="filterArea__section row">
                             <SearchBox className="filterArea" label="place" sectionCol="col-12 col-l-6" updateData={_updateData} data={data} results={false} Ref={register} errors={errors}/>
                             <DateFromTo className="filterArea" groupCol="col-6 col-s-12" sectionCol="col-12 col-l-6" Ref={register} errors={errors}/>
                         </div>
                         <div className="filterArea__section row">
                             <People className="filterArea" sectionCol="col-s-12 col-6" groupCol="column--split" Ref={register} errors={errors}/>
-                            <PriceRange className="filterArea" sectionCol="col-s-12 col-6" data={data} updateFilters={() => { //why did i not know this earlier... god damn it
-                                const values = getValues();
-                                return _filterEstablishments(data.oEstablishments, _updateData, values);
-                            }} Ref={register} errors={errors}/>
+                            <PriceRange className="filterArea" sectionCol="col-s-12 col-6" data={data} updateFilters={updatePrice} Ref={register} errors={errors}/>
                         </div>
                     </div>
-                    <div className="filterArea__action filterArea__section col-l-2">
+                    <div className="filterArea__info filterArea__section column">
                         <div className="filterArea__matches">
                             <div>Found {data.fEstablishments.length}</div>
                             <div>Matches</div>
@@ -98,19 +143,15 @@ export default function Establishments ({establishments}) {
                 <aside className="est__mapWrapper col-12 col-l-5">
                     <div className="est__mapContainer">
                         {data.fEstablishments && (
-                            <LazyLoad once>
-                                <Map fixHeight={true} data={data.fEstablishments}/>
-                            </LazyLoad>
+                            <Map fixHeight={true} data={data.fEstablishments}/>
                         )}
                     </div>
                 </aside>
                 <main className="est-list col-12 col-l-7">
-                   <LazyLoad once>
                        {data.fEstablishments.length > 0 ? data.fEstablishments.map((est, i) => {
                            const values = getValues();
                            return <EstablishmentItem filters={values} key={est.establishmentID} odd={!((i+1) % 2 === 0)} item={est}/>
                        }): null}
-                   </LazyLoad>
                 </main>
             </div>
         </div>

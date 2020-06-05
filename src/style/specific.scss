@@ -2,29 +2,29 @@
   &__wrapper {
     min-height: 75vh;
     margin: 40px 0;
-    padding: 20px;
+    padding: $spacingSecondary;
   }
   &__img {
     @extend .bgImage;
     min-height: 400px;
   }
   &__priceLabel {
-    font-size: 20px;
+    font-size: $spacingSecondary;
   }
   &__price {
     font-size: 40px;
-    padding-top: 10px;
+    padding-top: $spacingPrimary;
   }
 }
 
 //start of facilities
 .facility {
   width: fit-content;
-  padding: 10px;
+  padding: $spacingPrimary;
   &__icon {
     text-align: center;
-    padding: 10px;
-    font-size: 20px;
+    padding: $spacingPrimary;
+    font-size: $spacingSecondary;
   }
 }
 //End of facilities
@@ -47,10 +47,10 @@
       }
       &__priceLabel {
         text-align: center;
-        padding: 0 20px;
+        padding: 0 $spacingSecondary;
       }
       &__price {
-        padding: 10px 20px;
+        padding: $spacingPrimary $spacingSecondary;
       }
     }
   }

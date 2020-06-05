@@ -16,6 +16,7 @@
   }
   &__fixWrapper {
     padding: 0 $spacingPrimary;
+    margin-right: auto; //incase odd numbers put element to left
   }
 }
 
@@ -52,7 +53,7 @@
   }
   //Start of information
   &__item {
-    padding: 5px 10px;
+    padding: 5px $spacingPrimary;
   }
   &__img {
     @extend .bgImage;
@@ -83,21 +84,21 @@
 //start of view-window
 .view-window {
   z-index: 5;
-  padding: 60px 20px 20px;
+  padding: 60px $spacingSecondary $spacingSecondary;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
   background-color: $thirdColor;
-  box-shadow: 0 3px 5px black;
+  box-shadow: 0 3px 5px $boxShadowColor;
   color: white;
 
   &__topBar {
     text-align: right;
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: $spacingSecondary;
+    right: $spacingSecondary;
     width: 100%;
   }
   &__content {
@@ -106,8 +107,8 @@
   }
   &__actions {
     position: absolute;
-    right: 20px;
-    bottom: 20px;
+    right: $spacingSecondary;
+    bottom: $spacingSecondary;
     text-align: right;
   }
 }
@@ -141,10 +142,9 @@
   position: relative;
   &__content {
     position: relative;
-    padding-top: 50px;
   }
   &__heading {
-    padding-left: 10px;
+    padding-left: $spacingPrimary;
   }
   &__action {
     width: 100%;
@@ -176,7 +176,7 @@
   }
   &__showcase {
     max-width: 100px;
-    margin-left: 10px;
+    margin-left: $spacingPrimary;
   }
   &__price {
     display: inline-block;
@@ -186,7 +186,7 @@
   }
   &__priceInput {
     padding: 8px 8px 8px 42px;
-    width: 110px;
+    width: 1$spacingPrimary;
     display: inline-flex;
   }
   &__currency {
@@ -273,8 +273,8 @@
       //start of admin tools
         &__action {
           position: absolute;
-          right: 0;
-          top: 0;
+          right: 10px;
+          top: -50px;
           width: unset;
         }
     }

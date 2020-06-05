@@ -1,18 +1,18 @@
 .orderConfirm {
-  padding: 20px;
+  padding: $spacingSecondary;
   max-width: 550px;
   margin: auto;
 
   //start of Establishment (est)
   &__est {
     flex-direction: row;
-    padding-bottom: 20px;
+    padding-bottom: $spacingSecondary;
     border-bottom: 1px solid $white;
   }
   &__estImg {
     width: 100px;
     height: 100px;
-    margin-left: 10px;
+    margin-left: $spacingPrimary;
     margin-right: auto;
     flex-shrink: 0;
   }
@@ -42,7 +42,7 @@
   //Start of payment form
   &__action {
     text-align: right;
-    padding-right: 10px;
+    padding-right: $spacingPrimary;
   }
   &__ssvWrapper {
     margin-left: auto;
@@ -57,7 +57,7 @@
   }
   //start of order Summary
   &__orderSummary {
-    padding: 20px;
+    padding: $spacingSecondary;
     max-width: 400px;
     margin: 0 auto;
     color: white;
@@ -79,11 +79,16 @@
 @media only screen {
   //up to mobile
   @media (max-width: $sGrid) {
-    .checkout__main {
-      order: 2;
-    }
-    .checkout__aside {
-      order: 1;
+    .checkout {
+      &__main {
+        order: 2;
+      }
+      &__aside {
+        order: 1;
+      }
+      &__payment, &__aside {
+        flex-basis: 100%;
+      }
     }
   }
   //from mobile and up

@@ -8,6 +8,7 @@ import {_filterEstablishments} from "../functions/handleEstablishmentForm";
 import bergenImage from "../media/images/lachlan-gowen-J38KXYtVrBA-unsplash.jpg";
 import PropTypes from 'prop-types';
 import * as yup from "yup";
+import {isElementOfType} from "react-dom/test-utils";
 
 
 
@@ -20,7 +21,7 @@ export default function Home({establishments}) {
     const history = useHistory();
     function _checkout(filters) {
         const chart = {
-            ...data.sEstablishment[0],
+            ...data.sEstablishment,
             adults: filters.adults,
             children: filters.children,
             date1: filters.date1,
@@ -30,11 +31,17 @@ export default function Home({establishments}) {
         history.push("/checkout");
     }
 
-    function _updateData(newData) {
+    function _updateSelected(newData) {
         setData({
             ...data,
             sEstablishment: newData
         });
+    }
+    function updateFilters(newData) {
+        setData({
+            ...data,
+            fEstablishments: newData
+        })
     }
     const {register, handleSubmit, getValues, errors} = useForm({
         validationSchema : yup.object().shape({
@@ -43,17 +50,75 @@ export default function Home({establishments}) {
                 .test({
                     message: "please select an establishment",
                     test: () => {
-                        return data.sEstablishment !== null;
+                        return data.sEstablishment;
                     }
                 }),
             adults: yup
-                .string(),
+                .string()
+                .matches(/\d+/, {
+                    message: "invalid number",
+                    excludeEmptyString: true
+                }),
             children: yup
-                .string(),
+                .string()
+                .matches(/\d+/, {
+                    message: "invalid number",
+                    excludeEmptyString: true
+                }),
             date1: yup
-                .string(),
+                .string()
+                .matches(/(?!(\d){4}([1-9] | 1[0-2]){2}(1[1-9] | 2[1-4]))/, {
+                    message: "invalid date",
+                    excludeEmptyString: true
+                })
+                .test({
+                    test: value => {
+                        if (value) {
+                            const values = getValues()
+                            return new Date(values.date2).getTime() >= new Date(value).getTime();
+                        } else {
+                            return true;
+                        }
+                    },
+                    message: "Dates are wrong order"
+                })
+                .test({
+                    test: value => {
+                        if (value) {
+                            return (new Date(value).getTime() > new Date(new Date().toLocaleDateString()).getTime());
+                        } else {
+                            return true;
+                        }
+                    },
+                    message: "Invalid date selected"
+                }),
             date2: yup
                 .string()
+                .matches(/(?!(\d){4}([1-9] | 1[0-2]){2}(1[1-9] | 2[1-4]))/, {
+                    message: "invalid date",
+                    excludeEmptyString: true
+                })
+                .test({
+                    test: value => {
+                        if (value) {
+                            const values = getValues()
+                            return new Date(values.date1).getTime() <= new Date(value).getTime();
+                        } else {
+                            return true;
+                        }
+                    },
+                    message: "Dates are wrong order"
+                })
+                .test({
+                    test: value => {
+                        if (value) {
+                            return (new Date(value).getTime() > new Date(new Date().toLocaleDateString()).getTime());
+                        } else {
+                            return true;
+                        }
+                    },
+                    message: "Invalid date selected"
+                })
         })
     });
     return (
@@ -61,11 +126,12 @@ export default function Home({establishments}) {
             <div className="home-hero hero column">
                 <form className="orderBox containerBox form" onChange={() => {
                     const values = getValues();
-                    _filterEstablishments(data.oEstablishments, _updateData, values)
+                    _filterEstablishments(data.oEstablishments, updateFilters
+                    , values)
                 }} onSubmit={handleSubmit(_checkout)}>
                     <div className="orderBox__filter">
                         <div className="form__section row">
-                            <SearchBox className="orderBox" label="place" sectionCol="col-l-6 col-12" data={data} updateData={_updateData} results={true} Ref={register} errors={errors}/>
+                            <SearchBox className="orderBox" label="place" sectionCol="col-l-6 col-12" data={data} updateData={_updateSelected} results={true} Ref={register} errors={errors}/>
                             <People className="orderBox" sectionCol="col-l-6 col-12" groupCol="col-6 col-s-12" Ref={register} errors={errors}/>
                         </div>
                         <div className="form__section row">

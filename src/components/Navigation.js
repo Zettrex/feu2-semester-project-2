@@ -3,15 +3,18 @@ import {NavLink} from "react-router-dom";
 import LoginUserForm from "./components/LoginUserForm";
 import RegisterUserForm from "./components/RegisterUserForm";
 import PropTypes from "prop-types";
+import logo from "../media/images/Logo.svg"
 
-export default function Navigation({userLoggedIn, updateUser}) {
+export default function Navigation({userLoggedIn, updateUser, showLogin, setShowLogin}) {
     const [showMenu, setShowMenu] = useState(false);
-    const [showLogin, setShowLogin] = useState(false);
     const [showRegister, setShowRegister] = useState(false);
+    const [showUserMenu, setShowUserMenu] = useState(false);
+
     function handleShowLogin() {
-        if (showLogin || showRegister) {
+        if (showLogin || showRegister || showUserMenu) {
             setShowLogin(false);
             setShowRegister(false);
+            setShowUserMenu(false);
         } else {
             setShowLogin(true);
         }
@@ -19,6 +22,7 @@ export default function Navigation({userLoggedIn, updateUser}) {
     window.onresize = () => {
         if (window.innerWidth >= 610) {
             setShowMenu(false);
+            setShowUserMenu(false)
         }
     }
 
@@ -26,12 +30,14 @@ export default function Navigation({userLoggedIn, updateUser}) {
         return (
             <nav className="nav--hamburger row">
                 <div className="nav__left">
-                    {/*Logo place*/}
+                    <NavLink to="/" exact>
+                        <img className="nav__logo" src={logo} alt="Hollodaze logo"/>
+                    </NavLink>
                 </div>
-                <div className={`nav__right ${(showRegister || showLogin) && "nav__right--max"}`}>
+                <div className={`${(showRegister || showLogin || showUserMenu) ? "nav__right--max" : "nav__right"}`}>
                     <button className="nav__menuToggle" onClick={() => {
                         setShowMenu(false)
-                        if (showLogin || showRegister) {
+                        if (showLogin || showRegister || showUserMenu) {
                             handleShowLogin();
                         }
                     }}>
@@ -53,13 +59,12 @@ export default function Navigation({userLoggedIn, updateUser}) {
                                 }}>
                                     LOGIN <i className="fas fa-angle-up"/></button>)
                             )}
-                            {userLoggedIn && (
-                                <NavLink activeClassName="nav__link--active" className="nav__login nav__link--hamburger" to="/user" onClick={() => setShowMenu(false)}>MY PAGE</NavLink>
-                            )}
+                            {(userLoggedIn && !showUserMenu) && <button className="nav__login nav__link--hamburger" onClick={() => {setShowUserMenu(true)}}>MY USER <i className="fas fa-angle-down"/></button>}
+                            {(userLoggedIn && showUserMenu) && <button className="nav__login nav__link--hamburger" onClick={() => setShowUserMenu(false)}>MY USER <i className="fas fa-angle-up"/></button>}
                         </div>
                     )}
                     {(!userLoggedIn && showLogin) && (
-                        <div>
+                        <div className="nav__loginArea">
                             <button className="nav__login nav__link--hamburger" onClick={() => handleShowLogin()}>
                                 LOGIN <i className="fas fa-angle-up"/></button>
                             <LoginUserForm fullWidth={true} loginF={updateUser} nav={true}>
@@ -72,7 +77,7 @@ export default function Navigation({userLoggedIn, updateUser}) {
 
                     )}
                     {(!userLoggedIn && showRegister) && (
-                        <div>
+                        <div className="nav__loginArea">
                             <button className="nav__login nav__link--hamburger" onClick={() => handleShowLogin()}>
                                 LOGIN <i className="fas fa-angle-up"/></button>
                             <RegisterUserForm fullWidth={true} loginF={updateUser} nav={true}>
@@ -83,6 +88,18 @@ export default function Navigation({userLoggedIn, updateUser}) {
                             </RegisterUserForm>
                         </div>
                     )}
+                    {(userLoggedIn && showUserMenu) && (
+                        <div className="nav__userMenu">
+                            <NavLink className="nav__user nav__link" to="/user" onClick={() => {
+                                handleShowLogin();
+                                setShowMenu(false);
+                            }}>MY PAGE</NavLink>
+                            <button className="nav__logOut nav__link" onClick={() => {
+                                localStorage.removeItem("user");
+                                updateUser(null)
+                            }}>Log Out</button>
+                        </div>
+                    )}
                 </div>
             </nav>
         )
@@ -90,12 +107,14 @@ export default function Navigation({userLoggedIn, updateUser}) {
         return (
             <nav className="nav row">
                 <div className="nav__left">
-                    {/*Logo place*/}
+                    <NavLink to="/" exact>
+                        <img className="nav__logo" src={logo} alt="Hollodaze logo"/>
+                    </NavLink>
                 </div>
-                <div className={`nav__right ${(showRegister || showLogin) && "nav__right--max"}`}>
+                <div className={`${(showRegister || showLogin || showUserMenu) ? "nav__right--max" : "nav__right"}`}>
                     <button className="nav__menuToggle" onClick={() => {
                         setShowMenu(true)
-                        if (showLogin || showRegister) {
+                        if (showLogin || showRegister || showUserMenu) {
                             handleShowLogin();
                         }
                     }}>
@@ -112,12 +131,11 @@ export default function Navigation({userLoggedIn, updateUser}) {
                             (<button className="nav__login nav__link" onClick={() => handleShowLogin()}>
                                 LOGIN <i className="fas fa-angle-up"/></button>)
                         )}
-                        {userLoggedIn && (
-                            <NavLink activeClassName="nav__link--active" className="nav__login nav__link" to="/user">MY PAGE</NavLink>
-                        )}
+                        {(userLoggedIn && !showUserMenu) && <button className="nav__login nav__link" onClick={() => {setShowUserMenu(true)}}>MY USER <i className="fas fa-angle-down"/></button>}
+                        {(userLoggedIn && showUserMenu) && <button className="nav__login nav__link" onClick={() => setShowUserMenu(false)}>MY USER <i className="fas fa-angle-up"/></button>}
                     </div>
                     {(!userLoggedIn && showLogin) && (
-                        <div>
+                        <div className="nav__loginArea">
                             <button className="nav__login nav__link--hamburger" onClick={() => handleShowLogin()}>
                                 LOGIN <i className="fas fa-angle-up"/></button>
                             <LoginUserForm loginF={updateUser} nav={true}>
@@ -129,7 +147,7 @@ export default function Navigation({userLoggedIn, updateUser}) {
                         </div>
                     )}
                     {(!userLoggedIn && showRegister) && (
-                        <div>
+                        <div className="nav__loginArea">
                             <button className="nav__login nav__link--hamburger" onClick={() => handleShowLogin()}>
                                 LOGIN <i className="fas fa-angle-up"/></button>
                             <RegisterUserForm loginF={updateUser} nav={true}>
@@ -140,6 +158,18 @@ export default function Navigation({userLoggedIn, updateUser}) {
                             </RegisterUserForm>
                         </div>
                     )}
+                    {(userLoggedIn && showUserMenu) && (
+                        <div className="nav__userMenu">
+                            <NavLink className="nav__user nav__link" to="/user" onClick={() => {
+                                handleShowLogin();
+                                setShowMenu(false);
+                            }}>MY PAGE</NavLink>
+                            <button className="nav__logOut nav__link" onClick={() => {
+                                localStorage.removeItem("user");
+                                updateUser(null)
+                            }}>Log Out</button>
+                        </div>
+                    )}
                 </div>
             </nav>
         )
@@ -148,5 +178,7 @@ export default function Navigation({userLoggedIn, updateUser}) {
 
 Navigation.propTypes = {
     userLoggedIn: PropTypes.object,
-    updateUser: PropTypes.func.isRequired
+    updateUser: PropTypes.func.isRequired,
+    showLogin: PropTypes.bool.isRequired,
+    setShowLogin: PropTypes.func.isRequired
 }

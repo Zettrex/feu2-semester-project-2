@@ -7,7 +7,7 @@
       @extend .form__label;
       position: absolute;
       font-size: 12px;
-      left: 20px;
+      left: $spacingSecondary;
       top: 50%;
       transform: translate(0, -50%);
       color: $thirdColor;
@@ -25,7 +25,7 @@
 
     &--right {
       @extend .form__label--compact;
-      left: 10px;
+      left: $spacingPrimary;
     }
   }
 
@@ -33,9 +33,8 @@
 
   //Start of Items
   &__item {
-    height: 34px;
     margin: auto 0;
-    padding: 8px;
+    padding: $spacingPrimary 6px;
     border-radius: $borderRadius;
     display: block;
     width: 100%;
@@ -44,6 +43,7 @@
     font-family: $bodyFont;
     &:focus {
       border-color: $primaryColor;
+      outline: none;
     }
 
     &--compact {
@@ -88,7 +88,7 @@
     &--compact {
       @extend .form__item--compact;
       @extend .form__textarea;
-      padding: 36px 10px 10px;
+      padding: 36px $spacingPrimary $spacingPrimary;
     }
   }
 
@@ -139,9 +139,9 @@
   //End of Date
   //Start of Select
   &__select {
-    font-size: 12px;
     @extend .form__item;
-
+    -webkit-appearance: none;
+    background-color: white;
     &--label {
       @extend .form__label--compact;
     }
@@ -173,7 +173,7 @@
 
   &__selectorDesign {
     display: inline-block;
-    font-size: 20px;
+    font-size: $spacingSecondary;
     transform: translate(0, 2px);
   }
 
@@ -197,7 +197,7 @@
   &__radioLabel {
     @extend .form__label;
     display: inline-block;
-    padding: 10px;
+    padding: $spacingPrimary;
   }
 
   //End of RadioButton
@@ -229,17 +229,23 @@
 .form {
   &__multiRange {
     position: relative;
+    background-color: white;
+    margin: 0 2px;
+    box-shadow: 0 0 2px 2px rgba(0,0,0,0.2);
+    border-radius: 2px;
   }
-
+  &__rangeHiddenInputs {
+    display: none;
+  }
   &__rangeControls {
     position: relative;
-    padding: 0 0 10px;
+    padding: 0 0 $spacingPrimary;
   }
 
   &__rangeInput {
     @extend .form__item;
     display: inline-block;
-    padding: 2px 0 2px 4px;
+    padding: 6px 0 6px 6px;
     width: 64px;
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
@@ -267,9 +273,7 @@
 .noUi-target {
   position: relative;
   height: 14px;
-  border-radius: $borderRadius;
-  background-color: white;
-  box-shadow: 0 0 2px 2px rgba(0,0,0,0.2);
+  margin: 0 12px;
 }
 
 .noUi-base {
@@ -293,11 +297,7 @@
   width: 24px;
   height: 24px;
   background-color: $primaryColor;
-  transform: translate(0, -25%);
-
-  &-upper {
-    transform: translate(-100%, -25%);
-  }
+  transform: translate(-50%, -25%);
 }
 
 //End of Nouislider
@@ -306,6 +306,7 @@
 .form {
   &__action {
     margin-left: auto;
+    text-align: right;
   }
 }
 
@@ -328,7 +329,7 @@
         }
 
         &--left, &--right {
-          padding: 10px;
+          padding: $spacingPrimary;
         }
 
         &Input--left, &Input--right {

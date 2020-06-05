@@ -12,18 +12,18 @@ export default function PaymentForm({updatePayment}) {
                     message: "First name is not a valid name",
                     excludeEmptyString: true
                 })
-                .required("First name empty, Please fill in your First name"),
+                .required("Please fill in your First name"),
             clientLastName: yup
                 .string()
                 .matches(/[\w\s-]+/, {
                     message: "Last name is not a valid name",
                     excludeEmptyString: true
                 })
-                .required("Last name empty, Please fill in your Last name"),
+                .required("Please fill in your Last name"),
             clientEmail: yup
                 .string()
-                .email("Email is not a valid email, please make sure you entered correct")
-                .required("Email is empty, Please fill in your email so that we can contact you"),
+                .email("Email is not a valid email")
+                .required("Please enter Email address"),
             paymentMethod: yup
                 .string()
                 .matches(/(visa|mastercard)/i, {

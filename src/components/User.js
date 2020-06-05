@@ -40,7 +40,7 @@ export default function User({enquiries, messages, establishments}) {
             })
         } else if (target && showAdmin === "establishments") {
             window.scroll({
-                top: target.offsetTop+260,
+                top: target.offsetTop+220,
                 left: 0,
                 behavior: "smooth"
             })

@@ -4,7 +4,7 @@
   color: white;
   &__group {
     @extend .form__group;
-    padding: 4px 10px;
+    padding: 4px $spacingPrimary;
     &--compact {
       @extend .filterArea__group;
     }
@@ -16,7 +16,7 @@
     flex-direction: row;
   }
   &__dateLabel--right {
-    left: 10px;
+    left: $spacingPrimary;
   }
   &__people{
     flex-direction: row;
@@ -27,7 +27,7 @@
   &__matches {
     margin: auto;
     text-align: center;
-    font-size: 24px;
+    font-size: 22px;
   }
   &__buttons {
     margin: auto;
@@ -56,9 +56,9 @@
   &__item {
     color: $white;
     min-height: 200px;
-    box-shadow: 0 3px 6px black;
+    box-shadow: 0 3px 6px $boxShadowColor;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: $spacingSecondary;
     background: $thirdColor;
   }
   &__image {
@@ -68,7 +68,7 @@
   }
   //Start of establishment Info
   &__content {
-    margin: 10px 0;
+    margin: $spacingPrimary 0;
   }
   //End of establishment Info
   //Start of Establishment Action
@@ -90,7 +90,7 @@
     margin-bottom: auto;
   }
   &__readMore {
-    padding: 10px;
+    padding: $spacingPrimary;
   }
   &__book {
     max-width: 100px;
@@ -100,13 +100,20 @@
 }
 //End of Establishment item
 
-@media (min-width: $sGrid) {
-  //Start of Establishments Map
-  .est {
-    &__mapContainer {
-      position: sticky;
-      top: 66px;
+@media only screen {
+  @media (min-width: $sGrid) {
+    //Start of Establishments Map
+    .est {
+      &__mapContainer {
+        position: sticky;
+        top: 66px;
+      }
+    }
+    //End of Establishments Map
+  }
+  @media (min-width: $mGrid) {
+    .filterArea {
+      flex-wrap: nowrap;
     }
   }
-  //End of Establishments Map
 }

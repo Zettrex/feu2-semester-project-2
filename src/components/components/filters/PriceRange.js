@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import Nouislider from "react-nouislider";
 import PropTypes from "prop-types";
 
@@ -11,7 +11,10 @@ export default function PriceRange({className, sectionCol, Ref, errors, updateFi
         min: defaultRange.min,
         max: defaultRange.max
     });
-
+    const [inputValue, setInputValue] = useState({
+        min: defaultRange.min,
+        max: defaultRange.max
+    })
     function handleMin(targetValue) {
         if (targetValue <= range.max) {
             setRange({
@@ -25,6 +28,13 @@ export default function PriceRange({className, sectionCol, Ref, errors, updateFi
             });
         }
     }
+
+    //renders updates filter when range updates
+    const update = useCallback(updateFilters, []);
+    useEffect(() => {
+        update();
+    }, [update, range])
+
     //updating the max value on price range, and making sure u cant place max below minimum price
     function handleMax(targetValue) {
         if (targetValue > range.min) {
@@ -42,11 +52,27 @@ export default function PriceRange({className, sectionCol, Ref, errors, updateFi
 
     return (
         <div className={`${className}__priceRange form__Price form__section ${sectionCol}`}>
+            <div className="form__rangeHiddenInputs">
+                <input value={range.min} name="price1" type="number" disabled ref={Ref}/>
+                <input value={range.max} name="price2" type="number" disabled ref={Ref}/>
+            </div>
             <div className="form__range form__group">
                 <div className="form__rangeControls row">
                     <label className="form__rangeLabel column" htmlFor="Price">Price</label>
-                    <input className="form__rangeInput--min column" type="number" name="price1" min={defaultRange.min} max={defaultRange.max} value={range.min} onChange={event => handleMin(parseInt(event.target.value))} ref={Ref}/>
-                    <input className="form__rangeInput--max column" type="number" name="price2" min={defaultRange.min} max={defaultRange.max} value={range.max} onChange={event => handleMax(parseInt(event.target.value))} ref={Ref}/>
+                    <input className="form__rangeInput--min column" type="number" min={defaultRange.min} max={defaultRange.max} value={inputValue.min} onChange={event => {
+                        handleMin(parseInt(event.target.value))
+                        setInputValue({
+                            ...inputValue,
+                            min: event.target.value
+                        })
+                    }}/>
+                    <input className="form__rangeInput--max column" type="number" min={defaultRange.min} max={defaultRange.max} value={inputValue.max} onChange={event => {
+                        handleMax(parseInt(event.target.value))
+                        setInputValue({
+                            ...inputValue,
+                            max: event.target.value
+                        })
+                    }}/>
                 </div>
 
                 {/*I decided to use the NoUiSlider Library for the slider.
@@ -62,9 +88,17 @@ export default function PriceRange({className, sectionCol, Ref, errors, updateFi
                             if (handle === 0) {
                                 updateFilters();
                                 handleMin(parseInt(values[0]));
+                                setInputValue({
+                                    ...inputValue,
+                                    min: parseInt(values[0])
+                                })
                             } else {
                                 updateFilters();
                                 handleMax(parseInt(values[1]))
+                                setInputValue({
+                                    ...inputValue,
+                                    max: parseInt(values[1])
+                                })
                             }
                         }}
                     />

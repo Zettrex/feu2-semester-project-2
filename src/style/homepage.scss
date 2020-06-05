@@ -16,12 +16,12 @@
   &__type {
     position: relative;
     background-color: rgba($secondaryColor, 300%);
-    box-shadow: 0 1px 4px black;
+    box-shadow: 0 1px 4px $boxShadowColor;
     z-index: 1;
     &--active {
       @extend .orderBox__type;
       background-color: $secondaryColor;
-      box-shadow: 0 2px 5px black;
+      box-shadow: 0 2px 5px $boxShadowColor;
       z-index: 5;
     }
   }
@@ -68,11 +68,6 @@
 //End of OrderBox
 
 //start of search Results
-.orderBox__search {
-  &:focus-within > .searchResults {
-    display: block;
-  }
-}
 .searchResults {
   display: none;
   position: absolute;
@@ -87,6 +82,13 @@
   border-radius: $borderRadius;
   border: 3px solid $white;
 }
+
+.searchBox {
+  &:focus-within > .searchResults {
+    display: block;
+  }
+}
+
 .resultItem {
   background-color: $thirdColor;
   border-radius: $borderRadius;
@@ -100,17 +102,20 @@
   &:focus-within {
     background-color: $primaryColor;
     color: black;
+    outline: none;
   }
   &__design {
     display: flex;
     padding: 0;
+    text-align: left;
+    color: white;
   }
   &__content {
     justify-content: left;
-    padding: 6px 10px;
+    padding: 6px $spacingPrimary;
   }
   &__action {
-    padding: 0 10px 6px;
+    padding: 0 $spacingPrimary 6px;
   }
   &__img {
     width: 26px;
@@ -146,7 +151,7 @@
   &__image {
   }
   &__info {
-    font-size: 20px;
+    font-size: $spacingSecondary;
   }
 }
 
@@ -165,7 +170,7 @@
   @media (min-width: $sGrid) {
     .resultItem {
       &__action, &__content {
-        padding: 10px;
+        padding: $spacingPrimary;
       }
     }
     .bergen {
@@ -178,18 +183,24 @@
     }
   }
 
-  //from tablet to desktop
-  @media (min-width: $sGrid) and (max-width: $mGrid){
-    .bergen {
-      padding-top: 60px;
-    }
-  }
-
   //desktop and up
   @media (min-width: $mGrid) {
     .orderBox {
       &__filter {
-        padding: 20px 30px;
+        padding: $spacingSecondary 30px;
+      }
+    }
+    .bergen {
+      &__info {
+        padding: 0 40px;
+      }
+    }
+  }
+
+  @media (max-width: 1135px) {
+    .bergen {
+      &__info {
+        font-size: 14px;
       }
     }
   }

@@ -36,10 +36,10 @@ body {
 //Start of Button
 .btn {
   display: inline-block;
-  padding: 10px 12px;
+  padding: $spacingPrimary 12px;
   border-radius: $borderRadius;
   border: none;
-  box-shadow: 0 2px 3px rgba(0,0,0,0.5);
+  box-shadow: 0 2px 3px $boxShadowColor;
   &:active {
     box-shadow: none;
   }
@@ -84,7 +84,7 @@ body {
 
 //Start of paragraph
 .paragraph {
-  padding: 10px 0;
+  padding: $spacingPrimary 0;
 }
 //End of paragraph
 
@@ -107,7 +107,7 @@ body {
 
 //Start of Hero
 .hero {
-  margin: -30px -16px 30px;
+  margin: -30px -16px 50px;
   min-height: 75vh;
   position: relative;
   padding: 40px 0;
@@ -130,6 +130,108 @@ body {
 }
 //End of background blur element
 
+//Start of Navigation
+.nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: linear-gradient(to bottom, #FFC67F, $primaryColor, $primaryColor);
+  box-shadow: 0 2px 6px $boxShadowColor;
+  &--hamburger {
+    @extend .nav;
+    box-shadow: none;
+  }
+
+  &__logo {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    height: 44px;
+    display: block;
+    margin: auto;
+    padding: 6px 16px;
+  }
+  &__right{
+    margin-left: auto;
+    padding: 6px 0;
+    &--max {
+      @extend .nav__right;
+      width: 100%;
+      margin-left: 0;
+      padding: 6px 0;
+    }
+  }
+  &__links {
+    display: none;
+    &--hamburger {
+      position: absolute;
+      top: 46px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      display: block;
+      background-color: $primaryColor;
+      box-shadow: 0 3px 2px $boxShadowColor;
+    }
+  }
+  &__link {
+    @extend .link;
+    font-family: $labelFont;
+    font-weight: bold;
+    display: block;
+    padding: $spacingPrimary 16px;
+    color: black;
+    font-size: 14px;
+    &--hamburger {
+      @extend .nav__link;
+      margin: $spacingPrimary 0;
+      width: 100%;
+    }
+    &--active {
+      text-decoration: underline;
+    }
+  }
+  &__menuToggle {
+    @extend .nav__link;
+    display: block;
+    border: none;
+    margin: 0 10px 0 auto;
+    font-size: 18px;
+    padding: 6px 16px;
+  }
+
+  //Start of login box
+  &__loginBox {
+    z-index: 4;
+    background-color: $footerColor;
+    box-shadow: 0 3px 5px $boxShadowColor;
+    max-height: 400px;
+    overflow: auto;
+    width: 100%;
+    margin: 0;
+  }
+  //End of login box
+
+  //Start of user menu
+  &__userMenu {
+    position: absolute;
+    top: 230px;
+    width: 100%;
+    background-color: $primaryColor;
+    text-align: center;
+    padding-bottom: $spacingPrimary;
+    box-shadow: 0 4px 3px $boxShadowColor;
+  }
+  &__logOut {
+    width: 100%;
+  }
+  //End of user menu
+}
+
+//End of Navigation
+
+
 //Start of Login & Register
 //Start of Login form
 .login {
@@ -144,7 +246,7 @@ body {
     color: white;
   }
   &__extraBtn {
-    padding: 10px;
+    padding: $spacingPrimary;
   }
 }
 //End of Login form
@@ -163,89 +265,22 @@ body {
 //End of Register
 //End of Login & Register
 
-//Start of Navigation
-.nav {
-  position: sticky;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  background: linear-gradient(to bottom, #FFC67F, $primaryColor, $primaryColor);
-  box-shadow: 0 2px 6px black;
-  &--hamburger {
-    @extend .nav;
-    box-shadow: none;
-  }
-  &__right{
-    margin-left: auto;
-    padding: 10px;
-    &--max {
-      @extend .nav__right;
-      width: 100%;
-      margin-left: 0;
-    }
-  }
-  &__menuToggle {
-    @extend .nav__link;
-    display: block;
-    border: none;
-    margin-left: auto;
-  }
-  &__links {
-    display: none;
-    &--hamburger {
-      position: absolute;
-      top: 54px;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      display: block;
-      background-color: $primaryColor;
-      box-shadow: 0 3px 2px black;
-    }
-  }
-  &__link {
-    @extend .link;
-    font-family: $labelFont;
-    font-weight: bold;
-    display: block;
-    padding: 10px 15px;
-    color: black;
-    font-size: 12px;
-    &--hamburger {
-      @extend .nav__link;
-      margin: 10px 0;
-      width: 100%;
-    }
-    &--active {
-      text-decoration: underline;
-    }
-  }
-
-  //Start of login box
-  &__loginBox {
-    z-index: 4;
-    background-color: $footerColor;
-    box-shadow: 0 3px 5px black;
-    max-height: 400px;
-    overflow: auto;
-    width: 100%;
-    margin: 0;
-  }
-  //End of login box
-}
-
-//End of Navigation
-
 
 //Start of Footer
 .footer {
-  padding: 0 20px;
+  padding: 20px;
   background-color: $footerColor;
+  &__links {
+    padding-left: 0;
+  }
+  &__contact {
+    padding-right: 0;
+  }
   &__link {
     @extend .link;
     display: inline-block;
-    margin: 10px 0;
-    padding: 10px 0;
+    margin: $spacingPrimary 0;
+    padding: $spacingPrimary 0;
     color: white;
     text-decoration: none;
     text-align: center;
@@ -262,7 +297,7 @@ body {
   color: white;
   &__group {
     margin: auto 0;
-    padding: 10px;
+    padding: $spacingPrimary;
     position: relative;
   }
 
@@ -270,7 +305,7 @@ body {
     width: 100%;
     position: relative;
     padding: 0;
-    margin: 10px 0;
+    margin: $spacingPrimary 0;
   }
 
   &__container {
@@ -284,7 +319,7 @@ body {
     right: 16px;
     z-index: 5;
     border-radius: 4px;
-    font-size: 8px;
+    font-size: $spacingPrimary;
     color: red;
     &--left {
       @extend .form__error;
@@ -311,7 +346,7 @@ body {
   &__prompt {
     @extend .containerBox;
     border-radius: $borderRadius;
-    box-shadow: 0 3px 10px black;
+    box-shadow: 0 3px 10px $boxShadowColor;
     margin: 50px auto;
   }
   &__Wrapper{
@@ -328,7 +363,7 @@ body {
     border-radius: $borderRadius $borderRadius 0 0;
   }
   &__close {
-    padding: 10px 16px;
+    padding: $spacingPrimary 16px;
   }
   &__content {
     padding: 20px;
@@ -376,10 +411,10 @@ body {
 //Start of containerBox
 .containerBox {
   &:nth-child(odd) {
-    background: linear-gradient(110deg, $thirdColor 65%, $fourthColor 35%);
+    background: linear-gradient(110deg, $thirdColor 65%, $fourthColor 65%);
   }
   &:nth-child(even) {
-    background: linear-gradient(70deg, $thirdColor 65%, $fourthColor 35%);
+    background: linear-gradient(70deg, $thirdColor 65%, $fourthColor 65%);
   }
 }
 //End of containerBox
@@ -404,12 +439,23 @@ body {
 
   //for tablet
   @media (min-width: $sGrid) {
+    //Start of nav
+    .nav {
+      &__logo {
+        left: 34px;
+      }
+      &__menuToggle {
+        margin: 0 50px 0 auto;
+      }
+    }
+    //End of nav
+
     //Start of Page
     .page {
-      padding: 50px;
+      padding: 30px 50px 50px;
     }
     .hero {
-      margin: -50px;
+      margin: -30px -50px 50px;
     }
     //End of Page
     //Start of Confirmation box
@@ -444,12 +490,27 @@ body {
     }
     //End of footer
   }
-
+  //for up to 750px
+  @media (min-width: $sGrid) and (max-width: 750px) {
+    .nav {
+      &__menuToggle {
+        margin: 0 34px 0 0;
+      }
+      &__loginArea {
+        position: absolute;
+        top: 46px;
+        left: 0;
+        width: 100%;
+        background-color: $primaryColor;
+        box-shadow: 0 4px 3px $boxShadowColor;
+      }
+    }
+  }
   //for 750px and up
   @media (min-width: 750px) {
     //Start of Nav
     .nav {
-      padding: 0 35px;
+      padding: 0 36px;
       &__right {
         &--max {
           width: unset;
@@ -480,7 +541,7 @@ body {
     .nav {
       &__loginBox {
         position: absolute;
-        top: 56px;
+        top: 48px;
         right: 40px;
         width: unset;
         max-width: 300px;
@@ -489,6 +550,19 @@ body {
       }
     }
     //End of login box
+    //Start of user box
+    .nav {
+      &__userMenu {
+        top: 49px; //1px from nav to give illusion of coming out from inside
+        width: 100px;
+        right: 36px;
+        background: linear-gradient(110deg, $thirdColor 65%, $fourthColor 65%);
+      }
+      &__user, &__logOut {
+        color: white;
+      }
+    }
+    //End of user box
   }
 
   //for desktop
@@ -496,13 +570,20 @@ body {
     //Start of Nav
     .nav {
       padding: 0 85px;
+      &__logo {
+        left: 85px;
+      }
       &__link {
       }
       &__loginBox {
         right: 100px;
       }
+      &__userMenu {
+        right: 86px;
+      }
     }
     //End of Nav
+
     //Start of Page
     .page {
       padding: 30px 100px;
@@ -510,12 +591,12 @@ body {
     //End of Page
     //Start of Hero
     .hero {
-      margin: -30px -100px 0;
+      margin: -30px -100px 50px;
     }
     //End of Hero
     //Start of Footer
     .footer {
-      padding: 50px 150px;
+      padding: $spacingPrimary 100px;
       &__links {
         order: 1;
       }

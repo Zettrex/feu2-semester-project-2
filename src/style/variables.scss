@@ -9,6 +9,7 @@ $breakPoint2: 900px;
 
 //margins
 $spacingPrimary: 10px;
+$spacingSecondary: 20px;
 
 //Colors
 $primaryColor: #ffb36a;
@@ -19,13 +20,14 @@ $fifthColor: #54779f;
 $black: #000000;
 $white: #fefefe;
 $footerColor: $fourthColor;
+$boxShadowColor: rgba(0,0,0,0.5);
 
 //Border-radius
 $borderRadius: 6px;
 
 //fonts
 $headingFont: 'Vesper Libre', serif;
-$bodyFont: 'Ubuntu', sans-serif;
+$bodyFont: 'Arimo', sans-serif;
 $labelFont: 'Roboto Condensed', sans-serif;
 
 //font-size

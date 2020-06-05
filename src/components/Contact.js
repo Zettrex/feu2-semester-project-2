@@ -22,14 +22,16 @@ export default function () {
     function _sendForm(data) {
         if (JSON.stringify(contact) !== JSON.stringify(data)) { //work around due to shallow compare
             let registered = false;
-            if (user.id) {
+            let userID = ""
+            if (user && user.id) {
                 registered = true
+                userID = user.id
             }
             const contact = {
                 caseID: `${Math.random().toString(36).substr(2, 6)}`,
                 clientName: `${data.firstName} ${data.lastName}`,
                 clientRegistered: registered,
-                clientID: user.clientID,
+                clientID: userID,
                 clientEmail: data.email,
                 subject: data.subject,
                 message: data.message
@@ -37,11 +39,12 @@ export default function () {
             setCaseID(contact.caseID);
             setContact(contact);
             setConfirmation(true);
-            return fetch("https://www.zettrex.no/Noroff/semester4/data/contact-success.php", {
+            fetch("https://www.zettrex.no/Noroff/semester4/data/contact-success.php", {
                 method: "POST",
                 headers: {"Content-Type": "application/x-www-form-urlencoded"},
-                body: `clientName=${encodeURIComponent(contact.clientName)}&clientRegistered=${encodeURIComponent(contact.clientRegistered)}&clientID=${contact.clientID}&clientEmail=${encodeURIComponent(contact.clientEmail)}&subject=${encodeURIComponent(contact.subject)}&message=${encodeURIComponent(contact.message)}`
+                body: `caseID=${encodeURIComponent(contact.caseID)}&clientName=${encodeURIComponent(contact.clientName)}&clientRegistered=${encodeURIComponent(contact.clientRegistered)}&clientID=${contact.clientID}&clientEmail=${encodeURIComponent(contact.clientEmail)}&subject=${encodeURIComponent(contact.subject)}&message=${encodeURIComponent(contact.message)}`
             })
+                .catch(error => console.error(error));
         } else {
             setDuplicateMessage(true);
         }
@@ -55,25 +58,25 @@ export default function () {
                     message: "First name is not a valid name",
                     excludeEmptyString: true
                 })
-                .required("First name empty, Please fill in your First name"),
+                .required("Please fill your first name"),
             lastName: yup
                 .string()
                 .matches(/[\w\s-]+/, {
-                    message: "Last name is not a valid name",
+                    message: "Please fill your last name",
                     excludeEmptyString: true
                 })
-                .required("Last name empty, Please fill in your Last name"),
+                .required("Last name empty"),
             email: yup
                 .string()
-                .email("Email is not a valid email, please make sure you entered correct")
-                .required("Email is empty, Please fill in your email so that we can contact you"),
+                .email("Email is not a valid email")
+                .required("Please fill in Email address"),
             subject: yup
                 .string()
-                .matches(/^(?!placeholder).*$/, {message: "Option not Selected Please select one of the options above"})
+                .matches(/^(?!placeholder).*$/, {message: "Select one of the options"})
                 .required(""),
             message: yup
                 .string()
-                .min(10, "the message is to short, please enter a more descriptive message")
+                .min(10, "the message is to short")
                 .required("Please enter a message"),
         })
     });

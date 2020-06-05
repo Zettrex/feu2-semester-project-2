@@ -1,7 +1,7 @@
 .map {
   &__img {
     width: 200px;
-    height: 120px;
+    height: 1$spacingSecondary;
     margin: 0 auto;
     display: block;
   }
@@ -10,13 +10,13 @@
     position: absolute;
     top: 6px;
     right: 6px;
-    font-size: 20px;
+    font-size: $spacingSecondary;
   }
 }
 
 .gm-style-iw {
   @extend .containerBox;
-  padding: 40px 20px 30px !important;
+  padding: 40px $spacingSecondary 30px !important;
   max-width: 260px !important;
 }
 .gm-ui-hover-effect {
