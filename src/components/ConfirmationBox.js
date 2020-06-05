@@ -13,7 +13,7 @@ export default function ConfirmationBox(props) {
                     {props.children}
                     <div className="section confirmation__action">
                         {props.toHome ? (
-                            <Link className="confirmation__ok btn--primary" to="/" exact>Ok</Link>
+                            <Link className="confirmation__ok btn--primary" to="/">Ok</Link>
                         ) : (
                             <button className="confirmation__ok btn--primary" onClick={() => props.updateConfirmed(false)}>Ok</button>
                         )}
@@ -25,6 +25,6 @@ export default function ConfirmationBox(props) {
 }
 ConfirmationBox.propTypes = {
     updateConfirmed: PropTypes.func.isRequired,
-    children: PropTypes.array.isRequired,
+    children: PropTypes.object.isRequired,
     toHome: PropTypes.bool
 }
