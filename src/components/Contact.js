@@ -3,7 +3,7 @@ import {useForm} from "react-hook-form";
 import * as yup from "yup";
 import ConfirmationBox from "./ConfirmationBox";
 
-export default function () {
+export default function Contact() {
     const [contact, setContact] = useState({});
     const [confirmation, setConfirmation] = useState(false);
     const [duplicateMessage, setDuplicateMessage] = useState(false);
@@ -18,7 +18,6 @@ export default function () {
     function updateConfirmed(data) {
         setConfirmation(data);
     }
-
     function _sendForm(data) {
         if (JSON.stringify(contact) !== JSON.stringify(data)) { //work around due to shallow compare
             let registered = false;
