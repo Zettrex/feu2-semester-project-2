@@ -435,6 +435,7 @@ body {
 //Start of scrollbar
 ::-webkit-scrollbar {
   width: 10px;
+  box-shadow: 0 0 2px 2px $boxShadowColor;
 }
 
 ::-webkit-scrollbar-track {
